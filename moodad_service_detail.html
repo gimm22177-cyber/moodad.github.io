@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>무드애드 | 상세페이지</title>
-  <meta name="description" content="무드애드 플레이스 마케팅 · 브랜드 블로그 상세페이지입니다." />
+  <title>무드애드 | 플레이스 관리, 맡기기 전에 꼭 봐야 할 기준</title>
+  <meta name="description" content="플레이스 관리, 맡기기 전에 꼭 봐야 할 기준. 무드애드 상세페이지입니다." />
   <style>
     * { box-sizing: border-box; }
 
@@ -20,7 +20,6 @@
       --contact-grad: linear-gradient(135deg, #ebf8fb 0%, #deeff4 46%, #eaf1fb 100%);
 
       --line: rgba(78, 104, 121, 0.12);
-      --line-strong: rgba(255,255,255,0.72);
 
       --accent-grad: linear-gradient(135deg, #7db7b5 0%, #82accf 48%, #8d9fd9 100%);
       --accent-shadow: 0 16px 38px rgba(108, 149, 180, 0.24);
@@ -254,6 +253,7 @@
       font-weight: 900;
       letter-spacing: -0.06em;
       color: var(--navy);
+      word-break: keep-all;
     }
 
     .hero-desc {
@@ -373,6 +373,25 @@
       word-break: keep-all;
     }
 
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity 0.9s cubic-bezier(.2,.8,.2,1),
+        transform 0.9s cubic-bezier(.2,.8,.2,1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+
     @media (max-width: 768px) {
       .container {
         width: min(calc(100% - 24px), var(--max));
@@ -425,16 +444,16 @@
   </style>
 </head>
 <body>
-  <section class="top-shell">
+  <section class="top-shell reveal">
     <div class="container top-inner">
       <div class="top-bar">
-        <a href="index.html" class="brand">
+        <a href="index.html" class="brand reveal reveal-delay-1">
           <span class="brand-logo-box">
             <img src="무드애드.jpg" alt="무드애드 로고" class="brand-logo" />
           </span>
         </a>
 
-        <div class="top-actions">
+        <div class="top-actions reveal reveal-delay-2">
           <a href="index.html" class="premium-btn premium-btn--glass">
             <span class="btn-label">메인으로</span>
             <span class="btn-icon">↗</span>
@@ -447,17 +466,17 @@
         </div>
       </div>
 
-      <div class="hero-copy">
-        <h1 class="hero-title">상세페이지</h1>
+      <div class="hero-copy reveal reveal-delay-3">
+        <h1 class="hero-title">플레이스 관리, 맡기기 전에 꼭 봐야 할 기준</h1>
         <p class="hero-desc">
-          무드애드의 서비스 소개 내용을 한눈에 확인할 수 있도록 정리한 페이지입니다.
-          아래에서 상세 내용을 확인하시고, 필요하시면 카카오톡이나 전화로 바로 연결하실 수 있습니다.
+          보여주기식 관리보다 중요한 건, 실제로 고객이 보고 신뢰할 수 있는 흐름입니다.
+          아래 내용을 통해 어떤 기준으로 맡겨야 하는지 차분히 확인해보세요.
         </p>
       </div>
     </div>
   </section>
 
-  <section class="detail-section">
+  <section class="detail-section reveal">
     <div class="container detail-image-wrap">
       <div class="detail-image-box">
         <img src="moodad_detailpage_merged.jpg" alt="무드애드 상세페이지" class="detail-img" />
@@ -465,18 +484,18 @@
     </div>
   </section>
 
-  <section class="contact-bridge">
+  <section class="contact-bridge reveal">
     <div class="container">
       <div class="contact-card">
         <div class="contact-card-inner">
-          <span class="contact-eyebrow">Contact</span>
-          <h2 class="contact-title">여기까지 보셨다면,<br />이제 편하게 문의만 남겨주시면 됩니다.</h2>
-          <p class="contact-desc">
+          <span class="contact-eyebrow reveal reveal-delay-1">Contact</span>
+          <h2 class="contact-title reveal reveal-delay-2">여기까지 보셨다면,<br />이제 편하게 문의만 남겨주시면 됩니다.</h2>
+          <p class="contact-desc reveal reveal-delay-2">
             지금 바로 진행하지 않으셔도 괜찮습니다. 어떤 마케팅이 필요한지, 어디부터 시작하면 좋을지
             편하게 이야기 주시면 무드애드가 방향부터 함께 정리해드리겠습니다.
           </p>
 
-          <div class="contact-actions">
+          <div class="contact-actions reveal reveal-delay-3">
             <a href="https://open.kakao.com/me/mood_ad" target="_blank" rel="noopener" class="premium-btn premium-btn--accent premium-btn--large">
               <span class="btn-label">카카오톡으로 문의하기</span>
               <span class="btn-icon">→</span>
@@ -488,12 +507,30 @@
             </a>
           </div>
 
-          <p class="contact-note">
+          <p class="contact-note reveal reveal-delay-3">
             버튼을 누르면 바로 연결됩니다. 상담 가능한 시간이나 진행하고 싶은 방향이 있으시면 편하게 남겨주세요.
           </p>
         </div>
       </div>
     </div>
   </section>
+
+  <script>
+    const revealEls = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealEls.forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
