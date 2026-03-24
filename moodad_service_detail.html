@@ -4,14 +4,39 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>무드애드 | 상세페이지</title>
+  <meta name="description" content="무드애드 플레이스 마케팅 · 브랜드 블로그 상세페이지입니다." />
   <style>
     * { box-sizing: border-box; }
 
+    :root {
+      --bg-dark: #0b1016;
+      --bg-dark-2: #111a24;
+      --line-light: rgba(255,255,255,0.10);
+      --text-white: #ffffff;
+      --text-soft: rgba(255,255,255,0.72);
+      --text-muted: #6b7280;
+      --accent: #2f6b57;
+      --accent-2: #417d69;
+      --light-bg: #f3f4f6;
+      --card-bg: #ffffff;
+      --shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --max: 1120px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: #0b0f14;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Pretendard", "Noto Sans KR", sans-serif;
-      color: #ffffff;
+      background: var(--light-bg);
+      color: #111827;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
     }
 
     a {
@@ -19,99 +44,424 @@
       color: inherit;
     }
 
-    .top-area {
-      width: 100%;
-      background: linear-gradient(180deg, #0b0f14 0%, #101720 100%);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 28px 20px 40px;
-    }
-
-    .top-inner {
-      width: 100%;
-      max-width: 980px;
+    .container {
+      width: min(calc(100% - 40px), var(--max));
       margin: 0 auto;
     }
 
-    .back-btn {
+    .top-shell {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(86, 122, 120, 0.20), transparent 24%),
+        radial-gradient(circle at top right, rgba(47, 107, 87, 0.14), transparent 20%),
+        linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-dark-2) 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .top-shell::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.10;
+      pointer-events: none;
+    }
+
+    .top-inner {
+      position: relative;
+      z-index: 1;
+      padding: 24px 0 54px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 4px 0 34px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-logo-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-logo {
+      display: block;
+      height: 66px;
+      width: auto;
+      max-width: 100%;
+      border-radius: 16px;
+      object-fit: contain;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .top-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      padding: 0 18px;
+      padding: 0 22px;
       border-radius: 999px;
+      font-size: 15px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .top-btn.secondary {
+      color: var(--text-white);
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(255,255,255,0.12);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 15px;
-      transition: 0.2s ease;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
-    .back-btn:hover {
-      background: rgba(255,255,255,0.1);
+    .top-btn.secondary:hover {
+      background: rgba(255,255,255,0.10);
     }
 
-    .top-title {
-      margin: 24px 0 10px;
-      font-size: clamp(28px, 5vw, 44px);
-      line-height: 1.15;
-      letter-spacing: -0.04em;
+    .top-btn.primary {
+      color: var(--text-white);
+      background: linear-gradient(180deg, var(--accent-2) 0%, var(--accent) 100%);
+      box-shadow: 0 14px 32px rgba(47,107,87,0.26);
+    }
+
+    .top-btn.primary:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-copy {
+      padding: 12px 0 0;
+    }
+
+    .hero-title {
+      margin: 0 0 14px;
+      font-size: clamp(38px, 6vw, 76px);
+      line-height: 1.02;
       font-weight: 800;
+      letter-spacing: -0.06em;
+      color: var(--text-white);
     }
 
-    .top-desc {
+    .hero-desc {
       margin: 0;
-      color: rgba(255,255,255,0.72);
-      font-size: 16px;
-      line-height: 1.7;
+      max-width: 780px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.8;
+      color: var(--text-soft);
     }
 
-    .detail-wrap {
-      width: 100%;
+    .detail-section {
+      padding: 48px 0 0;
+      background: var(--light-bg);
+    }
+
+    .detail-image-wrap {
       display: flex;
       justify-content: center;
-      padding: 40px 16px 80px;
-      background: #f5f5f5;
+    }
+
+    .detail-image-box {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
     }
 
     .detail-img {
       width: 100%;
-      max-width: 860px;
       height: auto;
       display: block;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
-      border-radius: 6px;
+    }
+
+    .contact-bridge {
+      padding: 56px 0 90px;
+      background: linear-gradient(180deg, #eceeef 0%, #f3f4f6 100%);
+    }
+
+    .contact-card {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(86, 122, 120, 0.18), transparent 26%),
+        linear-gradient(180deg, #0c1117 0%, #111a24 100%);
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 28px 70px rgba(15, 23, 42, 0.16);
+    }
+
+    .contact-card-inner {
+      padding: 42px 38px;
+    }
+
+    .contact-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.70);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+    }
+
+    .contact-eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: rgba(255,255,255,0.28);
+    }
+
+    .contact-title {
+      margin: 18px 0 14px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .contact-desc {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(255,255,255,0.74);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .info-box {
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .info-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.54);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .info-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      word-break: break-all;
+    }
+
+    .contact-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      transition: 0.2s ease;
+    }
+
+    .cta-btn.kakao {
+      background: linear-gradient(180deg, var(--accent-2) 0%, var(--accent) 100%);
+      color: #ffffff;
+      box-shadow: 0 16px 36px rgba(47,107,87,0.26);
+    }
+
+    .cta-btn.kakao:hover {
+      transform: translateY(-1px);
+    }
+
+    .cta-btn.phone {
+      background: rgba(255,255,255,0.07);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .cta-btn.phone:hover {
+      background: rgba(255,255,255,0.11);
+    }
+
+    .contact-note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.50);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 768px) {
-      .top-area {
-        padding: 20px 16px 28px;
+      .container {
+        width: min(calc(100% - 24px), var(--max));
       }
 
-      .detail-wrap {
-        padding: 24px 10px 50px;
+      .top-inner {
+        padding: 18px 0 34px;
       }
 
-      .back-btn {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        padding-bottom: 24px;
+      }
+
+      .top-actions {
         width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .top-btn,
+      .cta-btn {
+        width: 100%;
+      }
+
+      .brand-logo {
+        height: 58px;
+      }
+
+      .detail-section {
+        padding-top: 22px;
+      }
+
+      .contact-bridge {
+        padding: 34px 0 60px;
+      }
+
+      .contact-card-inner {
+        padding: 28px 20px;
+      }
+
+      .contact-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .contact-desc {
+        font-size: 15px;
       }
     }
   </style>
 </head>
 <body>
-  <section class="top-area">
-    <div class="top-inner">
-      <a href="index.html" class="back-btn">← 메인페이지로 돌아가기</a>
-      <h1 class="top-title">상세페이지</h1>
-      <p class="top-desc">
-        무드애드의 서비스 소개 내용을 한눈에 볼 수 있도록 정리한 페이지입니다.
-        아래에서 상세 내용을 확인하실 수 있습니다.
-      </p>
+  <section class="top-shell">
+    <div class="container top-inner">
+      <div class="top-bar">
+        <a href="index.html" class="brand">
+          <span class="brand-logo-box">
+            <img src="무드애드.jpg" alt="무드애드 로고" class="brand-logo" />
+          </span>
+        </a>
+
+        <div class="top-actions">
+          <a href="index.html" class="top-btn secondary">메인으로</a>
+          <a href="https://open.kakao.com/me/mood_ad" target="_blank" rel="noopener" class="top-btn primary">문의하기</a>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <h1 class="hero-title">상세페이지</h1>
+        <p class="hero-desc">
+          무드애드의 서비스 소개 내용을 한눈에 확인할 수 있도록 정리한 페이지입니다.
+          아래에서 상세 내용을 확인하시고, 필요하시면 카카오톡이나 전화로 바로 연결하실 수 있습니다.
+        </p>
+      </div>
     </div>
   </section>
 
-  <div class="detail-wrap">
-    <img src="moodad_detailpage_merged.jpg" alt="무드애드 상세페이지" class="detail-img" />
-  </div>
+  <section class="detail-section">
+    <div class="container detail-image-wrap">
+      <div class="detail-image-box">
+        <img src="moodad_detailpage_merged.jpg" alt="무드애드 상세페이지" class="detail-img" />
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-bridge">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-card-inner">
+          <span class="contact-eyebrow">Contact</span>
+          <h2 class="contact-title">여기까지 보셨다면,<br />이제 편하게 문의만 남겨주시면 됩니다.</h2>
+          <p class="contact-desc">
+            지금 바로 진행하지 않으셔도 괜찮습니다. 어떤 마케팅이 필요한지, 어디부터 시작하면 좋을지
+            편하게 이야기 주시면 무드애드가 방향부터 함께 정리해드리겠습니다.
+          </p>
+
+          <div class="contact-info">
+            <div class="info-box">
+              <span class="info-label">카카오톡 문의</span>
+              <span class="info-value">open.kakao.com/me/mood_ad</span>
+            </div>
+            <div class="info-box">
+              <span class="info-label">전화 상담</span>
+              <span class="info-value">010-5148-2579</span>
+            </div>
+          </div>
+
+          <div class="contact-actions">
+            <a href="https://open.kakao.com/me/mood_ad" target="_blank" rel="noopener" class="cta-btn kakao">카카오톡으로 문의하기</a>
+            <a href="tel:01051482579" class="cta-btn phone">전화 상담하기</a>
+          </div>
+
+          <p class="contact-note">
+            문의 버튼을 누르면 바로 연결됩니다. 상담 가능한 시간이나 진행하고 싶은 마케팅 방향이 있으시면 함께 남겨주세요.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
