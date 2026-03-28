@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>무드애드 | 대표님, 원하시는 매출이 있으신가요?</title>
   <meta name="description" content="대표님, 원하시는 매출이 있으신가요? 무드애드 상세페이지입니다." />
+  <link rel="preload" as="image" href="상세페이지1GIF.gif" type="image/gif" />
 
   <script>
     document.documentElement.classList.add('js');
@@ -48,6 +49,7 @@
       color: var(--text-dark);
       line-height: 1.6;
       letter-spacing: -0.02em;
+      overflow-x: hidden;
     }
 
     a {
@@ -244,14 +246,14 @@
     }
 
     .hero-sub {
-  margin: 30px 0 0;
-  max-width: 860px;
-  font-size: clamp(22px, 3vw, 34px);
-  line-height: 1.7;
-  color: #787878;
-  font-weight: 600;
-  word-break: keep-all;
-}
+      margin: 30px 0 0;
+      max-width: 860px;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.7;
+      color: #787878;
+      font-weight: 600;
+      word-break: keep-all;
+    }
 
     .hero-note {
       margin: 18px 0 0;
@@ -433,6 +435,89 @@
       }
     }
 
+    /* 벚꽃잎 효과 */
+    .blossom-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .blossom-petal {
+      position: absolute;
+      top: -12vh;
+      left: 0;
+      width: var(--petal-size);
+      height: calc(var(--petal-size) * 0.72);
+      opacity: var(--petal-opacity);
+      will-change: transform, opacity;
+      animation: blossom-fall var(--fall-duration) linear var(--fall-delay) forwards;
+    }
+
+    .blossom-shape {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 78% 22% 75% 25%;
+      background:
+        radial-gradient(circle at 32% 30%, rgba(255,255,255,0.92) 0 14%, rgba(255,228,238,0.95) 15% 30%, rgba(255,199,218,0.94) 31% 70%, rgba(245,153,185,0.92) 71% 100%);
+      box-shadow:
+        0 0 10px rgba(255, 186, 208, 0.22),
+        inset -2px -2px 4px rgba(230, 120, 165, 0.18);
+      animation:
+        blossom-spin var(--spin-duration) linear infinite,
+        blossom-sway var(--sway-duration) ease-in-out infinite alternate;
+      transform-origin: center center;
+    }
+
+    .blossom-shape::after {
+      content: "";
+      position: absolute;
+      width: 30%;
+      height: 30%;
+      top: 20%;
+      left: 18%;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      filter: blur(1px);
+    }
+
+    @keyframes blossom-fall {
+      0% {
+        transform: translate3d(0, -12vh, 0);
+        opacity: 0;
+      }
+      10% {
+        opacity: var(--petal-opacity);
+      }
+      50% {
+        transform: translate3d(calc(var(--drift-x) * 0.45), 52vh, 0);
+      }
+      100% {
+        transform: translate3d(var(--drift-x), 115vh, 0);
+        opacity: 0.08;
+      }
+    }
+
+    @keyframes blossom-spin {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(0.94); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes blossom-sway {
+      0% { margin-left: -8px; }
+      100% { margin-left: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .blossom-layer {
+        display: none;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         width: min(calc(100% - 24px), var(--max));
@@ -498,6 +583,8 @@
   </style>
 </head>
 <body>
+  <div class="blossom-layer" aria-hidden="true"></div>
+
   <section class="top-shell">
     <div class="container top-inner">
       <div class="top-bar">
@@ -584,36 +671,77 @@
 
       if (!('IntersectionObserver' in window)) {
         items.forEach((el) => el.classList.add('is-visible'));
-        return;
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const index = Array.from(items).indexOf(el);
+            const delay = (index % 4) * 90;
+
+            setTimeout(() => {
+              el.classList.add('is-visible');
+            }, delay);
+
+            observer.unobserve(el);
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -6% 0px'
+        });
+
+        items.forEach((el) => observer.observe(el));
       }
 
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
+      const blossomLayer = document.querySelector('.blossom-layer');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-          const el = entry.target;
-          const index = Array.from(items).indexOf(el);
-          const delay = (index % 4) * 90;
+      if (!blossomLayer || reduceMotion) return;
 
-          setTimeout(() => {
-            el.classList.add('is-visible');
-          }, delay);
+      const totalPetals = window.innerWidth <= 768 ? 14 : 24;
 
-          observer.unobserve(el);
-        });
-      }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -6% 0px'
-      });
+      function random(min, max) {
+        return Math.random() * (max - min) + min;
+      }
 
-      items.forEach((el) => observer.observe(el));
+      function createPetal(isInitial) {
+        const petal = document.createElement('span');
+        const shape = document.createElement('span');
+
+        petal.className = 'blossom-petal';
+        shape.className = 'blossom-shape';
+
+        const size = random(10, 22);
+        const duration = random(9, 16);
+        const delay = isInitial ? -random(0, duration) : 0;
+        const drift = random(-140, 140);
+        const opacity = random(0.45, 0.95);
+        const spin = random(3.4, 6.2);
+        const sway = random(2.2, 3.8);
+
+        petal.style.left = `${random(-5, 105)}vw`;
+        petal.style.setProperty('--petal-size', `${size}px`);
+        petal.style.setProperty('--fall-duration', `${duration}s`);
+        petal.style.setProperty('--fall-delay', `${delay}s`);
+        petal.style.setProperty('--drift-x', `${drift}px`);
+        petal.style.setProperty('--petal-opacity', opacity.toFixed(2));
+        shape.style.setProperty('--spin-duration', `${spin}s`);
+        shape.style.setProperty('--sway-duration', `${sway}s`);
+
+        petal.appendChild(shape);
+        blossomLayer.appendChild(petal);
+
+        petal.addEventListener('animationend', () => {
+          petal.remove();
+          createPetal(false);
+        }, { once: true });
+      }
+
+      for (let i = 0; i < totalPetals; i += 1) {
+        createPetal(true);
+      }
     })();
   </script>
 </body>
 </html>
-```
-
-커밋 메시지는 이렇게 적으세요.
-
-```text
-Restore hero note and speed up first image
