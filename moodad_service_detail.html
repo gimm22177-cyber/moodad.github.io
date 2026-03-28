@@ -407,9 +407,8 @@ body {
   right: 0;
   bottom: 0;
   z-index: 2000;
-  padding: 4px 18px calc(4px + env(safe-area-inset-bottom));
-  background: linear-gradient(135deg, rgba(125,183,181,0.96), rgba(130,172,207,0.96), rgba(141,159,217,0.96));
-}
+  padding: 6px 18px calc(6px + env(safe-area-inset-bottom));
+  background: linear-gradient(135deg, rgba(125, 183, 181, 0.96) 0%, rgba(130, 172, 207, 0.96) 48%, rgba(141, 159, 217, 0.96) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   box-shadow: 0 -18px 42px rgba(36, 58, 78, 0.22);
   backdrop-filter: blur(14px);
@@ -428,9 +427,9 @@ body {
 .floating-consult-title {
   margin: 0;
   color: #ffffff;
-  font-size: clamp(28px, 2.6vw, 40px);
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.1;
   font-weight: 900;
-}
   letter-spacing: -0.04em;
   white-space: nowrap;
   text-shadow: 0 2px 14px rgba(16, 32, 49, 0.18);
@@ -566,13 +565,13 @@ body {
     padding-bottom: 140px;
   }
 
-  /* 🔥 외부 네모 절반 */
   .floating-consult-bar {
-    padding: 3px 12px calc(3px + env(safe-area-inset-bottom));
+    padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
   }
-
+}
+  
   .floating-consult-title {
-    font-size: 18px;
+    font-size: 24px;
   }
 
   .floating-consult-form {
@@ -580,19 +579,30 @@ body {
     gap: 8px;
   }
 
-  /* 🔥 모바일에서만 숨김 */
   .floating-consult-service {
     display: none;
   }
 
-  .floating-consult-input {
-    height: 50px;
-    font-size: 15px;
-  }
+.floating-consult-input {
+  height: 50px;
+  font-size: 15px;
+}
 
   .floating-consult-btn {
     height: 50px;
     font-size: 17px;
+  }
+    
+ .floating-consult-title {
+    font-size: 18px;
+  }
+
+  .floating-consult-input {
+    font-size: 14px;
+  }
+
+  .floating-consult-btn {
+    font-size: 15px;
   }
 }
     
@@ -1019,52 +1029,48 @@ body {
     })();
     </script>
 
-<div class="floating-consult-bar">
-  <div class="floating-consult-inner">
+  <div class="floating-consult-bar">
+    <div class="floating-consult-inner">
+      <p class="floating-consult-title">빠른 마케팅 상담 신청</p>
 
-    <p class="floating-consult-title">빠른 마케팅 상담 신청</p>
+      <form
+        id="floatingConsultForm"
+        class="floating-consult-form"
+        action="https://formspree.io/f/xkopovya"
+        method="POST"
+      >
+        <input
+          type="text"
+          name="company"
+          class="floating-consult-input"
+          placeholder="상호명"
+          required
+        />
 
-    <form
-      id="floatingConsultForm"
-      class="floating-consult-form"
-      action="https://formspree.io/f/xkopovya"
-      method="POST"
-    >
+        <input
+          type="tel"
+          name="phone"
+          class="floating-consult-input"
+          placeholder="연락처"
+          required
+        />
 
-      <input
-        type="text"
-        name="company"
-        class="floating-consult-input"
-        placeholder="상호명"
-        required
-      />
+       <input
+  type="text"
+  name="service"
+  class="floating-consult-input floating-consult-service"
+  placeholder="원하시는 마케팅"
+  required
+/>
 
-      <input
-        type="tel"
-        name="phone"
-        class="floating-consult-input"
-        placeholder="연락처"
-        required
-      />
+        <button type="submit" class="floating-consult-btn">신청하기</button>
 
-      <!-- PC만 보임 -->
-      <input
-        type="text"
-        name="service"
-        class="floating-consult-input floating-consult-service"
-        placeholder="원하시는 마케팅"
-        required
-      />
+        <input type="hidden" name="page_name" value="moodad_service_detail.html" />
+      </form>
+    </div>
 
-      <button type="submit" class="floating-consult-btn">신청하기</button>
-
-      <input type="hidden" name="page_name" value="moodad_service_detail.html" />
-    </form>
-
+    <p id="floatingConsultStatus" class="floating-consult-status" aria-live="polite"></p>
   </div>
-
-  <p id="floatingConsultStatus" class="floating-consult-status"></p>
-</div>
 
 
 <script>
