@@ -738,68 +738,93 @@ body {
       }
     }
 
-    @media (max-width: 768px) {
-      .container {
-        width: min(calc(100% - 24px), var(--max));
-      }
+   @media (max-width: 768px) {
+  .container {
+    width: min(calc(100% - 24px), var(--max));
+  }
 
-      .top-inner {
-        padding: 18px 0 38px;
-      }
+  .top-inner {
+    padding: 18px 0 38px;
+  }
 
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
-        padding-bottom: 24px;
-      }
+  .top-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-bottom: 24px;
+  }
 
-      .top-actions,
-      .contact-actions {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-      }
+  .brand {
+    flex: 0 0 auto;
+  }
 
-      .premium-btn,
-      .premium-btn--large {
-        width: 100%;
-      }
+  .top-actions {
+    width: auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
 
-      .brand-logo {
-        height: 58px;
-      }
+  .contact-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
 
-      .hero-sub {
-        font-size: 19px;
-        margin-top: 18px;
-      }
+  .top-actions .premium-btn {
+    width: auto;
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 13px;
+    gap: 6px;
+    border-radius: 14px;
+  }
 
-      .hero-note {
-        font-size: 16px;
-        margin-top: 14px;
-      }
+  .top-actions .premium-btn .btn-icon {
+    font-size: 12px;
+  }
 
-      .detail-section {
-        padding-top: 24px;
-      }
+  .premium-btn--large {
+    width: 100%;
+  }
 
-      .detail-stack {
-        gap: 16px;
-      }
+  .brand-logo {
+    height: 52px;
+  }
 
-      .contact-bridge {
-        padding: 34px 0 60px;
-      }
+  .hero-sub {
+    font-size: 19px;
+    margin-top: 18px;
+  }
 
-      .contact-card-inner {
-        padding: 30px 22px;
-      }
+  .hero-note {
+    font-size: 16px;
+    margin-top: 14px;
+  }
 
-      .contact-desc {
-        font-size: 15px;
-      }
-    }
+  .detail-section {
+    padding-top: 24px;
+  }
+
+  .detail-stack {
+    gap: 16px;
+  }
+
+  .contact-bridge {
+    padding: 34px 0 60px;
+  }
+
+  .contact-card-inner {
+    padding: 30px 22px;
+  }
+
+  .contact-desc {
+    font-size: 15px;
+  }
+}
   </style>
 </head>
 <body>
