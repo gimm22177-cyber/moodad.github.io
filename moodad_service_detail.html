@@ -397,10 +397,159 @@
     color: #e53935;
   }
 
-    contact-title-sub {
-  display: inline-block;
-  font-size: 0.9em;
-  line-height: 1.45;
+body {
+  padding-bottom: 118px;
+}
+
+.floating-consult-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2000;
+  padding: 14px 18px calc(14px + env(safe-area-inset-bottom));
+  background: linear-gradient(135deg, rgba(125, 183, 181, 0.96) 0%, rgba(130, 172, 207, 0.96) 48%, rgba(141, 159, 217, 0.96) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 -18px 42px rgba(36, 58, 78, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.floating-consult-inner {
+  width: min(calc(100% - 12px), 1280px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+.floating-consult-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(24px, 2.2vw, 34px);
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-shadow: 0 2px 14px rgba(16, 32, 49, 0.18);
+}
+
+.floating-consult-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) minmax(220px, 1.2fr) auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.floating-consult-input {
+  width: 100%;
+  height: 54px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  padding: 0 22px;
+  font-size: 16px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
+  outline: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.floating-consult-input::placeholder {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.floating-consult-input:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.floating-consult-btn {
+  height: 54px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(26, 43, 62, 0.16);
+}
+
+.floating-consult-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.floating-consult-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.floating-consult-status {
+  width: min(calc(100% - 36px), 1280px);
+  margin: 8px auto 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  min-height: 20px;
+}
+
+@media (max-width: 1080px) {
+  body {
+    padding-bottom: 170px;
+  }
+
+  .floating-consult-inner {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .floating-consult-title {
+    white-space: normal;
+    font-size: 28px;
+  }
+
+  .floating-consult-form {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding-bottom: 278px;
+  }
+
+  .floating-consult-bar {
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
+  }
+
+  .floating-consult-title {
+    font-size: 24px;
+  }
+
+  .floating-consult-form {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .floating-consult-input,
+  .floating-consult-btn {
+    height: 50px;
+    font-size: 15px;
+  }
+
+  .floating-consult-btn {
+    font-size: 17px;
+  }
 }
     
     /* 통일된 애니메이션 */
@@ -669,7 +818,6 @@
       <div class="contact-card reveal">
         <div class="contact-card-inner">
           <span class="contact-eyebrow">Contact</span>
-         <h2 class="contact-title">
   <h2 class="contact-title">여기까지 보셨다면,</h2>
 
 <p class="contact-desc contact-desc-top">
@@ -800,6 +948,93 @@
         createPetal(true);
       }
     })();
-  </script>
+    </script>
+
+  <div class="floating-consult-bar">
+    <div class="floating-consult-inner">
+      <p class="floating-consult-title">빠른 마케팅 상담 신청</p>
+
+      <form
+        id="floatingConsultForm"
+        class="floating-consult-form"
+        action="https://formspree.io/f/xkopovya"
+        method="POST"
+      >
+        <input
+          type="text"
+          name="company"
+          class="floating-consult-input"
+          placeholder="상호명 또는 성함"
+          required
+        />
+
+        <input
+          type="tel"
+          name="phone"
+          class="floating-consult-input"
+          placeholder="연락처"
+          required
+        />
+
+        <input
+          type="text"
+          name="service"
+          class="floating-consult-input"
+          placeholder="원하시는 마케팅"
+          required
+        />
+
+        <button type="submit" class="floating-consult-btn">신청하기</button>
+
+        <input type="hidden" name="page_name" value="moodad_service_detail.html" />
+      </form>
+    </div>
+
+    <p id="floatingConsultStatus" class="floating-consult-status" aria-live="polite"></p>
+  </div>
+
+
+<script>
+  (function () {
+    const form = document.getElementById('floatingConsultForm');
+    const status = document.getElementById('floatingConsultStatus');
+
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('.floating-consult-btn');
+      const originalText = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '전송중...';
+      status.textContent = '문의 내용을 전송하고 있습니다.';
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          status.textContent = '문의가 정상 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
+        } else {
+          status.textContent = '문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
+        }
+      } catch (error) {
+        status.textContent = '네트워크 문제로 전송되지 않았습니다. 잠시 후 다시 시도해주세요.';
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
+  })();
+</script>
+  
 </body>
 </html>
