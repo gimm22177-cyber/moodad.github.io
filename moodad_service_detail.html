@@ -442,7 +442,7 @@ body {
 
 .floating-consult-form {
   display: grid;
-  grid-template-columns: minmax(160px, 1fr) minmax(160px, 1fr) minmax(220px, 1.15fr) 132px;
+  grid-template-columns: minmax(140px, 1fr) minmax(140px, 1fr) minmax(220px, 1.2fr) 110px;
   gap: 10px;
   align-items: center;
 }
@@ -473,7 +473,7 @@ body {
 .floating-consult-btn {
   position: relative;
   height: 44px;
-  padding: 0 20px;
+  padding: 0 18px;
   border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.22);
@@ -498,7 +498,6 @@ body {
   transform: none;
 }
 
-/* 버튼 퍼지는 효과가 박스를 커 보이게 해서 약하게 조정 */
 .floating-consult-btn::before,
 .floating-consult-btn::after {
   content: "";
@@ -564,6 +563,7 @@ body {
 
   .floating-consult-form {
     grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 }
 
@@ -603,93 +603,6 @@ body {
     height: 42px;
     padding: 0 16px;
     font-size: 14px;
-  }
-}
-
-@keyframes consultWave {
-  0% {
-    transform: scale(1);
-    opacity: 0.45;
-  }
-  100% {
-    transform: scale(1.18);
-    opacity: 0;
-  }
-}
-
-.floating-consult-status {
-  width: min(calc(100% - 36px), 1280px);
-  margin: 8px auto 0;
-  color: rgba(255, 255, 255, 0.92);
-  font-size: 13px;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  min-height: 20px;
-}
-
-@media (max-width: 1080px) {
-  body {
-    padding-bottom: 170px;
-  }
-
-  .floating-consult-inner {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .floating-consult-title {
-    white-space: normal;
-    font-size: 28px;
-  }
-
-  .floating-consult-form {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  body {
-    padding-bottom: 140px;
-  }
-
-  .floating-consult-bar {
-    padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
-  }
-}
-  
-  .floating-consult-title {
-    font-size: 24px;
-  }
-
-  .floating-consult-form {
-    grid-template-columns: 1fr 1fr auto;
-    gap: 8px;
-  }
-
-  .floating-consult-service {
-    display: none;
-  }
-
-.floating-consult-input {
-  height: 50px;
-  font-size: 15px;
-}
-
-  .floating-consult-btn {
-    height: 50px;
-    font-size: 17px;
-  }
-    
- .floating-consult-title {
-    font-size: 18px;
-  }
-
-  .floating-consult-input {
-    font-size: 14px;
-  }
-
-  .floating-consult-btn {
-    font-size: 15px;
   }
 }
     
