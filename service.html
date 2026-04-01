@@ -1,1 +1,777 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>무드애드 | 네이버 마케팅</title>
+  <meta name="description" content="사장님은 본업에 집중하시고, 네이버 마케팅은 무드애드가 함께합니다. 플레이스 마케팅, 체험단/기자단, 플레이스 순위상승 작업, 검색 광고, 브랜드 블로그." />
+  <style>
+    :root {
+      --bg: #fbfaf6;
+      --bg-soft: #f5f2ea;
+      --card: rgba(255,255,255,0.78);
+      --line: rgba(110, 122, 98, 0.15);
+      --text: #253126;
+      --muted: #667160;
+      --point: #8dcf73;
+      --point-strong: #67ba49;
+      --shadow: 0 18px 60px rgba(83, 104, 77, 0.10);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1280px;
+    }
 
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(141,207,115,0.14), transparent 24%),
+        radial-gradient(circle at left bottom, rgba(239,226,193,0.55), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .wrap {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: rgba(251, 250, 246, 0.72);
+      border-bottom: 1px solid rgba(110, 122, 98, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #9fdf85, #6ec257);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a,
+    .nav-links button {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links button:hover {
+      background: rgba(141,207,115,0.14);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 84px 0 50px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-panel,
+    .service-detail,
+    .consult-box {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-copy {
+      padding: 44px;
+      border-radius: var(--radius-xl);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(141,207,115,0.12);
+      color: var(--point-strong);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 19px);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--point), var(--point-strong));
+      color: white;
+      box-shadow: 0 16px 30px rgba(103, 186, 73, 0.26);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid rgba(110,122,98,0.12);
+    }
+
+    .hero-panel {
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-panel::after {
+      content: "MOOD AD";
+      position: absolute;
+      right: -12px;
+      bottom: -28px;
+      font-size: clamp(46px, 9vw, 116px);
+      font-weight: 900;
+      letter-spacing: -0.08em;
+      color: rgba(103, 186, 73, 0.08);
+      pointer-events: none;
+    }
+
+    .hero-stat {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .hero-stat-card {
+      padding: 18px 18px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(110,122,98,0.10);
+    }
+
+    .hero-stat-card strong {
+      display: block;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .hero-stat-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .section {
+      padding: 24px 0 84px;
+    }
+
+    .section-head {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.14;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 230px;
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(110,122,98,0.10);
+      box-shadow: 0 14px 35px rgba(83, 104, 77, 0.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -45% auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(141,207,115,0.30), rgba(141,207,115,0));
+      opacity: 0;
+      transform: scale(0.7);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .service-card:hover,
+    .service-card.is-active {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 44px rgba(103, 186, 73, 0.16);
+      border-color: rgba(103,186,73,0.28);
+      background: linear-gradient(180deg, rgba(160,224,134,0.24), rgba(255,255,255,0.90));
+    }
+
+    .service-card:hover::before,
+    .service-card.is-active::before {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .service-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(141,207,115,0.14);
+      color: var(--point-strong);
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+    }
+
+    .service-card .hover-more {
+      position: absolute;
+      left: 22px;
+      bottom: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--point-strong);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .service-card:hover .hover-more,
+    .service-card.is-active .hover-more {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .service-details {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .service-detail {
+      display: none;
+      padding: 34px;
+      border-radius: 28px;
+    }
+
+    .service-detail.is-show {
+      display: block;
+      animation: fadeUp 0.45s ease;
+    }
+
+    .service-detail-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .service-detail-head h3 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.16;
+      letter-spacing: -0.04em;
+    }
+
+    .service-detail-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .detail-chip {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 92px;
+      height: 42px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: rgba(141,207,115,0.14);
+      color: var(--point-strong);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .detail-item {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(248, 250, 244, 0.95);
+      border: 1px solid rgba(110,122,98,0.10);
+    }
+
+    .detail-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      letter-spacing: -0.02em;
+    }
+
+    .detail-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      letter-spacing: -0.02em;
+    }
+
+    .consult {
+      padding-bottom: 110px;
+    }
+
+    .consult-box {
+      border-radius: 32px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .consult-copy h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 3.5vw, 42px);
+      line-height: 1.14;
+      letter-spacing: -0.04em;
+    }
+
+    .consult-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .consult-form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr) auto;
+      gap: 10px;
+    }
+
+    .consult-input,
+    .consult-select,
+    .consult-submit {
+      min-height: 54px;
+      border-radius: 999px;
+      border: 1px solid rgba(110,122,98,0.12);
+      padding: 0 18px;
+      font-size: 15px;
+      background: white;
+      outline: none;
+    }
+
+    .consult-submit {
+      border: 0;
+      padding: 0 24px;
+      color: white;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, var(--point), var(--point-strong));
+      box-shadow: 0 14px 28px rgba(103, 186, 73, 0.24);
+      cursor: pointer;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 1180px) {
+      .service-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .consult-box,
+      .hero-grid,
+      .detail-grid { grid-template-columns: 1fr; }
+      .consult-form { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 820px) {
+      .wrap { width: min(calc(100% - 28px), var(--max)); }
+      .nav { padding: 12px 0; align-items: flex-start; }
+      .nav-links { gap: 6px; }
+      .hero { padding-top: 34px; }
+      .hero-copy,
+      .hero-panel,
+      .service-detail,
+      .consult-box { padding: 24px; }
+      .service-grid { grid-template-columns: 1fr 1fr; }
+      .service-card { min-height: 205px; }
+      .consult-form { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .service-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 38px; }
+      .hero-copy p { font-size: 15px; }
+      .section { padding-bottom: 62px; }
+      .service-detail-head { flex-direction: column; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a href="#top" class="brand">
+        <span class="brand-badge"></span>
+        <span>무드애드</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">서비스</a>
+        <a href="#consult">상담문의</a>
+        <a href="service.html">서비스 소개 페이지</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy fade-in show">
+          <span class="eyebrow">네이버 마케팅, 보기 좋게 말고 결과가 나게</span>
+          <h1>사장님은 본업에 집중하시고,<br>마케팅은 무드애드가 함께하겠습니다.</h1>
+          <p>
+            플레이스 세팅부터 체험단 운영, 플레이스 순위상승 작업, 검색 광고, 브랜드 블로그까지.
+            각각 따로 움직이는 것이 아니라, 한 흐름으로 연결되도록 설계하는 것이 중요합니다.
+          </p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary">서비스 보기</a>
+            <a href="#consult" class="btn btn-secondary">빠른 상담 문의</a>
+          </div>
+        </div>
+
+        <div class="hero-panel fade-in show">
+          <div class="hero-stat">
+            <div class="hero-stat-card">
+              <strong>한 번 세팅하고 끝나는 구조가 아닙니다</strong>
+              <span>노출 흐름, 고객 반응, 전환 포인트까지 같이 보면서 맞춰갑니다.</span>
+            </div>
+            <div class="hero-stat-card">
+              <strong>업종마다 필요한 방식이 다릅니다</strong>
+              <span>식당, 미용실, 병원, 인테리어, 지역 서비스업처럼 업종별 접근을 나눠서 운영합니다.</span>
+            </div>
+            <div class="hero-stat-card">
+              <strong>눈에 보이는 부분과 보이지 않는 부분을 같이 만집니다</strong>
+              <span>보이는 디자인, 문구, 후기만이 아니라 유입 구조와 클릭 흐름까지 함께 설계합니다.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-head fade-in">
+          <h2>무드애드가 하는 일은 이렇게 시작됩니다</h2>
+          <p>원하시는 항목을 눌러보시면 아래에서 바로 자세한 설명이 열립니다.</p>
+        </div>
+
+        <div class="service-grid fade-in">
+          <button class="service-card is-active" type="button" data-target="place-marketing">
+            <span class="service-num">01</span>
+            <h3>플레이스 마케팅</h3>
+            <p>스마트플레이스 안에서 고객이 먼저 믿게 되는 구조를 만듭니다.</p>
+            <span class="hover-more">자세히 보기</span>
+          </button>
+
+          <button class="service-card" type="button" data-target="review-group">
+            <span class="service-num">02</span>
+            <h3>체험단/기자단</h3>
+            <p>후기가 쌓이는 흐름을 만들고, 검색에서 보이는 신뢰를 키웁니다.</p>
+            <span class="hover-more">자세히 보기</span>
+          </button>
+
+          <button class="service-card" type="button" data-target="place-ranking">
+            <span class="service-num">03</span>
+            <h3>플레이스 순위상승 작업</h3>
+            <p>저장, 유입, 행동 흐름을 관리해 노출 경쟁력을 끌어올립니다.</p>
+            <span class="hover-more">자세히 보기</span>
+          </button>
+
+          <button class="service-card" type="button" data-target="search-ads">
+            <span class="service-num">04</span>
+            <h3>검색 광고</h3>
+            <p>지금 당장 문의가 필요한 업종에 빠르게 반응할 수 있는 구조입니다.</p>
+            <span class="hover-more">자세히 보기</span>
+          </button>
+
+          <button class="service-card" type="button" data-target="brand-blog">
+            <span class="service-num">05</span>
+            <h3>브랜드 블로그</h3>
+            <p>광고처럼 보이지 않지만, 읽고 나면 문의하고 싶어지는 글을 만듭니다.</p>
+            <span class="hover-more">자세히 보기</span>
+          </button>
+        </div>
+
+        <div class="service-details fade-in" id="service-detail-area">
+          <article class="service-detail is-show" id="place-marketing">
+            <div class="service-detail-head">
+              <div>
+                <h3>플레이스 마케팅</h3>
+                <p>처음 들어온 고객이 이 업체를 믿어도 되는지 판단하는 핵심 공간이 바로 플레이스입니다.</p>
+              </div>
+              <span class="detail-chip">01</span>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item"><strong>어떤 것을 만지나요?</strong><span>업체명 방향, 소개문구, 사진 배치, 메뉴/서비스 정보, 예약 흐름, 길찾기, 톡톡, 스마트콜처럼 고객이 실제로 보는 요소를 다듬습니다.</span></div>
+              <div class="detail-item"><strong>왜 중요한가요?</strong><span>광고를 돌려도 상세 정보가 약하면 고객은 바로 이탈합니다. 첫 인상에서 신뢰를 만드는 작업이 먼저 필요합니다.</span></div>
+              <div class="detail-item"><strong>어떻게 세팅하나요?</strong><span>지역성과 업종 특성을 반영해 키워드와 문구를 정리하고, 저장과 클릭이 일어나는 화면 구성을 맞춥니다.</span></div>
+              <div class="detail-item"><strong>기대할 수 있는 변화</strong><span>보기만 하는 페이지가 아니라 문의, 전화, 길찾기, 예약으로 이어지는 확률이 높아집니다.</span></div>
+            </div>
+          </article>
+
+          <article class="service-detail" id="review-group">
+            <div class="service-detail-head">
+              <div>
+                <h3>체험단/기자단</h3>
+                <p>가게를 찾기 전, 사람들은 결국 다른 사람이 어떻게 느꼈는지를 먼저 확인합니다.</p>
+              </div>
+              <span class="detail-chip">02</span>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item"><strong>어떤 방식인가요?</strong><span>방문형, 배송형, 업종형으로 나눠 리뷰 방향을 잡고 모집부터 선정, 가이드 전달, 업로드 관리까지 흐름을 운영합니다.</span></div>
+              <div class="detail-item"><strong>왜 필요한가요?</strong><span>처음 보는 브랜드는 신뢰할 근거가 부족합니다. 후기는 그 간격을 줄여주는 가장 현실적인 자료가 됩니다.</span></div>
+              <div class="detail-item"><strong>어디에 도움이 되나요?</strong><span>네이버 검색, 플레이스, 블로그 검색 결과에서 브랜드 흔적이 생기고, 고객이 비교할 때 밀리지 않게 됩니다.</span></div>
+              <div class="detail-item"><strong>운영 포인트</strong><span>양만 채우는 방식보다, 업종에 맞는 표현과 실제 고객 관점이 담기도록 방향을 잡는 것이 중요합니다.</span></div>
+            </div>
+          </article>
+
+          <article class="service-detail" id="place-ranking">
+            <div class="service-detail-head">
+              <div>
+                <h3>플레이스 순위상승 작업</h3>
+                <p>플레이스는 예쁘게 꾸미는 것만으로 끝나지 않습니다. 행동 데이터가 함께 움직여야 합니다.</p>
+              </div>
+              <span class="detail-chip">03</span>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item"><strong>무엇을 보나요?</strong><span>유입 흐름, 저장, 클릭, 체류 반응처럼 노출 경쟁력에 영향을 줄 수 있는 행동 신호를 함께 살핍니다.</span></div>
+              <div class="detail-item"><strong>왜 필요한가요?</strong><span>기본 세팅이 좋아도 실제 반응이 부족하면 상위 노출 경쟁에서 밀릴 수 있습니다. 그래서 구조와 반응을 같이 봐야 합니다.</span></div>
+              <div class="detail-item"><strong>어떤 업종에 맞나요?</strong><span>지역 경쟁이 강한 식당, 미용실, 병원, 시공업처럼 플레이스 노출이 매출과 바로 연결되는 업종에 특히 중요합니다.</span></div>
+              <div class="detail-item"><strong>진행 방향</strong><span>현재 순위와 경쟁도, 목표 키워드 상태를 보고 업종에 맞게 설계해야 효과를 더 안정적으로 가져갈 수 있습니다.</span></div>
+            </div>
+          </article>
+
+          <article class="service-detail" id="search-ads">
+            <div class="service-detail-head">
+              <div>
+                <h3>검색 광고</h3>
+                <p>검색 광고는 급하게 쓰는 돈이 아니라, 필요한 고객을 더 빨리 만나기 위한 장치입니다.</p>
+              </div>
+              <span class="detail-chip">04</span>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item"><strong>어떤 광고를 하나요?</strong><span>파워링크, 플레이스형 광고, 지역 타겟형 광고처럼 업종과 예산에 맞는 구조로 세팅합니다.</span></div>
+              <div class="detail-item"><strong>장점은 무엇인가요?</strong><span>지금 바로 검색하고 있는 고객에게 노출되기 때문에, 비교적 빠르게 문의 흐름을 만들 수 있습니다.</span></div>
+              <div class="detail-item"><strong>중요한 포인트</strong><span>광고 문구만 바꾸는 것이 아니라, 어떤 키워드에 얼마를 쓰고 어떤 페이지로 연결할지까지 계산해야 합니다.</span></div>
+              <div class="detail-item"><strong>함께 보면 좋은 것</strong><span>광고는 플레이스, 상세페이지, 후기 자산과 연결될 때 효율이 더 좋아집니다. 혼자 따로 돌리면 아쉬운 경우가 많습니다.</span></div>
+            </div>
+          </article>
+
+          <article class="service-detail" id="brand-blog">
+            <div class="service-detail-head">
+              <div>
+                <h3>브랜드 블로그</h3>
+                <p>사람이 문의를 남기기 전에는, 늘 한 번쯤 검색해서 읽어봅니다. 그때 브랜드의 말투와 깊이가 보입니다.</p>
+              </div>
+              <span class="detail-chip">05</span>
+            </div>
+            <div class="detail-grid">
+              <div class="detail-item"><strong>무엇을 쓰나요?</strong><span>고객이 실제로 검색하는 질문을 중심으로 정보형, 공감형, 후기형 글을 설계해 브랜드 자산을 쌓습니다.</span></div>
+              <div class="detail-item"><strong>왜 중요한가요?</strong><span>광고보다 덜 부담스럽고, 브랜드를 더 오래 기억하게 만듭니다. 검색 결과에서 신뢰감을 주는 힘도 큽니다.</span></div>
+              <div class="detail-item"><strong>어떻게 다르게 쓰나요?</strong><span>광고 티가 강한 글보다, 실제 고민에 답하는 흐름으로 써야 이탈이 적고 문의로 자연스럽게 이어집니다.</span></div>
+              <div class="detail-item"><strong>기대 효과</strong><span>브랜드 검색 시 빈 화면이 아니라, 읽을거리와 정보가 쌓여 있는 상태를 만들 수 있습니다.</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section consult" id="consult">
+      <div class="wrap">
+        <div class="consult-box fade-in">
+          <div class="consult-copy">
+            <span class="eyebrow">빠른 상담 문의</span>
+            <h2>지금 필요한 마케팅이 무엇인지,<br>가볍게 먼저 이야기해보셔도 괜찮습니다.</h2>
+            <p>업종과 상황에 따라 필요한 방식은 달라집니다. 부담 없이 남겨주시면 확인 후 연락드리겠습니다.</p>
+          </div>
+          <form class="consult-form" action="https://formspree.io/f/xkopovya" method="POST">
+            <input class="consult-input" type="text" name="company" placeholder="상호명" required />
+            <input class="consult-input" type="tel" name="phone" placeholder="연락처" required />
+            <select class="consult-select" name="service" required>
+              <option value="">원하시는 마케팅</option>
+              <option>플레이스 마케팅</option>
+              <option>체험단/기자단</option>
+              <option>플레이스 순위상승 작업</option>
+              <option>검색 광고</option>
+              <option>브랜드 블로그</option>
+            </select>
+            <button class="consult-submit" type="submit">상담 신청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const cards = document.querySelectorAll('.service-card');
+    const details = document.querySelectorAll('.service-detail');
+
+    function openDetail(targetId) {
+      cards.forEach(card => card.classList.toggle('is-active', card.dataset.target === targetId));
+      details.forEach(detail => detail.classList.toggle('is-show', detail.id === targetId));
+      const targetDetail = document.getElementById(targetId);
+      if (targetDetail) {
+        targetDetail.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => openDetail(card.dataset.target));
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
