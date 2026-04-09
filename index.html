@@ -285,11 +285,9 @@
       box-shadow: var(--shadow-card);
       transition:
         transform 0.35s ease,
-        box-shadow 0.35s ease,
-        opacity 0.75s ease,
-        filter 0.75s ease;
+        box-shadow 0.35s ease;
       transform-origin: center center;
-      will-change: transform, opacity;
+      will-change: transform, opacity, filter;
     }
 
     .detail-card:hover {
@@ -545,9 +543,7 @@
           0 8px 18px rgba(26, 43, 62, 0.14),
           0 0 0 rgba(255, 182, 214, 0);
       }
-      20% {
-        background-size: 64px 64px, auto;
-      }
+      20% { background-size: 64px 64px, auto; }
       55% {
         background-size: 145px 145px, auto;
         box-shadow:
@@ -567,12 +563,8 @@
         transform: scale(0.9);
         opacity: 0;
       }
-      20% {
-        opacity: 0.55;
-      }
-      60% {
-        opacity: 0.22;
-      }
+      20% { opacity: 0.55; }
+      60% { opacity: 0.22; }
       100% {
         transform: scale(1.26);
         opacity: 0;
@@ -595,40 +587,109 @@
     .reveal {
       opacity: 1;
       transform: none;
-      filter: blur(0);
+      filter: none;
     }
 
     .js .reveal {
       opacity: 0;
       transition:
-        opacity 0.72s cubic-bezier(.22,.61,.36,1),
-        transform 0.72s cubic-bezier(.22,.61,.36,1),
-        filter 0.72s cubic-bezier(.22,.61,.36,1);
+        opacity 0.82s cubic-bezier(.22,.61,.36,1),
+        transform 0.82s cubic-bezier(.22,.61,.36,1),
+        filter 0.82s cubic-bezier(.22,.61,.36,1);
       will-change: opacity, transform, filter;
     }
 
     .js .reveal.visible {
       opacity: 1;
       transform: translate3d(0,0,0) scale(1) rotate(0deg);
+      filter: blur(0) brightness(1);
+    }
+
+    /* 2,3,4,5 왼쪽→오른쪽 */
+    .js .detail-card-2,
+    .js .detail-card-3,
+    .js .detail-card-4,
+    .js .detail-card-5 {
+      transform: translateX(-42px);
       filter: blur(0);
     }
 
-    .js .detail-card-1  { transform: translateY(28px) scale(0.985); filter: blur(3px); }
-    .js .detail-card-2  { transform: translateY(40px); filter: blur(3px); }
-    .js .detail-card-3  { transform: translateX(-34px) scale(0.985); filter: blur(4px); }
-    .js .detail-card-4  { transform: translateX(34px) scale(0.985); filter: blur(4px); }
-    .js .detail-card-5  { transform: scale(0.94); filter: blur(4px); }
-    .js .detail-card-6  { transform: translateY(44px) scale(0.97); filter: blur(4px); }
-    .js .detail-card-7  { transform: translateY(28px) rotate(-1deg); filter: blur(3px); }
-    .js .detail-card-8  { transform: translateY(28px) rotate(1deg); filter: blur(3px); }
-    .js .detail-card-9  { transform: translateX(-28px) translateY(14px); filter: blur(3px); }
-    .js .detail-card-10 { transform: translateX(28px) translateY(14px); filter: blur(3px); }
-    .js .detail-card-11 { transform: scale(0.93) rotate(-0.8deg); filter: blur(4px); }
-    .js .detail-card-12 { transform: scale(0.93) rotate(0.8deg); filter: blur(4px); }
-    .js .detail-card-13 { transform: translateY(48px); filter: blur(4px); }
-    .js .detail-card-14 { transform: translateY(24px) scale(0.96); filter: blur(4px); }
-    .js .detail-card-15 { transform: translateX(-20px) scale(0.98); filter: blur(3px); }
-    .js .detail-card-16 { transform: translateX(20px) scale(0.98); filter: blur(3px); }
+    /* 6 아래→위 조금 천천히 */
+    .js .detail-card-6 {
+      transform: translateY(60px);
+      filter: blur(0);
+      transition-duration: 1.15s;
+    }
+
+    /* 7 살짝 튕기기 */
+    .js .detail-card-7 {
+      transform: translateY(34px) scale(0.94);
+      filter: blur(0);
+    }
+    .js .detail-card-7.visible {
+      animation: popBounceOnce 0.9s cubic-bezier(.22,.61,.36,1);
+    }
+
+    /* 8 흐렸다가 또렷해지기 */
+    .js .detail-card-8 {
+      transform: scale(0.98);
+      filter: blur(14px) brightness(1.12);
+    }
+
+    /* 9 아래→위 */
+    .js .detail-card-9 {
+      transform: translateY(48px);
+      filter: blur(0);
+    }
+
+    /* 10 점점 커지기 */
+    .js .detail-card-10 {
+      transform: scale(0.84);
+      filter: blur(0);
+    }
+
+    /* 11 아래→위 */
+    .js .detail-card-11 {
+      transform: translateY(48px);
+      filter: blur(0);
+    }
+
+    /* 12 아래→위 */
+    .js .detail-card-12 {
+      transform: translateY(48px);
+      filter: blur(0);
+    }
+
+    /* 13 왼쪽→오른쪽 */
+    .js .detail-card-13 {
+      transform: translateX(-42px);
+      filter: blur(0);
+    }
+
+    /* 14 아래→위 */
+    .js .detail-card-14 {
+      transform: translateY(48px);
+      filter: blur(0);
+    }
+
+    /* 15 점점 커지면서 밝아지기 */
+    .js .detail-card-15 {
+      transform: scale(0.86);
+      filter: brightness(1.28) blur(3px);
+    }
+
+    /* 16 오른쪽→왼쪽 */
+    .js .detail-card-16 {
+      transform: translateX(42px);
+      filter: blur(0);
+    }
+
+    @keyframes popBounceOnce {
+      0% { transform: translateY(34px) scale(0.94); opacity: 0; }
+      55% { transform: translateY(-6px) scale(1.02); opacity: 1; }
+      75% { transform: translateY(2px) scale(0.995); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
 
     .blossom-layer {
       position: fixed;
@@ -716,6 +777,10 @@
         transform: none !important;
         filter: none !important;
         transition: none !important;
+      }
+
+      .js .detail-card-7.visible {
+        animation: none !important;
       }
     }
 
@@ -831,7 +896,6 @@
         box-shadow: 0 10px 24px rgba(44, 72, 94, 0.08);
       }
 
-      .js .detail-card-1,
       .js .detail-card-2,
       .js .detail-card-3,
       .js .detail-card-4,
@@ -848,12 +912,44 @@
       .js .detail-card-15,
       .js .detail-card-16 {
         filter: none !important;
-        transform: translateY(16px) !important;
+      }
+
+      .js .detail-card-2,
+      .js .detail-card-3,
+      .js .detail-card-4,
+      .js .detail-card-5,
+      .js .detail-card-13 {
+        transform: translateX(-22px) !important;
+      }
+
+      .js .detail-card-16 {
+        transform: translateX(22px) !important;
+      }
+
+      .js .detail-card-6,
+      .js .detail-card-9,
+      .js .detail-card-11,
+      .js .detail-card-12,
+      .js .detail-card-14 {
+        transform: translateY(20px) !important;
+      }
+
+      .js .detail-card-10,
+      .js .detail-card-15 {
+        transform: scale(0.92) !important;
+      }
+
+      .js .detail-card-8 {
+        transform: scale(0.98) !important;
+        filter: blur(6px) brightness(1.08) !important;
+      }
+
+      .js .detail-card-7 {
+        transform: translateY(20px) scale(0.96) !important;
       }
 
       .js .reveal.visible {
-        transform: translateY(0) !important;
-        filter: none !important;
+        transform: translateY(0) scale(1) !important;
       }
 
       .contact-bridge {
@@ -1050,52 +1146,55 @@
 
   <script>
     (function () {
-      const revealItems = document.querySelectorAll('.reveal:not(.visible)');
+      const revealItems = document.querySelectorAll('.reveal');
+      const alwaysVisible = document.querySelectorAll('.reveal.visible');
 
-      function showElement(el, delay) {
-        if (el.dataset.shown === '1') return;
-        el.dataset.shown = '1';
+      alwaysVisible.forEach((el) => {
+        el.dataset.alwaysVisible = '1';
+      });
 
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, delay || 0);
-      }
+      function applyInitialCheck() {
+        revealItems.forEach((el) => {
+          if (el.dataset.alwaysVisible === '1') return;
 
-      function checkInitialElements() {
-        revealItems.forEach((el, index) => {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= window.innerHeight * 0.92) {
-            showElement(el, index * 45);
+          const inView = rect.top < window.innerHeight * 0.88 && rect.bottom > window.innerHeight * 0.12;
+
+          if (inView) {
+            el.classList.add('visible');
+          } else {
+            el.classList.remove('visible');
           }
         });
       }
 
       if (!('IntersectionObserver' in window)) {
-        revealItems.forEach((el, index) => {
-          showElement(el, index * 45);
-        });
+        applyInitialCheck();
       } else {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
             const el = entry.target;
-            const waitingItems = Array.from(document.querySelectorAll('.reveal:not(.visible)'));
-            const index = Math.max(waitingItems.indexOf(el), 0);
+            if (el.dataset.alwaysVisible === '1') return;
 
-            showElement(el, Math.min(index * 35, 140));
-            observer.unobserve(el);
+            if (entry.isIntersecting && entry.intersectionRatio > 0.08) {
+              el.classList.add('visible');
+            } else {
+              const rect = el.getBoundingClientRect();
+              const farOut = rect.bottom < window.innerHeight * 0.02 || rect.top > window.innerHeight * 0.98;
+              if (farOut) {
+                el.classList.remove('visible');
+              }
+            }
           });
         }, {
-          threshold: 0.01,
-          rootMargin: '0px 0px -8% 0px'
+          threshold: [0, 0.08, 0.18, 0.35],
+          rootMargin: '0px 0px 0px 0px'
         });
 
         revealItems.forEach((el) => observer.observe(el));
-
-        requestAnimationFrame(checkInitialElements);
-        window.addEventListener('load', checkInitialElements);
-        window.addEventListener('resize', checkInitialElements);
+        requestAnimationFrame(applyInitialCheck);
+        window.addEventListener('load', applyInitialCheck);
+        window.addEventListener('resize', applyInitialCheck);
       }
 
       const blossomLayer = document.querySelector('.blossom-layer');
