@@ -6,8 +6,7 @@
   <title>무드애드 | 대표님, 원하시는 매출이 있으신가요?</title>
   <meta name="description" content="대표님, 원하시는 매출이 있으신가요? 무드애드 상세페이지입니다." />
 
-  <!-- 첫 화면 이미지 preload -->
-  <link rel="preload" as="image" href="1.png" />
+  <link rel="preload" as="image" href="1.jpg" />
 
   <script>
     document.documentElement.classList.add('js');
@@ -33,7 +32,7 @@
       --glass-shadow: 0 12px 30px rgba(77, 101, 118, 0.10);
 
       --shadow-soft: 0 18px 52px rgba(50, 79, 104, 0.10);
-      --shadow-card: 0 28px 72px rgba(44, 72, 94, 0.12);
+      --shadow-card: 0 18px 48px rgba(44, 72, 94, 0.10);
 
       --radius-card: 34px;
       --radius-btn: 18px;
@@ -271,12 +270,12 @@
       padding: 46px 0 0;
     }
 
- .detail-stack {
-  max-width: 720px;
-  margin: 0 auto;
-  display: grid;
-  gap: 22px;
-}
+    .detail-stack {
+      max-width: 720px;
+      margin: 0 auto;
+      display: grid;
+      gap: 22px;
+    }
 
     .detail-card {
       background: #ffffff;
@@ -287,14 +286,15 @@
       transition:
         transform 0.35s ease,
         box-shadow 0.35s ease,
-        opacity 0.8s ease,
-        filter 0.8s ease;
+        opacity 0.75s ease,
+        filter 0.75s ease;
       transform-origin: center center;
+      will-change: transform, opacity;
     }
 
     .detail-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 32px 78px rgba(44, 72, 94, 0.16);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 58px rgba(44, 72, 94, 0.13);
     }
 
     .detail-card img {
@@ -361,14 +361,6 @@
       font-weight: 900;
       color: var(--navy);
       word-break: keep-all;
-    }
-
-    .contact-title-sub {
-      display: block;
-      margin-top: 10px;
-      font-size: 2em !important;
-      line-height: 1.32;
-      font-weight: 700;
     }
 
     .contact-desc {
@@ -553,7 +545,9 @@
           0 8px 18px rgba(26, 43, 62, 0.14),
           0 0 0 rgba(255, 182, 214, 0);
       }
-      20% { background-size: 64px 64px, auto; }
+      20% {
+        background-size: 64px 64px, auto;
+      }
       55% {
         background-size: 145px 145px, auto;
         box-shadow:
@@ -573,8 +567,12 @@
         transform: scale(0.9);
         opacity: 0;
       }
-      20% { opacity: 0.55; }
-      60% { opacity: 0.22; }
+      20% {
+        opacity: 0.55;
+      }
+      60% {
+        opacity: 0.22;
+      }
       100% {
         transform: scale(1.26);
         opacity: 0;
@@ -594,7 +592,6 @@
       display: none;
     }
 
-    /* 공통 reveal */
     .reveal {
       opacity: 1;
       transform: none;
@@ -604,9 +601,9 @@
     .js .reveal {
       opacity: 0;
       transition:
-        opacity 0.8s cubic-bezier(.22,.61,.36,1),
-        transform 0.8s cubic-bezier(.22,.61,.36,1),
-        filter 0.8s cubic-bezier(.22,.61,.36,1);
+        opacity 0.72s cubic-bezier(.22,.61,.36,1),
+        transform 0.72s cubic-bezier(.22,.61,.36,1),
+        filter 0.72s cubic-bezier(.22,.61,.36,1);
       will-change: opacity, transform, filter;
     }
 
@@ -616,25 +613,23 @@
       filter: blur(0);
     }
 
-    /* 이미지마다 다른 진입감 */
-    .js .detail-card-1  { transform: translateY(34px) scale(0.985); filter: blur(4px); }
-    .js .detail-card-2  { transform: translateY(48px); filter: blur(4px); }
-    .js .detail-card-3  { transform: translateX(-42px) scale(0.985); filter: blur(5px); }
-    .js .detail-card-4  { transform: translateX(42px) scale(0.985); filter: blur(5px); }
-    .js .detail-card-5  { transform: scale(0.92); filter: blur(6px); }
-    .js .detail-card-6  { transform: translateY(56px) scale(0.96); filter: blur(5px); }
-    .js .detail-card-7  { transform: translateY(34px) rotate(-1.4deg); filter: blur(4px); }
-    .js .detail-card-8  { transform: translateY(34px) rotate(1.4deg); filter: blur(4px); }
-    .js .detail-card-9  { transform: translateX(-36px) translateY(18px); filter: blur(4px); }
-    .js .detail-card-10 { transform: translateX(36px) translateY(18px); filter: blur(4px); }
-    .js .detail-card-11 { transform: scale(0.90) rotate(-1deg); filter: blur(6px); }
-    .js .detail-card-12 { transform: scale(0.90) rotate(1deg); filter: blur(6px); }
-    .js .detail-card-13 { transform: translateY(60px); filter: blur(7px); }
-    .js .detail-card-14 { transform: translateY(28px) scale(0.94); filter: blur(5px); }
-    .js .detail-card-15 { transform: translateX(-28px) scale(0.97); filter: blur(5px); }
-    .js .detail-card-16 { transform: translateX(28px) scale(0.97); filter: blur(5px); }
+    .js .detail-card-1  { transform: translateY(28px) scale(0.985); filter: blur(3px); }
+    .js .detail-card-2  { transform: translateY(40px); filter: blur(3px); }
+    .js .detail-card-3  { transform: translateX(-34px) scale(0.985); filter: blur(4px); }
+    .js .detail-card-4  { transform: translateX(34px) scale(0.985); filter: blur(4px); }
+    .js .detail-card-5  { transform: scale(0.94); filter: blur(4px); }
+    .js .detail-card-6  { transform: translateY(44px) scale(0.97); filter: blur(4px); }
+    .js .detail-card-7  { transform: translateY(28px) rotate(-1deg); filter: blur(3px); }
+    .js .detail-card-8  { transform: translateY(28px) rotate(1deg); filter: blur(3px); }
+    .js .detail-card-9  { transform: translateX(-28px) translateY(14px); filter: blur(3px); }
+    .js .detail-card-10 { transform: translateX(28px) translateY(14px); filter: blur(3px); }
+    .js .detail-card-11 { transform: scale(0.93) rotate(-0.8deg); filter: blur(4px); }
+    .js .detail-card-12 { transform: scale(0.93) rotate(0.8deg); filter: blur(4px); }
+    .js .detail-card-13 { transform: translateY(48px); filter: blur(4px); }
+    .js .detail-card-14 { transform: translateY(24px) scale(0.96); filter: blur(4px); }
+    .js .detail-card-15 { transform: translateX(-20px) scale(0.98); filter: blur(3px); }
+    .js .detail-card-16 { transform: translateX(20px) scale(0.98); filter: blur(3px); }
 
-    /* 벚꽃 */
     .blossom-layer {
       position: fixed;
       inset: 0;
@@ -712,7 +707,9 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .blossom-layer { display: none; }
+      .blossom-layer {
+        display: none;
+      }
 
       .js .reveal {
         opacity: 1 !important;
@@ -724,7 +721,7 @@
 
     @media (min-width: 769px) {
       .detail-stack {
-        max-width: 820px;
+        max-width: 720px;
       }
     }
 
@@ -822,6 +819,41 @@
 
       .detail-stack {
         gap: 16px;
+        max-width: 100%;
+      }
+
+      .detail-card {
+        box-shadow: 0 10px 24px rgba(44, 72, 94, 0.08);
+      }
+
+      .detail-card:hover {
+        transform: none;
+        box-shadow: 0 10px 24px rgba(44, 72, 94, 0.08);
+      }
+
+      .js .detail-card-1,
+      .js .detail-card-2,
+      .js .detail-card-3,
+      .js .detail-card-4,
+      .js .detail-card-5,
+      .js .detail-card-6,
+      .js .detail-card-7,
+      .js .detail-card-8,
+      .js .detail-card-9,
+      .js .detail-card-10,
+      .js .detail-card-11,
+      .js .detail-card-12,
+      .js .detail-card-13,
+      .js .detail-card-14,
+      .js .detail-card-15,
+      .js .detail-card-16 {
+        filter: none !important;
+        transform: translateY(16px) !important;
+      }
+
+      .js .reveal.visible {
+        transform: translateY(0) !important;
+        filter: none !important;
       }
 
       .contact-bridge {
@@ -915,24 +947,24 @@
     <div class="container">
       <div class="detail-stack">
         <div class="detail-card detail-card-1 reveal visible">
-          <img src="1.png" alt="상세페이지 1" fetchpriority="high" />
+          <img src="1.jpg" alt="상세페이지 1" fetchpriority="high" />
         </div>
 
-        <div class="detail-card detail-card-2 reveal"><img src="2.png" alt="상세페이지 2" loading="lazy" /></div>
-        <div class="detail-card detail-card-3 reveal"><img src="3.png" alt="상세페이지 3" loading="lazy" /></div>
-        <div class="detail-card detail-card-4 reveal"><img src="4.png" alt="상세페이지 4" loading="lazy" /></div>
-        <div class="detail-card detail-card-5 reveal"><img src="5.png" alt="상세페이지 5" loading="lazy" /></div>
-        <div class="detail-card detail-card-6 reveal"><img src="6.png" alt="상세페이지 6" loading="lazy" /></div>
-        <div class="detail-card detail-card-7 reveal"><img src="7.png" alt="상세페이지 7" loading="lazy" /></div>
-        <div class="detail-card detail-card-8 reveal"><img src="8.png" alt="상세페이지 8" loading="lazy" /></div>
-        <div class="detail-card detail-card-9 reveal"><img src="9.png" alt="상세페이지 9" loading="lazy" /></div>
-        <div class="detail-card detail-card-10 reveal"><img src="10.png" alt="상세페이지 10" loading="lazy" /></div>
-        <div class="detail-card detail-card-11 reveal"><img src="11.png" alt="상세페이지 11" loading="lazy" /></div>
-        <div class="detail-card detail-card-12 reveal"><img src="12.png" alt="상세페이지 12" loading="lazy" /></div>
-        <div class="detail-card detail-card-13 reveal"><img src="13.png" alt="상세페이지 13" loading="lazy" /></div>
-        <div class="detail-card detail-card-14 reveal"><img src="14.png" alt="상세페이지 14" loading="lazy" /></div>
-        <div class="detail-card detail-card-15 reveal"><img src="15.png" alt="상세페이지 15" loading="lazy" /></div>
-        <div class="detail-card detail-card-16 reveal"><img src="16.png" alt="상세페이지 16" loading="lazy" /></div>
+        <div class="detail-card detail-card-2 reveal"><img src="2.jpg" alt="상세페이지 2" loading="lazy" /></div>
+        <div class="detail-card detail-card-3 reveal"><img src="3.jpg" alt="상세페이지 3" loading="lazy" /></div>
+        <div class="detail-card detail-card-4 reveal"><img src="4.jpg" alt="상세페이지 4" loading="lazy" /></div>
+        <div class="detail-card detail-card-5 reveal"><img src="5.jpg" alt="상세페이지 5" loading="lazy" /></div>
+        <div class="detail-card detail-card-6 reveal"><img src="6.jpg" alt="상세페이지 6" loading="lazy" /></div>
+        <div class="detail-card detail-card-7 reveal"><img src="7.jpg" alt="상세페이지 7" loading="lazy" /></div>
+        <div class="detail-card detail-card-8 reveal"><img src="8.jpg" alt="상세페이지 8" loading="lazy" /></div>
+        <div class="detail-card detail-card-9 reveal"><img src="9.jpg" alt="상세페이지 9" loading="lazy" /></div>
+        <div class="detail-card detail-card-10 reveal"><img src="10.jpg" alt="상세페이지 10" loading="lazy" /></div>
+        <div class="detail-card detail-card-11 reveal"><img src="11.jpg" alt="상세페이지 11" loading="lazy" /></div>
+        <div class="detail-card detail-card-12 reveal"><img src="12.jpg" alt="상세페이지 12" loading="lazy" /></div>
+        <div class="detail-card detail-card-13 reveal"><img src="13.jpg" alt="상세페이지 13" loading="lazy" /></div>
+        <div class="detail-card detail-card-14 reveal"><img src="14.jpg" alt="상세페이지 14" loading="lazy" /></div>
+        <div class="detail-card detail-card-15 reveal"><img src="15.jpg" alt="상세페이지 15" loading="lazy" /></div>
+        <div class="detail-card detail-card-16 reveal"><img src="16.jpg" alt="상세페이지 16" loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -1033,14 +1065,14 @@
         revealItems.forEach((el, index) => {
           const rect = el.getBoundingClientRect();
           if (rect.top <= window.innerHeight * 0.92) {
-            showElement(el, index * 55);
+            showElement(el, index * 45);
           }
         });
       }
 
       if (!('IntersectionObserver' in window)) {
         revealItems.forEach((el, index) => {
-          showElement(el, index * 55);
+          showElement(el, index * 45);
         });
       } else {
         const observer = new IntersectionObserver((entries) => {
@@ -1051,7 +1083,7 @@
             const waitingItems = Array.from(document.querySelectorAll('.reveal:not(.visible)'));
             const index = Math.max(waitingItems.indexOf(el), 0);
 
-            showElement(el, Math.min(index * 45, 180));
+            showElement(el, Math.min(index * 35, 140));
             observer.unobserve(el);
           });
         }, {
@@ -1068,10 +1100,11 @@
 
       const blossomLayer = document.querySelector('.blossom-layer');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const isMobile = window.innerWidth <= 768;
 
-      if (!blossomLayer || reduceMotion) return;
+      if (!blossomLayer || reduceMotion || isMobile) return;
 
-      const totalPetals = window.innerWidth <= 768 ? 12 : 22;
+      const totalPetals = 18;
 
       function random(min, max) {
         return Math.random() * (max - min) + min;
@@ -1084,11 +1117,11 @@
         petal.className = 'blossom-petal';
         shape.className = 'blossom-shape';
 
-        const size = random(10, 22);
-        const duration = random(9, 16);
+        const size = random(10, 20);
+        const duration = random(10, 16);
         const delay = isInitial ? -random(0, duration) : 0;
-        const drift = random(-140, 140);
-        const opacity = random(0.45, 0.95);
+        const drift = random(-120, 120);
+        const opacity = random(0.45, 0.88);
         const spin = random(3.4, 6.2);
         const sway = random(2.2, 3.8);
 
