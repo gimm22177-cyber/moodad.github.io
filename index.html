@@ -593,9 +593,9 @@
     .js .reveal {
       opacity: 0;
       transition:
-        opacity 0.82s cubic-bezier(.22,.61,.36,1),
-        transform 0.82s cubic-bezier(.22,.61,.36,1),
-        filter 0.82s cubic-bezier(.22,.61,.36,1);
+        opacity 1.28s cubic-bezier(.22,.61,.36,1),
+        transform 1.28s cubic-bezier(.22,.61,.36,1),
+        filter 1.28s cubic-bezier(.22,.61,.36,1);
       will-change: opacity, transform, filter;
     }
 
@@ -605,89 +605,89 @@
       filter: blur(0) brightness(1);
     }
 
-    /* 2,3,4,5 왼쪽→오른쪽 */
+    /* 2,3,4,5 왼쪽→오른쪽 더 길게 */
     .js .detail-card-2,
     .js .detail-card-3,
     .js .detail-card-4,
     .js .detail-card-5 {
-      transform: translateX(-42px);
+      transform: translateX(-150px);
       filter: blur(0);
     }
 
-    /* 6 아래→위 조금 천천히 */
+    /* 6 아래→위 조금 천천히 더 길게 */
     .js .detail-card-6 {
-      transform: translateY(60px);
+      transform: translateY(130px);
       filter: blur(0);
-      transition-duration: 1.15s;
+      transition-duration: 1.5s;
     }
 
-    /* 7 살짝 튕기기 */
+    /* 7 살짝 튕기기 더 크게 */
     .js .detail-card-7 {
-      transform: translateY(34px) scale(0.94);
+      transform: translateY(84px) scale(0.90);
       filter: blur(0);
     }
     .js .detail-card-7.visible {
-      animation: popBounceOnce 0.9s cubic-bezier(.22,.61,.36,1);
+      animation: popBounceOnce 1.15s cubic-bezier(.22,.61,.36,1);
     }
 
-    /* 8 흐렸다가 또렷해지기 */
+    /* 8 흐렸다가 선명해지기 강화 */
     .js .detail-card-8 {
-      transform: scale(0.98);
-      filter: blur(14px) brightness(1.12);
+      transform: scale(0.96);
+      filter: blur(20px) brightness(1.18);
     }
 
     /* 9 아래→위 */
     .js .detail-card-9 {
-      transform: translateY(48px);
+      transform: translateY(120px);
       filter: blur(0);
     }
 
     /* 10 점점 커지기 */
     .js .detail-card-10 {
-      transform: scale(0.84);
+      transform: scale(0.74);
       filter: blur(0);
     }
 
     /* 11 아래→위 */
     .js .detail-card-11 {
-      transform: translateY(48px);
+      transform: translateY(120px);
       filter: blur(0);
     }
 
     /* 12 아래→위 */
     .js .detail-card-12 {
-      transform: translateY(48px);
+      transform: translateY(120px);
       filter: blur(0);
     }
 
     /* 13 왼쪽→오른쪽 */
     .js .detail-card-13 {
-      transform: translateX(-42px);
+      transform: translateX(-150px);
       filter: blur(0);
     }
 
     /* 14 아래→위 */
     .js .detail-card-14 {
-      transform: translateY(48px);
+      transform: translateY(120px);
       filter: blur(0);
     }
 
     /* 15 점점 커지면서 밝아지기 */
     .js .detail-card-15 {
-      transform: scale(0.86);
-      filter: brightness(1.28) blur(3px);
+      transform: scale(0.74);
+      filter: brightness(1.42) blur(6px);
     }
 
     /* 16 오른쪽→왼쪽 */
     .js .detail-card-16 {
-      transform: translateX(42px);
+      transform: translateX(150px);
       filter: blur(0);
     }
 
     @keyframes popBounceOnce {
-      0% { transform: translateY(34px) scale(0.94); opacity: 0; }
-      55% { transform: translateY(-6px) scale(1.02); opacity: 1; }
-      75% { transform: translateY(2px) scale(0.995); opacity: 1; }
+      0%   { transform: translateY(84px) scale(0.90); opacity: 0; }
+      50%  { transform: translateY(-12px) scale(1.05); opacity: 1; }
+      72%  { transform: translateY(6px) scale(0.985); opacity: 1; }
       100% { transform: translateY(0) scale(1); opacity: 1; }
     }
 
@@ -919,11 +919,11 @@
       .js .detail-card-4,
       .js .detail-card-5,
       .js .detail-card-13 {
-        transform: translateX(-22px) !important;
+        transform: translateX(-34px) !important;
       }
 
       .js .detail-card-16 {
-        transform: translateX(22px) !important;
+        transform: translateX(34px) !important;
       }
 
       .js .detail-card-6,
@@ -931,21 +931,21 @@
       .js .detail-card-11,
       .js .detail-card-12,
       .js .detail-card-14 {
-        transform: translateY(20px) !important;
+        transform: translateY(34px) !important;
       }
 
       .js .detail-card-10,
       .js .detail-card-15 {
-        transform: scale(0.92) !important;
+        transform: scale(0.90) !important;
       }
 
       .js .detail-card-8 {
         transform: scale(0.98) !important;
-        filter: blur(6px) brightness(1.08) !important;
+        filter: blur(8px) brightness(1.10) !important;
       }
 
       .js .detail-card-7 {
-        transform: translateY(20px) scale(0.96) !important;
+        transform: translateY(28px) scale(0.95) !important;
       }
 
       .js .reveal.visible {
