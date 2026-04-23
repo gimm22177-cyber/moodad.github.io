@@ -982,6 +982,26 @@
       .nav-mini{top:14px;gap:10px;padding:7px 12px;font-size:10px}
       .badge{width:54px;height:54px;right:14px;bottom:14px;font-size:10px}
 
+      .blind-marketing-section {
+        padding: 62px 0 56px;
+      }
+
+      .blind-marketing-inner {
+        width: min(100%, calc(100% - 28px));
+      }
+
+      .blind-marketing-title {
+        font-size: clamp(22px, 8.4vw, 40px);
+        line-height: 1.28;
+      }
+
+      .blind-marketing-subtitle {
+        margin-top: 12px;
+        font-size: clamp(16px, 5.8vw, 28px);
+        line-height: 1.32;
+      }
+
+
       .camera-field-rig{
         width:1120px;
         height:820px;
@@ -1579,6 +1599,94 @@
 
     .typing-cursor {
       margin-right: -0.02em;
+    }
+
+
+    .blind-marketing-section {
+      position: relative;
+      margin: 0;
+      padding: 72px 20px 96px;
+      overflow: hidden;
+      background: #f3f1ec;
+    }
+
+    .blind-marketing-section::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 190px;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(243, 241, 236, 0) 0%,
+        rgba(243, 241, 236, 0.14) 18%,
+        rgba(244, 243, 239, 0.32) 36%,
+        rgba(245, 245, 242, 0.56) 58%,
+        rgba(246, 247, 247, 0.78) 78%,
+        rgba(247, 249, 252, 0.92) 90%,
+        #f8fbff 100%
+      );
+    }
+
+    .blind-marketing-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1600px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .blind-marketing-title {
+      margin: 0;
+      color: #111111;
+      font-size: clamp(34px, 2.75vw, 52px);
+      line-height: 1.16;
+      letter-spacing: -0.055em;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .blind-marketing-subtitle {
+      margin: 14px 0 0;
+      color: #f0412a;
+      font-size: clamp(20px, 1.45vw, 28px);
+      line-height: 1.22;
+      letter-spacing: -0.045em;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .blind-marketing-section {
+        padding: 58px 18px 76px;
+      }
+
+      .blind-marketing-title {
+        font-size: clamp(24px, 3.7vw, 36px);
+      }
+
+      .blind-marketing-subtitle {
+        font-size: clamp(16px, 2.45vw, 22px);
+        margin-top: 12px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .blind-marketing-section {
+        padding: 44px 14px 58px;
+      }
+
+      .blind-marketing-title {
+        font-size: clamp(14px, 4vw, 21px);
+        line-height: 1.22;
+      }
+
+      .blind-marketing-subtitle {
+        font-size: clamp(10px, 2.8vw, 14px);
+        margin-top: 10px;
+      }
     }
 
 
@@ -6762,223 +6870,165 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
   .mobile-process-editorial{
     display:block;
     position:relative;
-    margin-top:28px;
-    padding:0;
+    margin-top:24px;
+    padding:2px 0 8px;
   }
-  .mobile-process-rail{
-    display:none !important;
-  }
+
   .mobile-editorial-step{
     position:relative;
-    margin:0 0 24px;
-    padding:26px 0 28px;
-    border-top:1px solid rgba(255,255,255,.56);
-    border-bottom:1px solid rgba(23,34,56,.10);
-    overflow:hidden;
-    isolation:isolate;
-    background:transparent;
-    box-shadow:none;
-    border-radius:0;
+    width:min(100%, calc(100% - 28px));
+    margin:0 auto;
+    padding-left:0;
+    z-index:1;
   }
   .mobile-editorial-step:last-child{
     margin-bottom:0;
-    padding-bottom:24px;
   }
-  .mobile-editorial-step > *{
-    position:relative;
-    z-index:1;
-    padding-left:10px;
-    padding-right:10px;
-  }
-  .mobile-editorial-step::before,
-  .mobile-editorial-step::after{
-    content:"";
+  .mobile-step-anchor{
     position:absolute;
-    top:-6%;
-    bottom:-6%;
-    width:54%;
-    z-index:2;
+    left:50%;
+    top:100%;
+    width:1px;
+    height:1px;
+    opacity:0;
     pointer-events:none;
+  }
+
+  .mobile-step-connector{
+    position:relative;
+    width:min(100%, calc(100% - 28px));
+    height:150px;
+    margin:0 auto;
+    z-index:0;
+    pointer-events:none;
+  }
+  .mobile-step-connector-track{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:4px;
+    transform:translateX(-50%);
+    border-radius:999px;
+    background:linear-gradient(180deg, rgba(132,189,239,.72) 0%, rgba(132,189,239,.96) 18%, rgba(132,189,239,.96) 82%, rgba(132,189,239,.72) 100%);
+    box-shadow:0 0 0 1px rgba(132,189,239,.10);
+  }
+  .mobile-step-connector-orb{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    transform:translate(-50%, 0);
+    background:linear-gradient(135deg, #72d875 0%, #83dd7d 100%);
+    box-shadow:0 0 0 16px rgba(127,227,139,.16), 0 0 24px rgba(127,227,139,.22);
+    will-change:transform, box-shadow, opacity;
+    animation:processNodeGlow 2.4s ease-in-out infinite;
+  }
+  .mobile-step-card{
+    position:relative;
+    padding:20px 20px 18px;
+    border-radius:28px;
+    background:linear-gradient(180deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.60) 100%);
+    border:1px solid rgba(207,217,230,.96);
+    box-shadow:0 22px 46px rgba(19,30,48,.10), inset 0 1px 0 rgba(255,255,255,.65);
+    backdrop-filter:blur(4px);
+    opacity:.72;
+    transform:translateY(18px);
+    transition:opacity .5s ease, transform .5s ease, box-shadow .5s ease, border-color .5s ease;
+  }
+  .mobile-editorial-step.inview .mobile-step-card,
+  .mobile-editorial-step.is-active .mobile-step-card{
     opacity:1;
-    transition:transform 1.72s cubic-bezier(.2,.82,.16,1), opacity 1.72s ease, filter 1.72s ease;
-    filter:blur(0);
-    will-change:transform, opacity, filter;
+    transform:translateY(0);
+    box-shadow:0 24px 54px rgba(19,30,48,.13), inset 0 1px 0 rgba(255,255,255,.74);
+    border-color:rgba(196,210,226,.98);
   }
-  .mobile-editorial-step::before{
-    left:-1%;
-    border-radius:0 8px 8px 0;
-    background:
-      radial-gradient(110% 72% at 0% 50%, rgba(0,0,0,.78), rgba(0,0,0,0) 70%),
-      linear-gradient(90deg,
-        #040609 0%,
-        #0c1119 10%,
-        #151d29 18%,
-        #070b11 28%,
-        #161f2b 38%,
-        #080c12 49%,
-        #131c28 61%,
-        #06080c 74%,
-        #0c121a 88%,
-        #030507 100%),
-      repeating-linear-gradient(90deg,
-        rgba(255,255,255,.08) 0 2px,
-        rgba(255,255,255,.01) 2px 18px,
-        rgba(0,0,0,.17) 18px 24px,
-        rgba(255,255,255,.02) 24px 40px),
-      linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 22%, rgba(255,255,255,.05) 58%, rgba(0,0,0,.18));
-    box-shadow:
-      inset -18px 0 26px rgba(255,255,255,.05),
-      inset -44px 0 54px rgba(255,255,255,.03),
-      18px 0 26px rgba(0,0,0,.20);
-    transform-origin:left center;
-  }
-  .mobile-editorial-step::after{
-    right:-1%;
-    border-radius:8px 0 0 8px;
-    background:
-      radial-gradient(110% 72% at 100% 50%, rgba(0,0,0,.78), rgba(0,0,0,0) 70%),
-      linear-gradient(270deg,
-        #040609 0%,
-        #0c1119 10%,
-        #151d29 18%,
-        #070b11 28%,
-        #161f2b 38%,
-        #080c12 49%,
-        #131c28 61%,
-        #06080c 74%,
-        #0c121a 88%,
-        #030507 100%),
-      repeating-linear-gradient(270deg,
-        rgba(255,255,255,.08) 0 2px,
-        rgba(255,255,255,.01) 2px 18px,
-        rgba(0,0,0,.17) 18px 24px,
-        rgba(255,255,255,.02) 24px 40px),
-      linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 22%, rgba(255,255,255,.05) 58%, rgba(0,0,0,.18));
-    box-shadow:
-      inset 18px 0 26px rgba(255,255,255,.05),
-      inset 44px 0 54px rgba(255,255,255,.03),
-      -18px 0 26px rgba(0,0,0,.20);
-    transform-origin:right center;
-  }
-  .mobile-editorial-step.inview::before{
-    transform:translateX(-106%) skewX(-4deg) scaleX(.98);
-    opacity:0;
-    filter:blur(8px);
-  }
-  .mobile-editorial-step.inview::after{
-    transform:translateX(106%) skewX(4deg) scaleX(.98);
-    opacity:0;
-    filter:blur(8px);
-  }
+
   .mobile-editorial-head{
     display:flex;
-    flex-wrap:wrap;
     align-items:center;
-    gap:8px 10px;
-    margin-bottom:12px;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
   }
   .mobile-editorial-num{
-    display:inline-flex;
-    align-items:center;
-    order:-2;
-    font-size:11px;
-    line-height:1;
+    display:block;
+    width:100%;
+    margin-top:8px;
+    color:#5d9fe2;
+    font-size:22px;
     font-weight:900;
-    letter-spacing:.08em;
-    color:#0d1118;
-    text-transform:uppercase;
+    letter-spacing:.06em;
+    line-height:1;
+    order:3;
   }
-  .mobile-editorial-num::before{
-    content:"STEP ";
-  }
-  .mobile-editorial-num::after{
-    content:".";
-  }
-  .mobile-editorial-kicker{
-    font-size:11px;
-    font-weight:800;
-    letter-spacing:.08em;
-    color:#7a869a;
-    text-transform:uppercase;
-  }
+  .mobile-editorial-kicker,
   .mobile-editorial-live{
     display:inline-flex;
     align-items:center;
-    width:max-content;
-    max-width:100%;
-    min-height:24px;
-    padding:0 8px;
-    border-radius:999px;
-    background:rgba(13,17,24,.06);
-    color:#30415b;
-    font-size:10px;
+    min-height:38px;
+    padding:0 14px;
+    border-radius:18px;
+    background:rgba(244,247,251,.92);
+    border:1px solid rgba(207,217,230,.92);
+    color:#5f6c82;
+    font-size:12px;
     font-weight:800;
     letter-spacing:-.02em;
+    box-shadow:0 6px 14px rgba(18,27,44,.04);
   }
-  .mobile-editorial-step h3,
-  .mobile-editorial-step p,
-  .mobile-editorial-tags span{
-    opacity:0;
-    transform:translateY(10px);
-    transition:opacity .52s ease, transform .64s cubic-bezier(.2,.9,.2,1);
-  }
-  .mobile-editorial-step.inview h3,
-  .mobile-editorial-step.inview p,
-  .mobile-editorial-step.inview .mobile-editorial-tags span{
-    opacity:1;
-    transform:translateY(0);
+  .mobile-editorial-kicker{
+    color:#1f2740;
   }
   .mobile-editorial-step h3{
-    margin:0 0 12px 0;
-    font-size:24px;
-    line-height:1.18;
-    letter-spacing:-.06em;
-    color:#141c2c;
+    margin:0 0 18px;
+    color:#101826;
+    font-size:32px;
+    line-height:1.06;
+    letter-spacing:-.07em;
     font-weight:900;
     word-break:keep-all;
-    transition-delay:.18s;
   }
   .mobile-editorial-step p{
-    margin:0 0 8px 0;
-    font-size:14px;
-    line-height:1.72;
+    margin:0 0 12px;
+    color:#4f5d73;
+    font-size:16px;
+    line-height:1.62;
     letter-spacing:-.03em;
-    color:#697488;
     word-break:keep-all;
   }
-  .mobile-editorial-step p:nth-of-type(1){ transition-delay:.26s; }
-  .mobile-editorial-step p:nth-of-type(2){ transition-delay:.34s; }
   .mobile-editorial-step p:last-of-type{
     margin-bottom:0;
   }
   .mobile-editorial-step p strong{
     display:inline-block;
-    margin-right:7px;
-    color:#141c2c;
+    margin-right:8px;
+    color:#0e1523;
+    font-size:1.02em;
     font-weight:900;
   }
   .mobile-editorial-tags{
     display:flex;
     flex-wrap:wrap;
-    gap:7px;
-    margin-top:14px;
+    gap:10px;
+    margin-top:20px;
   }
   .mobile-editorial-tags span{
     display:inline-flex;
     align-items:center;
-    min-height:28px;
-    padding:0 10px;
+    min-height:40px;
+    padding:0 18px;
     border-radius:999px;
-    background:transparent;
-    color:#3f4b60;
-    font-size:11px;
+    background:rgba(248,250,253,.95);
+    color:#283655;
+    font-size:12px;
     font-weight:800;
     letter-spacing:-.02em;
-    border:1px solid rgba(23,34,56,.08);
+    border:1px solid rgba(207,217,230,.96);
+    box-shadow:0 6px 12px rgba(18,27,44,.03);
   }
-  .mobile-editorial-step.inview .mobile-editorial-tags span:nth-child(1){ transition-delay:.42s; }
-  .mobile-editorial-step.inview .mobile-editorial-tags span:nth-child(2){ transition-delay:.48s; }
-  .mobile-editorial-step.inview .mobile-editorial-tags span:nth-child(3){ transition-delay:.54s; }
 }
 
 @media (max-width: 520px) {
@@ -6988,70 +7038,71 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
   .mobile-process-editorial{
     margin-top:20px;
   }
+  .mobile-step-connector{
+    width:min(100%, calc(100% - 20px));
+    height:132px;
+  }
+  .mobile-step-connector-track{
+    width:3px;
+  }
+  .mobile-step-connector-orb{
+    left:50% !important;
+    width:26px;
+    height:26px;
+    transform:translateX(-50%) !important;
+    box-shadow:0 0 0 12px rgba(127,227,139,.14), 0 0 18px rgba(127,227,139,.20);
+  }
   .mobile-editorial-step{
-    margin:0 0 18px;
-    padding:22px 0 24px;
-    border-radius:0;
+    width:min(100%, calc(100% - 20px));
+    margin:0 auto;
+    padding-left:0;
   }
-  .mobile-editorial-step > *{
-    padding-left:8px;
-    padding-right:8px;
+  .mobile-step-anchor{
+    left:50%;
+    width:1px;
   }
-  .mobile-editorial-step::before,
-  .mobile-editorial-step::after{
-    width:56%;
+  .mobile-step-card{
+    padding:16px 16px 16px;
+    border-radius:22px;
   }
   .mobile-editorial-head{
-    gap:6px 8px;
-    margin-bottom:10px;
+    gap:6px;
+    margin-bottom:12px;
   }
-  .mobile-editorial-num,
-  .mobile-editorial-kicker{
-    font-size:10px;
-  }
+  .mobile-editorial-kicker,
   .mobile-editorial-live{
-    min-height:22px;
-    padding:0 7px;
-    font-size:9px;
+    min-height:32px;
+    padding:0 10px;
+    font-size:10px;
+    border-radius:15px;
+  }
+  .mobile-editorial-num{
+    margin-top:6px;
+    font-size:18px;
   }
   .mobile-editorial-step h3{
-    margin-bottom:10px;
-    font-size:17px;
-    line-height:1.22;
+    margin-bottom:14px;
+    font-size:22px;
+    line-height:1.14;
   }
   .mobile-editorial-step p{
-    font-size:12px;
-    line-height:1.7;
-    margin-bottom:7px;
+    margin-bottom:10px;
+    font-size:13px;
+    line-height:1.72;
   }
   .mobile-editorial-step p strong{
     margin-right:6px;
   }
   .mobile-editorial-tags{
-    gap:6px;
-    margin-top:12px;
+    gap:8px;
+    margin-top:16px;
   }
   .mobile-editorial-tags span{
-    min-height:24px;
-    padding:0 8px;
+    min-height:32px;
+    padding:0 12px;
     font-size:10px;
   }
 }
-
-/* animation helper */
-@keyframes mobileStepFloat{
-  0%{opacity:0;transform:translateY(10px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@keyframes mobileTitleRise{
-  0%{opacity:0;transform:translateY(14px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-@keyframes mobileTagFade{
-  0%{opacity:0;transform:translateY(6px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-
 </style>
 
 <style>
@@ -7083,6 +7134,18 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
   }
 </style>
 
+
+<style>
+@media (max-width: 820px) {
+  .reviews-price-copy .reviews-copy-note {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    font-size: 16px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.06em !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -7100,6 +7163,13 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </header>
 <section class="hero-shell bg-paper" id="heroShell">
 <div class="stage" id="stage"></div>
+</section>
+
+<section class="blind-marketing-section">
+<div class="blind-marketing-inner">
+<h2 class="blind-marketing-title">아직도 "감"에 맡긴 마케팅 계속 하시겠습니까?</h2>
+<p class="blind-marketing-subtitle">매달 비용은 나가는데 성과는 없으신가요?</p>
+</div>
 </section>
 <main id="top">
 <section class="hero reveal">
@@ -7150,6 +7220,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 </div>
 </section>
+
 <section class="services-section" id="services">
 <div class="container">
 <div class="section-head reveal panel-motion-copy">
@@ -7255,84 +7326,110 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 
 <div class="mobile-process-editorial" aria-label="모바일 실행 과정">
-  <div class="mobile-process-rail" aria-hidden="true"></div>
-
   <article class="mobile-editorial-step reveal-mobile-step" data-step="01">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">분석 단계</div>
-      <div class="mobile-editorial-num">01</div>
-    </div>
-    <h3>온라인 계정 &amp; 상태 진단</h3>
-    <p><strong>Action</strong> 현재 광고 계정 분석 및 온라인 상태를 먼저 정확하게 파악합니다.</p>
-    <p><strong>Point</strong> 왜 성과가 멈췄는지, 어디에서 예산이 새고 있는지 데이터를 통해 바로 짚어냅니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#계정분석</span><span>#경쟁사파악</span><span>#예산체크</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">분석 단계</div>
+        <div class="mobile-editorial-num">STEP 01</div>
+      </div>
+      <h3>온라인 계정 &amp; 상태 진단</h3>
+      <p><strong>Action</strong> 현재 광고 계정 분석 및 온라인 상태를 먼저 정확하게 파악합니다.</p>
+      <p><strong>Point</strong> 왜 성과가 멈췄는지, 어디에서 예산이 새고 있는지 데이터를 통해 바로 짚어냅니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#계정분석</span><span>#경쟁사파악</span><span>#예산체크</span>
+      </div>
     </div>
   </article>
+
+  <div class="mobile-step-connector" aria-hidden="true" data-connector="01-02"><div class="mobile-step-connector-track"></div><div class="mobile-step-connector-orb"></div></div>
 
   <article class="mobile-editorial-step reveal-mobile-step emphasis" data-step="02">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">시작 단계</div>
-      <div class="mobile-editorial-live">💬 대표 참여 단톡방 활성화 중</div>
-      <div class="mobile-editorial-num">02</div>
-    </div>
-    <h3>대표 실무진 2:1 전담 배정</h3>
-    <p><strong>Action</strong> 진행 사항 안내와 함께 실시간 단톡방을 열고 바로 실행 체계에 들어갑니다.</p>
-    <p><strong>Point</strong> 전략가와 디자이너, 두 대표가 직접 뛰는 구조로 진짜 마케팅이 시작됩니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#실무진배정</span><span>#실시간소통</span><span>#단톡방운영</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">시작 단계</div>
+        <div class="mobile-editorial-live">💬 대표 참여 단톡방 활성화 중</div>
+        <div class="mobile-editorial-num">STEP 02</div>
+      </div>
+      <h3>대표 실무진 2:1 전담 배정</h3>
+      <p><strong>Action</strong> 진행 사항 안내와 함께 실시간 단톡방을 열고 바로 실행 체계에 들어갑니다.</p>
+      <p><strong>Point</strong> 전략가와 디자이너, 두 대표가 직접 뛰는 구조로 진짜 마케팅이 시작됩니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#실무진배정</span><span>#실시간소통</span><span>#단톡방운영</span>
+      </div>
     </div>
   </article>
+
+  <div class="mobile-step-connector" aria-hidden="true" data-connector="02-03"><div class="mobile-step-connector-track"></div><div class="mobile-step-connector-orb"></div></div>
 
   <article class="mobile-editorial-step reveal-mobile-step" data-step="03">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">핵심 단계</div>
-      <div class="mobile-editorial-num">03</div>
-    </div>
-    <h3>현장 밀착 컨설팅</h3>
-    <p><strong>Action</strong> 직접 방문, 상권 분석, 촬영까지 현장에서 필요한 데이터를 수집합니다.</p>
-    <p><strong>Point</strong> 책상 위에서 보이지 않는 매출 포인트를 현장에서 직접 확인하고 설계합니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#상권분석</span><span>#직접방문</span><span>#현장촬영</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">핵심 단계</div>
+        <div class="mobile-editorial-num">STEP 03</div>
+      </div>
+      <h3>현장 밀착 컨설팅</h3>
+      <p><strong>Action</strong> 직접 방문, 상권 분석, 촬영까지 현장에서 필요한 데이터를 수집합니다.</p>
+      <p><strong>Point</strong> 책상 위에서 보이지 않는 매출 포인트를 현장에서 직접 확인하고 설계합니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#상권분석</span><span>#직접방문</span><span>#현장촬영</span>
+      </div>
     </div>
   </article>
+
+  <div class="mobile-step-connector" aria-hidden="true" data-connector="03-04"><div class="mobile-step-connector-track"></div><div class="mobile-step-connector-orb"></div></div>
 
   <article class="mobile-editorial-step reveal-mobile-step" data-step="04">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">실행 단계</div>
-      <div class="mobile-editorial-num">04</div>
-    </div>
-    <h3>핀셋 타겟팅 작업 진행</h3>
-    <p><strong>Action</strong> 업종과 지역, 예산 흐름에 맞춘 광고 세팅과 최적화를 진행합니다.</p>
-    <p><strong>Point</strong> 우리 가게에 맞는 타겟만 정교하게 잡아 예산 낭비를 줄이고 효율을 높입니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#광고세팅</span><span>#타겟최적화</span><span>#맞춤광고</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">실행 단계</div>
+        <div class="mobile-editorial-num">STEP 04</div>
+      </div>
+      <h3>핀셋 타겟팅 작업 진행</h3>
+      <p><strong>Action</strong> 업종과 지역, 예산 흐름에 맞춘 광고 세팅과 최적화를 진행합니다.</p>
+      <p><strong>Point</strong> 우리 가게에 맞는 타겟만 정교하게 잡아 예산 낭비를 줄이고 효율을 높입니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#광고세팅</span><span>#타겟최적화</span><span>#맞춤광고</span>
+      </div>
     </div>
   </article>
+
+  <div class="mobile-step-connector" aria-hidden="true" data-connector="04-05"><div class="mobile-step-connector-track"></div><div class="mobile-step-connector-orb"></div></div>
 
   <article class="mobile-editorial-step reveal-mobile-step" data-step="05">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">공유 단계</div>
-      <div class="mobile-editorial-num">05</div>
-    </div>
-    <h3>실시간 작업 현황 보고</h3>
-    <p><strong>Action</strong> 지금 무엇을 진행하고 있는지, 어떤 변화가 있는지 바로 공유드립니다.</p>
-    <p><strong>Point</strong> 궁금할 틈 없이 과정을 투명하게 보여드려 믿고 맡길 수 있게 만듭니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#실시간보고</span><span>#투명운영</span><span>#현황공유</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">공유 단계</div>
+        <div class="mobile-editorial-num">STEP 05</div>
+      </div>
+      <h3>실시간 작업 현황 보고</h3>
+      <p><strong>Action</strong> 지금 무엇을 진행하고 있는지, 어떤 변화가 있는지 바로 공유드립니다.</p>
+      <p><strong>Point</strong> 궁금할 틈 없이 과정을 투명하게 보여드려 믿고 맡길 수 있게 만듭니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#실시간보고</span><span>#투명운영</span><span>#현황공유</span>
+      </div>
     </div>
   </article>
 
+  <div class="mobile-step-connector" aria-hidden="true" data-connector="05-06"><div class="mobile-step-connector-track"></div><div class="mobile-step-connector-orb"></div></div>
+
   <article class="mobile-editorial-step reveal-mobile-step" data-step="06">
-    <div class="mobile-editorial-head">
-      <div class="mobile-editorial-kicker">확장 단계</div>
-      <div class="mobile-editorial-num">06</div>
-    </div>
-    <h3>성과 분석 &amp; 포스트 전략</h3>
-    <p><strong>Action</strong> 현재 성과를 분석하고 다음 달 확장 방향까지 함께 제안합니다.</p>
-    <p><strong>Point</strong> 한 번의 운영으로 끝내지 않고 계속 성장할 수 있는 다음 전략까지 이어갑니다.</p>
-    <div class="mobile-editorial-tags">
-      <span>#성과분석</span><span>#트렌드수집</span><span>#확장전략</span>
+    <div class="mobile-step-anchor" aria-hidden="true"></div>
+    <div class="mobile-step-card">
+      <div class="mobile-editorial-head">
+        <div class="mobile-editorial-kicker">확장 단계</div>
+        <div class="mobile-editorial-num">STEP 06</div>
+      </div>
+      <h3>성과 분석 &amp; 포스트 전략</h3>
+      <p><strong>Action</strong> 현재 성과를 분석하고 다음 달 확장 방향까지 함께 제안합니다.</p>
+      <p><strong>Point</strong> 한 번의 운영으로 끝내지 않고 계속 성장할 수 있는 다음 전략까지 이어갑니다.</p>
+      <div class="mobile-editorial-tags">
+        <span>#성과분석</span><span>#트렌드수집</span><span>#확장전략</span>
+      </div>
     </div>
   </article>
 </div>
@@ -9040,12 +9137,78 @@ document.addEventListener("DOMContentLoaded", function () {
     bottom: 2px !important;
   }
 }
+
 </style>
 
 <script>
 (function(){
-  const mobileSteps = document.querySelectorAll('.reveal-mobile-step');
-  if(!mobileSteps.length) return;
+  const mobileSteps = Array.from(document.querySelectorAll('.reveal-mobile-step'));
+  const editorial = document.querySelector('.mobile-process-editorial');
+  const connectors = editorial ? Array.from(editorial.querySelectorAll('.mobile-step-connector')) : [];
+  if(!editorial || !connectors.length || !mobileSteps.length) return;
+
+  const mq = window.matchMedia('(max-width: 920px)');
+
+  function clamp(value, min, max){
+    return Math.min(Math.max(value, min), max);
+  }
+
+  function updateConnectors(){
+    if(!mq.matches) return;
+
+    const viewportTrigger = window.innerHeight * 0.42;
+
+    mobileSteps.forEach((step, index) => {
+      if(step.getBoundingClientRect().top < window.innerHeight * 0.86){
+        step.classList.add('inview');
+      }
+      step.classList.remove('is-active');
+
+      const connector = connectors[index];
+      if(!connector) return;
+
+      const orb = connector.querySelector('.mobile-step-connector-orb');
+      const currentCard = step.querySelector('.mobile-step-card');
+      const nextCard = mobileSteps[index + 1].querySelector('.mobile-step-card');
+      const connectorRect = connector.getBoundingClientRect();
+      const currentRect = currentCard.getBoundingClientRect();
+      const nextRect = nextCard.getBoundingClientRect();
+      const orbSize = orb.offsetHeight || 34;
+      const maxTravel = Math.max(connector.clientHeight - orbSize, 0);
+
+      const startPoint = currentRect.bottom;
+      const endPoint = nextRect.top;
+      const progress = clamp((viewportTrigger - startPoint) / Math.max(endPoint - startPoint, 1), 0, 1);
+      const orbTop = maxTravel * progress;
+
+      orb.style.top = `${orbTop.toFixed(1)}px`;
+
+      if(progress > 0.02 && progress < 0.98){
+        step.classList.add('is-active');
+        mobileSteps[index + 1].classList.add('is-active');
+      } else if(progress >= 0.98){
+        mobileSteps[index + 1].classList.add('is-active');
+      } else if(index === 0 && viewportTrigger < startPoint){
+        step.classList.add('is-active');
+      }
+
+      const lineTop = currentRect.bottom - connectorRect.top;
+      const lineBottom = nextRect.top - connectorRect.top;
+      const track = connector.querySelector('.mobile-step-connector-track');
+      track.style.top = `${Math.max(0, Math.min(lineTop, connector.clientHeight)).toFixed(1)}px`;
+      track.style.height = `${Math.max(0, Math.min(lineBottom, connector.clientHeight) - Math.max(0, Math.min(lineTop, connector.clientHeight))).toFixed(1)}px`;
+    });
+  }
+
+  let ticking = false;
+  function requestUpdate(){
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(() => {
+      updateConnectors();
+      ticking = false;
+    });
+  }
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -9053,9 +9216,18 @@ document.addEventListener("DOMContentLoaded", function () {
         entry.target.classList.add('inview');
       }
     });
-  }, { threshold: 0.22, rootMargin: '0px 0px -8% 0px' });
+  }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
 
   mobileSteps.forEach((step) => io.observe(step));
+  window.addEventListener('scroll', requestUpdate, { passive:true });
+  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('load', requestUpdate);
+  if(mq.addEventListener){
+    mq.addEventListener('change', requestUpdate);
+  } else if(mq.addListener){
+    mq.addListener(requestUpdate);
+  }
+  requestUpdate();
 })();
 </script>
 
