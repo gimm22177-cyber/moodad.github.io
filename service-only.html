@@ -11095,8 +11095,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   .reviews-price-copy .reviews-price-subcopy {
-    color: #b8bec8 !important;
+    display: block !important;
+    color: #111111 !important;
     font-weight: 500 !important;
+    text-align: center !important;
+    line-height: 1.72 !important;
+  }
+
+  .reviews-price-copy .reviews-hand-image {
+    display: block !important;
+    width: min(112px, 28vw) !important;
+    height: auto !important;
+    margin: 18px auto 0 !important;
   }
 }
 
@@ -11183,13 +11193,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (priceCopy) {
       priceCopy.innerHTML = [
         '<span class="reviews-copy-note"><span style="color:#ffffff;">투자하는 비용은 타 대행사의</span> <span style="color:#000000;">4분의 1</span></span><br>',
-        '<span class="reviews-price-subcopy" style="font-size:130%;">충분히 비교하고 오셔도됩니다. 타 대행사는 저희의 가격으로 하나의 서비스만 해주는 곳이 대부분일 겁니다.</span><br><br><br><br><br>'
+        '<span class="reviews-price-subcopy" style="font-size:130%;">충분히 비교하고 오셔도됩니다.<br>타 대행사는 저희의 가격으로<br>하나의 서비스만 해주는 곳이 대부분일 겁니다.</span>',
+        '<img class="reviews-hand-image" src="손.png" alt="">',
+        '<br><br><br><br><br>'
       ].join('');
     }
 
     var problemHead = document.querySelector('.problem-section .problem-headline');
     if (problemHead) {
-      problemHead.innerHTML = '<span class="title-line line-2" style="display:block; margin-top:0; font-size:70%;">무드애드는 <span style="color:#18A8F1;">아무 업체와 계약을 맺지 않습니다.</span></span>';
+      problemHead.innerHTML = '<span class="title-line line-1" style="display:block;">하지만,</span><span class="title-line line-2" style="display:block; margin-top:40px; font-size:70%;">무드애드는 <span style="color:#18A8F1;">아무 업체와 계약을 맺지 않습니다.</span></span>';
     }
 
     var problemIntro = document.querySelector('.problem-section .section-head p');
