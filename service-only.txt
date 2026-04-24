@@ -10956,7 +10956,7 @@ document.addEventListener("DOMContentLoaded", function () {
   .persuade-word {
     max-width: calc(100vw - 28px) !important;
     padding: 0 10px !important;
-    font-size: clamp(54px, 13.5vw, 82px) !important;
+    font-size: clamp(86px, 18vw, 128px) !important;
     line-height: .95 !important;
     letter-spacing: -0.10em !important;
     white-space: normal !important;
@@ -11009,7 +11009,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   .persuade-word {
-    font-size: clamp(46px, 12.2vw, 66px) !important;
+    font-size: clamp(76px, 17vw, 108px) !important;
   }
 
   .insert-base {
