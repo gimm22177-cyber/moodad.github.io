@@ -9596,7 +9596,7 @@ document.addEventListener("DOMContentLoaded", function () {
     padding: 0 !important;
     min-height: 0 !important;
     height: auto !important;
-    aspect-ratio: 1609 / 978 !important;
+    aspect-ratio: 1609 / 1467 !important;
     background: #f3f4f6 !important;
     overflow: hidden !important;
   }
