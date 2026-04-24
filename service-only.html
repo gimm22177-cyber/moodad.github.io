@@ -10610,5 +10610,89 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 
+<style id="mobile-click-and-review-final">
+@media (max-width: 920px) {
+  .reviews-slider {
+    position: relative !important;
+    padding-top: 52px !important;
+  }
+
+  .reviews-slider::after {
+    content: "(이미지 클릭)" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 16px !important;
+    transform: translateX(-50%) !important;
+    color: rgba(23, 34, 56, .62) !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    pointer-events: none !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-step-card {
+    background: linear-gradient(180deg, #fbfcff 0%, #ffffff 100%) !important;
+    border-color: rgba(112, 135, 168, .20) !important;
+    box-shadow: 0 24px 54px rgba(19,30,48,.10), inset 0 1px 0 rgba(255,255,255,.74) !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-kicker,
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-num,
+  .mobile-editorial-step[data-step="06"] h3,
+  .mobile-editorial-step[data-step="06"] p,
+  .mobile-editorial-step[data-step="06"] p strong {
+    color: #172238 !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-tags span {
+    background: rgba(248,250,253,.95) !important;
+    border-color: rgba(207,217,230,.96) !important;
+    color: #283655 !important;
+  }
+
+  .problem-panel:not(.is-active) {
+    animation: mobileProblemTapCue 2.4s ease-in-out infinite !important;
+  }
+
+  .problem-panel:not(.is-active)::after {
+    transition: opacity .24s ease, background .24s ease !important;
+  }
+
+  @keyframes mobileProblemTapCue {
+    0%, 100% {
+      transform: translateY(0) !important;
+      box-shadow: 0 16px 34px rgba(44,86,130,.10), 0 0 0 0 rgba(24,168,241,0) !important;
+    }
+    50% {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 20px 42px rgba(44,86,130,.13), 0 0 0 3px rgba(24,168,241,.10) !important;
+    }
+  }
+}
+</style>
+
+<script id="mobile-process-copy-short-final">
+(function() {
+  function applyMobileProcessCopyShort() {
+    if (window.innerWidth > 920) return;
+
+    var processCopy = document.querySelector('.process-section .section-head p');
+    if (!processCopy) return;
+
+    processCopy.innerHTML = '[ 투명하게 다 공개해 드립니다. ]';
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyMobileProcessCopyShort, { once: true });
+  } else {
+    applyMobileProcessCopyShort();
+  }
+
+  window.addEventListener('load', applyMobileProcessCopyShort, { once: true });
+  window.addEventListener('resize', applyMobileProcessCopyShort);
+})();
+</script>
+
 </body>
 </html>
