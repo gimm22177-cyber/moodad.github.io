@@ -11295,5 +11295,113 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 
+<style id="mobile-problem-hand-reference-final">
+@media (max-width: 920px) {
+  .problem-section .section-head {
+    position: relative !important;
+    min-height: clamp(520px, 76vw, 680px) !important;
+    margin-bottom: 34px !important;
+    padding: 0 0 40px !important;
+    text-align: center !important;
+    overflow: visible !important;
+    isolation: isolate !important;
+  }
+
+  .problem-section .section-head::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: clamp(168px, 29vw, 250px) !important;
+    width: min(1320px, 190vw) !important;
+    height: clamp(300px, 47vw, 440px) !important;
+    transform: translateX(-50%) !important;
+    background: url("왼손.png") center center / contain no-repeat !important;
+    opacity: .82 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .problem-section .section-head .problem-headline {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding-top: clamp(86px, 13vw, 128px) !important;
+    text-align: center !important;
+    font-size: clamp(40px, 7vw, 66px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.055em !important;
+  }
+
+  .problem-section .section-head .problem-headline .title-line.line-1 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    color: #111111 !important;
+    font-size: .58em !important;
+    line-height: 1 !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .problem-section .section-head .problem-headline .title-line.line-2 {
+    display: block !important;
+    width: 100% !important;
+    margin-top: clamp(142px, 23vw, 222px) !important;
+    font-size: clamp(30px, 5.6vw, 54px) !important;
+    line-height: 1.04 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.07em !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+  }
+
+  .problem-section .section-head p {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 100% !important;
+    margin: clamp(72px, 11vw, 108px) auto 0 !important;
+    color: #111111 !important;
+    font-size: clamp(24px, 4.8vw, 44px) !important;
+    line-height: 1.45 !important;
+    letter-spacing: -0.045em !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .problem-section .section-head {
+    min-height: 468px !important;
+    padding-bottom: 24px !important;
+  }
+
+  .problem-section .section-head::before {
+    top: 146px !important;
+    width: 210vw !important;
+    height: 260px !important;
+    opacity: .82 !important;
+  }
+
+  .problem-section .section-head .problem-headline {
+    padding-top: 64px !important;
+    font-size: 36px !important;
+  }
+
+  .problem-section .section-head .problem-headline .title-line.line-2 {
+    margin-top: 116px !important;
+    font-size: 25px !important;
+    letter-spacing: -0.075em !important;
+  }
+
+  .problem-section .section-head p {
+    margin-top: 58px !important;
+    font-size: 21px !important;
+    line-height: 1.48 !important;
+  }
+}
+</style>
+
 </body>
 </html>
