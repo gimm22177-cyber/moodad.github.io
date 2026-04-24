@@ -11034,22 +11034,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   .mobile-editorial-step[data-step="01"] .mobile-step-card {
-    background: linear-gradient(180deg, #fff7f7 0%, #fffdfd 100%) !important;
+    background: linear-gradient(180deg, #fffafa 0%, #ffffff 100%) !important;
     border-color: rgba(230, 112, 112, .46) !important;
   }
 
   .mobile-editorial-step[data-step="02"] .mobile-step-card {
-    background: linear-gradient(180deg, #fff9f1 0%, #fffefb 100%) !important;
+    background: linear-gradient(180deg, #fffbf7 0%, #ffffff 100%) !important;
     border-color: rgba(230, 158, 84, .44) !important;
   }
 
   .mobile-editorial-step[data-step="03"] .mobile-step-card {
-    background: linear-gradient(180deg, #fffdf1 0%, #fffffb 100%) !important;
+    background: linear-gradient(180deg, #fffef8 0%, #ffffff 100%) !important;
     border-color: rgba(218, 190, 74, .46) !important;
   }
 
   .mobile-editorial-step[data-step="04"] .mobile-step-card {
-    background: linear-gradient(180deg, #f6fdf8 0%, #fdfffe 100%) !important;
+    background: linear-gradient(180deg, #fbfffc 0%, #ffffff 100%) !important;
     border-color: rgba(98, 184, 116, .44) !important;
   }
 
@@ -11081,7 +11081,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   .mobile-editorial-step[data-step="03"] p {
-    font-size: 16px !important;
+    font-size: 19.2px !important;
   }
 
   .mobile-editorial-step[data-step="03"] .mobile-editorial-tags span {
@@ -11102,11 +11102,18 @@ document.addEventListener("DOMContentLoaded", function () {
     line-height: 1.72 !important;
   }
 
-  .reviews-price-copy .reviews-hand-image {
-    display: block !important;
-    width: min(112px, 28vw) !important;
-    height: auto !important;
-    margin: 18px auto 0 !important;
+  .mobile-editorial-step .mobile-step-card p {
+    font-size: 19.2px !important;
+    line-height: 1.58 !important;
+  }
+
+  .mobile-editorial-step .mobile-step-card p strong {
+    font-size: 1em !important;
+  }
+
+  .mobile-point-nowrap {
+    white-space: nowrap !important;
+    letter-spacing: -0.07em !important;
   }
 }
 
@@ -11120,11 +11127,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   .mobile-editorial-step[data-step="03"] p {
-    font-size: 13px !important;
+    font-size: 15.6px !important;
   }
 
   .mobile-editorial-step[data-step="03"] .mobile-editorial-tags span {
     font-size: 10px !important;
+  }
+
+  .mobile-editorial-step .mobile-step-card p {
+    font-size: 15.6px !important;
+    line-height: 1.58 !important;
   }
 }
 </style>
@@ -11142,7 +11154,7 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       "02": {
         title: "대표 실무진 2 : 1 전담 배정",
-        point: "마케팅 전략가와 디자이너, 두 대표가 참여하는 실시간 단톡방을<br>통해 눈으로 직접 볼 수 있는 마케팅이 시작됩니다.",
+        point: "<span class=\"mobile-point-nowrap\">마케팅 전략가와 디자이너, 두 대표가 참여하는 실시간 단톡방을</span><br>통해 눈으로 직접 볼 수 있는 마케팅이 시작됩니다.",
         tags: ["#대표전담", "#실시간소통", "#2대1관리"]
       },
       "03": {
@@ -11194,7 +11206,6 @@ document.addEventListener("DOMContentLoaded", function () {
       priceCopy.innerHTML = [
         '<span class="reviews-copy-note"><span style="color:#ffffff;">투자하는 비용은 타 대행사의</span> <span style="color:#000000;">4분의 1</span></span><br>',
         '<span class="reviews-price-subcopy" style="font-size:130%;">충분히 비교하고 오셔도됩니다.<br>타 대행사는 저희의 가격으로<br>하나의 서비스만 해주는 곳이 대부분일 겁니다.</span>',
-        '<img class="reviews-hand-image" src="손.png" alt="">',
         '<br><br><br><br><br>'
       ].join('');
     }
@@ -11231,7 +11242,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var scarcityTitle = scarcity.querySelector('.problem-title');
       var scarcityBrief = scarcity.querySelector('.problem-brief');
       if (scarcityTitle) {
-        scarcityTitle.innerHTML = '<span style="color:#EEEEEE !important; white-space:nowrap;">한 지역, 한 업종, 단 한 곳만</span>';
+        scarcityTitle.innerHTML = '<span style="color:#EEEEEE !important;">한 지역, 한 업종, 단 한 곳만<br></span>';
       }
       if (scarcityBrief) {
         scarcityBrief.innerHTML = '하늘에 태양은 하나뿐, 저희는 같은 업종이라면<br><span style="color:#18A8F1 !important;">지역당 딱 1곳만 태양으로 만들기 위해 노력합니다.</span><br>현재 진행 중인 업체와 업종이 겹친다면 대기를 해주셔야 합니다.';
