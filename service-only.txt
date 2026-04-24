@@ -9615,11 +9615,75 @@ document.addEventListener("DOMContentLoaded", function () {
     padding: 0 !important;
   }
 
-  .hero-main-title,
-  .hero-typing-block,
-  .hero-desc,
   .hero-service-nav {
     display: none !important;
+  }
+
+  .hero-main-title,
+  .hero-typing-block {
+    display: block !important;
+    width: 100% !important;
+    max-width: 58% !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  #typing-line-1 {
+    display: block !important;
+    width: 100% !important;
+    min-height: 1.1em !important;
+    font-size: 22px !important;
+    line-height: 1.14 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.065em !important;
+    color: #000 !important;
+    white-space: nowrap !important;
+  }
+
+  #typing-line-2 {
+    display: block !important;
+    width: 100% !important;
+    margin-top: 8px !important;
+    min-height: auto !important;
+    padding-top: 0 !important;
+    white-space: normal !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+  }
+
+  #typing-line-2 > span {
+    display: block !important;
+    white-space: nowrap !important;
+    line-height: 0.96 !important;
+    letter-spacing: -0.08em !important;
+    font-weight: 900 !important;
+  }
+
+  #typing-line-2 > span:first-child {
+    font-size: 39px !important;
+    color: #18A8F1 !important;
+  }
+
+  #typing-line-2 > span:last-child {
+    margin-top: 2px !important;
+    font-size: 28px !important;
+    color: #000 !important;
+  }
+
+  .hero-desc {
+    display: block !important;
+    max-width: 47% !important;
+    margin: 34px 0 0 0 !important;
+    font-size: 11.6px !important;
+    line-height: 1.76 !important;
+    letter-spacing: -0.05em !important;
+    color: #111 !important;
+    word-break: keep-all !important;
+  }
+
+  .hero-desc strong {
+    color: #111 !important;
+    font-weight: 900 !important;
   }
 
   .hero-visual {
