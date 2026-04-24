@@ -10821,5 +10821,53 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 
+<style id="mobile-problem-red-dot-cue-final">
+@media (max-width: 920px) {
+  .problem-panel:not(.is-active) .problem-panel-inner::after {
+    left: auto !important;
+    top: 24px !important;
+    right: 24px !important;
+    width: 14px !important;
+    height: 14px !important;
+    border-radius: 50% !important;
+    transform: scale(1) !important;
+    background: #ff4d4f !important;
+    filter: none !important;
+    opacity: .86 !important;
+    box-shadow: 0 0 0 0 rgba(255, 77, 79, .22) !important;
+    animation: mobileProblemRedDotBoing 1.55s ease-in-out infinite !important;
+  }
+
+  .problem-panel:not(.is-active) {
+    animation: none !important;
+  }
+
+  @keyframes mobileProblemRedDotBoing {
+    0%, 100% {
+      transform: scale(1) !important;
+      opacity: .82;
+      box-shadow: 0 0 0 0 rgba(255, 77, 79, .20) !important;
+    }
+    38% {
+      transform: scale(1.22) !important;
+      opacity: .96;
+      box-shadow: 0 0 0 8px rgba(255, 77, 79, .08) !important;
+    }
+    58% {
+      transform: scale(.94) !important;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .problem-panel:not(.is-active) .problem-panel-inner::after {
+    top: 20px !important;
+    right: 20px !important;
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+</style>
+
 </body>
 </html>
