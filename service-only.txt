@@ -10680,7 +10680,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var processCopy = document.querySelector('.process-section .section-head p');
     if (!processCopy) return;
 
-    processCopy.innerHTML = '[ 투명하게 다 공개해 드립니다. ]';
+    processCopy.innerHTML = '투명하게 다 공개해 드립니다.';
   }
 
   if (document.readyState === 'loading') {
@@ -10705,6 +10705,34 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 }
 </style>
+
+<script id="mobile-hero-desc-br-after-reject-final">
+(function() {
+  function applyHeroDescBreakAfterReject() {
+    if (window.innerWidth > 820) return;
+
+    var desc = document.querySelector('.hero-desc');
+    if (!desc) return;
+
+    desc.innerHTML = [
+      '<span class="hero-desc-nowrap">수백개의 업체를 기계적으로 관리하는</span>',
+      '<span class="hero-desc-nowrap"><strong>획일된 방식은 거부합니다.</strong></span><br>',
+      '<span class="hero-desc-gap"></span>',
+      '<span class="hero-desc-nowrap"><strong>한 팀의 성과에 집착하기 위해,</strong></span>',
+      '<span class="hero-desc-nowrap">정해진 <strong>소수에게만 집중합니다.</strong></span>'
+    ].join('');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyHeroDescBreakAfterReject, { once: true });
+  } else {
+    applyHeroDescBreakAfterReject();
+  }
+
+  window.addEventListener('load', applyHeroDescBreakAfterReject, { once: true });
+  window.addEventListener('resize', applyHeroDescBreakAfterReject);
+})();
+</script>
 
 </body>
 </html>
