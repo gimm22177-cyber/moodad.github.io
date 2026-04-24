@@ -10251,5 +10251,164 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 
+<style id="mobile-requested-corrections-final">
+@media (max-width: 920px) {
+  .hero-desc {
+    max-width: 62% !important;
+    font-size: 13.8px !important;
+    line-height: 1.72 !important;
+  }
+
+  .hero-desc .hero-desc-nowrap {
+    display: block !important;
+    white-space: nowrap !important;
+  }
+
+  .hero-desc .hero-desc-gap {
+    display: block !important;
+    height: 12px !important;
+  }
+
+  .services-section .service-wide {
+    min-height: 184px !important;
+  }
+
+  .services-section .service-copy {
+    height: 184px !important;
+    min-height: 184px !important;
+  }
+
+  .services-section .service-copy .mini {
+    display: none !important;
+  }
+
+  .services-section .service-media {
+    min-height: 184px !important;
+    height: 184px !important;
+  }
+
+  .problem-panel.is-active {
+    height: 486px !important;
+  }
+
+  .problem-panel.is-active .problem-panel-inner {
+    min-height: 486px !important;
+    justify-content: flex-start !important;
+  }
+
+  .problem-panel.is-active .problem-word {
+    margin-bottom: 0 !important;
+  }
+
+  .problem-panel.is-active .problem-detail {
+    margin-top: 30px !important;
+    gap: 0 !important;
+  }
+
+  .problem-panel.is-active .problem-title {
+    margin-bottom: 18px !important;
+  }
+
+  .problem-panel.is-active .problem-brief {
+    line-height: 1.54 !important;
+  }
+
+  .problem-panel.is-active .problem-brief,
+  .problem-panel.is-active .problem-brief span {
+    white-space: normal !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-step-card {
+    background: linear-gradient(180deg, #172844 0%, #223957 100%) !important;
+    border-color: rgba(86, 125, 174, .82) !important;
+    box-shadow: 0 24px 54px rgba(12, 31, 58, .20), inset 0 1px 0 rgba(255,255,255,.12) !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-kicker,
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-num,
+  .mobile-editorial-step[data-step="06"] h3,
+  .mobile-editorial-step[data-step="06"] p,
+  .mobile-editorial-step[data-step="06"] p strong {
+    color: #ffffff !important;
+  }
+
+  .mobile-editorial-step[data-step="06"] .mobile-editorial-tags span {
+    background: rgba(255,255,255,.10) !important;
+    border-color: rgba(255,255,255,.18) !important;
+    color: #ffffff !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-desc {
+    max-width: 63% !important;
+    font-size: 12.8px !important;
+    line-height: 1.68 !important;
+  }
+
+  .hero-desc .hero-desc-gap {
+    height: 10px !important;
+  }
+
+  .services-section .service-wide {
+    min-height: 172px !important;
+  }
+
+  .services-section .service-copy {
+    height: 172px !important;
+    min-height: 172px !important;
+  }
+
+  .services-section .service-media {
+    min-height: 172px !important;
+    height: 172px !important;
+  }
+
+  .problem-panel.is-active {
+    height: 454px !important;
+  }
+
+  .problem-panel.is-active .problem-panel-inner {
+    min-height: 454px !important;
+  }
+
+  .problem-panel.is-active .problem-detail {
+    margin-top: 26px !important;
+  }
+
+  .problem-panel.is-active .problem-title {
+    margin-bottom: 16px !important;
+  }
+}
+</style>
+
+<script id="mobile-hero-line-correction-final">
+(function() {
+  function applyMobileHeroLineCorrection() {
+    if (window.innerWidth > 820) return;
+
+    var desc = document.querySelector('.hero-desc');
+    if (!desc) return;
+
+    desc.innerHTML = [
+      '<span class="hero-desc-nowrap">수백개의 업체를 기계적으로 관리하는</span>',
+      '<span class="hero-desc-nowrap"><strong>획일된 방식은 거부합니다.</strong></span>',
+      '<span class="hero-desc-gap"></span>',
+      '<span class="hero-desc-nowrap"><strong>한 팀의 성과에 집착하기 위해,</strong></span>',
+      '<span class="hero-desc-nowrap">정해진 <strong>소수에게만 집중합니다.</strong></span>'
+    ].join('');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyMobileHeroLineCorrection, { once: true });
+  } else {
+    applyMobileHeroLineCorrection();
+  }
+
+  window.addEventListener('load', applyMobileHeroLineCorrection, { once: true });
+  window.addEventListener('resize', applyMobileHeroLineCorrection);
+})();
+</script>
+
 </body>
 </html>
