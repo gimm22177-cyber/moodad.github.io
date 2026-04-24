@@ -8743,14 +8743,10 @@ const shell = document.getElementById('heroShell');
     const typingLine2 = document.querySelector('#typing-line-2');
 
     if (typingLine1 && typingLine2) {
-      const line1Segments = [
-        { text: '95%의 대행사가 포기한', color: '#000000', weight: '900' }
-      ];
-
       const line2Segments = [
-  { text: '진짜 관리를', color: '#18A8F1', weight: '900' },
-  { text: ' 시작합니다.', color: '#000000', weight: '900' }
-];
+        { text: '진짜 관리를', color: '#6aaaf0', weight: '900' },
+        { text: '시작합니다.', color: '#000000', weight: '900' }
+      ];
 
       let startedTyping = false;
 
@@ -8794,7 +8790,9 @@ const shell = document.getElementById('heroShell');
       }
 
       async function runHeroTyping() {
-        await typeSegments(typingLine1, line1Segments, 62);
+        typingLine1.innerHTML = '';
+        typingLine1.textContent = '95%의 대행사가 포기한';
+        typingLine2.innerHTML = '';
         await new Promise((r) => setTimeout(r, 180));
         await typeSegments(typingLine2, line2Segments, 75);
       }
@@ -9625,8 +9623,8 @@ document.addEventListener("DOMContentLoaded", function () {
   .hero-typing-block {
     display: block !important;
     position: absolute !important;
-    left: 6.65% !important;
-    top: 10.8% !important;
+    left: 5.95% !important;
+    top: 9.65% !important;
     width: 40.5% !important;
     max-width: 40.5% !important;
     min-height: 29% !important;
@@ -9674,14 +9672,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   #typing-line-2 > span:last-child {
     margin-top: 1.15% !important;
-    font-size: clamp(34px, 5.2vw, 59px) !important;
+    font-size: clamp(24px, 3.85vw, 44px) !important;
     color: #000 !important;
   }
 
   .hero-desc {
     display: block !important;
     position: absolute !important;
-    left: 6.65% !important;
+    left: 5.95% !important;
     top: 47.5% !important;
     max-width: 40.5% !important;
     margin: 0 !important;
@@ -9727,16 +9725,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth > 820) return;
 
     var line1 = document.getElementById('typing-line-1');
-    var line2 = document.getElementById('typing-line-2');
     var desc = document.querySelector('.hero-desc');
 
     if (line1) {
       line1.innerHTML = '';
       line1.textContent = '95%의 대행사가 포기한';
-    }
-
-    if (line2) {
-      line2.innerHTML = '<span>진짜 관리를</span><span>시작합니다.</span>';
     }
 
     if (desc) {
@@ -9760,16 +9753,11 @@ document.addEventListener("DOMContentLoaded", function () {
     if (window.innerWidth > 820) return;
 
     var line1 = document.getElementById('typing-line-1');
-    var line2 = document.getElementById('typing-line-2');
     var desc = document.querySelector('.hero-desc');
 
     if (line1) {
       line1.innerHTML = '';
       line1.textContent = '95%의 대행사가 포기한';
-    }
-
-    if (line2) {
-      line2.innerHTML = '<span>진짜 관리를</span><span>시작합니다.</span>';
     }
 
     if (desc) {
