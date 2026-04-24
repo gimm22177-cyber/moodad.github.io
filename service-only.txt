@@ -9668,14 +9668,25 @@ document.addEventListener("DOMContentLoaded", function () {
     font-weight: 900 !important;
   }
 
-  .hero-main-title,
-  .hero-typing-block {
+  .hero-main-title {
     display: block !important;
     position: absolute !important;
     left: 5.15% !important;
     top: 9.65% !important;
     width: 40.5% !important;
     max-width: 40.5% !important;
+    min-height: 29% !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  .hero-typing-block {
+    display: block !important;
+    position: relative !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
     min-height: 29% !important;
     margin: 0 !important;
     overflow: visible !important;
@@ -9697,7 +9708,7 @@ document.addEventListener("DOMContentLoaded", function () {
   #typing-line-2 {
     display: block !important;
     width: 100% !important;
-    margin-top: 1.65% !important;
+    margin-top: 3.2% !important;
     height: 2.02em !important;
     min-height: 2.02em !important;
     padding-top: 0 !important;
@@ -9709,7 +9720,7 @@ document.addEventListener("DOMContentLoaded", function () {
   #typing-line-2 > span {
     display: block !important;
     white-space: nowrap !important;
-    line-height: 0.94 !important;
+    line-height: 1.02 !important;
     letter-spacing: -0.08em !important;
     font-weight: 900 !important;
   }
@@ -9720,7 +9731,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   #typing-line-2 > span:last-child {
-    margin-top: 1.15% !important;
+    margin-top: 3.1% !important;
     font-size: clamp(24px, 3.85vw, 44px) !important;
     color: #000 !important;
   }
