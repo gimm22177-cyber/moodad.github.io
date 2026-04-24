@@ -8744,8 +8744,8 @@ const shell = document.getElementById('heroShell');
 
     if (typingLine1 && typingLine2) {
       const line2Segments = [
-        { text: '진짜 관리를', color: '#6aaaf0', weight: '900' },
-        { text: '시작합니다.', color: '#000000', weight: '900' }
+        { text: '진짜 관리를', color: '#6aaaf0', weight: '900', className: 'hero-typing-primary' },
+        { text: '시작합니다.', color: '#000000', weight: '900', className: 'hero-typing-secondary' }
       ];
 
       let startedTyping = false;
@@ -8768,6 +8768,7 @@ const shell = document.getElementById('heroShell');
               currentSpan = document.createElement('span');
               currentSpan.style.color = segment.color;
               currentSpan.style.fontWeight = segment.weight;
+              if (segment.className) currentSpan.classList.add(segment.className);
               currentSpan.classList.add('typing-cursor');
               target.appendChild(currentSpan);
             }
@@ -9312,8 +9313,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyProblemMode(){
       if (window.innerWidth <= 920) {
-        const alreadyActive = panels.find(panel => panel.classList.contains('is-active'));
-        setMobileActive(alreadyActive || panels[0]);
+        panels.forEach(panel => {
+          panel.classList.remove('is-active');
+          panel.setAttribute('aria-expanded', 'false');
+        });
       } else {
         panels.forEach(panel => panel.setAttribute('aria-expanded', panel.classList.contains('is-active') ? 'true' : 'false'));
       }
@@ -9736,6 +9739,21 @@ document.addEventListener("DOMContentLoaded", function () {
     color: #000 !important;
   }
 
+  #typing-line-2 > span.hero-typing-primary {
+    display: block !important;
+    font-size: clamp(28px, 4.55vw, 52px) !important;
+    line-height: 1.02 !important;
+    color: #6aaaf0 !important;
+  }
+
+  #typing-line-2 > span.hero-typing-secondary {
+    display: block !important;
+    margin-top: 3.1% !important;
+    font-size: clamp(24px, 3.85vw, 44px) !important;
+    line-height: 1.02 !important;
+    color: #000 !important;
+  }
+
   .hero-desc {
     display: block !important;
     position: absolute !important;
@@ -9836,6 +9854,79 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener('resize', lockMobileHeroCopy);
 })();
 </script>
+
+<style id="mobile-services-problem-final-polish">
+@media (max-width: 920px) {
+  .services-main-title::after {
+    content: "" !important;
+    display: block !important;
+    width: clamp(72px, 12.8vw, 108px) !important;
+    height: 4px !important;
+    margin: clamp(24px, 4.6vw, 38px) auto 0 !important;
+    border-radius: 999px !important;
+    background: #111111 !important;
+    transform: none !important;
+  }
+
+  .problem-section {
+    background:
+      radial-gradient(circle at 78% 18%, rgba(24,168,241,.08), transparent 25%),
+      linear-gradient(180deg, #ffffff 0%, #f6fbff 100%) !important;
+  }
+
+  .problem-panel:not(.is-active),
+  .problem-panel:hover:not(.is-active) {
+    background: linear-gradient(180deg, rgba(255,255,255,.98) 0%, rgba(246,250,255,.98) 100%) !important;
+    border: 1px solid rgba(113,179,242,.34) !important;
+    box-shadow: 0 16px 34px rgba(44,86,130,.10) !important;
+  }
+
+  .problem-panel:not(.is-active)::before,
+  .problem-panel:hover:not(.is-active)::before {
+    opacity: .14 !important;
+    filter: grayscale(1) brightness(1.7) !important;
+  }
+
+  .problem-panel:not(.is-active)::after,
+  .problem-panel:hover:not(.is-active)::after {
+    opacity: 1 !important;
+    background: linear-gradient(180deg, rgba(255,255,255,.76) 0%, rgba(255,255,255,.92) 100%) !important;
+  }
+
+  .problem-panel:not(.is-active) .problem-icon,
+  .problem-panel:hover:not(.is-active) .problem-icon,
+  .problem-panel:not(.is-active) .problem-kicker,
+  .problem-panel:hover:not(.is-active) .problem-kicker,
+  .problem-panel:not(.is-active) .problem-word,
+  .problem-panel:hover:not(.is-active) .problem-word {
+    color: #111111 !important;
+  }
+
+  .problem-panel.is-active {
+    background: #0f131a !important;
+    border-color: transparent !important;
+    box-shadow: 0 22px 46px rgba(0,0,0,.20) !important;
+  }
+
+  .problem-panel.is-active::before {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  .problem-panel.is-active::after {
+    opacity: 1 !important;
+    background: linear-gradient(180deg, rgba(6,10,16,.46) 0%, rgba(6,10,16,.80) 100%) !important;
+  }
+
+  .problem-panel.is-active .problem-icon,
+  .problem-panel.is-active .problem-kicker,
+  .problem-panel.is-active .problem-word,
+  .problem-panel.is-active .problem-title,
+  .problem-panel.is-active .problem-brief {
+    color: #ffffff !important;
+  }
+}
+</style>
 
 </body>
 </html>
