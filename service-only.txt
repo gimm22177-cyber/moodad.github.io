@@ -10869,5 +10869,59 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 
+<script id="mobile-problem-copy-breaks-final">
+(function() {
+  function applyMobileProblemCopyBreaks() {
+    if (window.innerWidth > 920) return;
+
+    var sincerely = document.querySelector('.problem-panel.problem-01');
+    var essence = document.querySelector('.problem-panel.problem-02');
+    var scarcity = document.querySelector('.problem-panel.problem-03');
+
+    if (sincerely) {
+      var title = sincerely.querySelector('.problem-title');
+      var brief = sincerely.querySelector('.problem-brief');
+      if (title) {
+        title.innerHTML = '목이 마르지 않은 사람에게<br>물을 먹일 수는 없습니다.';
+      }
+      if (brief) {
+        brief.innerHTML = '<br>마케팅은 맡기기만 한다고 끝나는 게 아닙니다.<br><span style="color:#18A8F1 !important;">사장님의 열정과 저희의 열정이 함께 할 때<br>진짜 성과가 나옵니다.</span>';
+      }
+    }
+
+    if (essence) {
+      var essenceTitle = essence.querySelector('.problem-title');
+      var essenceBrief = essence.querySelector('.problem-brief');
+      if (essenceTitle) {
+        essenceTitle.innerHTML = '본질이 없으면 유지할 수 없습니다.';
+      }
+      if (essenceBrief) {
+        essenceBrief.innerHTML = '<br>반짝하는 효과는 누구나 낼 수 있지만,<br>본질이 흔들린다면 절대 성과는 유지될 수 없습니다.<br><span style="color:#18A8F1 !important;">사장님의 매장은 ‘성공’을 맞이할 준비가 되어 있으신가요?</span>';
+      }
+    }
+
+    if (scarcity) {
+      var scarcityTitle = scarcity.querySelector('.problem-title');
+      var scarcityBrief = scarcity.querySelector('.problem-brief');
+      if (scarcityTitle) {
+        scarcityTitle.innerHTML = '한 지역, 한 업종,<br>단 한 곳만';
+      }
+      if (scarcityBrief) {
+        scarcityBrief.innerHTML = '<br>하늘에서 태양은 하나뿐입니다.<br>저희는 같은 업종이라면<br><span style="color:#18A8F1 !important;">지역당 딱 1곳만 태양으로 만들기 위해 노력합니다.</span><br>현재 진행 중인 업체와 업종이 겹친다면 대기를 해주셔야 합니다.';
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyMobileProblemCopyBreaks, { once: true });
+  } else {
+    applyMobileProblemCopyBreaks();
+  }
+
+  window.addEventListener('load', applyMobileProblemCopyBreaks, { once: true });
+  window.addEventListener('resize', applyMobileProblemCopyBreaks);
+})();
+</script>
+
 </body>
 </html>
