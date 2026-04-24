@@ -9313,10 +9313,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function applyProblemMode(){
       if (window.innerWidth <= 920) {
-        panels.forEach(panel => {
-          panel.classList.remove('is-active');
-          panel.setAttribute('aria-expanded', 'false');
-        });
+        const alreadyActive = panels.find(panel => panel.classList.contains('is-active'));
+        setMobileActive(alreadyActive || panels[0]);
       } else {
         panels.forEach(panel => panel.setAttribute('aria-expanded', panel.classList.contains('is-active') ? 'true' : 'false'));
       }
@@ -9752,6 +9750,15 @@ document.addEventListener("DOMContentLoaded", function () {
     font-size: clamp(24px, 3.85vw, 44px) !important;
     line-height: 1.02 !important;
     color: #000 !important;
+  }
+
+  #typing-line-2 .typing-cursor {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  #typing-line-2 .typing-cursor::after {
+    right: -0.05em !important;
   }
 
   .hero-desc {
