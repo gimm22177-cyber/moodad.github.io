@@ -11102,6 +11102,33 @@ document.addEventListener("DOMContentLoaded", function () {
     line-height: 1.72 !important;
   }
 
+  .problem-section .section-head {
+    position: relative !important;
+    overflow: visible !important;
+    isolation: isolate !important;
+    padding-bottom: 42px !important;
+  }
+
+  .problem-section .section-head::before {
+    content: "" !important;
+    position: absolute !important;
+    left: 50% !important;
+    top: 98px !important;
+    width: min(980px, 138vw) !important;
+    height: 260px !important;
+    transform: translateX(-50%) !important;
+    background: url("왼손.png") center center / contain no-repeat !important;
+    opacity: .82 !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .problem-section .section-head .problem-headline,
+  .problem-section .section-head p {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
   .mobile-editorial-step .mobile-step-card p {
     font-size: 19.2px !important;
     line-height: 1.58 !important;
@@ -11137,6 +11164,13 @@ document.addEventListener("DOMContentLoaded", function () {
   .mobile-editorial-step .mobile-step-card p {
     font-size: 15.6px !important;
     line-height: 1.58 !important;
+  }
+
+  .problem-section .section-head::before {
+    top: 86px !important;
+    width: 152vw !important;
+    height: 214px !important;
+    opacity: .82 !important;
   }
 }
 </style>
