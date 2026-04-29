@@ -9310,7 +9310,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="problem-detail">
 <h3 class="problem-title">한 지역, 한 업종,<br>단 한 곳만.</h3>
 <div class="problem-text-spacer" aria-hidden="true"></div>
-<div class="problem-brief"><span class="moodad-problem-brief-oneline">하늘에서 태양은 하나뿐입니다.<br/>저희는 같은 업종이라면</span><br/><span style="color:#18A8F1 !important;">지역당 딱 1곳만 태양으로 만들기 위해 노력합니다.</span><br/>현재 진행 중인 업체와 업종이 겹친다면 대기를 해주셔야 합니다.</div>
+<div class="problem-brief"><span class="moodad-problem-brief-oneline">하늘에서 태양은 하나뿐입니다.<br/>저희는 같은 업종이라면</span><br/><span class="moodad-sun-oneline-mobile" style="color:#18A8F1 !important;">지역당 딱 1곳만 태양으로 만들기 위해 노력합니다.</span><br/>현재 진행 중인 업체와 업종이 겹친다면 대기를 해주셔야 합니다.</div>
 </div>
 </div>
 </div>
@@ -16797,6 +16797,31 @@ document.addEventListener("DOMContentLoaded", function () {
 </style>
 <!-- ===== /MOODAD PC ONLY: 6가지 전략 렉 완화 최종 안전 패치 ===== -->
 
+
+
+<!-- ===== MOODAD MOBILE ONLY: 태양 문장 한 줄 고정 / 글자크기 유지 ===== -->
+<style id="moodad-mobile-sun-oneline-only-20260429-v2">
+  @media (max-width: 920px) {
+    #problem .problem-panel.problem-03 .problem-brief .moodad-sun-oneline-mobile {
+      display: inline-block !important;
+      white-space: nowrap !important;
+      word-break: keep-all !important;
+      overflow-wrap: normal !important;
+      font-size: inherit !important;
+      line-height: inherit !important;
+      max-width: none !important;
+      letter-spacing: -0.12em !important;
+    }
+  }
+
+  @media (max-width: 390px) {
+    #problem .problem-panel.problem-03 .problem-brief .moodad-sun-oneline-mobile {
+      font-size: inherit !important;
+      letter-spacing: -0.16em !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD MOBILE ONLY: 태양 문장 한 줄 고정 / 글자크기 유지 ===== -->
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
