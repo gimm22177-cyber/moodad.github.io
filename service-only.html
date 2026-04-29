@@ -193,9 +193,13 @@
     .type-line.typing{
       animation:typing var(--typing, .9s) steps(var(--chars, 8)) forwards, caret .72s step-end infinite;
     }
-    @keyframes typing{
-      from{width:0}
-      to{width:calc(var(--chars) * 1.12h + 0.9ch)}
+@keyframes typing{
+  from{
+    width:0;
+  }
+  to{
+    width:calc(var(--chars) * 1.12ch + 0.9ch);
+  }
 }
     @keyframes caret{
       50%{border-right-color:transparent}
