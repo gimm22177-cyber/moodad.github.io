@@ -18066,6 +18066,39 @@ document.addEventListener("DOMContentLoaded", function () {
       will-change: transform, opacity !important;
     }
   }
+  /* ===== 실제 모바일 브라우저 높이 차이 보정 ===== */
+@media (max-width: 820px) {
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden !important;
+  }
+
+  .hero-shell {
+    width: 100% !important;
+    min-height: 100svh !important;
+    height: 100svh !important;
+  }
+
+  .stage {
+    min-height: 100svh !important;
+  }
+}
+
+/* iOS / 실제 폰 주소창 대응 */
+@supports (height: 100dvh) {
+  @media (max-width: 820px) {
+    .hero-shell {
+      height: 100dvh !important;
+      min-height: 100dvh !important;
+    }
+
+    .stage {
+      min-height: 100dvh !important;
+    }
+  }
+}
 </style>
 
 <script id="moodad-pc-services-process-lag-final-script">
