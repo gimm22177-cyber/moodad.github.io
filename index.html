@@ -40,7 +40,7 @@
       --max: 1120px;
     }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
 
     body {
       margin: 0;
@@ -120,7 +120,7 @@
       width: auto;
       max-width: 100%;
       object-fit: contain;
-      border-radius: 16px;
+      border-radius: 14px;
     }
 
     .top-actions,
@@ -204,7 +204,7 @@
     }
 
     .premium-btn .btn-icon {
-      font-size: 15px;
+      font-size: 14px;
       transition: transform 0.28s cubic-bezier(.2,.8,.2,1);
     }
 
@@ -217,6 +217,64 @@
       background: var(--glass-bg);
       border-color: rgba(255,255,255,0.84);
       box-shadow: var(--glass-shadow);
+    }
+
+
+
+    .moodad-main-nav-btn {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.98), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,252,255,0.94) 46%, rgba(235,244,252,0.92) 100%);
+      border-color: rgba(255,255,255,0.96);
+      box-shadow:
+        0 18px 42px rgba(55, 83, 106, 0.16),
+        0 0 0 1px rgba(255,255,255,0.70) inset,
+        0 0 26px rgba(125, 183, 181, 0.18);
+      animation: moodadMainBtnBreath 2.8s ease-in-out infinite;
+    }
+
+    .moodad-main-nav-btn .btn-label {
+      color: var(--navy);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.55);
+    }
+
+    .moodad-main-nav-btn .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: linear-gradient(135deg, #1f3343 0%, #476171 100%);
+      box-shadow: 0 8px 18px rgba(24, 49, 67, 0.18);
+    }
+
+    .moodad-main-nav-btn:hover {
+      transform: translateY(-5px) scale(1.018);
+      box-shadow:
+        0 24px 54px rgba(55, 83, 106, 0.22),
+        0 0 0 1px rgba(255,255,255,0.82) inset,
+        0 0 34px rgba(125, 183, 181, 0.30);
+    }
+
+    .moodad-main-nav-btn:hover .btn-icon {
+      transform: translateX(4px) rotate(10deg);
+    }
+
+    @keyframes moodadMainBtnBreath {
+      0%, 100% {
+        box-shadow:
+          0 18px 42px rgba(55, 83, 106, 0.16),
+          0 0 0 1px rgba(255,255,255,0.70) inset,
+          0 0 20px rgba(125, 183, 181, 0.14);
+      }
+      50% {
+        box-shadow:
+          0 22px 50px rgba(55, 83, 106, 0.20),
+          0 0 0 1px rgba(255,255,255,0.84) inset,
+          0 0 34px rgba(125, 183, 181, 0.28);
+      }
     }
 
     .premium-btn--accent {
@@ -238,8 +296,8 @@
 
     .hero-title {
       margin: 0;
-      font-size: clamp(40px, 6vw, 78px);
-      line-height: 1.06;
+      font-size: clamp(32px, 4.6vw, 58px);
+      line-height: 1.08;
       font-weight: 900;
       letter-spacing: -0.06em;
       color: var(--navy);
@@ -247,20 +305,21 @@
     }
 
     .hero-sub {
-      margin: 30px 0 0;
-      max-width: 860px;
-      font-size: clamp(22px, 3vw, 34px);
-      line-height: 1.7;
+      margin: 22px 0 0;
+      max-width: none;
+      font-size: clamp(18px, 2.25vw, 26px);
+      line-height: 1.55;
       color: #787878;
       font-weight: 600;
       word-break: keep-all;
+      white-space: nowrap;
     }
 
     .hero-note {
-      margin: 18px 0 0;
+      margin: 14px 0 0;
       max-width: 720px;
-      font-size: clamp(18px, 2.2vw, 26px);
-      line-height: 1.65;
+      font-size: clamp(16px, 1.8vw, 21px);
+      line-height: 1.55;
       color: var(--navy);
       font-weight: 800;
       word-break: keep-all;
@@ -307,7 +366,7 @@
 
     .contact-card {
       width: 100%;
-      max-width: 900px;
+      max-width: 760px;
       margin: 0 auto;
       border-radius: var(--radius-card);
       overflow: hidden;
@@ -614,21 +673,7 @@
       filter: blur(0);
     }
 
-    /* 6 아래→위 조금 천천히 더 길게 */
-    .js .detail-card-6 {
-      transform: translateY(130px);
-      filter: blur(0);
-      transition-duration: 1.5s;
-    }
 
-    /* 7 살짝 튕기기 더 크게 */
-    .js .detail-card-7 {
-      transform: translateY(84px) scale(0.90);
-      filter: blur(0);
-    }
-    .js .detail-card-7.visible {
-      animation: popBounceOnce 1.15s cubic-bezier(.22,.61,.36,1);
-    }
 
     /* 8 흐렸다가 선명해지기 강화 */
     .js .detail-card-8 {
@@ -678,18 +723,7 @@
       filter: brightness(1.42) blur(6px);
     }
 
-    /* 16 오른쪽→왼쪽 */
-    .js .detail-card-16 {
-      transform: translateX(150px);
-      filter: blur(0);
-    }
 
-    @keyframes popBounceOnce {
-      0%   { transform: translateY(84px) scale(0.90); opacity: 0; }
-      50%  { transform: translateY(-12px) scale(1.05); opacity: 1; }
-      72%  { transform: translateY(6px) scale(0.985); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 1; }
-    }
 
     .blossom-layer {
       position: fixed;
@@ -772,6 +806,10 @@
         display: none;
       }
 
+      .moodad-main-nav-btn {
+        animation: none !important;
+      }
+
       .js .reveal {
         opacity: 1 !important;
         transform: none !important;
@@ -779,15 +817,135 @@
         transition: none !important;
       }
 
-      .js .detail-card-7.visible {
-        animation: none !important;
-      }
     }
 
     @media (min-width: 769px) {
       .detail-stack {
         max-width: 720px;
       }
+
+      .contact-card-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .contact-actions {
+        justify-content: center;
+      }
+
+      .contact-note {
+        max-width: 760px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+
+
+    /* ===== 스크롤 고정 미니 메뉴: PC/모바일 공통 ===== */
+    .moodad-scroll-mini-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2500;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-100%);
+      transition:
+        opacity 0.24s ease,
+        transform 0.24s ease,
+        visibility 0.24s ease;
+      background: transparent;
+      border-bottom: 0;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      pointer-events: none;
+    }
+
+    .moodad-scroll-mini-nav.is-visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .moodad-scroll-mini-inner {
+      width: min(calc(100% - 40px), var(--max));
+      height: 52px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: transparent;
+    }
+
+    @media (min-width: 769px) {
+      .moodad-scroll-mini-inner {
+        width: calc(100% - 72px);
+        max-width: none;
+      }
+
+      .moodad-scroll-mini-actions {
+        margin-left: auto;
+      }
+    }
+
+    .moodad-scroll-mini-logo {
+      display: inline-flex;
+      align-items: center;
+      font-size: 25px;
+      line-height: 1;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.07em;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    .moodad-scroll-mini-logo .mood {
+      color: #6fa3c6;
+    }
+
+    .moodad-scroll-mini-logo .ad {
+      color: #050505;
+    }
+
+    .moodad-scroll-mini-actions {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      background: transparent;
+    }
+
+    .moodad-scroll-mini-actions .premium-btn {
+      min-height: 36px;
+      padding: 0 16px;
+      border-radius: 16px;
+      font-size: 15px;
+      background-color: rgba(255,255,255,0.28);
+      box-shadow: 0 10px 24px rgba(55, 83, 106, 0.10);
+    }
+
+    .moodad-scroll-mini-actions .moodad-main-nav-btn {
+      animation: none;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255,255,255,0.76), transparent 34%),
+        linear-gradient(135deg, rgba(255,255,255,0.60) 0%, rgba(248,252,255,0.46) 46%, rgba(235,244,252,0.38) 100%);
+    }
+
+    .moodad-scroll-mini-actions .premium-btn--accent {
+      background: linear-gradient(135deg, rgba(125,183,181,0.74) 0%, rgba(130,172,207,0.74) 48%, rgba(141,159,217,0.74) 100%);
+    }
+
+    .moodad-scroll-mini-actions .moodad-main-nav-btn .btn-icon {
+      width: 24px;
+      height: 24px;
     }
 
     @media (max-width: 1080px) {
@@ -812,6 +970,51 @@
     }
 
     @media (max-width: 768px) {
+
+      .moodad-scroll-mini-inner {
+        width: min(calc(100% - 18px), var(--max));
+        height: 32px;
+        gap: 6px;
+      }
+
+      .moodad-scroll-mini-logo {
+        font-size: 16px;
+      }
+
+      .moodad-scroll-mini-actions {
+        gap: 5px;
+      }
+
+      .moodad-scroll-mini-actions .premium-btn {
+        min-height: 24px;
+        padding: 0 8px;
+        font-size: 11px;
+        border-radius: 10px;
+        gap: 4px;
+      }
+
+      .moodad-scroll-mini-actions .moodad-main-nav-btn {
+        color: #ffffff;
+        background: linear-gradient(135deg, rgba(125,183,181,0.74) 0%, rgba(130,172,207,0.74) 48%, rgba(141,159,217,0.74) 100%) !important;
+        border-color: rgba(255,255,255,0.24);
+        box-shadow: var(--accent-shadow);
+      }
+
+      .moodad-scroll-mini-actions .moodad-main-nav-btn .btn-label {
+        color: #ffffff;
+        text-shadow: none;
+      }
+
+      .moodad-scroll-mini-actions .moodad-main-nav-btn .btn-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 9px;
+        color: #ffffff;
+        background: transparent;
+        box-shadow: none;
+      }
+
+
       .container {
         width: min(calc(100% - 24px), var(--max));
       }
@@ -868,14 +1071,19 @@
         height: 52px;
       }
 
+      .hero-title {
+        font-size: clamp(26px, 7.2vw, 40px);
+      }
+
       .hero-sub {
-        font-size: 19px;
-        margin-top: 18px;
+        font-size: clamp(12px, 3.2vw, 15px);
+        margin-top: 14px;
+        white-space: nowrap;
       }
 
       .hero-note {
-        font-size: 16px;
-        margin-top: 14px;
+        font-size: clamp(13px, 3.5vw, 15px);
+        margin-top: 10px;
       }
 
       .detail-section {
@@ -900,8 +1108,6 @@
       .js .detail-card-3,
       .js .detail-card-4,
       .js .detail-card-5,
-      .js .detail-card-6,
-      .js .detail-card-7,
       .js .detail-card-8,
       .js .detail-card-9,
       .js .detail-card-10,
@@ -909,8 +1115,7 @@
       .js .detail-card-12,
       .js .detail-card-13,
       .js .detail-card-14,
-      .js .detail-card-15,
-      .js .detail-card-16 {
+      .js .detail-card-15 {
         filter: none !important;
       }
 
@@ -922,11 +1127,7 @@
         transform: translateX(-34px) !important;
       }
 
-      .js .detail-card-16 {
-        transform: translateX(34px) !important;
-      }
 
-      .js .detail-card-6,
       .js .detail-card-9,
       .js .detail-card-11,
       .js .detail-card-12,
@@ -944,9 +1145,6 @@
         filter: blur(8px) brightness(1.10) !important;
       }
 
-      .js .detail-card-7 {
-        transform: translateY(28px) scale(0.95) !important;
-      }
 
       .js .reveal.visible {
         transform: translateY(0) scale(1) !important;
@@ -1004,27 +1202,94 @@
         font-size: 13px;
       }
     }
-  </style>
+  
+
+    /* ===== 고정 상단바 배경 제거 + 모바일 얇게 최종 수정 ===== */
+    .moodad-scroll-mini-nav {
+      background: transparent !important;
+      border-bottom: 0 !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+
+    .moodad-scroll-mini-inner {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 768px) {
+      .moodad-scroll-mini-inner {
+        height: 30px !important;
+        width: min(calc(100% - 16px), var(--max)) !important;
+        gap: 5px !important;
+      }
+
+      .moodad-scroll-mini-logo {
+        font-size: 15px !important;
+      }
+
+      .moodad-scroll-mini-actions {
+        gap: 5px !important;
+      }
+
+      .moodad-scroll-mini-actions .premium-btn {
+        min-height: 23px !important;
+        padding: 0 7px !important;
+        font-size: 10.5px !important;
+        border-radius: 9px !important;
+        gap: 4px !important;
+      }
+
+      .moodad-scroll-mini-actions .moodad-main-nav-btn .btn-icon {
+        width: 15px !important;
+        height: 15px !important;
+        font-size: 8px !important;
+      }
+    }
+</style>
 </head>
 <body>
   <div class="blossom-layer" aria-hidden="true"></div>
 
+  <header class="moodad-scroll-mini-nav" aria-label="스크롤 고정 메뉴">
+    <div class="moodad-scroll-mini-inner">
+      <a href="./service-only.html" class="moodad-scroll-mini-logo" aria-label="무드애드 메인으로 이동">
+        <span class="mood">MOOD</span><span class="ad">AD</span>
+      </a>
+
+      <div class="moodad-scroll-mini-actions">
+        <a href="./service-only.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
+          <span class="btn-label">메인으로</span>
+          <span class="btn-icon">↗</span>
+        </a>
+
+        <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent">
+          <span class="btn-label">문의하기</span>
+          <span class="btn-icon">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+
   <section class="top-shell">
     <div class="container top-inner">
       <div class="top-bar">
-        <a href="index.html" class="brand reveal visible">
+        <a href="./service-only.html" class="brand reveal visible moodad-logo-main-link">
           <span class="brand-logo-box">
             <img src="무드애드.jpg" alt="무드애드 로고" class="brand-logo" />
           </span>
         </a>
 
         <div class="top-actions reveal visible">
-          <a href="./service-only.html" class="premium-btn premium-btn--glass">
-  <span class="btn-label">서비스</span>
+          <a href="./service-only.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
+  <span class="btn-label">메인으로</span>
   <span class="btn-icon">↗</span>
           </a>
 
-          <a href="https://open.kakao.com/me/mood_ad" target="_blank" rel="noopener" class="premium-btn premium-btn--accent">
+          <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent">
             <span class="btn-label">문의하기</span>
             <span class="btn-icon">→</span>
           </a>
@@ -1034,7 +1299,7 @@
       <div class="hero-copy reveal visible">
         <h1 class="hero-title">이 페이지에 들어오셨다는건,</h1>
         <p class="hero-sub">지금보다 매출을 올리고 싶어 들어오셨을 것이라고 생각합니다.</p>
-        <p class="hero-note">그 매출, 저희가 도와드릴 수 있습니다.</p>
+        <p class="hero-note">그렇다면, 저희가 도와드릴 수 있습니다.</p>
       </div>
     </div>
   </section>
@@ -1050,8 +1315,6 @@
         <div class="detail-card detail-card-3 reveal"><img src="3.jpg" alt="상세페이지 3" loading="lazy" /></div>
         <div class="detail-card detail-card-4 reveal"><img src="4.jpg" alt="상세페이지 4" loading="lazy" /></div>
         <div class="detail-card detail-card-5 reveal"><img src="5.jpg" alt="상세페이지 5" loading="lazy" /></div>
-        <div class="detail-card detail-card-6 reveal"><img src="6.jpg" alt="상세페이지 6" loading="lazy" /></div>
-        <div class="detail-card detail-card-7 reveal"><img src="7.jpg" alt="상세페이지 7" loading="lazy" /></div>
         <div class="detail-card detail-card-8 reveal"><img src="8.jpg" alt="상세페이지 8" loading="lazy" /></div>
         <div class="detail-card detail-card-9 reveal"><img src="9.jpg" alt="상세페이지 9" loading="lazy" /></div>
         <div class="detail-card detail-card-10 reveal"><img src="10.jpg" alt="상세페이지 10" loading="lazy" /></div>
@@ -1060,7 +1323,6 @@
         <div class="detail-card detail-card-13 reveal"><img src="13.jpg" alt="상세페이지 13" loading="lazy" /></div>
         <div class="detail-card detail-card-14 reveal"><img src="14.jpg" alt="상세페이지 14" loading="lazy" /></div>
         <div class="detail-card detail-card-15 reveal"><img src="15.jpg" alt="상세페이지 15" loading="lazy" /></div>
-        <div class="detail-card detail-card-16 reveal"><img src="16.jpg" alt="상세페이지 16" loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -1070,26 +1332,14 @@
       <div class="contact-card reveal">
         <div class="contact-card-inner">
           <span class="contact-eyebrow">Contact</span>
-          <h2 class="contact-title">여기까지 보셨다면,</h2>
-
-          <p class="contact-desc contact-desc-top">
-            정말 기회를 잡고 싶은<br />
-            간절한 분들일 것이라 생각합니다.
-          </p>
-
-          <p class="contact-desc contact-desc-gap">
-            그러나, <strong class="contact-warning">현재 진행 가능한 업체는 4팀까지입니다.</strong><br />
-            그 이후부터는 가격 인상 예정이니 양해 부탁드립니다.
-          </p>
-
           <div class="contact-actions">
-            <a href="https://open.kakao.com/me/mood_ad" target="_blank" rel="noopener" class="premium-btn premium-btn--accent premium-btn--large">
-              <span class="btn-label">카카오톡으로 문의하기</span>
+            <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--glass premium-btn--large">
+              <span class="btn-label">빠른 문의하기</span>
               <span class="btn-icon">→</span>
             </a>
 
-            <a href="tel:01051482579" class="premium-btn premium-btn--glass premium-btn--large">
-              <span class="btn-label">전화 문의하기</span>
+            <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent premium-btn--large moodad-pc-phone-benefit-link">
+              <span class="btn-label">70만원 신규 혜택 받기</span>
               <span class="btn-icon">↗</span>
             </a>
           </div>
@@ -1289,5 +1539,55 @@
       });
     })();
   </script>
+
+  <script id="moodad-main-phone-benefit-exact-link-all-devices">
+    (function () {
+      const phoneBenefitLink = document.querySelector('.moodad-pc-phone-benefit-link');
+      if (!phoneBenefitLink) return;
+
+      phoneBenefitLink.setAttribute('href', './service-only.html#contact-benefits-head');
+
+      phoneBenefitLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = './service-only.html#contact-benefits-head';
+      });
+    })();
+  </script>
+
+  <script id="moodad-logo-main-same-link">
+    (function () {
+      const logoLink = document.querySelector('.moodad-logo-main-link');
+      const mainLink = document.querySelector('.moodad-main-nav-btn');
+      if (!logoLink || !mainLink) return;
+
+      logoLink.setAttribute('href', mainLink.getAttribute('href') || './service-only.html');
+    })();
+  </script>
+
+
+  <script id="moodad-scroll-mini-nav-control">
+    (function () {  
+      const nav = document.querySelector('.moodad-scroll-mini-nav');
+      if (!nav) return;
+
+      let ticking = false;
+
+      function updateMiniNav() {
+        const shouldShow = window.scrollY > 120;
+        nav.classList.toggle('is-visible', shouldShow);
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function () {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateMiniNav);
+      }, { passive: true });
+
+      window.addEventListener('load', updateMiniNav, { once: true });
+      updateMiniNav();
+    })();
+  </script>
 </body>
 </html>
+  
