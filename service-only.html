@@ -18066,37 +18066,23 @@ document.addEventListener("DOMContentLoaded", function () {
       will-change: transform, opacity !important;
     }
   }
-  /* ===== 실제 모바일 브라우저 높이 차이 보정 ===== */
+ /* ===== 실제 폰 모바일 화면 강제 보정 ===== */
 @media (max-width: 820px) {
   html,
   body {
-    width: 100%;
-    min-height: 100%;
     overflow-x: hidden !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 100% !important;
   }
 
   .hero-shell {
     width: 100% !important;
-    min-height: 100svh !important;
-    height: 100svh !important;
+    max-width: 100% !important;
   }
 
-  .stage {
-    min-height: 100svh !important;
-  }
-}
-
-/* iOS / 실제 폰 주소창 대응 */
-@supports (height: 100dvh) {
-  @media (max-width: 820px) {
-    .hero-shell {
-      height: 100dvh !important;
-      min-height: 100dvh !important;
-    }
-
-    .stage {
-      min-height: 100dvh !important;
-    }
+  .container {
+    width: calc(100% - 28px) !important;
   }
 }
 </style>
