@@ -16846,6 +16846,76 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 <!-- ===== /MOODAD MOBILE ONLY: 태양 문장 한 줄 고정 / 글자크기 유지 ===== -->
+
+
+<!-- ===== MOODAD MOBILE ONLY FINAL: 혜택 받기 자리에서 문의하기 양식 노출 ===== -->
+<style id="moodad-mobile-inquiry-at-benefit-button-place-final-20260429">
+  @media (max-width: 820px){
+    #contact .contact-box{
+      display: grid !important;
+      grid-template-columns: 1fr !important;
+      gap: 0 !important;
+      align-items: stretch !important;
+      overflow: visible !important;
+    }
+
+    #contact .contact-benefits{
+      grid-column: 1 !important;
+      grid-row: 1 !important;
+    }
+
+    #contact .moodad-pc-benefit-open{
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      justify-self: center !important;
+      align-self: start !important;
+      margin: 24px auto 0 !important;
+    }
+
+    #contact .contact-inquiry{
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      justify-self: stretch !important;
+      align-self: start !important;
+      margin-top: 24px !important;
+      max-height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      overflow: hidden !important;
+      transform: translate3d(0, 14px, 0) scale(.985) !important;
+      filter: blur(10px) !important;
+      z-index: 1 !important;
+    }
+
+    #contact .contact-box.moodad-benefit-opened .moodad-pc-benefit-open{
+      display: none !important;
+    }
+
+    #contact .contact-box.moodad-benefit-opened .contact-inquiry{
+      grid-column: 1 !important;
+      grid-row: 2 !important;
+      max-height: 2400px !important;
+      margin-top: 24px !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      overflow: visible !important;
+      transform: translate3d(0, 0, 0) scale(1) !important;
+      filter: blur(0) !important;
+      transition:
+        max-height .58s cubic-bezier(.18,.86,.22,1),
+        opacity .58s ease,
+        filter .58s ease,
+        transform .58s cubic-bezier(.18,.86,.22,1),
+        visibility 0s linear 0s !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD MOBILE ONLY FINAL: 혜택 받기 자리에서 문의하기 양식 노출 ===== -->
+
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
