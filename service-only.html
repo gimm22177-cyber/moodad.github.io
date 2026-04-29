@@ -16539,6 +16539,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 <script id="moodad-contact-benefit-anchor-scroll-fix-all-devices-20260428">
 (function () {
+  var didInitialMobileBenefitMove = false;
+
   function isPc() {
     return !window.matchMedia || window.matchMedia('(min-width: 821px)').matches;
   }
@@ -16547,12 +16549,24 @@ document.addEventListener("DOMContentLoaded", function () {
     return document.documentElement.getAttribute('data-moodad-benefit-hash-pending') === '1';
   }
 
+  function hasBenefitHash() {
+    return window.location.hash === '#contact-benefits-head';
+  }
+
   function shouldMoveToBenefitHead() {
-    return window.location.hash === '#contact-benefits-head' || hasPendingBenefitHash();
+    return hasBenefitHash() || hasPendingBenefitHash();
   }
 
   function getOffset() {
     return window.innerWidth <= 820 ? 74 : 88;
+  }
+
+  function removeMobileBenefitHashOnce() {
+    if (isPc() || !hasBenefitHash()) return;
+
+    try {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    } catch (e) {}
   }
 
   function scrollToBenefitHead() {
@@ -16576,14 +16590,26 @@ document.addEventListener("DOMContentLoaded", function () {
   function runScrollFix() {
     if (!shouldMoveToBenefitHead()) return;
 
+    var mobile = !isPc();
+
     scrollToBenefitHead();
     requestAnimationFrame(scrollToBenefitHead);
     setTimeout(scrollToBenefitHead, 80);
     setTimeout(scrollToBenefitHead, 220);
+
+    if (mobile) {
+      setTimeout(function () {
+        scrollToBenefitHead();
+        removeMobileBenefitHashOnce();
+        didInitialMobileBenefitMove = true;
+      }, 420);
+      return;
+    }
+
     setTimeout(scrollToBenefitHead, 520);
     setTimeout(function(){
       scrollToBenefitHead();
-      if (isPc()) restoreBenefitHashAfterMove();
+      restoreBenefitHashAfterMove();
     }, 900);
   }
 
@@ -16594,8 +16620,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.addEventListener('load', runScrollFix);
-  window.addEventListener('hashchange', runScrollFix);
+  window.addEventListener('hashchange', function () {
+    didInitialMobileBenefitMove = false;
+    runScrollFix();
+  });
+
   window.addEventListener('resize', function () {
+    if (!isPc()) return;
     if (shouldMoveToBenefitHead()) setTimeout(scrollToBenefitHead, 120);
   });
 })();
@@ -16800,7 +16831,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- ===== MOODAD MOBILE ONLY: 태양 문장 한 줄 고정 / 글자크기 유지 ===== -->
-<style id="moodad-mobile-sun-oneline-only-20260429-v2">
+<style id="moodad-mobile-sun-oneline-only-20260429-v3">
   @media (max-width: 920px) {
     #problem .problem-panel.problem-03 .problem-brief .moodad-sun-oneline-mobile {
       display: inline-block !important;
@@ -16809,15 +16840,8 @@ document.addEventListener("DOMContentLoaded", function () {
       overflow-wrap: normal !important;
       font-size: inherit !important;
       line-height: inherit !important;
+      letter-spacing: inherit !important;
       max-width: none !important;
-      letter-spacing: -0.12em !important;
-    }
-  }
-
-  @media (max-width: 390px) {
-    #problem .problem-panel.problem-03 .problem-brief .moodad-sun-oneline-mobile {
-      font-size: inherit !important;
-      letter-spacing: -0.16em !important;
     }
   }
 </style>
