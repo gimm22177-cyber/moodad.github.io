@@ -8872,6 +8872,124 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 }
 
 </style>
+<style>
+/* ===== 진심/본질/희소성 클릭 유도 빨간 점 조정 (PC+모바일) ===== */
+.problem-section .problem-panel {
+  position: relative !important;
+}
+
+.problem-section .problem-click-dot {
+  position: absolute !important;
+  top: 18px !important;
+  right: 18px !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 999px !important;
+  background: #ff3b3b !important;
+  z-index: 9 !important;
+  pointer-events: none !important;
+  opacity: .78 !important;
+  box-shadow:
+    0 0 0 3px rgba(255,59,59,.08),
+    0 0 7px rgba(255,59,59,.34) !important;
+  animation: problemClickDotSoft 1.8s ease-in-out infinite !important;
+  transition: opacity .18s ease, transform .18s ease !important;
+}
+
+.problem-section .problem-click-dot::after {
+  content: none !important;
+}
+
+.problem-section .problem-panel:hover .problem-click-dot,
+.problem-section .problem-panel.is-active .problem-click-dot,
+.problem-section .problem-panel.active .problem-click-dot,
+.problem-section .problem-panel.open .problem-click-dot {
+  opacity: 0 !important;
+  transform: scale(.65) !important;
+  animation: none !important;
+}
+
+@keyframes problemClickDotSoft {
+  0%, 100% {
+    opacity: .55;
+    transform: scale(.95);
+    box-shadow:
+      0 0 0 2px rgba(255,59,59,.06),
+      0 0 5px rgba(255,59,59,.24);
+  }
+  50% {
+    opacity: .9;
+    transform: scale(1.08);
+    box-shadow:
+      0 0 0 4px rgba(255,59,59,.10),
+      0 0 9px rgba(255,59,59,.38);
+  }
+}
+
+@media (max-width: 820px) {
+  .problem-section .problem-click-dot {
+    top: 14px !important;
+    right: 14px !important;
+    width: 7px !important;
+    height: 7px !important;
+    box-shadow:
+      0 0 0 3px rgba(255,59,59,.08),
+      0 0 6px rgba(255,59,59,.32) !important;
+  }
+}
+/* ===== /진심/본질/희소성 클릭 유도 빨간 점 조정 ===== */
+</style>
+
+
+
+<style id="moodad-pc-only-service-small-bold-gap-fix">
+/* ===== PC only: 6가지 전략 작은글씨/큰글씨 사이 여백 보정 ===== */
+@media (min-width: 821px) {
+  .services-section .service-board .service-wide .service-copy p > .service-line.service-bold {
+    display: block !important;
+    transform: translate3d(0, 14px, 0) !important;
+    margin-top: 0 !important;
+  }
+}
+</style>
+
+
+<style id="moodad-six-strategy-bold-letter-line-final">
+/* ===== 6가지 전략 큰글씨 자간/행간 최종 조정 ===== */
+@media screen and (min-width: 821px) {
+  .services-section .service-board .service-wide .service-copy p > .service-line.service-bold {
+    letter-spacing: -0.025em !important;
+    line-height: 1.28 !important;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .services-section .service-board .service-wide .service-copy p > .service-line.service-bold {
+    letter-spacing: -0.035em !important;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .services-section .service-board .service-wide .service-copy p > .service-line.service-bold {
+    letter-spacing: -0.032em !important;
+  }
+}
+</style>
+
+<style id="moodad-service-bold-letter-spacing-final-plus">
+/* ===== 6가지 전략 패널 큰글씨 자간만 추가 조정: PC / MOBILE ===== */
+@media screen and (min-width: 821px) {
+  .services-section .service-line.service-bold {
+    letter-spacing: -0.045em !important;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .services-section .service-line.service-bold {
+    letter-spacing: -0.035em !important;
+  }
+}
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -9322,6 +9440,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 <div class="problem-track reveal">
 <article class="problem-panel problem-01">
+<span class="problem-click-dot" aria-hidden="true"></span>
 <div class="problem-panel-inner">
 <div class="problem-panel-top">
 <div aria-hidden="true" class="problem-icon">
@@ -9345,6 +9464,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 </article>
 <article class="problem-panel problem-02">
+<span class="problem-click-dot" aria-hidden="true"></span>
 <div class="problem-panel-inner">
 <div class="problem-panel-top">
 <div aria-hidden="true" class="problem-icon">
@@ -9362,7 +9482,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="problem-kicker">Essence</div>
 <h3 class="problem-word">본질</h3>
 <div class="problem-detail">
-<h3 class="problem-title">본질이 없으면<br>유지할 수 없습니다.</h3>
+<h3 class="problem-title moodad-pc-title-br-target">본질이 없으면<br class="moodad-pc-only-title-br"><span class="moodad-mobile-title-space"> </span>유지할 수 없습니다.</h3>
 <div class="problem-text-spacer" aria-hidden="true"></div>
 <div class="problem-brief">반짝하는 효과는 누구나 낼 수 있지만,<br/>본질이 흔들린다면 절대 성과는 유지될 수 없습니다.<br/><span style="color:#18A8F1 !important;">대표님의 매장은 ‘성공’을 맞이할 준비가 되어 있으신가요?</span></div>
 </div>
@@ -9370,6 +9490,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 </article>
 <article class="problem-panel problem-03">
+<span class="problem-click-dot" aria-hidden="true"></span>
 <div class="problem-panel-inner">
 <div class="problem-panel-top">
 <div aria-hidden="true" class="problem-icon">
@@ -9385,7 +9506,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="problem-kicker">Scarcity</div>
 <h3 class="problem-word">희소성</h3>
 <div class="problem-detail">
-<h3 class="problem-title">한 지역, 한 업종,<br>단 한 곳만.</h3>
+<h3 class="problem-title moodad-pc-title-br-target">한 지역, 한 업종,<br class="moodad-pc-only-title-br"><span class="moodad-mobile-title-space"> </span>단 한 곳만.</h3>
 <div class="problem-text-spacer" aria-hidden="true"></div>
 <div class="problem-brief"><span class="moodad-problem-brief-oneline">하늘에서 태양은 하나뿐입니다.<br/>저희는 같은 업종이라면</span><br/><span class="moodad-sun-oneline-mobile" style="color:#18A8F1 !important;">지역당 딱 1곳만 태양으로 만들기 위해 노력합니다.</span><br/>현재 진행 중인 업체와 업종이 겹친다면 대기를 해주셔야 합니다.</div>
 </div>
@@ -9398,7 +9519,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <section class="between-message-section">
 <div class="container">
 <div class="between-message-inner reveal panel-motion-copy">
-<p class="between-message-cta"><span class="subtle-bulb-blink">원하시는 목표를 이룰 준비가 되셨나요
+<p class="between-message-cta"><span class="subtle-bulb-blink"><span style="color:#111111 !important;">모두를 만족시키기보다,</span><br><br><span style="color:#18A8F1 !important;">&quot;선택된 소수에게 압도적인 결과를 약속합니다.&quot;</span>
 </span></p>
 </div>
 </div>
@@ -16775,6 +16896,132 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- ===== /MOODAD FINAL REQUEST PATCH 20260430 ===== -->
 
+
+<!-- ===== MOODAD FIX: 6가지 전략 패널 뒤 연한 회색 판 제거 / 구조·글자·크기 미수정 ===== -->
+<style id="moodad-six-strategy-gray-plate-remove-final">
+  /*
+    요청 범위: 6가지 전략 패널 뒤로 비치는 연한 회색 사각형/판만 제거
+    - 패널 크기, 글자, 이미지, 배치, 애니메이션 구조 변경 없음
+    - 바깥으로 밀려 보이는 ::before 보조 배경/그림자만 투명화
+  */
+  .services-section .service-board {
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+  }
+
+  .services-section .service-wide {
+    overflow: hidden !important;
+    background-clip: padding-box !important;
+    isolation: isolate !important;
+  }
+
+  .services-section .service-wide::before,
+  .services-section .service-wide.show::before,
+  .services-section .service-wide:hover::before {
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    transform: none !important;
+  }
+
+  .services-section .service-wide::after {
+    border-radius: inherit !important;
+    background-clip: padding-box !important;
+  }
+
+  .services-section .service-media {
+    background-clip: padding-box !important;
+  }
+</style>
+<!-- ===== /MOODAD FIX: 6가지 전략 패널 뒤 연한 회색 판 제거 ===== -->
+
+
+
+<!-- ===== MOODAD PC ONLY: 첫달 세팅비 배지 위치 수정 / 모바일 변경 없음 ===== -->
+<style id="moodad-pc-first-benefit-badge-under-free-note-final-20260430">
+  @media (min-width: 821px){
+    #contact .moodad-first-benefit-text{
+      position: relative !important;
+      padding-right: 360px !important;
+    }
+
+    #contact .moodad-first-benefit-right-stack{
+      position: absolute !important;
+      right: 0 !important;
+      top: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+      justify-content: flex-start !important;
+      gap: 7px !important;
+      width: max-content !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      white-space: nowrap !important;
+      z-index: 3 !important;
+    }
+
+    #contact .moodad-first-benefit-right-stack .moodad-first-benefit-note{
+      position: static !important;
+      right: auto !important;
+      top: auto !important;
+      transform: none !important;
+      order: 1 !important;
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+    }
+
+    #contact .moodad-first-benefit-right-stack .contact-benefit-badge{
+      position: static !important;
+      order: 2 !important;
+      margin: 0 !important;
+      flex: 0 0 auto !important;
+      align-self: flex-end !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD PC ONLY: 첫달 세팅비 배지 위치 수정 / 모바일 변경 없음 ===== -->
+
+
+
+<!-- ===== MOODAD PATCH: PC 전용 본질/희소성 제목 줄바꿈 + 간격 확장 / 모바일 원복 ===== -->
+<style id="moodad-pc-only-problem-title-br-gap-fix">
+.moodad-mobile-title-space{display:none !important;}
+
+@media (min-width:821px){
+  .problem-panel.problem-02 .problem-detail .problem-title.moodad-pc-title-br-target,
+  .problem-panel.problem-03 .problem-detail .problem-title.moodad-pc-title-br-target{
+    line-height:1.16 !important;
+  }
+
+  .problem-panel.problem-02 .problem-detail .problem-text-spacer,
+  .problem-panel.problem-03 .problem-detail .problem-text-spacer{
+    flex-basis:34px !important;
+    height:34px !important;
+    min-height:34px !important;
+  }
+}
+
+@media (max-width:820px){
+  .problem-title br.moodad-pc-only-title-br{
+    display:none !important;
+  }
+
+  .moodad-mobile-title-space{
+    display:inline !important;
+  }
+
+  .problem-panel.problem-02 .problem-detail .problem-text-spacer,
+  .problem-panel.problem-03 .problem-detail .problem-text-spacer{
+    flex-basis:14px !important;
+    height:14px !important;
+    min-height:14px !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PATCH ===== -->
+
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
@@ -18362,3 +18609,285 @@ document.addEventListener("DOMContentLoaded", function () {
 })();
 </script>
 <!-- ===== /MOODAD MOBILE ONLY FINAL: STEP ORB HIDE BEHIND PANELS ===== -->
+
+<!-- ===== MOODAD PC ONLY FINAL: 6가지 전략 hover 확대/커짐 완전 제거 ===== -->
+<style id="moodad-pc-six-strategy-remove-hover-scale-final-20260430">
+  @media (min-width: 821px) {
+    /* PC 6가지 전략 패널 hover 확대만 제거 / 모바일 변경 없음 / 스크롤 회전 진입 효과 유지 */
+    .services-section .service-wide.show:hover,
+    .services-section .service-wide.show:focus-within,
+    .services-section .service-wide.show:active,
+    .services-section .service-wide.service-flip-ready:hover,
+    .services-section .service-wide.service-flip-ready:focus-within,
+    .services-section .service-wide.service-flip-ready:active,
+    .services-section .service-wide.service-flip-ready.service-flip-in:hover,
+    .services-section .service-wide.service-flip-ready.service-flip-in:focus-within,
+    .services-section .service-wide.service-flip-ready.service-flip-in:active,
+    .services-section .service-wide.service-flip-ready.service-card-inview-final:hover,
+    .services-section .service-wide.service-flip-ready.service-card-inview-final:focus-within,
+    .services-section .service-wide.service-flip-ready.service-card-inview-final:active {
+      transform: perspective(1600px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0) scale(1) !important;
+      filter: none !important;
+      transition-property: opacity, transform !important;
+      will-change: auto !important;
+    }
+
+    .services-section .service-wide:hover .service-copy,
+    .services-section .service-wide:focus-within .service-copy,
+    .services-section .service-wide:hover .service-media,
+    .services-section .service-wide:focus-within .service-media,
+    .services-section .service-wide:hover .service-media img,
+    .services-section .service-wide:focus-within .service-media img {
+      transform: translate3d(0, 0, 0) !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+
+    .services-section .service-wide:hover::before,
+    .services-section .service-wide:focus-within::before,
+    .services-section .service-wide:hover::after,
+    .services-section .service-wide:focus-within::after,
+    .services-section .service-wide.service-flip-ready.service-flip-in:hover::after,
+    .services-section .service-wide.service-flip-ready.service-flip-in:focus-within::after {
+      transform: translate3d(0, 0, 0) !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD PC ONLY FINAL: 6가지 전략 hover 확대/커짐 완전 제거 ===== -->
+
+
+<!-- ===== MOODAD PC ONLY FINAL: 6가지 전략 부드러운 회전 + 스크롤 위/아래 재실행 / 크기·모바일 미수정 ===== -->
+<style id="moodad-pc-six-strategy-smoother-rotate-scroll-both-20260430">
+  @media (min-width: 821px) {
+    .services-section .service-wide.moodad-final-rotate-card {
+      transform-origin: center center !important;
+      transform-style: flat !important;
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+      will-change: auto !important;
+      filter: none !important;
+      animation: none !important;
+    }
+    .services-section .service-wide.moodad-final-rotate-card:hover,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within,
+    .services-section .service-wide.moodad-final-rotate-card:active {
+      transform: perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1) !important;
+      filter: none !important;
+    }
+    .services-section .service-wide.moodad-final-rotate-card:hover .service-copy,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-copy,
+    .services-section .service-wide.moodad-final-rotate-card:hover .service-media,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-media,
+    .services-section .service-wide.moodad-final-rotate-card:hover .service-media img,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-media img,
+    .services-section .service-wide.moodad-final-rotate-card:hover::before,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within::before,
+    .services-section .service-wide.moodad-final-rotate-card:hover::after,
+    .services-section .service-wide.moodad-final-rotate-card:focus-within::after {
+      transform: translate3d(0,0,0) scale(1) !important;
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+<script id="moodad-pc-six-strategy-smoother-rotate-scroll-both-20260430">
+(function(){
+  var mq = window.matchMedia('(min-width: 821px)');
+  var observer = null;
+  var lastY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  var timers = [];
+  function clearTimers(){ timers.forEach(function(t){ clearTimeout(t); }); timers = []; }
+  function setImp(el, prop, value){ el.style.setProperty(prop, value, 'important'); }
+  function removeConflictClasses(el){
+    el.classList.remove('service-flip-ready','service-flip-in','service-card-inview-final','moodad-service-flip-active-layer','moodad-card-effect-ready','moodad-card-effect-in','moodad-card-rotate-ready','moodad-card-rotate-in','moodad-snap-rotate-done');
+  }
+  function getCards(){
+    var section = document.querySelector('.services-section');
+    if(!section) return [];
+    return Array.prototype.slice.call(section.querySelectorAll('.service-wide'));
+  }
+  function detachOldCardListeners(){
+    if(!mq.matches) return;
+    getCards().forEach(function(card){
+      if(card.dataset.moodadFinalRotateCloned === '1') return;
+      var clone = card.cloneNode(true);
+      clone.dataset.moodadFinalRotateCloned = '1';
+      removeConflictClasses(clone);
+      clone.classList.add('moodad-final-rotate-card');
+      card.parentNode.replaceChild(clone, card);
+    });
+  }
+  function lockFinal(card){
+    removeConflictClasses(card);
+    card.classList.add('show');
+    setImp(card, 'opacity', '1');
+    setImp(card, 'filter', 'none');
+    setImp(card, 'will-change', 'auto');
+    setImp(card, 'animation', 'none');
+    setImp(card, 'transition', 'none');
+    setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
+  }
+  function prepare(card, fromUp){
+    removeConflictClasses(card);
+    card.classList.add('moodad-final-rotate-card');
+    setImp(card, 'animation', 'none');
+    setImp(card, 'transition', 'none');
+    setImp(card, 'opacity', '0');
+    setImp(card, 'filter', 'none');
+    setImp(card, 'will-change', 'transform, opacity');
+    setImp(card, 'transform-origin', 'center center');
+    setImp(card, 'backface-visibility', 'hidden');
+    setImp(card, '-webkit-backface-visibility', 'hidden');
+    var rot = fromUp ? -42 : 56;
+    var y = fromUp ? -14 : 20;
+    setImp(card, 'transform', 'perspective(1500px) rotateX(' + rot + 'deg) rotateY(0deg) translate3d(0,' + y + 'px,0) scale(1)');
+  }
+  function animateIn(card, fromUp){
+    if(!mq.matches) return;
+    removeConflictClasses(card);
+    prepare(card, fromUp);
+    card.offsetHeight;
+    requestAnimationFrame(function(){
+      setImp(card, 'transition', 'transform 620ms cubic-bezier(.18,.82,.22,1), opacity 210ms ease-out');
+      setImp(card, 'opacity', '1');
+      setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
+      card.classList.add('show');
+      var t = setTimeout(function(){ lockFinal(card); }, 660);
+      timers.push(t);
+    });
+  }
+  function setup(){
+    if(!mq.matches) return;
+    clearTimers();
+    detachOldCardListeners();
+    var cards = getCards();
+    if(!cards.length) return;
+    cards.forEach(function(card){ removeConflictClasses(card); card.classList.add('moodad-final-rotate-card'); lockFinal(card); });
+    if(observer) observer.disconnect();
+    observer = new IntersectionObserver(function(entries){
+      var nowY = window.pageYOffset || document.documentElement.scrollTop || 0;
+      var fromUp = nowY < lastY;
+      lastY = nowY;
+      entries.forEach(function(entry){
+        var card = entry.target;
+        if(entry.isIntersecting){ animateIn(card, fromUp); }
+        else{ prepare(card, fromUp); }
+      });
+    }, { threshold: 0.34, rootMargin: '-4% 0px -8% 0px' });
+    cards.forEach(function(card){ observer.observe(card); });
+  }
+  function teardownMobile(){ if(observer) observer.disconnect(); observer = null; clearTimers(); }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', setup); } else { setup(); }
+  window.addEventListener('load', function(){ setTimeout(setup, 120); }, { passive:true });
+  window.addEventListener('resize', function(){ if(mq.matches){ setTimeout(setup, 120); } else { teardownMobile(); } }, { passive:true });
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY FINAL: 6가지 전략 부드러운 회전 + 스크롤 위/아래 재실행 / 크기·모바일 미수정 ===== -->
+
+<!-- ===== MOODAD PATCH: 매출 상승 사례 상단바 은은 강조 + 숨쉬는 효과 PC/MOBILE ONLY ===== -->
+<style id="moodad-success-case-nav-soft-breath-patch">
+.topbar .topnav a.success-case-nav{color:#f7fbff!important;font-weight:950!important;background:rgba(24,168,241,.18)!important;border:1px solid rgba(24,168,241,.42)!important;box-shadow:0 0 0 1px rgba(24,168,241,.10),0 0 10px rgba(24,168,241,.18),inset 0 1px 0 rgba(255,255,255,.12)!important;text-shadow:0 1px 5px rgba(0,0,0,.20)!important;position:relative!important;isolation:isolate!important;overflow:hidden!important;animation:moodadSuccessCaseNavBreath 2.15s ease-in-out infinite!important;}
+.topbar:not(.scrolled) .topnav a.success-case-nav,.topbar.scrolled .topnav a.success-case-nav{color:#f7fbff!important;background:rgba(24,168,241,.18)!important;text-shadow:0 1px 5px rgba(0,0,0,.20)!important;}
+.topbar .topnav a.success-case-nav::before{content:""!important;position:absolute!important;inset:-1px!important;border-radius:inherit!important;z-index:-1!important;background:radial-gradient(circle at 50% 50%,rgba(24,168,241,.26),rgba(24,168,241,.08) 48%,transparent 72%)!important;opacity:.42!important;transform:scale(.97)!important;pointer-events:none!important;animation:moodadSuccessCaseNavSoftGlow 2.15s ease-in-out infinite!important;}
+.topbar .topnav a.success-case-nav::after{content:""!important;position:absolute!important;left:-42%!important;top:-45%!important;width:30%!important;height:190%!important;border-radius:999px!important;background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent)!important;opacity:0!important;transform:rotate(22deg) translateX(0)!important;pointer-events:none!important;animation:moodadSuccessCaseNavSheenSoft 3.2s ease-in-out infinite!important;}
+.topbar .topnav a.success-case-nav:hover{color:#ffffff!important;background:rgba(24,168,241,.26)!important;transform:translateY(-1px)!important;box-shadow:0 0 0 1px rgba(24,168,241,.18),0 0 16px rgba(24,168,241,.28),inset 0 1px 0 rgba(255,255,255,.18)!important;}
+@keyframes moodadSuccessCaseNavBreath{0%,100%{background:rgba(24,168,241,.15);box-shadow:0 0 0 1px rgba(24,168,241,.08),0 0 8px rgba(24,168,241,.14),inset 0 1px 0 rgba(255,255,255,.10);}50%{background:rgba(24,168,241,.24);box-shadow:0 0 0 1px rgba(24,168,241,.16),0 0 16px rgba(24,168,241,.28),inset 0 1px 0 rgba(255,255,255,.16);}}
+@keyframes moodadSuccessCaseNavSoftGlow{0%,100%{opacity:.26;transform:scale(.97);}50%{opacity:.52;transform:scale(1.025);}}
+@keyframes moodadSuccessCaseNavSheenSoft{0%,52%{transform:rotate(22deg) translateX(0);opacity:0;}62%{opacity:.34;}82%,100%{transform:rotate(22deg) translateX(430%);opacity:0;}}
+@media(max-width:820px){.topbar .topnav a.success-case-nav{background:rgba(24,168,241,.17)!important;border-color:rgba(24,168,241,.40)!important;box-shadow:0 0 0 1px rgba(24,168,241,.09),0 0 8px rgba(24,168,241,.16),inset 0 1px 0 rgba(255,255,255,.10)!important;}.topbar .topnav a.success-case-nav::before{opacity:.34!important;}}
+</style>
+<!-- ===== /MOODAD PATCH: 매출 상승 사례 상단바 은은 강조 + 숨쉬는 효과 PC/MOBILE ONLY ===== -->
+
+<!-- ===== MOODAD PATCH: 매출 상승 사례 글자색 원복 + 커졌다 작아졌다 숨쉬는 효과 ===== -->
+<style id="moodad-success-case-nav-original-text-scale-breath-final">
+/* 글자색은 기존 상단바 상태 그대로 유지하고, 배경/크기 숨쉬기만 적용 */
+.topbar .topnav a.success-case-nav{
+  position:relative !important;
+  isolation:isolate !important;
+  overflow:visible !important;
+  transform-origin:center center !important;
+  background:rgba(24,168,241,.075) !important;
+  border:1px solid rgba(24,168,241,.22) !important;
+  box-shadow:0 0 0 1px rgba(24,168,241,.055), 0 0 7px rgba(24,168,241,.12) !important;
+  animation:moodadSuccessCaseRealScaleBreath 1.85s ease-in-out infinite !important;
+}
+
+/* 글자색 원복: 일반 상단바와 같은 색 유지 */
+.topbar:not(.scrolled) .topnav a.success-case-nav{
+  color:#6f6f77 !important;
+  -webkit-text-stroke:0 !important;
+  text-stroke:0 !important;
+  text-shadow:none !important;
+}
+.topbar.scrolled .topnav a.success-case-nav{
+  color:#111111 !important;
+  -webkit-text-stroke:0 !important;
+  text-stroke:0 !important;
+  text-shadow:none !important;
+}
+
+/* 뒤쪽 빛도 같이 숨쉬게, 단 과하지 않게 */
+.topbar .topnav a.success-case-nav::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:-4px -8px !important;
+  border-radius:999px !important;
+  z-index:-1 !important;
+  background:radial-gradient(circle at center, rgba(24,168,241,.20), rgba(24,168,241,.065) 48%, rgba(24,168,241,0) 72%) !important;
+  box-shadow:0 0 9px rgba(24,168,241,.14) !important;
+  opacity:.36 !important;
+  transform:scale(.96) !important;
+  pointer-events:none !important;
+  animation:moodadSuccessCaseGlowBreath 1.85s ease-in-out infinite !important;
+}
+
+/* 작은 지나가는 빛은 유지하되 아주 약하게 */
+.topbar .topnav a.success-case-nav::after{
+  content:"" !important;
+  position:absolute !important;
+  left:-38% !important;
+  top:-36% !important;
+  width:26% !important;
+  height:170% !important;
+  border-radius:999px !important;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent) !important;
+  opacity:0 !important;
+  transform:rotate(22deg) translateX(0) !important;
+  pointer-events:none !important;
+  animation:moodadSuccessCaseSheenSoft 3.6s ease-in-out infinite !important;
+}
+
+.topbar .topnav a.success-case-nav:hover{
+  background:rgba(24,168,241,.105) !important;
+  box-shadow:0 0 0 1px rgba(24,168,241,.075), 0 0 10px rgba(24,168,241,.16) !important;
+}
+
+@keyframes moodadSuccessCaseRealScaleBreath{
+  0%,100%{transform:scale(1);}
+  50%{transform:scale(1.045);}
+}
+@keyframes moodadSuccessCaseGlowBreath{
+  0%,100%{opacity:.22; transform:scale(.94);}
+  50%{opacity:.48; transform:scale(1.08);}
+}
+@keyframes moodadSuccessCaseSheenSoft{
+  0%,58%,100%{opacity:0; transform:rotate(22deg) translateX(0);}
+  70%{opacity:.32;}
+  86%{opacity:0; transform:rotate(22deg) translateX(420%);}
+}
+
+@media(max-width:820px){
+  .topbar .topnav a.success-case-nav{
+    background:rgba(24,168,241,.07) !important;
+    border-color:rgba(24,168,241,.20) !important;
+    box-shadow:0 0 0 1px rgba(24,168,241,.045), 0 0 6px rgba(24,168,241,.11) !important;
+  }
+  .topbar .topnav a.success-case-nav::before{
+    inset:-3px -6px !important;
+    opacity:.32 !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PATCH: 매출 상승 사례 글자색 원복 + 커졌다 작아졌다 숨쉬는 효과 ===== -->
