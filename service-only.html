@@ -1010,7 +1010,7 @@
       .badge{width:54px;height:54px;right:14px;bottom:14px;font-size:10px}
 
       .blind-marketing-section {
-        padding: 62px 0 56px;
+        padding: 186px 0 168px;
       }
 
       .blind-marketing-inner {
@@ -1632,7 +1632,7 @@
     .blind-marketing-section {
       position: relative;
       margin: 0;
-      padding: 72px 20px 96px;
+      padding: 216px 20px 288px;
       overflow: hidden;
       background: #f3f1ec;
     }
@@ -1671,7 +1671,7 @@
 
     @media (max-width: 1024px) {
       .blind-marketing-section {
-        padding: 58px 18px 76px;
+        padding: 174px 18px 228px;
       }
 
       .blind-marketing-title {
@@ -1686,7 +1686,7 @@
 
     @media (max-width: 767px) {
       .blind-marketing-section {
-        padding: 44px 14px 58px;
+        padding: 132px 14px 174px;
       }
 
       .blind-marketing-title {
@@ -9240,7 +9240,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <img class="problem-hands-bg" src="양손에.PNG" alt="" aria-hidden="true"/>
 <div class="container">
 <div class="section-head reveal panel-motion-copy problem-head-copy">
-<h2 class="problem-headline" style="letter-spacing:0.2em;"><span class="title-line line-1">하지만, 무드애드는<br/><br/></span><span class="title-line line-2" style="display:block; margin-top:40px; font-size:70%;"><span style="color:#18A8F1;">아무 업체와 계약을 맺지 않습니다.</span></span></h2>
+<h2 class="problem-headline" style="letter-spacing:0.2em;"><span class="title-line line-1">하지만, 무드애드는</span><span class="title-line line-2" style="display:block; margin-top:40px; font-size:70%;"><span style="color:#18A8F1;">아무 업체와 계약을 맺지 않습니다.</span></span></h2>
 <p>대표님의 성공이 곧 저희의 성공이기에,<br>조건에 맞지 않는 업체는 정중히 사양하겠습니다.</p><br/><br/>
 </div>
 <div class="problem-track reveal">
@@ -13658,53 +13658,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 
-<script id="moodad-problem-headline-typing-final-real">
-(function(){
-  function initProblemTyping(){
-    var line = document.querySelector('#problem .problem-headline .title-line.line-1');
-    if(!line || line.dataset.moodadTypingInit === '1') return;
-    line.dataset.moodadTypingInit = '1';
 
-    var fullText = '하지만, 무드애드는';
-    line.textContent = fullText;
-    line.classList.remove('moodad-type-running', 'moodad-type-done');
+<!-- removed: moodad-problem-headline-typing-final-real (typing effect deleted for performance) -->
 
-    function runTyping(){
-      if(line.dataset.moodadTyped === '1') return;
-      line.dataset.moodadTyped = '1';
-      line.textContent = fullText;
-      line.classList.remove('moodad-type-done');
-      line.classList.add('moodad-type-running');
-
-      window.setTimeout(function(){
-        line.classList.remove('moodad-type-running');
-        line.classList.add('moodad-type-done');
-        line.textContent = fullText;
-      }, 1350);
-    }
-
-    if('IntersectionObserver' in window){
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            runTyping();
-            observer.disconnect();
-          }
-        });
-      }, { threshold: 0.22 });
-      observer.observe(line);
-    } else {
-      window.setTimeout(runTyping, 500);
-    }
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initProblemTyping);
-  } else {
-    initProblemTyping();
-  }
-})();
-</script>
 <!-- ===== /CTA 자연 연결 + 문제 섹션 타이핑 최종 보정 ===== -->
 
 
@@ -13879,79 +13835,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 
-<script id="moodad-problem-heading-real-typing-js-fix">
-(function(){
-  function startMoodadProblemTyping(){
-    var line = document.querySelector('#problem .problem-headline .title-line.line-1');
-    if(!line) return;
 
-    var text = '하지만, 무드애드는';
-    var delay = 82;
-    var index = 0;
-    var started = false;
+<!-- removed: moodad-problem-heading-real-typing-js-fix (typing effect deleted for performance) -->
 
-    function clearLine(){
-      line.classList.remove('moodad-type-running','moodad-type-done');
-      line.style.width = 'auto';
-      line.style.maxWidth = 'none';
-      line.style.borderRight = '0';
-      line.innerHTML = '';
-    }
-
-    function type(){
-      if(started) return;
-      started = true;
-      clearLine();
-      var textNode = document.createElement('span');
-      var caret = document.createElement('span');
-      caret.className = 'moodad-live-caret';
-      line.appendChild(textNode);
-      line.appendChild(caret);
-
-      function step(){
-        textNode.textContent = text.slice(0, index);
-        index += 1;
-        if(index <= text.length){
-          window.setTimeout(step, delay);
-        }else{
-          window.setTimeout(function(){
-            if(caret && caret.parentNode) caret.parentNode.removeChild(caret);
-            textNode.textContent = text;
-            line.classList.add('moodad-type-done');
-          }, 420);
-        }
-      }
-      step();
-    }
-
-    clearLine();
-    line.textContent = text;
-
-    if('IntersectionObserver' in window){
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            type();
-            observer.disconnect();
-          }
-        });
-      }, {threshold:0.18, rootMargin:'0px 0px -8% 0px'});
-      observer.observe(line);
-    }else{
-      window.setTimeout(type, 500);
-    }
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', startMoodadProblemTyping);
-  }else{
-    startMoodadProblemTyping();
-  }
-  window.addEventListener('load', function(){
-    window.setTimeout(startMoodadProblemTyping, 250);
-  });
-})();
-</script>
 <!-- ===== /최종 패치: CTA 상하 배경 동일화 + 문제 헤드라인 타이핑 재정리 ===== -->
 
 
@@ -14181,96 +14067,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 
-<script id="moodad-problem-heading-stable-real-typing-final">
-(function(){
-  function initStableProblemTyping(){
-    var line = document.querySelector('#problem .problem-headline .title-line.line-1');
-    if(!line) return;
 
-    var fullText = '하지만, 무드애드는';
-    var alreadyFinal = line.getAttribute('data-moodad-stable-final') === '1';
-    if(alreadyFinal) return;
-    line.setAttribute('data-moodad-stable-final','1');
+<!-- removed: moodad-problem-heading-stable-real-typing-final (typing effect deleted for performance) -->
 
-    function resetStatic(){
-      line.classList.remove('moodad-type-running','moodad-type-done');
-      line.style.width = 'auto';
-      line.style.maxWidth = 'none';
-      line.style.borderRight = '0';
-      line.style.paddingRight = '0';
-      line.style.animation = 'none';
-      line.textContent = fullText;
-    }
-
-    function runTyping(){
-      if(line.getAttribute('data-moodad-stable-typed') === '1') return;
-      line.setAttribute('data-moodad-stable-typed','1');
-
-      line.innerHTML = '';
-      line.classList.remove('moodad-type-running','moodad-type-done');
-      line.style.width = 'auto';
-      line.style.maxWidth = 'none';
-      line.style.borderRight = '0';
-      line.style.paddingRight = '0';
-      line.style.animation = 'none';
-
-      var textSpan = document.createElement('span');
-      var caret = document.createElement('span');
-      caret.className = 'moodad-live-caret-final';
-      line.appendChild(textSpan);
-      line.appendChild(caret);
-
-      var i = 0;
-      function step(){
-        textSpan.textContent = fullText.slice(0, i);
-        i += 1;
-        if(i <= fullText.length){
-          window.setTimeout(step, 78);
-        }else{
-          textSpan.textContent = fullText;
-          window.setTimeout(function(){
-            caret.classList.add('is-fading');
-            window.setTimeout(function(){
-              if(caret && caret.parentNode) caret.parentNode.removeChild(caret);
-              line.textContent = fullText;
-              line.classList.add('moodad-type-done');
-            }, 260);
-          }, 360);
-        }
-      }
-      step();
-    }
-
-    resetStatic();
-
-    var fallbackTimer = window.setTimeout(runTyping, 900);
-    if('IntersectionObserver' in window){
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            window.clearTimeout(fallbackTimer);
-            runTyping();
-            observer.disconnect();
-          }
-        });
-      }, {threshold:0.12, rootMargin:'0px 0px -4% 0px'});
-      observer.observe(line);
-    }
-  }
-
-  function boot(){
-    initStableProblemTyping();
-    window.setTimeout(initStableProblemTyping, 450);
-    window.setTimeout(initStableProblemTyping, 1200);
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', boot);
-  }else{
-    boot();
-  }
-})();
-</script>
 <!-- ===== /최종 재수정: CTA 경계 제거 + 모바일 겹침 복구 + 문제 헤드라인 타이핑 안정화 ===== -->
 
 
@@ -14521,89 +14320,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 
-<script id="moodad-final-problem-typing-fixed">
-(function(){
-  function bootMoodadTypingFixed(){
-    var line = document.querySelector('#problem .problem-headline .title-line.line-1');
-    if(!line) return;
 
-    var fullText = '하지만, 무드애드는';
-    if(line.getAttribute('data-moodad-final-fixed') === '1') return;
-    line.setAttribute('data-moodad-final-fixed','1');
+<!-- removed: moodad-final-problem-typing-fixed (typing effect deleted for performance) -->
 
-    function setStatic(){
-      line.classList.remove('moodad-type-running','moodad-type-done');
-      line.style.width = 'auto';
-      line.style.maxWidth = 'none';
-      line.style.borderRight = '0';
-      line.style.paddingRight = '0';
-      line.style.animation = 'none';
-      line.textContent = fullText;
-    }
-
-    function run(){
-      if(line.getAttribute('data-moodad-final-typed') === '1') return;
-      line.setAttribute('data-moodad-final-typed','1');
-
-      line.innerHTML = '';
-      line.style.width = 'auto';
-      line.style.maxWidth = 'none';
-      line.style.borderRight = '0';
-      line.style.paddingRight = '0';
-      line.style.animation = 'none';
-
-      var text = document.createElement('span');
-      var caret = document.createElement('span');
-      caret.className = 'moodad-final-caret-fixed';
-      line.appendChild(text);
-      line.appendChild(caret);
-
-      var i = 0;
-      function type(){
-        text.textContent = fullText.slice(0, i);
-        i += 1;
-        if(i <= fullText.length){
-          window.setTimeout(type, 72);
-        }else{
-          text.textContent = fullText;
-          window.setTimeout(function(){
-            caret.classList.add('is-hide');
-            window.setTimeout(function(){
-              if(caret && caret.parentNode) caret.parentNode.removeChild(caret);
-              line.textContent = fullText;
-            }, 220);
-          }, 420);
-        }
-      }
-      type();
-    }
-
-    setStatic();
-
-    var fallback = window.setTimeout(run, 900);
-    if('IntersectionObserver' in window){
-      var observer = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if(entry.isIntersecting){
-            window.clearTimeout(fallback);
-            run();
-            observer.disconnect();
-          }
-        });
-      }, {threshold:.15, rootMargin:'0px 0px -6% 0px'});
-      observer.observe(line);
-    }
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', bootMoodadTypingFixed);
-  }else{
-    bootMoodadTypingFixed();
-  }
-  window.setTimeout(bootMoodadTypingFixed, 500);
-  window.setTimeout(bootMoodadTypingFixed, 1400);
-})();
-</script>
 <!-- ===== /사용자 요청 최종 보정 ===== -->
 
 
@@ -16916,6 +16635,69 @@ document.addEventListener("DOMContentLoaded", function () {
 </style>
 <!-- ===== /MOODAD MOBILE ONLY FINAL: 혜택 받기 자리에서 문의하기 양식 노출 ===== -->
 
+
+
+<!-- ===== MOODAD FINAL REQUEST PATCH 20260430: requested-only fixes ===== -->
+<style id="moodad-final-request-patch-20260430">
+  .process-section .process-timeline{ position:relative !important; }
+  .process-section .process-card{ position:relative !important; z-index:4 !important; }
+  .process-section .process-line{ z-index:1 !important; }
+  .process-section .process-node::before,
+  .process-section .process-node::after{ content:none !important; display:none !important; animation:none !important; }
+  .process-section .process-scroll-orb{position:absolute !important;left:50% !important;top:0 !important;width:28px !important;height:28px !important;border-radius:50% !important;background:linear-gradient(135deg, #03C75A, #7fe38b) !important;box-shadow:0 0 0 10px rgba(3,199,90,.10), 0 0 24px rgba(3,199,90,.28) !important;transform:translate3d(-50%, var(--moodad-orb-y, 0px), 0) !important;z-index:2 !important;pointer-events:none !important;will-change:transform !important;}
+  @media (max-width:980px){.process-section .process-scroll-orb{left:18px !important;width:18px !important;height:18px !important;box-shadow:0 0 0 7px rgba(3,199,90,.10), 0 0 18px rgba(3,199,90,.24) !important;}}
+  @media (max-width:920px){.mobile-process-editorial .mobile-step-connector-orb{display:none !important;animation:none !important;}.mobile-process-editorial .mobile-scroll-orb{position:absolute !important;left:50% !important;top:0 !important;width:34px !important;height:34px !important;border-radius:50% !important;transform:translate3d(-50%, var(--moodad-mobile-orb-y, 0px), 0) !important;background:linear-gradient(135deg, #72d875 0%, #83dd7d 100%) !important;box-shadow:0 0 0 16px rgba(127,227,139,.16), 0 0 24px rgba(127,227,139,.22) !important;z-index:1 !important;pointer-events:none !important;will-change:transform !important;}.mobile-process-editorial .mobile-step-card{position:relative !important;z-index:3 !important;}}
+
+  #problem .problem-headline .title-line.line-1,
+  #problem .problem-headline .title-line.line-1.moodad-type-running,
+  #problem .problem-headline .title-line.line-1.moodad-type-done{width:auto !important;max-width:none !important;overflow:visible !important;border-right:0 !important;padding-right:0 !important;animation:none !important;white-space:nowrap !important;}
+  #problem .problem-headline .title-line.line-1 .moodad-live-caret,
+  #problem .problem-headline .title-line.line-1 .moodad-live-caret-final,
+  #problem .problem-headline .title-line.line-1 .moodad-final-caret-fixed{display:none !important;}
+
+  .problem-panel,.problem-panel::before,.problem-panel::after,.problem-detail,.problem-icon,.problem-word,.problem-kicker{backface-visibility:hidden !important;-webkit-backface-visibility:hidden !important;}
+  .problem-panel{will-change:auto !important;contain:layout paint style !important;}
+  .problem-panel::before{will-change:opacity, transform !important;}
+  .problem-panel.is-active,.problem-panel:hover{will-change:flex, height, transform !important;}
+  @media (max-width:920px){.problem-panel,.problem-panel:hover,.problem-panel.is-active{transition:height .24s cubic-bezier(.22,1,.36,1), transform .20s ease, box-shadow .20s ease !important;}.problem-detail{transition:opacity .18s ease, transform .20s ease, max-height .20s ease !important;}}
+
+  .topbar .topnav a.success-case-nav::before{background:rgba(24,168,241,.145) !important;box-shadow:0 0 12px rgba(24,168,241,.28) !important;}
+  .topbar .topnav a.success-case-nav::after{background:rgba(24,168,241,.92) !important;box-shadow:0 0 7px rgba(24,168,241,.42) !important;opacity:.58 !important;}
+  @keyframes successCaseSoftGlow{0%,100%{opacity:.38;transform:scale(.985);}50%{opacity:.68;transform:scale(1.012);}}
+  @keyframes successCaseSoftLine{0%,100%{opacity:.44;transform:scaleX(.70);}50%{opacity:.78;transform:scaleX(.94);}}
+
+  #problem .section-head.problem-head-copy.reveal{opacity:0 !important;transform:translate3d(0,54px,0) scale(.92) !important;transform-origin:center center !important;transition:transform .62s cubic-bezier(.22,1,.36,1), opacity .5s ease-out !important;will-change:transform, opacity !important;backface-visibility:hidden !important;}
+  #problem .section-head.problem-head-copy.reveal.show{opacity:1 !important;transform:translate3d(0,0,0) scale(1) !important;}
+
+  @media (max-width:820px){
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-text{display:flex !important;flex-direction:column !important;align-items:flex-start !important;}
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-line{display:contents !important;}
+    #contact .contact-benefit-item:nth-child(2) h3{order:1 !important;}
+    #contact .contact-benefit-item:nth-child(2) p{order:2 !important;}
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-right-stack{order:3 !important;display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:6px !important;margin-top:7px !important;}
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-badge{order:1 !important;}
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-note{order:2 !important;}
+    #contact .contact-benefit-item:nth-child(4) .contact-benefit-text,#contact .contact-benefit-item:nth-child(5) .contact-benefit-text{display:flex !important;flex-direction:column !important;align-items:flex-start !important;}
+    #contact .contact-benefit-item:nth-child(4) h3,#contact .contact-benefit-item:nth-child(5) h3{order:1 !important;}
+    #contact .contact-benefit-item:nth-child(4) p,#contact .contact-benefit-item:nth-child(5) p{order:2 !important;}
+    #contact .contact-benefit-item:nth-child(4) .moodad-benefit-extra-note,#contact .contact-benefit-item:nth-child(5) .moodad-benefit-extra-note{order:3 !important;margin-top:7px !important;}
+    #contact .moodad-pc-benefit-open{min-height:0 !important;height:auto !important;padding:10px 22px !important;font-size:14px !important;line-height:1 !important;}
+  }
+</style>
+<script id="moodad-final-request-patch-20260430-js">
+(function(){
+  function clamp(v,min,max){return Math.min(Math.max(v,min),max);}
+  function setProblemHeadlineStatic(){var line=document.querySelector('#problem .problem-headline .title-line.line-1');if(!line)return;line.classList.remove('moodad-type-running','moodad-type-done');line.style.width='auto';line.style.maxWidth='none';line.style.borderRight='0';line.style.animation='none';line.textContent='하지만, 무드애드는';}
+  function ensureOrb(parent,className){if(!parent)return null;var orb=parent.querySelector(':scope > .'+className);if(!orb){orb=document.createElement('div');orb.className=className;orb.setAttribute('aria-hidden','true');parent.appendChild(orb);}return orb;}
+  var ticking=false;
+  function updateScrollOrbs(){var timeline=document.querySelector('.process-timeline');if(timeline&&getComputedStyle(timeline).display!=='none'){var orb=ensureOrb(timeline,'process-scroll-orb');var rect=timeline.getBoundingClientRect();var point=window.innerHeight*.48;var maxY=Math.max(timeline.offsetHeight-(orb?orb.offsetHeight:28),0);var y=clamp(point-rect.top,0,maxY);if(orb)orb.style.setProperty('--moodad-orb-y',y.toFixed(1)+'px');}var editorial=document.querySelector('.mobile-process-editorial');if(editorial&&getComputedStyle(editorial).display!=='none'){var mob=ensureOrb(editorial,'mobile-scroll-orb');var er=editorial.getBoundingClientRect();var mp=window.innerHeight*.48;var maxMY=Math.max(editorial.offsetHeight-(mob?mob.offsetHeight:34),0);var my=clamp(mp-er.top,0,maxMY);if(mob)mob.style.setProperty('--moodad-mobile-orb-y',my.toFixed(1)+'px');}}
+  function requestUpdate(){if(ticking)return;ticking=true;window.requestAnimationFrame(function(){ticking=false;setProblemHeadlineStatic();updateScrollOrbs();});}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){setProblemHeadlineStatic();updateScrollOrbs();});}else{setProblemHeadlineStatic();updateScrollOrbs();}
+  window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate,{passive:true});window.addEventListener('load',function(){setProblemHeadlineStatic();updateScrollOrbs();window.setTimeout(requestUpdate,350);},{passive:true});
+})();
+</script>
+<!-- ===== /MOODAD FINAL REQUEST PATCH 20260430 ===== -->
+
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
@@ -18270,3 +18052,236 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 <!-- ===== /MOODAD MOBILE ONLY: 첫달 세팅비 설명문 줄바꿈 방지 최종 ===== -->
+
+<!-- ===== MOODAD FINAL CORRECTION 20260430: MOBILE BENEFIT POSITION + STEP ORB BEHIND PANELS ===== -->
+<style id="moodad-final-correction-20260430-mobile-benefit-step-orb">
+  /* STEP 섹션: 기존 여러 초록 원은 숨기고, 스크롤 공은 패널 뒤 레이어로 고정 */
+  .process-section .process-timeline{
+    position: relative !important;
+    isolation: isolate !important;
+  }
+  .process-section .process-step{
+    position: relative !important;
+    z-index: 3 !important;
+  }
+  .process-section .process-card{
+    position: relative !important;
+    z-index: 4 !important;
+  }
+  .process-section .process-node{
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    opacity: 0 !important;
+    animation: none !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+  .process-section .process-node::before,
+  .process-section .process-node::after{
+    content: none !important;
+    display: none !important;
+    animation: none !important;
+  }
+  .process-section .process-scroll-orb{
+    z-index: 1 !important;
+    pointer-events: none !important;
+  }
+
+  @media (max-width: 920px){
+    .mobile-process-editorial{
+      position: relative !important;
+      isolation: isolate !important;
+    }
+    .mobile-process-editorial .mobile-step-card{
+      position: relative !important;
+      z-index: 4 !important;
+    }
+    .mobile-process-editorial .mobile-step-connector-orb{
+      display: none !important;
+      opacity: 0 !important;
+      animation: none !important;
+    }
+    .mobile-process-editorial .mobile-scroll-orb{
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+  }
+
+  /* 모바일만: 신규 광고주 혜택 배지 위치 재배치 */
+  @media (max-width: 820px){
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-text{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-line{
+      display: contents !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-line h3{
+      order: 1 !important;
+      width: 100% !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-text > p{
+      order: 2 !important;
+      width: 100% !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-right-stack{
+      position: static !important;
+      right: auto !important;
+      top: auto !important;
+      transform: none !important;
+      order: 3 !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: flex-start !important;
+      gap: 5px !important;
+      width: 100% !important;
+      margin: 7px 0 0 !important;
+      white-space: nowrap !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .moodad-first-benefit-note{
+      order: 1 !important;
+      margin: 0 !important;
+    }
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-badge{
+      order: 2 !important;
+      margin: 0 !important;
+    }
+
+    #contact .contact-benefit-item:nth-child(4) .contact-benefit-text,
+    #contact .contact-benefit-item:nth-child(5) .contact-benefit-text{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+    }
+    #contact .contact-benefit-item:nth-child(4) .contact-benefit-text h3,
+    #contact .contact-benefit-item:nth-child(5) .contact-benefit-text h3{
+      order: 1 !important;
+      width: 100% !important;
+    }
+    #contact .contact-benefit-item:nth-child(4) .contact-benefit-text p,
+    #contact .contact-benefit-item:nth-child(5) .contact-benefit-text p{
+      order: 2 !important;
+      width: 100% !important;
+    }
+    #contact .contact-benefit-item:nth-child(4) .moodad-benefit-extra-note,
+    #contact .contact-benefit-item:nth-child(5) .moodad-benefit-extra-note{
+      order: 3 !important;
+      position: static !important;
+      right: auto !important;
+      top: auto !important;
+      left: auto !important;
+      bottom: auto !important;
+      transform: none !important;
+      margin: 7px 0 0 !important;
+    }
+
+    /* 모바일만: 맨 아래 혜택 받기 버튼 좌우 폭 축소 */
+    #contact .moodad-pc-benefit-open{
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: max-content !important;
+      min-height: 0 !important;
+      height: auto !important;
+      padding-left: 14px !important;
+      padding-right: 14px !important;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      line-height: 1 !important;
+      box-sizing: border-box !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD FINAL CORRECTION 20260430 ===== -->
+
+
+<!-- ===== MOODAD MOBILE ONLY FINAL: STEP ORB HIDE BEHIND PANELS - NO SIZE/TEXT CHANGE ===== -->
+<style id="moodad-mobile-step-orb-real-behind-only-final">
+  @media (max-width: 920px){
+    .mobile-process-editorial{
+      position: relative !important;
+      isolation: isolate !important;
+    }
+    .mobile-process-editorial .mobile-step-connector-orb{
+      display: none !important;
+      opacity: 0 !important;
+      animation: none !important;
+      pointer-events: none !important;
+    }
+    .mobile-process-editorial .mobile-scroll-orb{
+      position: absolute !important;
+      left: 50% !important;
+      top: 0 !important;
+      width: 34px !important;
+      height: 34px !important;
+      border-radius: 50% !important;
+      transform: translate3d(-50%, var(--moodad-mobile-orb-y, 0px), 0) !important;
+      background: linear-gradient(135deg, #72d875 0%, #83dd7d 100%) !important;
+      box-shadow: 0 0 0 16px rgba(127,227,139,.16), 0 0 24px rgba(127,227,139,.22) !important;
+      z-index: 0 !important;
+      pointer-events: none !important;
+      will-change: transform, opacity !important;
+    }
+    .mobile-process-editorial .mobile-editorial-step,
+    .mobile-process-editorial .mobile-step-card{
+      position: relative !important;
+      z-index: 2 !important;
+    }
+  }
+</style>
+<script id="moodad-mobile-step-orb-real-behind-only-final-js">
+(function(){
+  function clamp(v,min,max){return Math.min(Math.max(v,min),max);}
+  var ticking=false;
+  function updateMobileOrbBehind(){
+    var editorial=document.querySelector('.mobile-process-editorial');
+    if(!editorial || getComputedStyle(editorial).display==='none') return;
+
+    var orb=editorial.querySelector(':scope > .mobile-scroll-orb');
+    if(!orb){
+      orb=document.createElement('div');
+      orb.className='mobile-scroll-orb';
+      orb.setAttribute('aria-hidden','true');
+      editorial.appendChild(orb);
+    }
+
+    var er=editorial.getBoundingClientRect();
+    var point=window.innerHeight*.48;
+    var orbSize=orb.offsetHeight || 34;
+    var maxY=Math.max(editorial.offsetHeight-orbSize,0);
+    var y=clamp(point-er.top,0,maxY);
+    orb.style.setProperty('--moodad-mobile-orb-y', y.toFixed(1)+'px');
+
+    var orbCenterX=er.left+(editorial.offsetWidth/2);
+    var orbCenterY=er.top+y+(orbSize/2);
+    var cards=Array.prototype.slice.call(editorial.querySelectorAll('.mobile-step-card'));
+    var behindCard=cards.some(function(card){
+      var r=card.getBoundingClientRect();
+      return orbCenterX >= r.left && orbCenterX <= r.right && orbCenterY >= r.top && orbCenterY <= r.bottom;
+    });
+
+    orb.style.opacity = behindCard ? '0' : '1';
+  }
+  function request(){
+    if(ticking) return;
+    ticking=true;
+    requestAnimationFrame(function(){
+      ticking=false;
+      updateMobileOrbBehind();
+    });
+  }
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded', request);
+  }else{
+    request();
+  }
+  window.addEventListener('scroll', request, {passive:true});
+  window.addEventListener('resize', request, {passive:true});
+  window.addEventListener('load', function(){request(); setTimeout(request,300);}, {passive:true});
+})();
+</script>
+<!-- ===== /MOODAD MOBILE ONLY FINAL: STEP ORB HIDE BEHIND PANELS ===== -->
