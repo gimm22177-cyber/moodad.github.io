@@ -8797,6 +8797,81 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </style>
 <!-- ===== /MOODAD PC ONLY: 신규혜택 앵커 초기 깜빡임 방지 ===== -->
 
+
+<style>
+
+/* ===== blind marketing moving lines only ===== */
+.blind-marketing-section{
+  isolation:isolate;
+}
+
+.blind-marketing-section::before,
+.blind-marketing-section::after{
+  display:none !important;
+  content:none !important;
+}
+
+.blind-marketing-line{
+  position:absolute;
+  left:70px;
+  width:calc(100% - 140px);
+  height:5px;
+  border-radius:999px;
+  background:#050505;
+  pointer-events:none;
+  z-index:2;
+  opacity:1;
+  transform:scaleX(0);
+}
+
+.blind-marketing-line.line-top{
+  top:calc(50% - 141px);
+  transform-origin:right center;
+  animation:blindLineFromRight 5.6s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+.blind-marketing-line.line-bottom{
+  top:calc(50% + 69px);
+  transform-origin:left center;
+  animation:blindLineFromLeft 5.6s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+.blind-marketing-inner{
+  position:relative;
+  z-index:1;
+}
+
+@keyframes blindLineFromRight{
+  0%{transform:scaleX(0);}
+  38%{transform:scaleX(1);}
+  62%{transform:scaleX(1);}
+  100%{transform:scaleX(0);}
+}
+
+@keyframes blindLineFromLeft{
+  0%{transform:scaleX(0);}
+  38%{transform:scaleX(1);}
+  62%{transform:scaleX(1);}
+  100%{transform:scaleX(0);}
+}
+
+@media (max-width:767px){
+  .blind-marketing-line{
+    left:18px;
+    width:calc(100% - 36px);
+    height:4px;
+  }
+
+  .blind-marketing-line.line-top{
+    top:calc(50% - 86px);
+  }
+
+  .blind-marketing-line.line-bottom{
+    top:calc(50% + 52px);
+  }
+}
+
+</style>
 </head>
 <body>
 <header class="topbar">
@@ -8813,6 +8888,8 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </section>
 
 <section class="blind-marketing-section">
+<span class="blind-marketing-line line-top" aria-hidden="true"></span>
+<span class="blind-marketing-line line-bottom" aria-hidden="true"></span>
 <div class="blind-marketing-inner">
 <h2 class="blind-marketing-title">지금도 “감”에 의존한 마케팅을 하고 있으신가요?</h2>
 <p class="blind-marketing-subtitle">매달 비용은 들지만, 결과는 만족스럽지 않으신가요?
