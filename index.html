@@ -17238,6 +17238,116 @@ document.addEventListener("DOMContentLoaded", function () {
 </style>
 <!-- ===== /MOODAD PATCH ===== -->
 
+
+<!-- ===== MOODAD SAFE PERFORMANCE PATCH: 6가지 전략~후기 렉 완화 / 디자인·애니메이션 유지 ===== -->
+<style id="moodad-safe-performance-patch-20260502">
+  /*
+    목적:
+    - 디자인/크기/문구/애니메이션 모양은 그대로 유지
+    - 화면 밖에서 계속 도는 후기 마키만 잠시 멈춤
+    - 6가지 전략/후기 이미지 디코딩 부담 완화
+    - 카드 렌더링 범위를 분리해서 스크롤 버벅임 완화
+  */
+
+  .reviews-section.moodad-marquee-paused .review-wrapper {
+    animation-play-state: paused !important;
+  }
+
+  .services-section .service-wide,
+  .reviews-section .review-card {
+    contain: layout paint style;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  .reviews-section .review-wrapper {
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .services-section img,
+  .reviews-section img {
+    content-visibility: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .review-wrapper {
+      animation-play-state: paused !important;
+    }
+  }
+</style>
+
+<script id="moodad-safe-performance-patch-script-20260502">
+(function(){
+  function initMoodadSafePerformancePatch(){
+    var reviewSection = document.querySelector('.reviews-section');
+    if(reviewSection && 'IntersectionObserver' in window){
+      reviewSection.classList.add('moodad-marquee-paused');
+
+      var reviewObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            reviewSection.classList.remove('moodad-marquee-paused');
+          }else{
+            reviewSection.classList.add('moodad-marquee-paused');
+          }
+        });
+      }, {
+        threshold: 0.01,
+        rootMargin: '220px 0px 220px 0px'
+      });
+
+      reviewObserver.observe(reviewSection);
+    }
+
+    var lazyImages = document.querySelectorAll(
+      '.services-section img, .reviews-section img, .process-section img, .contact-section img'
+    );
+
+    lazyImages.forEach(function(img){
+      img.decoding = 'async';
+      if(!img.getAttribute('loading')){
+        img.setAttribute('loading', 'lazy');
+      }
+      if(!img.getAttribute('fetchpriority')){
+        img.setAttribute('fetchpriority', 'low');
+      }
+    });
+
+    var heavyCards = document.querySelectorAll(
+      '.services-section .service-wide, .reviews-section .review-card'
+    );
+
+    if('IntersectionObserver' in window){
+      var layerObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          var el = entry.target;
+          if(entry.isIntersecting){
+            el.style.setProperty('will-change', 'transform, opacity', 'important');
+          }else{
+            el.style.setProperty('will-change', 'auto', 'important');
+          }
+        });
+      }, {
+        threshold: 0.01,
+        rootMargin: '260px 0px 260px 0px'
+      });
+
+      heavyCards.forEach(function(el){
+        layerObserver.observe(el);
+      });
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initMoodadSafePerformancePatch);
+  }else{
+    initMoodadSafePerformancePatch();
+  }
+})();
+</script>
+<!-- ===== /MOODAD SAFE PERFORMANCE PATCH ===== -->
+
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
