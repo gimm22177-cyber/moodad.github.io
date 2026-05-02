@@ -9100,11 +9100,6 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     font-weight: 900;
     letter-spacing: -0.035em;
     text-decoration: none !important;
-    line-height: 1 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    transform: translateY(0);
-
     box-shadow: 0 12px 26px rgba(24, 168, 241, .22);
     transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
   }
@@ -9141,9 +9136,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </style>
 
 
-
-
-<style id="moodad-button-text-center-final-real">
+<style id="moodad-review-button-final-correct">
   .moodad-link-button {
     display: inline-flex !important;
     align-items: center !important;
@@ -9153,16 +9146,25 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     padding-bottom: 0 !important;
   }
 
-  .moodad-link-button::before,
-  .moodad-link-button::after {
-    content: none !important;
-    display: none !important;
+  .moodad-link-button > span {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    transform: translateY(2px) !important;
   }
 
-  .moodad-link-button > span {
-    display: inline-block !important;
-    line-height: 1 !important;
-    transform: translateY(9px) !important;
+  .moodad-case-button-line {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    margin-top: 22px !important;
+  }
+
+  .moodad-case-button-above-line {
+    display: inline-flex !important;
+    margin: 0 auto !important;
+    vertical-align: top !important;
   }
 </style>
 
@@ -9598,7 +9600,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 </section>
 <div class="moodad-process-blog-button-below">
-  <a class="moodad-link-button" href="https://blog.naver.com/mood_ad" target="_blank" rel="noopener noreferrer"><span>더욱 자세한 전략 보러가기</span></a>
+  <a class="moodad-link-button" href="https://blog.naver.com/mood_ad" target="_blank" rel="noopener noreferrer">더욱 자세한 전략 보러가기</a>
 </div>
 <section class="reviews-section" id="reviews">
 <div class="container">
@@ -9613,8 +9615,10 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="reviews-row reviews-row-top" id="reviewsRowTop"></div>
 <div class="reviews-row reviews-row-bottom" id="reviewsRowBottom"></div>
 </div>
-<p class="reviews-real-note"><span class="reviews-real-note-small">무드애드와 진행하고 계시는 </span><br>광고주님들의 실제 후기 중 일부<br>
-  <a class="moodad-link-button moodad-case-button-above-line" href="./service-only.html"><span>더욱 자세한 사례 알아보기</span></a>
+<p class="reviews-real-note"><span class="reviews-real-note-small">무드애드와 진행하고 계시는 </span><br>광고주님들의 실제 후기 중 일부
+  <span class="moodad-case-button-line">
+    <a class="moodad-link-button moodad-case-button-above-line" href="./service-only.html"><span>더욱 자세한 사례 알아보기</span></a>
+  </span>
 </p>
 <div class="reviews-price-hand-block">
 <div aria-hidden="true" class="reviews-divider reviews-divider-hand">
