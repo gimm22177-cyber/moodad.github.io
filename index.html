@@ -19107,3 +19107,33 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 <!-- ===== /MOODAD PATCH: 매출 상승 사례 글자색 원복 + 커졌다 작아졌다 숨쉬는 효과 ===== -->
+<!-- ===== MOODAD PATCH: 후기 '더욱 자세한 사례 알아보기' 버튼 위치만 조정 ===== -->
+<style id="moodad-case-button-position-only-final-20260502">
+  #reviews .reviews-real-note {
+    position: relative !important;
+    padding-bottom: 92px !important;
+  }
+
+  #reviews .reviews-real-note .moodad-case-button-above-line {
+    position: absolute !important;
+    left: 50% !important;
+    bottom: 18px !important;
+    margin: 0 !important;
+    transform: translateX(-50%) !important;
+  }
+
+  #reviews .reviews-real-note .moodad-case-button-above-line:hover {
+    transform: translateX(-50%) translateY(-2px) !important;
+  }
+
+  @media (max-width: 820px) {
+    #reviews .reviews-real-note {
+      padding-bottom: 88px !important;
+    }
+
+    #reviews .reviews-real-note .moodad-case-button-above-line {
+      bottom: 16px !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD PATCH: 후기 '더욱 자세한 사례 알아보기' 버튼 위치만 조정 ===== -->
