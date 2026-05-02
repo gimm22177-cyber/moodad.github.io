@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gimm22177-cyber.github.io/moodad.github.io/sitemap.xml
