@@ -1256,17 +1256,17 @@
 
   <header class="moodad-scroll-mini-nav" aria-label="스크롤 고정 메뉴">
     <div class="moodad-scroll-mini-inner">
-      <a href="./service-only.html" class="moodad-scroll-mini-logo" aria-label="무드애드 메인으로 이동">
+      <a href="./index.html" class="moodad-scroll-mini-logo" aria-label="무드애드 메인으로 이동">
         <span class="mood">MOOD</span><span class="ad">AD</span>
       </a>
 
       <div class="moodad-scroll-mini-actions">
-        <a href="./service-only.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
+        <a href="./index.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
           <span class="btn-label">메인으로</span>
           <span class="btn-icon">↗</span>
         </a>
 
-        <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent">
+        <a href="./index.html#contact-benefits-head" class="premium-btn premium-btn--accent">
           <span class="btn-label">문의하기</span>
           <span class="btn-icon">→</span>
         </a>
@@ -1278,19 +1278,19 @@
   <section class="top-shell">
     <div class="container top-inner">
       <div class="top-bar">
-        <a href="./service-only.html" class="brand reveal visible moodad-logo-main-link">
+        <a href="./index.html" class="brand reveal visible moodad-logo-main-link">
           <span class="brand-logo-box">
             <img src="무드애드.jpg" alt="무드애드 로고" class="brand-logo" />
           </span>
         </a>
 
         <div class="top-actions reveal visible">
-          <a href="./service-only.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
+          <a href="./index.html" class="premium-btn premium-btn--glass moodad-main-nav-btn">
   <span class="btn-label">메인으로</span>
   <span class="btn-icon">↗</span>
           </a>
 
-          <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent">
+          <a href="./index.html#contact-benefits-head" class="premium-btn premium-btn--accent">
             <span class="btn-label">문의하기</span>
             <span class="btn-icon">→</span>
           </a>
@@ -1339,7 +1339,7 @@
               <span class="btn-icon">→</span>
             </a>
 
-            <a href="./service-only.html#contact-benefits-head" class="premium-btn premium-btn--accent premium-btn--large moodad-pc-phone-benefit-link">
+            <a href="./index.html#contact-benefits-head" class="premium-btn premium-btn--accent premium-btn--large moodad-pc-phone-benefit-link">
               <span class="btn-label">70만원 신규 혜택 받기</span>
               <span class="btn-icon">↗</span>
             </a>
@@ -1546,11 +1546,11 @@
       const phoneBenefitLink = document.querySelector('.moodad-pc-phone-benefit-link');
       if (!phoneBenefitLink) return;
 
-      phoneBenefitLink.setAttribute('href', './service-only.html#contact-benefits-head');
+      phoneBenefitLink.setAttribute('href', './index.html#contact-benefits-head');
 
       phoneBenefitLink.addEventListener('click', function (e) {
         e.preventDefault();
-        window.location.href = './service-only.html#contact-benefits-head';
+        window.location.href = './index.html#contact-benefits-head';
       });
     })();
   </script>
@@ -1561,7 +1561,7 @@
       const mainLink = document.querySelector('.moodad-main-nav-btn');
       if (!logoLink || !mainLink) return;
 
-      logoLink.setAttribute('href', mainLink.getAttribute('href') || './service-only.html');
+      logoLink.setAttribute('href', mainLink.getAttribute('href') || './index.html');
     })();
   </script>
 
