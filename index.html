@@ -9100,9 +9100,12 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     font-weight: 900;
     letter-spacing: -0.035em;
     text-decoration: none !important;
-    box-shadow: 0 12px 26px rgba(24, 168, 241, .22);
     line-height: 1 !important;
-    padding-top: 1px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    transform: translateY(0);
+
+    box-shadow: 0 12px 26px rgba(24, 168, 241, .22);
     transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
   }
 
@@ -9134,6 +9137,29 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
       padding: 0 18px;
       font-size: 14px;
     }
+  }
+</style>
+
+
+<style id="moodad-button-text-vertical-center-final">
+  .moodad-link-button {
+    line-height: 1 !important;
+  }
+
+  .moodad-link-button::before {
+    content: "";
+    display: inline-block;
+    height: 1em;
+    vertical-align: middle;
+  }
+
+  .moodad-link-button {
+    align-items: center !important;
+  }
+
+  .moodad-link-button > span {
+    display: inline-block;
+    transform: translateY(2px);
   }
 </style>
 
@@ -9569,7 +9595,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 </section>
 <div class="moodad-process-blog-button-below">
-  <a class="moodad-link-button" href="https://blog.naver.com/mood_ad" target="_blank" rel="noopener noreferrer">더욱 자세한 전략 보러가기</a>
+  <a class="moodad-link-button" href="https://blog.naver.com/mood_ad" target="_blank" rel="noopener noreferrer"><span>더욱 자세한 전략 보러가기</span></a>
 </div>
 <section class="reviews-section" id="reviews">
 <div class="container">
@@ -9585,7 +9611,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="reviews-row reviews-row-bottom" id="reviewsRowBottom"></div>
 </div>
 <p class="reviews-real-note"><span class="reviews-real-note-small">무드애드와 진행하고 계시는 </span><br>광고주님들의 실제 후기 중 일부<br>
-  <a class="moodad-link-button moodad-case-button-above-line" href="./service-only.html">더욱 자세한 사례 알아보기</a>
+  <a class="moodad-link-button moodad-case-button-above-line" href="./service-only.html"><span>더욱 자세한 사례 알아보기</span></a>
 </p>
 <div class="reviews-price-hand-block">
 <div aria-hidden="true" class="reviews-divider reviews-divider-hand">
