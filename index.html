@@ -8998,6 +8998,21 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     letter-spacing: -0.035em !important;
   }
 }
+
+
+    /* ===== SEO H1 숨김 텍스트: 화면 디자인 영향 없음 ===== */
+    .seo-hidden-text {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      clip-path: inset(50%) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
 </style>
 </head>
 <body>
@@ -9029,6 +9044,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="hero-copy" style="letter-spacing: -0.05em;">
 <div class="hero-glass-note">광고주들의 삶을 개선해나가자</div>
 <h1 class="hero-main-title">
+<span class="seo-hidden-text">대구 광고 대행사 무드애드</span>
 <span class="typing-block hero-typing-block">
 <span class="typing-line hero-line-1" id="typing-line-1"></span>
 <span class="typing-line hero-line-2" id="typing-line-2"></span>
