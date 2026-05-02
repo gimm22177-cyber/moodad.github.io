@@ -9142,24 +9142,34 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 
 
 <style id="moodad-button-text-vertical-center-final">
-  .moodad-link-button {
+  .moodad-link-button,
+  .moodad-case-button-above-line {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     line-height: 1 !important;
   }
 
-  .moodad-link-button::before {
-    content: "";
-    display: inline-block;
-    height: 1em;
-    vertical-align: middle;
+  .moodad-case-button-above-line {
+    width: fit-content !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 
-  .moodad-link-button {
-    align-items: center !important;
+  .moodad-link-button::before {
+    content: none !important;
+    display: none !important;
   }
 
   .moodad-link-button > span {
-    display: inline-block;
-    transform: translateY(2px);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    line-height: 1 !important;
+    transform: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 </style>
 
