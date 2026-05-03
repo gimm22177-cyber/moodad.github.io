@@ -9433,7 +9433,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 
     .moodad-result-road-title-wrap {
       left: 50%;
-      top: 44%;
+      top: 49%;
       transform: translate(-50%, -50%);
       width: calc(100% - 28px);
       max-width: calc(100% - 28px);
@@ -10015,7 +10015,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <span>.</span>
 </div>
 <img alt="" aria-hidden="true" class="reviews-hand-image reviews-hand-image-pc" src="PC밑손.png"/>
-<img alt="" aria-hidden="true" class="reviews-hand-image reviews-hand-image-mobile" src="밑손.png?v=1"/>
+<img alt="" aria-hidden="true" class="reviews-hand-image reviews-hand-image-mobile" src="밑손.png"/>
 <p class="reviews-price-copy reveal panel-motion-copy">
 <span class="reviews-copy-note"><span style="color:#ffffff;"><span class="mobile-hide-geureochiman">그렇지만 </span>투자되는 비용은 타 대행사의</span> <span style="color:#000000;">4분의 1</span></span><br/>
 <span style="font-size:130%;">충분히 비교하고 오셔도 됩니다.<br> 타 대행사는 저희의 가격으로 하나의 서비스만 <br class="mobile-price-break-only">해주는 곳이 대부분일 겁니다.</span>
@@ -10804,97 +10804,7 @@ const shell = document.getElementById('heroShell');
 
     /* PC 렉 완화: .service-wide는 이미 .reveal 대상으로 관찰되므로 중복 observe 제거 */
 
-    const processTimeline = document.querySelector('.process-timeline');
-    const processSteps = Array.from(document.querySelectorAll('.process-step'));
-    const processNodeCache = [];
-
-    function clamp(value, min, max) {
-      return Math.min(Math.max(value, min), max);
-    }
-
-    function rebuildProcessNodeCache() {
-      processNodeCache.length = 0;
-      if (!processTimeline || !processSteps.length) return;
-
-      if (window.innerWidth <= 980) {
-        processSteps.forEach((stepEl) => {
-          const nodeEl = stepEl.querySelector('.process-node');
-          if (nodeEl) nodeEl.style.removeProperty('--node-top');
-        });
-        return;
-      }
-
-      processSteps.forEach((stepEl) => {
-        const nodeEl = stepEl.querySelector('.process-node');
-        const cardEl = stepEl.querySelector('.process-card');
-        if (!nodeEl || !cardEl) return;
-
-        const stepRect = stepEl.getBoundingClientRect();
-        const cardRect = cardEl.getBoundingClientRect();
-        const stepTop = stepRect.top + window.scrollY;
-        const targetTop = (cardRect.top - stepRect.top) + (cardRect.height / 2) - (nodeEl.offsetHeight / 2);
-
-        processNodeCache.push({
-          nodeEl,
-          targetTop,
-          start: stepTop - (window.innerHeight * 0.9),
-          end: stepTop - (window.innerHeight * 0.28),
-          lastTop: null
-        });
-      });
-    }
-
-    function updateProcessNodes() {
-      if (!processTimeline || !processSteps.length) return;
-
-      if (window.innerWidth <= 980) {
-        processSteps.forEach((stepEl) => {
-          const nodeEl = stepEl.querySelector('.process-node');
-          if (nodeEl) nodeEl.style.removeProperty('--node-top');
-        });
-        return;
-      }
-
-      if (!processNodeCache.length) rebuildProcessNodeCache();
-      const scrollY = window.scrollY;
-
-      processNodeCache.forEach((item) => {
-        const progress = clamp((scrollY - item.start) / Math.max(item.end - item.start, 1), 0, 1);
-        const currentTop = Number((item.targetTop * progress).toFixed(1));
-        if (item.lastTop === currentTop) return;
-        item.lastTop = currentTop;
-        item.nodeEl.style.setProperty('--node-top', `${currentTop}px`);
-      });
-    }
-
-    let processNodeRaf = null;
-    let processResizeTimer = null;
-
-    function requestProcessNodesUpdate() {
-      if (processNodeRaf) return;
-      processNodeRaf = window.requestAnimationFrame(() => {
-        processNodeRaf = null;
-        updateProcessNodes();
-      });
-    }
-
-    function requestProcessNodeRebuild() {
-      window.clearTimeout(processResizeTimer);
-      processResizeTimer = window.setTimeout(() => {
-        rebuildProcessNodeCache();
-        requestProcessNodesUpdate();
-      }, 120);
-    }
-
-    window.addEventListener('scroll', requestProcessNodesUpdate, { passive: true });
-    window.addEventListener('resize', requestProcessNodeRebuild);
-    window.addEventListener('load', () => {
-      rebuildProcessNodeCache();
-      requestProcessNodesUpdate();
-    });
-    rebuildProcessNodeCache();
-    requestProcessNodesUpdate();
-
+    /* PC 렉 완화: 마케팅 로드맵 설계 섹션의 초록색 공 위치 추적 스크롤 애니메이션 제거 */
 
     // Hero 두 줄 타이핑
     const typingLine1 = document.querySelector('#typing-line-1');
@@ -17966,6 +17876,23 @@ document.addEventListener("DOMContentLoaded", function () {
 </style>
 <!-- ===== /MOODAD PATCH: 모바일 전용 자연스러운 눈 내림 효과 ===== -->
 
+
+
+<!-- ===== MOODAD PC ONLY: 마케팅 로드맵 초록색 공 애니메이션 제거 / 모바일 미수정 ===== -->
+<style id="moodad-pc-process-green-node-remove-20260503">
+  @media (min-width: 821px) {
+    #process .process-node,
+    #process .process-node::before,
+    #process .process-node::after {
+      display: none !important;
+      animation: none !important;
+      transition: none !important;
+      will-change: auto !important;
+      box-shadow: none !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD PC ONLY: 마케팅 로드맵 초록색 공 애니메이션 제거 / 모바일 미수정 ===== -->
 </body>
 </html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
@@ -18934,7 +18861,9 @@ document.addEventListener("DOMContentLoaded", function () {
         if(entry.isIntersecting){
           activateCard(card, index < 0 ? 0 : index);
         } else {
-          deactivateCard(card);
+          if(!isDesktop){
+            deactivateCard(card);
+          }
         }
       });
     }, {
@@ -19640,32 +19569,41 @@ document.addEventListener("DOMContentLoaded", function () {
 (function(){
   var mq = window.matchMedia('(min-width: 821px)');
   var observer = null;
-  var lastY = window.pageYOffset || document.documentElement.scrollTop || 0;
   var timers = [];
-  function clearTimers(){ timers.forEach(function(t){ clearTimeout(t); }); timers = []; }
-  function setImp(el, prop, value){ el.style.setProperty(prop, value, 'important'); }
-  function removeConflictClasses(el){
-    el.classList.remove('service-flip-ready','service-flip-in','service-card-inview-final','moodad-service-flip-active-layer','moodad-card-effect-ready','moodad-card-effect-in','moodad-card-rotate-ready','moodad-card-rotate-in','moodad-snap-rotate-done');
+
+  function clearTimers(){
+    timers.forEach(function(t){ clearTimeout(t); });
+    timers = [];
   }
+
+  function setImp(el, prop, value){
+    el.style.setProperty(prop, value, 'important');
+  }
+
+  function removeConflictClasses(el){
+    el.classList.remove(
+      'service-flip-ready',
+      'service-flip-in',
+      'service-card-inview-final',
+      'moodad-service-flip-active-layer',
+      'moodad-card-effect-ready',
+      'moodad-card-effect-in',
+      'moodad-card-rotate-ready',
+      'moodad-card-rotate-in',
+      'moodad-snap-rotate-done'
+    );
+  }
+
   function getCards(){
     var section = document.querySelector('.services-section');
     if(!section) return [];
     return Array.prototype.slice.call(section.querySelectorAll('.service-wide'));
   }
-  function detachOldCardListeners(){
-    if(!mq.matches) return;
-    getCards().forEach(function(card){
-      if(card.dataset.moodadFinalRotateCloned === '1') return;
-      var clone = card.cloneNode(true);
-      clone.dataset.moodadFinalRotateCloned = '1';
-      removeConflictClasses(clone);
-      clone.classList.add('moodad-final-rotate-card');
-      card.parentNode.replaceChild(clone, card);
-    });
-  }
+
   function lockFinal(card){
     removeConflictClasses(card);
     card.classList.add('show');
+    card.classList.add('moodad-final-rotate-card');
     setImp(card, 'opacity', '1');
     setImp(card, 'filter', 'none');
     setImp(card, 'will-change', 'auto');
@@ -19673,7 +19611,12 @@ document.addEventListener("DOMContentLoaded", function () {
     setImp(card, 'transition', 'none');
     setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
   }
-  function prepare(card, fromUp){
+
+  function prepare(card){
+    if(card.dataset.moodadPcSixShown === '1'){
+      lockFinal(card);
+      return;
+    }
     removeConflictClasses(card);
     card.classList.add('moodad-final-rotate-card');
     setImp(card, 'animation', 'none');
@@ -19684,48 +19627,92 @@ document.addEventListener("DOMContentLoaded", function () {
     setImp(card, 'transform-origin', 'center center');
     setImp(card, 'backface-visibility', 'hidden');
     setImp(card, '-webkit-backface-visibility', 'hidden');
-    var rot = fromUp ? -42 : 56;
-    var y = fromUp ? -14 : 20;
-    setImp(card, 'transform', 'perspective(1500px) rotateX(' + rot + 'deg) rotateY(0deg) translate3d(0,' + y + 'px,0) scale(1)');
+    setImp(card, 'transform', 'perspective(1500px) rotateX(56deg) rotateY(0deg) translate3d(0,20px,0) scale(1)');
   }
-  function animateIn(card, fromUp){
+
+  function animateOnce(card, index){
     if(!mq.matches) return;
-    removeConflictClasses(card);
-    prepare(card, fromUp);
+    if(card.dataset.moodadPcSixShown === '1'){
+      lockFinal(card);
+      return;
+    }
+
+    prepare(card);
     card.offsetHeight;
-    requestAnimationFrame(function(){
-      setImp(card, 'transition', 'transform 620ms cubic-bezier(.18,.82,.22,1), opacity 210ms ease-out');
-      setImp(card, 'opacity', '1');
-      setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
-      card.classList.add('show');
-      var t = setTimeout(function(){ lockFinal(card); }, 660);
-      timers.push(t);
-    });
+
+    var delay = Math.min(index * 70, 160);
+    var timer = setTimeout(function(){
+      requestAnimationFrame(function(){
+        setImp(card, 'transition', 'transform 620ms cubic-bezier(.18,.82,.22,1), opacity 210ms ease-out');
+        setImp(card, 'opacity', '1');
+        setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
+        card.classList.add('show');
+        card.dataset.moodadPcSixShown = '1';
+
+        var lockTimer = setTimeout(function(){
+          lockFinal(card);
+        }, 660);
+        timers.push(lockTimer);
+      });
+    }, delay);
+    timers.push(timer);
   }
+
   function setup(){
     if(!mq.matches) return;
     clearTimers();
-    detachOldCardListeners();
+
     var cards = getCards();
     if(!cards.length) return;
-    cards.forEach(function(card){ removeConflictClasses(card); card.classList.add('moodad-final-rotate-card'); lockFinal(card); });
+
     if(observer) observer.disconnect();
+
+    cards.forEach(function(card){
+      if(card.dataset.moodadPcSixShown === '1'){
+        lockFinal(card);
+      } else {
+        prepare(card);
+      }
+    });
+
     observer = new IntersectionObserver(function(entries){
-      var nowY = window.pageYOffset || document.documentElement.scrollTop || 0;
-      var fromUp = nowY < lastY;
-      lastY = nowY;
       entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
         var card = entry.target;
-        if(entry.isIntersecting){ animateIn(card, fromUp); }
-        else{ prepare(card, fromUp); }
+        var index = cards.indexOf(card);
+        animateOnce(card, index < 0 ? 0 : index);
+        if(observer) observer.unobserve(card);
       });
     }, { threshold: 0.34, rootMargin: '-4% 0px -8% 0px' });
-    cards.forEach(function(card){ observer.observe(card); });
+
+    cards.forEach(function(card){
+      if(card.dataset.moodadPcSixShown !== '1') observer.observe(card);
+    });
   }
-  function teardownMobile(){ if(observer) observer.disconnect(); observer = null; clearTimers(); }
-  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', setup); } else { setup(); }
-  window.addEventListener('load', function(){ setTimeout(setup, 120); }, { passive:true });
-  window.addEventListener('resize', function(){ if(mq.matches){ setTimeout(setup, 120); } else { teardownMobile(); } }, { passive:true });
+
+  function teardownMobile(){
+    if(observer) observer.disconnect();
+    observer = null;
+    clearTimers();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', setup);
+  } else {
+    setup();
+  }
+
+  window.addEventListener('load', function(){
+    setTimeout(setup, 120);
+  }, { passive:true });
+
+  window.addEventListener('resize', function(){
+    if(mq.matches){
+      setTimeout(setup, 120);
+    } else {
+      teardownMobile();
+    }
+  }, { passive:true });
 })();
 </script>
 <!-- ===== /MOODAD PC ONLY FINAL: 6가지 전략 부드러운 회전 + 스크롤 위/아래 재실행 / 크기·모바일 미수정 ===== -->
@@ -20267,4 +20254,38 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+
+
+/* ===== PC 전용: 히어로 우측 투명 장식 라인 제거 (모바일 영향 없음) ===== */
+@media (min-width: 821px) {
+  .hero::after {
+    display: none !important;
+  }
+}
+
+
+/* ===== PC 전용: 메인 폰 영역 렉 최적화 ===== */
+@media (min-width: 821px) {
+  .phone.front {
+    animation-duration: 9s !important;
+  }
+
+  .phone.back {
+    animation-duration: 10s !important;
+  }
+
+  .phone {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22) !important;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .phone-screen {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
 </style>
