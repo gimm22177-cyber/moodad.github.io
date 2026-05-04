@@ -9503,6 +9503,80 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <!-- ===== /MOODAD RESULT ROAD BRIDGE ===== -->
 
 
+
+
+<!-- ===== MOODAD 무료 통합 추적 세팅 START: GA4 + Clarity + NAVER ===== -->
+<!--
+  아래 3개 값만 실제 발급값으로 교체하세요.
+  1) GA4 측정 ID: G-XXXXXXXXXX
+  2) Microsoft Clarity 프로젝트 ID: CLARITY_PROJECT_ID
+  3) 네이버 공통키/사이트 식별자: NAVER_ACCOUNT_ID  예) s_1234567890
+-->
+<script id="moodad-tracking-config-20260504">
+  window.MOODAD_TRACKING = window.MOODAD_TRACKING || {
+    ga4Id: "G-XXXXXXXXXX",
+    clarityId: "CLARITY_PROJECT_ID",
+    naverAccountId: "NAVER_ACCOUNT_ID",
+    naverDomain: "moodad.kr"
+  };
+</script>
+
+<!-- Google Analytics 4 -->
+<script>
+  (function () {
+    var cfg = window.MOODAD_TRACKING || {};
+    if (!cfg.ga4Id || cfg.ga4Id === "G-XXXXXXXXXX") return;
+
+    var s = document.createElement("script");
+    s.async = true;
+    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(cfg.ga4Id);
+    document.head.appendChild(s);
+
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", cfg.ga4Id, {
+      send_page_view: true,
+      page_title: document.title,
+      page_location: location.href,
+      page_path: location.pathname
+    });
+  })();
+</script>
+
+<!-- Microsoft Clarity -->
+<script>
+  (function () {
+    var cfg = window.MOODAD_TRACKING || {};
+    if (!cfg.clarityId || cfg.clarityId === "CLARITY_PROJECT_ID") return;
+
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", cfg.clarityId);
+  })();
+</script>
+
+<!-- NAVER Analytics / NAVER Ads Conversion Tracking Base -->
+<script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+<script id="moodad-naver-base-20260504" type="text/javascript">
+  (function () {
+    var cfg = window.MOODAD_TRACKING || {};
+    if (!cfg.naverAccountId || cfg.naverAccountId === "NAVER_ACCOUNT_ID") return;
+    if (!window.wcs) return;
+
+    if (!window.wcs_add) window.wcs_add = {};
+    window.wcs_add["wa"] = cfg.naverAccountId;
+
+    try {
+      if (cfg.naverDomain) window.wcs.inflow(cfg.naverDomain);
+      window.wcs_do();
+    } catch (e) {}
+  })();
+</script>
+<!-- ===== MOODAD 무료 통합 추적 세팅 END ===== -->
+
 </head>
 <body>
 
@@ -19989,5 +20063,171 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 </style>
 <!-- ===== /MOODAD PC ONLY: 진심/본질/희소성 섹션과 선택된 소수 문구 사이 여백만 확장 ===== -->
+
+
+<!-- ===== MOODAD 클릭/문의/카톡/전화/폼 전환 자동 추적 START ===== -->
+<script id="moodad-click-conversion-tracking-20260504">
+  (function () {
+    "use strict";
+
+    var STORAGE_KEY = "moodad_first_visit_source";
+
+    function cleanText(value) {
+      return String(value || "")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, 120) || "unknown";
+    }
+
+    function getVisitSource() {
+      var params = new URLSearchParams(window.location.search);
+      var source = {
+        landing: location.href,
+        path: location.pathname,
+        referrer: document.referrer || "direct",
+        utm_source: params.get("utm_source") || "",
+        utm_medium: params.get("utm_medium") || "",
+        utm_campaign: params.get("utm_campaign") || "",
+        utm_content: params.get("utm_content") || "",
+        utm_term: params.get("utm_term") || "",
+        first_seen_at: new Date().toISOString()
+      };
+      return source;
+    }
+
+    try {
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(getVisitSource()));
+      }
+    } catch (e) {}
+
+    function getFirstVisitSource() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function getTargetInfo(target) {
+      var href = target.getAttribute("href") || "";
+      var text = cleanText(
+        target.getAttribute("aria-label") ||
+        target.getAttribute("title") ||
+        target.innerText ||
+        target.textContent ||
+        target.id ||
+        target.className ||
+        href ||
+        "unknown"
+      );
+
+      var id = target.id || "";
+      var className = typeof target.className === "string" ? target.className : "";
+      var combined = (text + " " + href + " " + id + " " + className).toLowerCase();
+
+      var type = "general_click";
+      var isConversion = false;
+
+      if (href.indexOf("tel:") === 0 || /전화|통화|연락/.test(combined)) {
+        type = "phone_click";
+        isConversion = true;
+      } else if (href.indexOf("sms:") === 0) {
+        type = "sms_click";
+        isConversion = true;
+      } else if (/open\.kakao|pf\.kakao|kakao|카톡|카카오/.test(combined)) {
+        type = "kakao_click";
+        isConversion = true;
+      } else if (/문의|상담|신청|견적|혜택|예약|contact|consult|submit/.test(combined)) {
+        type = "lead_click";
+        isConversion = true;
+      }
+
+      return {
+        type: type,
+        isConversion: isConversion,
+        text: text,
+        href: href || "none",
+        id: id || "none",
+        class_name: cleanText(className || "none"),
+        page_path: location.pathname,
+        page_title: document.title
+      };
+    }
+
+    function sendGA(eventName, payload) {
+      if (typeof window.gtag !== "function") return;
+      window.gtag("event", eventName, payload);
+    }
+
+    function sendClarity(eventName) {
+      if (typeof window.clarity !== "function") return;
+      try { window.clarity("event", eventName); } catch (e) {}
+    }
+
+    function sendNaverLead(info) {
+      var cfg = window.MOODAD_TRACKING || {};
+      if (!cfg.naverAccountId || cfg.naverAccountId === "NAVER_ACCOUNT_ID") return;
+      if (!window.wcs || typeof window.wcs.trans !== "function") return;
+
+      try {
+        if (!window.wcs_add) window.wcs_add = {};
+        window.wcs_add["wa"] = cfg.naverAccountId;
+
+        var conv = {
+          type: "lead",
+          id: info.type + "_" + Date.now(),
+          value: "1"
+        };
+        window.wcs.trans(conv);
+      } catch (e) {}
+    }
+
+    function trackAction(info) {
+      var first = getFirstVisitSource();
+      var payload = Object.assign({}, info, {
+        first_referrer: first.referrer || "direct",
+        first_utm_source: first.utm_source || "",
+        first_utm_medium: first.utm_medium || "",
+        first_utm_campaign: first.utm_campaign || "",
+        first_utm_content: first.utm_content || "",
+        first_utm_term: first.utm_term || ""
+      });
+
+      sendGA("moodad_" + info.type, payload);
+      sendGA("moodad_all_click", payload);
+      sendClarity("moodad_" + info.type);
+
+      if (info.isConversion) {
+        sendGA("moodad_lead_conversion", payload);
+        sendClarity("moodad_lead_conversion");
+        sendNaverLead(info);
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      var target = e.target.closest("a, button, [role='button'], input[type='button'], input[type='submit']");
+      if (!target) return;
+      trackAction(getTargetInfo(target));
+    }, true);
+
+    document.addEventListener("submit", function (e) {
+      var form = e.target;
+      var info = {
+        type: "form_submit",
+        isConversion: true,
+        text: cleanText(form.getAttribute("name") || form.id || form.className || "form_submit"),
+        href: "none",
+        id: form.id || "none",
+        class_name: cleanText(form.className || "none"),
+        page_path: location.pathname,
+        page_title: document.title
+      };
+      trackAction(info);
+    }, true);
+  })();
+</script>
+<!-- ===== MOODAD 클릭/문의/카톡/전화/폼 전환 자동 추적 END ===== -->
+
 </body>
 </html>
