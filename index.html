@@ -20,14 +20,9 @@
 <link rel="apple-touch-icon" href="/favicon-v2.png?v=2" />
 <link crossorigin="" href="https://images.unsplash.com" rel="preconnect"/>
 <link href="//images.unsplash.com" rel="dns-prefetch"/>
-<link as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=900&amp;q=45&amp;fm=webp" rel="preload"/>
-<link as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=900&amp;q=45&amp;fm=webp" rel="preload"/>
-<link as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=900&amp;q=45&amp;fm=webp" rel="preload"/>
+<link as="image" fetchpriority="high" href="moodad-blog.png" rel="preload"/>
 <link crossorigin="" href="https://images.unsplash.com" rel="preconnect"/>
 <link href="https://images.unsplash.com" rel="dns-prefetch"/>
-<link as="image" href="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" rel="preload"/>
-<link as="image" href="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" rel="preload"/>
-<link as="image" href="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&amp;fit=crop&amp;w=1400&amp;q=80" rel="preload"/>
 <style>
 
     html, body {
@@ -1073,6 +1068,35 @@
       }
     }
   
+
+@media (min-width:1025px){
+  .blind-marketing-title{
+    font-size: clamp(30px, 2.4vw, 46px) !important;
+  }
+  .blind-marketing-subtitle{
+    font-size: clamp(18px, 1.25vw, 24px) !important;
+  }
+}
+
+
+/* ===== 로드맵 제목 영역과 STEP 01 시작 영역 사이 여백만 추가 ===== */
+.process-section .process-timeline{
+  margin-top: 120px !important;
+}
+
+@media (max-width: 920px){
+  .process-section .mobile-process-editorial{
+    margin-top: 72px !important;
+  }
+}
+
+@media (max-width: 520px){
+  .process-section .mobile-process-editorial{
+    margin-top: 64px !important;
+  }
+}
+/* ===== /로드맵 제목 영역과 STEP 01 시작 영역 사이 여백만 추가 ===== */
+
 </style>
 <style>
 
@@ -1230,7 +1254,7 @@
       top: 0;
       z-index: 120;
       background: rgba(5,5,5,.84);
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.05);
       transition: background .25s ease, box-shadow .25s ease;
     }
@@ -1492,7 +1516,7 @@
       border: 3px solid #050505;
       border-radius: 40px;
       padding: 10px;
-      box-shadow: 0 34px 80px rgba(0, 0, 0, 0.38);
+      box-shadow: 0 26px 56px rgba(0, 0, 0, 0.32);
       backface-visibility: hidden;
       overflow: hidden;
     }
@@ -1502,7 +1526,7 @@
       top: 36px;
       transform: rotate(-11deg);
       z-index: 2;
-      animation: floatFront 5.6s ease-in-out infinite;
+      animation: floatFront 9.8s ease-in-out infinite;
     }
 
     .phone.back {
@@ -1510,7 +1534,7 @@
       bottom: 28px;
       transform: rotate(9deg);
       z-index: 1;
-      animation: floatBack 6.2s ease-in-out infinite;
+      animation: floatBack 10.8s ease-in-out infinite;
     }
 
     .phone::before {
@@ -2177,37 +2201,6 @@
       color: #18A8F1;
     }
 
-    .services-main-title .typing-line-holder {
-      position: relative;
-      display: inline-grid;
-      min-height: 1.08em;
-      align-items: start;
-      justify-items: start;
-    }
-
-    .services-main-title .typing-line-holder > span {
-      grid-area: 1 / 1;
-      white-space: nowrap;
-    }
-
-    .services-main-title .typing-line-holder .typing-preview {
-      color: rgba(255,255,255,.24);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .services-main-title .typing-line-holder .typing-live {
-      position: relative;
-      z-index: 1;
-      color: inherit;
-    }
-
-    .services-main-title .typing-line-holder.services-typing-cursor .typing-live {
-      border-right: 2px solid currentColor;
-      padding-right: 4px;
-      animation: blinkCursor .9s step-end infinite;
-    }
-
 
     .service-board {
       display: grid;
@@ -2307,6 +2300,24 @@
     }
 
     .panel-motion-copy.reveal.show {
+      opacity: 1;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .services-section .section-head.panel-motion-copy.reveal,
+    .process-section .section-head.panel-motion-copy.reveal,
+    .reviews-price-copy.panel-motion-copy.reveal {
+      opacity: 0;
+      transform: translate3d(0, 72px, 0) scale(.54);
+      transform-origin: center center;
+      transition: transform 1.35s cubic-bezier(.22,1,.36,1), opacity .82s ease-out;
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+    }
+
+    .services-section .section-head.panel-motion-copy.reveal.show,
+    .process-section .section-head.panel-motion-copy.reveal.show,
+    .reviews-price-copy.panel-motion-copy.reveal.show {
       opacity: 1;
       transform: translate3d(0, 0, 0) scale(1);
     }
@@ -9606,7 +9617,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <section class="services-section" id="services">
 <div class="container">
 <div class="section-head reveal panel-motion-copy">
-<h2 class="services-main-title"><span class="top-line typing-line-holder" id="services-typing-line-1" style="font-size:70%;"></span><span class="bottom-line typing-line-holder" id="services-typing-line-2" style="margin-top:0.34em;"></span></h2><br/><br/>
+<h2 class="services-main-title"><span class="top-line" style="font-size:70%;">매출 폭주를 막을 수 없는</span><span class="bottom-line" style="margin-top:0.34em;">6가지 전략</span></h2><br/><br/>
 </div>
 <div class="service-board">
 <article class="service-wide reveal" id="service-1">
@@ -10879,82 +10890,6 @@ const shell = document.getElementById('heroShell');
       });
 
       typingObserver.observe(typingLine1);
-    }
-
-    const servicesTypingLine1 = document.querySelector('#services-typing-line-1');
-    const servicesTypingLine2 = document.querySelector('#services-typing-line-2');
-
-    if (servicesTypingLine1 && servicesTypingLine2) {
-      const servicesLine1Text = '매출 폭주를 막을 수 없는';
-      const servicesLine2Text = '6가지 전략';
-      let servicesTypingStarted = false;
-
-      function setupServicesTypingLine(target, text) {
-        target.innerHTML = '';
-
-        const preview = document.createElement('span');
-        preview.className = 'typing-preview';
-        preview.textContent = text;
-
-        const live = document.createElement('span');
-        live.className = 'typing-live';
-        live.textContent = '';
-
-        target.appendChild(preview);
-        target.appendChild(live);
-
-        return live;
-      }
-
-      servicesTypingLine1.innerHTML = '';
-      servicesTypingLine1.textContent = servicesLine1Text;
-      const servicesTypingLive2 = setupServicesTypingLine(servicesTypingLine2, servicesLine2Text);
-
-      function typeSingleLine(target, liveTarget, text, speed = 82) {
-        return new Promise((resolve) => {
-          let index = 0;
-          liveTarget.textContent = '';
-          target.classList.add('services-typing-cursor');
-
-          function step() {
-            liveTarget.textContent += text.charAt(index);
-            index += 1;
-
-            if (index < text.length) {
-              setTimeout(step, speed);
-            } else {
-              target.classList.remove('services-typing-cursor');
-              resolve();
-            }
-          }
-
-          if (!text.length) {
-            target.classList.remove('services-typing-cursor');
-            resolve();
-            return;
-          }
-
-          step();
-        });
-      }
-
-      async function runServicesTyping() {
-        await typeSingleLine(servicesTypingLine2, servicesTypingLive2, servicesLine2Text, 90);
-      }
-
-      const servicesTypingObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !servicesTypingStarted) {
-            servicesTypingStarted = true;
-            runServicesTyping();
-            servicesTypingObserver.disconnect();
-          }
-        });
-      }, {
-        threshold: 0.4
-      });
-
-      servicesTypingObserver.observe(servicesTypingLine1);
     }
 
     // ===== 후기 슬라이드 섹션 재구성 시작 =====
@@ -15657,33 +15592,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  var moodadHeroTypingStartedOnce = false;
+
   function scheduleRun(delay) {
+    if (moodadHeroTypingStartedOnce) return;
     window.clearTimeout(typingTimer);
-    typingTimer = window.setTimeout(startWhenReady, delay || 0);
+    typingTimer = window.setTimeout(function() {
+      if (moodadHeroTypingStartedOnce) return;
+      moodadHeroTypingStartedOnce = true;
+      startWhenReady();
+    }, delay || 0);
   }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-      scheduleRun(80);
-      scheduleRun(380);
-    });
+      scheduleRun(140);
+    }, { once: true });
   } else {
-    scheduleRun(80);
-    scheduleRun(380);
+    scheduleRun(140);
   }
-
-  /*
-    기존 모바일 고정 스크립트가 load/resize에서 line1을 다시 박아두는 코드가 있어
-    같은 이벤트의 마지막 순서에서 다시 타이핑이 잡히도록 합니다.
-  */
-  window.addEventListener('load', function() {
-    scheduleRun(120);
-    window.setTimeout(function() { scheduleRun(0); }, 650);
-  });
-
-  window.addEventListener('resize', function() {
-    scheduleRun(220);
-  });
 })();
 </script>
 <!-- ===== /FORCE FIX: 95% 문구 PC/모바일 두 줄 타이핑 효과 ===== -->
@@ -17069,57 +16996,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- ===== MOODAD PC ONLY: 6가지 전략 렉 완화 / 구조·크기·애니메이션 효과 변경 없음 ===== -->
-<script id="moodad-pc-six-strategy-layer-cleanup-only-20260429">
-(function(){
-  function initMoodadPcSixStrategyLayerCleanup(){
-    if(!window.matchMedia || !window.matchMedia('(min-width: 821px)').matches) return;
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.services-section .service-wide'));
-    if(!cards.length) return;
-
-    cards.forEach(function(card){
-      if(card.dataset.moodadPcLayerCleanup === '1') return;
-      card.dataset.moodadPcLayerCleanup = '1';
-
-      function releaseLayer(){
-        if(card.matches(':hover') || card.matches(':focus-within')) return;
-        card.style.setProperty('will-change', 'auto', 'important');
-      }
-
-      function prepareLayer(){
-        card.style.setProperty('will-change', 'transform, opacity, box-shadow', 'important');
-      }
-
-      card.addEventListener('transitionstart', prepareLayer, { passive: true });
-      card.addEventListener('transitionend', function(){
-        window.setTimeout(releaseLayer, 90);
-      }, { passive: true });
-      card.addEventListener('mouseenter', prepareLayer, { passive: true });
-      card.addEventListener('mouseleave', function(){
-        window.setTimeout(releaseLayer, 180);
-      }, { passive: true });
-      card.addEventListener('focusin', prepareLayer, { passive: true });
-      card.addEventListener('focusout', function(){
-        window.setTimeout(releaseLayer, 180);
-      }, { passive: true });
-
-      var imgs = card.querySelectorAll('img');
-      imgs.forEach(function(img){
-        img.decoding = 'async';
-        if(!img.getAttribute('loading')) img.setAttribute('loading', 'lazy');
-      });
-
-      window.setTimeout(releaseLayer, 1300);
-    });
-  }
-
-  if(document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMoodadPcSixStrategyLayerCleanup);
-  } else {
-    initMoodadPcSixStrategyLayerCleanup();
-  }
-  window.addEventListener('load', function(){ window.setTimeout(initMoodadPcSixStrategyLayerCleanup, 120); }, { passive: true });
-})();
-</script>
 <!-- ===== /MOODAD PC ONLY: 6가지 전략 렉 완화 ===== -->
 
 
@@ -17207,53 +17083,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- ===== MOODAD PC ONLY: 6가지 전략 렉 완화 최종 안전 패치 - 크기/문구/효과 변경 없음 ===== -->
-<style id="moodad-pc-six-strategy-performance-only-final-safe">
-  @media screen and (min-width: 821px) {
-    /* 크기/디자인/애니메이션 값 변경 없음: GPU 레이어를 필요한 순간에만 사용해서 마우스 움직임과 회전 멈춤 완화 */
-    .services-section .service-board {
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
-      transform: translateZ(0) !important;
-      isolation: isolate !important;
-    }
-
-    .services-section .service-wide,
-    .services-section .service-wide.show,
-    .services-section .service-wide.service-flip-ready,
-    .services-section .service-wide.service-flip-ready.show,
-    .services-section .service-wide.service-flip-ready.service-flip-in,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final {
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
-      transform-style: preserve-3d !important;
-      isolation: isolate !important;
-      will-change: auto !important;
-    }
-
-    .services-section .service-wide.moodad-service-flip-active-layer,
-    .services-section .service-wide.service-flip-ready:hover,
-    .services-section .service-wide.service-flip-ready:focus-within {
-      will-change: transform, opacity !important;
-    }
-
-    .services-section .service-wide::before,
-    .services-section .service-wide::after,
-    .services-section .service-copy,
-    .services-section .service-media,
-    .services-section .service-media img,
-    .services-section .service-num-lg {
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
-      will-change: auto !important;
-    }
-
-    .services-section .service-wide.moodad-service-flip-active-layer::before,
-    .services-section .service-wide.moodad-service-flip-active-layer::after,
-    .services-section .service-wide:hover::after {
-      will-change: opacity !important;
-    }
-  }
-</style>
 <!-- ===== /MOODAD PC ONLY: 6가지 전략 렉 완화 최종 안전 패치 ===== -->
 
 
@@ -17879,22 +17708,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- ===== MOODAD PC ONLY: 마케팅 로드맵 초록색 공 애니메이션 제거 / 모바일 미수정 ===== -->
-<style id="moodad-pc-process-green-node-remove-20260503">
-  @media (min-width: 821px) {
-    #process .process-node,
-    #process .process-node::before,
-    #process .process-node::after {
-      display: none !important;
-      animation: none !important;
-      transition: none !important;
-      will-change: auto !important;
-      box-shadow: none !important;
-    }
-  }
-</style>
 <!-- ===== /MOODAD PC ONLY: 마케팅 로드맵 초록색 공 애니메이션 제거 / 모바일 미수정 ===== -->
-</body>
-</html>
 <!-- ===== PC 전용: 밑손 이미지 좌우 확장 + 그렇지만 문구 제거 최종 패치 ===== -->
 <style id="moodad-pc-hand-full-width-no-geureochiman-final">
   @media (min-width: 821px) {
@@ -18649,7 +18463,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function isVisible(target){
       var rect = target.getBoundingClientRect();
-      return rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+      return rect.top < window.innerHeight * 0.58 && rect.bottom > window.innerHeight * 0.12;
     }
 
     function play(){
@@ -18676,7 +18490,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    if(isVisible(box)){
+    if(isVisible(list)){
       window.setTimeout(play, 70);
       return;
     }
@@ -18684,13 +18498,13 @@ document.addEventListener("DOMContentLoaded", function () {
     if('IntersectionObserver' in window){
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(entry){
-          if(entry.isIntersecting){ play(); io.disconnect(); }
+          if(entry.isIntersecting && isVisible(list)){ play(); io.disconnect(); }
         });
-      }, { threshold: 0.04, rootMargin: '0px 0px -2% 0px' });
-      io.observe(box);
+      }, { threshold: 0.22, rootMargin: '0px 0px -34% 0px' });
+      io.observe(list);
     }else{
       window.addEventListener('scroll', function onScroll(){
-        if(isVisible(box)){ window.removeEventListener('scroll', onScroll); play(); }
+        if(isVisible(list)){ window.removeEventListener('scroll', onScroll); play(); }
       }, { passive:true });
     }
   }
@@ -18705,182 +18519,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <!-- ===== MOODAD FIX: 6가지 전략 패널 개별 스크롤 진입 애니메이션 최종 패치 ===== -->
-<style id="moodad-six-strategy-each-card-scroll-final-fix">
-  /*
-    수정 범위: 6가지 전략 아래 6개 패널 애니메이션 트리거만 수정
-    원인: 기존 스크립트가 service-board 전체가 보이는 순간 1~6번을 한 번에 순차 실행해서,
-          아래쪽 패널은 화면에 도착하기 전에 이미 애니메이션이 끝나는 문제가 있었음.
-    해결: 각 service-wide 패널이 화면에 들어올 때마다 개별로 애니메이션 실행.
-  */
 
-  .services-section .service-board {
-    perspective: 1600px !important;
-    perspective-origin: 50% 50% !important;
-  }
-
-  .services-section .service-wide.service-flip-ready,
-  .services-section .service-wide.service-flip-ready.service-flip-in,
-  .services-section .service-wide.service-flip-ready.show {
-    transition-delay: 0ms !important;
-  }
-
-  .services-section .service-wide.service-flip-ready:not(.service-card-inview-final),
-  .services-section .service-wide.service-flip-ready.show:not(.service-card-inview-final),
-  .services-section .service-wide.service-flip-ready.service-flip-in:not(.service-card-inview-final) {
-    opacity: 0 !important;
-    transform: perspective(1600px) rotateX(78deg) rotateY(0deg) scale(1) !important;
-    filter: none !important;
-    transition:
-      opacity .28s ease-out,
-      transform .86s cubic-bezier(.16,.84,.22,1),
-      box-shadow .26s ease,
-      border-color .26s ease !important;
-    will-change: transform, opacity, box-shadow !important;
-    backface-visibility: hidden !important;
-    -webkit-backface-visibility: hidden !important;
-  }
-
-  .services-section .service-wide.service-flip-ready.service-card-inview-final,
-  .services-section .service-wide.service-flip-ready.show.service-card-inview-final,
-  .services-section .service-wide.service-flip-ready.service-flip-in.service-card-inview-final {
-    opacity: 1 !important;
-    transform: perspective(1600px) rotateX(0deg) rotateY(0deg) scale(1) !important;
-    filter: none !important;
-    transition:
-      opacity .28s ease-out,
-      transform .86s cubic-bezier(.16,.84,.22,1),
-      box-shadow .26s ease,
-      border-color .26s ease !important;
-  }
-
-  .services-section .service-wide.service-flip-ready.service-card-inview-final:hover,
-  .services-section .service-wide.service-flip-ready.service-card-inview-final:focus-within {
-    transform: perspective(1600px) rotateX(.8deg) rotateY(-.8deg) scale(1.007) !important;
-    filter: none !important;
-    box-shadow:
-      0 28px 68px rgba(0,0,0,.23),
-      0 10px 24px rgba(24,168,241,.10),
-      inset 0 1px 0 rgba(255,255,255,.20) !important;
-  }
-
-  @media screen and (max-width: 820px) {
-    .services-section .service-board {
-      perspective: 1200px !important;
-      perspective-origin: 50% 50% !important;
-    }
-
-    .services-section .service-wide.service-flip-ready:not(.service-card-inview-final),
-    .services-section .service-wide.service-flip-ready.show:not(.service-card-inview-final),
-    .services-section .service-wide.service-flip-ready.service-flip-in:not(.service-card-inview-final) {
-      opacity: 0 !important;
-      transform: perspective(1200px) rotateX(74deg) rotateY(0deg) scale(1) !important;
-      transition:
-        opacity .24s ease-out,
-        transform .76s cubic-bezier(.16,.84,.22,1),
-        box-shadow .22s ease !important;
-    }
-
-    .services-section .service-wide.service-flip-ready.service-card-inview-final,
-    .services-section .service-wide.service-flip-ready.show.service-card-inview-final,
-    .services-section .service-wide.service-flip-ready.service-flip-in.service-card-inview-final {
-      opacity: 1 !important;
-      transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale(1) !important;
-    }
-
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:hover,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:focus-within,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:active {
-      transform: perspective(1200px) rotateX(.45deg) rotateY(-.45deg) scale(1.004) !important;
-      filter: none !important;
-    }
-  }
-</style>
-
-<script id="moodad-six-strategy-each-card-scroll-final-fix-script">
-(function(){
-  function initMoodadSixStrategyEachCardScrollFix(){
-    var cards = Array.prototype.slice.call(document.querySelectorAll('.services-section .service-wide'));
-    if(!cards.length) return;
-
-    var isDesktop = window.matchMedia && window.matchMedia('(min-width: 821px)').matches;
-    var timers = [];
-
-    function clearTimers(){
-      timers.forEach(function(timer){ window.clearTimeout(timer); });
-      timers = [];
-    }
-
-    cards.forEach(function(card){
-      card.classList.add('service-flip-ready');
-      card.classList.remove('service-flip-in');
-      card.classList.remove('service-card-inview-final');
-      card.classList.remove('moodad-service-flip-active-layer');
-      card.style.transitionDelay = '0ms';
-    });
-
-    function activateCard(card, index){
-      var delay = isDesktop ? Math.min(index * 90, 180) : 0;
-      var timer = window.setTimeout(function(){
-        window.requestAnimationFrame(function(){
-          card.classList.add('moodad-service-flip-active-layer');
-          card.style.transitionDelay = '0ms';
-          card.classList.add('show');
-          card.classList.add('service-flip-in');
-          card.classList.add('service-card-inview-final');
-
-          window.setTimeout(function(){
-            card.classList.remove('moodad-service-flip-active-layer');
-          }, 980);
-        });
-      }, delay);
-      timers.push(timer);
-    }
-
-    function deactivateCard(card){
-      card.classList.add('moodad-service-flip-active-layer');
-      card.classList.remove('show');
-      card.classList.remove('service-flip-in');
-      card.classList.remove('service-card-inview-final');
-      card.style.transitionDelay = '0ms';
-      window.setTimeout(function(){
-        card.classList.remove('moodad-service-flip-active-layer');
-      }, 980);
-    }
-
-    if(!('IntersectionObserver' in window)){
-      cards.forEach(function(card, index){ activateCard(card, index); });
-      return;
-    }
-
-    clearTimers();
-    var observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        var card = entry.target;
-        var index = cards.indexOf(card);
-
-        if(entry.isIntersecting){
-          activateCard(card, index < 0 ? 0 : index);
-        } else {
-          if(!isDesktop){
-            deactivateCard(card);
-          }
-        }
-      });
-    }, {
-      threshold: isDesktop ? 0.18 : 0.26,
-      rootMargin: isDesktop ? '0px 0px -3% 0px' : '0px 0px -6% 0px'
-    });
-
-    cards.forEach(function(card){ observer.observe(card); });
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', initMoodadSixStrategyEachCardScrollFix);
-  } else {
-    initMoodadSixStrategyEachCardScrollFix();
-  }
-})();
-</script>
 <!-- ===== /MOODAD FIX: 6가지 전략 패널 개별 스크롤 진입 애니메이션 최종 패치 ===== -->
 
 <!-- ===== MOODAD PC ONLY: 6가지 전략 패널 크기 축소 최종 패치 ===== -->
@@ -19119,104 +18758,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- ===== /MOODAD MOBILE ONLY: 신규 광고주 혜택 배지 크기 정상화 최종 ===== -->
 
 <!-- ===== MOODAD PC ONLY: 6가지 전략 + 마케팅 로드맵 렉 완화 최종 / 구조·크기·글자·모바일 변경 없음 ===== -->
-<style id="moodad-pc-services-process-lag-final-only">
-  @media (min-width: 821px) {
-    .services-section,
-    .process-section {
-      content-visibility: auto;
-      contain-intrinsic-size: 1200px;
-    }
 
-    .services-section .service-wide,
-    .services-section .service-copy,
-    .services-section .service-media,
-    .services-section .service-media img,
-    .process-section .process-step,
-    .process-section .process-card,
-    .process-section .process-node,
-    .process-section .process-badge {
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
-      transform-style: flat !important;
-    }
-
-    .services-section .service-media img,
-    .process-section .process-card {
-      transform: translate3d(0,0,0);
-    }
-
-    .services-section .service-wide:not(:hover):not(:focus-within),
-    .process-section .process-card:not(:hover):not(:focus-within) {
-      will-change: auto !important;
-    }
-
-    .services-section .service-wide.show:hover,
-    .services-section .service-wide.service-card-inview-final:hover,
-    .process-section .process-card:hover {
-      will-change: transform, opacity !important;
-    }
-
-    .process-section .process-node::before {
-      will-change: transform, opacity !important;
-    }
-  }
-
-</style>
-
-<script id="moodad-pc-services-process-lag-final-script">
-(function(){
-  function initMoodadPcLagCleanup(){
-    if(!window.matchMedia || !window.matchMedia('(min-width: 821px)').matches) return;
-
-    var targets = Array.prototype.slice.call(document.querySelectorAll(
-      '.services-section .service-wide, .process-section .process-card, .process-section .process-node, .process-section .process-badge'
-    ));
-
-    if(!targets.length) return;
-
-    targets.forEach(function(el){
-      if(el.dataset.moodadPcLagFinal === '1') return;
-      el.dataset.moodadPcLagFinal = '1';
-
-      function prepare(){
-        el.style.setProperty('will-change', 'transform, opacity', 'important');
-      }
-
-      function release(){
-        if(el.matches(':hover') || el.matches(':focus-within')) return;
-        el.style.setProperty('will-change', 'auto', 'important');
-      }
-
-      el.addEventListener('transitionstart', prepare, { passive: true });
-      el.addEventListener('transitionend', function(){ window.setTimeout(release, 80); }, { passive: true });
-      el.addEventListener('animationstart', prepare, { passive: true });
-      el.addEventListener('animationend', function(){ window.setTimeout(release, 80); }, { passive: true });
-      el.addEventListener('mouseenter', prepare, { passive: true });
-      el.addEventListener('mouseleave', function(){ window.setTimeout(release, 120); }, { passive: true });
-      el.addEventListener('focusin', prepare, { passive: true });
-      el.addEventListener('focusout', function(){ window.setTimeout(release, 120); }, { passive: true });
-
-      window.setTimeout(release, 1400);
-    });
-
-    var imgs = document.querySelectorAll('.services-section img, .process-section img');
-    imgs.forEach(function(img){
-      img.decoding = 'async';
-      if(!img.getAttribute('loading')) img.setAttribute('loading', 'lazy');
-    });
-  }
-
-  if(document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMoodadPcLagCleanup);
-  } else {
-    initMoodadPcLagCleanup();
-  }
-
-  window.addEventListener('load', function(){
-    window.setTimeout(initMoodadPcLagCleanup, 160);
-  }, { passive: true });
-})();
-</script>
 <!-- ===== /MOODAD PC ONLY: 6가지 전략 + 마케팅 로드맵 렉 완화 최종 ===== -->
 <!-- ===== MOODAD MOBILE ONLY: 첫 달 세팅비 설명문 줄바꿈 방지 최종 ===== -->
 <style id="moodad-mobile-first-benefit-desc-one-line-final-20260429">
@@ -19484,237 +19026,11 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- ===== /MOODAD MOBILE ONLY FINAL: STEP ORB HIDE BEHIND PANELS ===== -->
 
 <!-- ===== MOODAD PC ONLY FINAL: 6가지 전략 hover 확대/커짐 완전 제거 ===== -->
-<style id="moodad-pc-six-strategy-remove-hover-scale-final-20260430">
-  @media (min-width: 821px) {
-    /* PC 6가지 전략 패널 hover 확대만 제거 / 모바일 변경 없음 / 스크롤 회전 진입 효과 유지 */
-    .services-section .service-wide.show:hover,
-    .services-section .service-wide.show:focus-within,
-    .services-section .service-wide.show:active,
-    .services-section .service-wide.service-flip-ready:hover,
-    .services-section .service-wide.service-flip-ready:focus-within,
-    .services-section .service-wide.service-flip-ready:active,
-    .services-section .service-wide.service-flip-ready.service-flip-in:hover,
-    .services-section .service-wide.service-flip-ready.service-flip-in:focus-within,
-    .services-section .service-wide.service-flip-ready.service-flip-in:active,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:hover,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:focus-within,
-    .services-section .service-wide.service-flip-ready.service-card-inview-final:active {
-      transform: perspective(1600px) rotateX(0deg) rotateY(0deg) translate3d(0, 0, 0) scale(1) !important;
-      filter: none !important;
-      transition-property: opacity, transform !important;
-      will-change: auto !important;
-    }
-
-    .services-section .service-wide:hover .service-copy,
-    .services-section .service-wide:focus-within .service-copy,
-    .services-section .service-wide:hover .service-media,
-    .services-section .service-wide:focus-within .service-media,
-    .services-section .service-wide:hover .service-media img,
-    .services-section .service-wide:focus-within .service-media img {
-      transform: translate3d(0, 0, 0) !important;
-      transition: none !important;
-      will-change: auto !important;
-    }
-
-    .services-section .service-wide:hover::before,
-    .services-section .service-wide:focus-within::before,
-    .services-section .service-wide:hover::after,
-    .services-section .service-wide:focus-within::after,
-    .services-section .service-wide.service-flip-ready.service-flip-in:hover::after,
-    .services-section .service-wide.service-flip-ready.service-flip-in:focus-within::after {
-      transform: translate3d(0, 0, 0) !important;
-      transition: none !important;
-      will-change: auto !important;
-    }
-  }
-</style>
 <!-- ===== /MOODAD PC ONLY FINAL: 6가지 전략 hover 확대/커짐 완전 제거 ===== -->
 
 
 <!-- ===== MOODAD PC ONLY FINAL: 6가지 전략 부드러운 회전 + 스크롤 위/아래 재실행 / 크기·모바일 미수정 ===== -->
-<style id="moodad-pc-six-strategy-smoother-rotate-scroll-both-20260430">
-  @media (min-width: 821px) {
-    .services-section .service-wide.moodad-final-rotate-card {
-      transform-origin: center center !important;
-      transform-style: flat !important;
-      backface-visibility: hidden !important;
-      -webkit-backface-visibility: hidden !important;
-      will-change: auto !important;
-      filter: none !important;
-      animation: none !important;
-    }
-    .services-section .service-wide.moodad-final-rotate-card:hover,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within,
-    .services-section .service-wide.moodad-final-rotate-card:active {
-      transform: perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1) !important;
-      filter: none !important;
-    }
-    .services-section .service-wide.moodad-final-rotate-card:hover .service-copy,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-copy,
-    .services-section .service-wide.moodad-final-rotate-card:hover .service-media,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-media,
-    .services-section .service-wide.moodad-final-rotate-card:hover .service-media img,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within .service-media img,
-    .services-section .service-wide.moodad-final-rotate-card:hover::before,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within::before,
-    .services-section .service-wide.moodad-final-rotate-card:hover::after,
-    .services-section .service-wide.moodad-final-rotate-card:focus-within::after {
-      transform: translate3d(0,0,0) scale(1) !important;
-      transition: none !important;
-      animation: none !important;
-    }
-  }
-</style>
-<script id="moodad-pc-six-strategy-smoother-rotate-scroll-both-20260430">
-(function(){
-  var mq = window.matchMedia('(min-width: 821px)');
-  var observer = null;
-  var timers = [];
 
-  function clearTimers(){
-    timers.forEach(function(t){ clearTimeout(t); });
-    timers = [];
-  }
-
-  function setImp(el, prop, value){
-    el.style.setProperty(prop, value, 'important');
-  }
-
-  function removeConflictClasses(el){
-    el.classList.remove(
-      'service-flip-ready',
-      'service-flip-in',
-      'service-card-inview-final',
-      'moodad-service-flip-active-layer',
-      'moodad-card-effect-ready',
-      'moodad-card-effect-in',
-      'moodad-card-rotate-ready',
-      'moodad-card-rotate-in',
-      'moodad-snap-rotate-done'
-    );
-  }
-
-  function getCards(){
-    var section = document.querySelector('.services-section');
-    if(!section) return [];
-    return Array.prototype.slice.call(section.querySelectorAll('.service-wide'));
-  }
-
-  function lockFinal(card){
-    removeConflictClasses(card);
-    card.classList.add('show');
-    card.classList.add('moodad-final-rotate-card');
-    setImp(card, 'opacity', '1');
-    setImp(card, 'filter', 'none');
-    setImp(card, 'will-change', 'auto');
-    setImp(card, 'animation', 'none');
-    setImp(card, 'transition', 'none');
-    setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
-  }
-
-  function prepare(card){
-    if(card.dataset.moodadPcSixShown === '1'){
-      lockFinal(card);
-      return;
-    }
-    removeConflictClasses(card);
-    card.classList.add('moodad-final-rotate-card');
-    setImp(card, 'animation', 'none');
-    setImp(card, 'transition', 'none');
-    setImp(card, 'opacity', '0');
-    setImp(card, 'filter', 'none');
-    setImp(card, 'will-change', 'transform, opacity');
-    setImp(card, 'transform-origin', 'center center');
-    setImp(card, 'backface-visibility', 'hidden');
-    setImp(card, '-webkit-backface-visibility', 'hidden');
-    setImp(card, 'transform', 'perspective(1500px) rotateX(56deg) rotateY(0deg) translate3d(0,20px,0) scale(1)');
-  }
-
-  function animateOnce(card, index){
-    if(!mq.matches) return;
-    if(card.dataset.moodadPcSixShown === '1'){
-      lockFinal(card);
-      return;
-    }
-
-    prepare(card);
-    card.offsetHeight;
-
-    var delay = Math.min(index * 70, 160);
-    var timer = setTimeout(function(){
-      requestAnimationFrame(function(){
-        setImp(card, 'transition', 'transform 620ms cubic-bezier(.18,.82,.22,1), opacity 210ms ease-out');
-        setImp(card, 'opacity', '1');
-        setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
-        card.classList.add('show');
-        card.dataset.moodadPcSixShown = '1';
-
-        var lockTimer = setTimeout(function(){
-          lockFinal(card);
-        }, 660);
-        timers.push(lockTimer);
-      });
-    }, delay);
-    timers.push(timer);
-  }
-
-  function setup(){
-    if(!mq.matches) return;
-    clearTimers();
-
-    var cards = getCards();
-    if(!cards.length) return;
-
-    if(observer) observer.disconnect();
-
-    cards.forEach(function(card){
-      if(card.dataset.moodadPcSixShown === '1'){
-        lockFinal(card);
-      } else {
-        prepare(card);
-      }
-    });
-
-    observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(!entry.isIntersecting) return;
-        var card = entry.target;
-        var index = cards.indexOf(card);
-        animateOnce(card, index < 0 ? 0 : index);
-        if(observer) observer.unobserve(card);
-      });
-    }, { threshold: 0.34, rootMargin: '-4% 0px -8% 0px' });
-
-    cards.forEach(function(card){
-      if(card.dataset.moodadPcSixShown !== '1') observer.observe(card);
-    });
-  }
-
-  function teardownMobile(){
-    if(observer) observer.disconnect();
-    observer = null;
-    clearTimers();
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', setup);
-  } else {
-    setup();
-  }
-
-  window.addEventListener('load', function(){
-    setTimeout(setup, 120);
-  }, { passive:true });
-
-  window.addEventListener('resize', function(){
-    if(mq.matches){
-      setTimeout(setup, 120);
-    } else {
-      teardownMobile();
-    }
-  }, { passive:true });
-})();
-</script>
 <!-- ===== /MOODAD PC ONLY FINAL: 6가지 전략 부드러운 회전 + 스크롤 위/아래 재실행 / 크기·모바일 미수정 ===== -->
 
 <!-- ===== MOODAD PATCH: 매출 상승 사례 상단바 은은 강조 + 숨쉬는 효과 PC/MOBILE ONLY ===== -->
@@ -20289,3 +19605,389 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 
 </style>
+
+
+<!-- ===== MOODAD PC ONLY: 6가지 전략 렉 완화 최종 정리 / 모바일·패널크기·글자 미수정 ===== -->
+<style id="moodad-pc-six-strategy-lag-clean-final-20260504">
+  @media (min-width: 821px) {
+    .services-section .service-board {
+      perspective: 1500px !important;
+      perspective-origin: 50% 50% !important;
+    }
+
+    .services-section .service-wide {
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+      transform-style: flat !important;
+      filter: none !important;
+    }
+
+    .services-section .service-wide.moodad-pc-card-ready:not(.moodad-pc-card-done) {
+      opacity: 0 !important;
+      transform: perspective(1500px) rotateX(54deg) translate3d(0,18px,0) scale(1) !important;
+      transition: opacity 220ms ease-out, transform 560ms cubic-bezier(.18,.82,.22,1) !important;
+      will-change: transform, opacity !important;
+    }
+
+    .services-section .service-wide.moodad-pc-card-ready.moodad-pc-card-done,
+    .services-section .service-wide.moodad-pc-card-ready.show,
+    .services-section .service-wide.moodad-pc-card-ready.service-flip-in,
+    .services-section .service-wide.moodad-pc-card-ready.service-card-inview-final {
+      opacity: 1 !important;
+      transform: perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1) !important;
+      filter: none !important;
+    }
+
+    .services-section .service-wide.moodad-pc-card-done {
+      transition: none !important;
+      animation: none !important;
+      will-change: auto !important;
+    }
+
+    .services-section .service-wide.moodad-pc-card-done:hover,
+    .services-section .service-wide.moodad-pc-card-done:focus-within,
+    .services-section .service-wide.moodad-pc-card-done:active {
+      transform: perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1) !important;
+      transition: none !important;
+      animation: none !important;
+      filter: none !important;
+      will-change: auto !important;
+    }
+
+    .services-section .service-wide.moodad-pc-card-done::before,
+    .services-section .service-wide.moodad-pc-card-done::after,
+    .services-section .service-wide.moodad-pc-card-done:hover::before,
+    .services-section .service-wide.moodad-pc-card-done:hover::after {
+      animation: none !important;
+      transition: none !important;
+      will-change: auto !important;
+    }
+
+    .process-section .process-card,
+    .process-section .process-step,
+    .process-section .process-node,
+    .process-section .process-scroll-orb {
+      backface-visibility: hidden !important;
+      -webkit-backface-visibility: hidden !important;
+    }
+
+    .process-section .process-scroll-orb {
+      display: block !important;
+      visibility: visible !important;
+    }
+  }
+</style>
+<script id="moodad-pc-six-strategy-lag-clean-final-js-20260504">
+(function(){
+  var mq = window.matchMedia ? window.matchMedia('(min-width: 821px)') : null;
+  var observer = null;
+  var timers = [];
+
+  function isPc(){ return mq && mq.matches; }
+  function clearTimers(){ timers.forEach(function(t){ clearTimeout(t); }); timers = []; }
+  function setImp(el, prop, value){ el.style.setProperty(prop, value, 'important'); }
+
+  function getCards(){
+    var section = document.querySelector('.services-section');
+    if(!section) return [];
+    return Array.prototype.slice.call(section.querySelectorAll('.service-wide'));
+  }
+
+  function clearOldClasses(card){
+    card.classList.remove(
+      'service-flip-ready',
+      'service-flip-in',
+      'service-card-inview-final',
+      'moodad-service-flip-active-layer',
+      'moodad-card-effect-ready',
+      'moodad-card-effect-in',
+      'moodad-card-rotate-ready',
+      'moodad-card-rotate-in',
+      'moodad-snap-rotate-done',
+      'moodad-final-rotate-card'
+    );
+  }
+
+  function lockCard(card){
+    clearOldClasses(card);
+    card.classList.add('show', 'moodad-pc-card-ready', 'moodad-pc-card-done');
+    card.dataset.moodadPcSixDone = '1';
+    setImp(card, 'opacity', '1');
+    setImp(card, 'filter', 'none');
+    setImp(card, 'will-change', 'auto');
+    setImp(card, 'animation', 'none');
+    setImp(card, 'transition', 'none');
+    setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
+  }
+
+  function prepareCard(card){
+    if(card.dataset.moodadPcSixDone === '1') { lockCard(card); return; }
+    clearOldClasses(card);
+    card.classList.add('moodad-pc-card-ready');
+    setImp(card, 'opacity', '0');
+    setImp(card, 'filter', 'none');
+    setImp(card, 'animation', 'none');
+    setImp(card, 'transition', 'none');
+    setImp(card, 'will-change', 'transform, opacity');
+    setImp(card, 'transform-origin', 'center center');
+    setImp(card, 'backface-visibility', 'hidden');
+    setImp(card, '-webkit-backface-visibility', 'hidden');
+    setImp(card, 'transform', 'perspective(1500px) rotateX(54deg) translate3d(0,18px,0) scale(1)');
+  }
+
+  function showCard(card, index){
+    if(card.dataset.moodadPcSixDone === '1') { lockCard(card); return; }
+    prepareCard(card);
+    card.offsetHeight;
+    var delay = Math.min(index * 55, 130);
+    var t = setTimeout(function(){
+      requestAnimationFrame(function(){
+        setImp(card, 'transition', 'opacity 220ms ease-out, transform 560ms cubic-bezier(.18,.82,.22,1)');
+        setImp(card, 'opacity', '1');
+        setImp(card, 'transform', 'perspective(1500px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)');
+        card.classList.add('show');
+        var t2 = setTimeout(function(){ lockCard(card); }, 610);
+        timers.push(t2);
+      });
+    }, delay);
+    timers.push(t);
+  }
+
+  function setupPc(){
+    if(!isPc()) return;
+    clearTimers();
+    if(observer) observer.disconnect();
+
+    var cards = getCards();
+    if(!cards.length) return;
+
+    cards.forEach(function(card){
+      if(card.dataset.moodadPcSixDone === '1') lockCard(card);
+      else prepareCard(card);
+    });
+
+    if(!('IntersectionObserver' in window)){
+      cards.forEach(function(card, i){ showCard(card, i); });
+      return;
+    }
+
+    observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var card = entry.target;
+        var idx = cards.indexOf(card);
+        showCard(card, idx < 0 ? 0 : idx);
+        observer.unobserve(card);
+      });
+    }, { threshold: 0.30, rootMargin: '-3% 0px -8% 0px' });
+
+    cards.forEach(function(card){
+      if(card.dataset.moodadPcSixDone !== '1') observer.observe(card);
+    });
+  }
+
+  function stopOnMobile(){
+    if(observer) observer.disconnect();
+    observer = null;
+    clearTimers();
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setupPc);
+  else setupPc();
+
+  window.addEventListener('load', function(){ if(isPc()) setTimeout(setupPc, 80); }, { passive:true });
+  window.addEventListener('resize', function(){ if(isPc()) setTimeout(setupPc, 120); else stopOnMobile(); }, { passive:true });
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY: 6가지 전략 렉 완화 최종 정리 ===== -->
+
+
+<!-- ===== MOODAD HERO LAG FINAL PATCH: PC 성능 최적화 / 폰 둥둥 효과 유지 ===== -->
+<style id="moodad-hero-lag-final-patch-20260504">
+@media (min-width: 821px) {
+  .hero,
+  .hero-visual,
+  .phone-stack,
+  .phone,
+  .phone-screen {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .phone.front,
+  .phone.back {
+    will-change: transform;
+    contain: layout paint style;
+  }
+
+  body:not(.moodad-hero-inview) .hero .phone.front,
+  body:not(.moodad-hero-inview) .hero .phone.back {
+    animation-play-state: paused !important;
+  }
+
+  body.moodad-is-scrolling .topbar .topnav a.success-case-nav,
+  body.moodad-is-scrolling .topbar .topnav a.success-case-nav::before,
+  body.moodad-is-scrolling .topbar .topnav a.success-case-nav::after,
+  body.moodad-is-scrolling .typing-cursor,
+  body.moodad-is-scrolling .moodad-force-cursor {
+    animation-play-state: paused !important;
+  }
+
+  body.moodad-is-scrolling .hero-shell::before,
+  body.moodad-is-scrolling .media-scan,
+  body.moodad-is-scrolling .star-wave {
+    animation-play-state: paused !important;
+  }
+
+  .hero .phone-img {
+    transform: translateZ(0);
+  }
+
+  .hero .phone-screen::before,
+  .hero .phone-screen::after {
+    will-change: auto !important;
+  }
+}
+</style>
+<script id="moodad-hero-lag-final-patch-script-20260504">
+(function(){
+  if (window.innerWidth <= 820) return;
+
+  var body = document.body;
+  var hero = document.querySelector('.hero');
+  var scrollTimer = null;
+
+  function markScrolling(){
+    body.classList.add('moodad-is-scrolling');
+    window.clearTimeout(scrollTimer);
+    scrollTimer = window.setTimeout(function(){
+      body.classList.remove('moodad-is-scrolling');
+    }, 140);
+  }
+
+  if (hero && 'IntersectionObserver' in window) {
+    var heroObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          body.classList.add('moodad-hero-inview');
+        } else {
+          body.classList.remove('moodad-hero-inview');
+        }
+      });
+    }, { threshold: 0.05 });
+    heroObserver.observe(hero);
+  } else {
+    body.classList.add('moodad-hero-inview');
+  }
+
+  window.addEventListener('scroll', markScrolling, { passive: true });
+})();
+</script>
+<!-- ===== /MOODAD HERO LAG FINAL PATCH ===== -->
+
+<!-- ===== MOODAD HERO SOLID APPEAR PATCH: 투명 등장 제거 / 위치 등장 유지 ===== -->
+<style id="moodad-hero-solid-appear-patch-20260504">
+  @keyframes moodadHeroSolidRise {
+    from { opacity: 1; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 히어로 섹션 자체와 핸드폰 영역의 reveal 투명도 제거 */
+  .hero.reveal,
+  .hero-visual.reveal {
+    opacity: 1 !important;
+    transition: transform .9s ease !important;
+  }
+
+  .hero.reveal.show,
+  .hero-visual.reveal.show {
+    opacity: 1 !important;
+  }
+
+  .hero .eyebrow {
+    opacity: 1 !important;
+    animation: moodadHeroSolidRise .78s ease both !important;
+  }
+
+  .hero h1 {
+    opacity: 1 !important;
+    animation: moodadHeroSolidRise .94s ease both !important;
+  }
+
+  .hero .hero-desc {
+    opacity: 1 !important;
+    animation: moodadHeroSolidRise 1.06s ease both !important;
+  }
+
+  .hero .hero-bullets {
+    opacity: 1 !important;
+    animation: moodadHeroSolidRise 1.16s ease both !important;
+  }
+
+  .hero .hero-service-nav {
+    opacity: 1 !important;
+    animation: moodadHeroSolidRise 1.24s ease both !important;
+  }
+
+  .hero .phone-stack,
+  .hero .phone,
+  .hero .phone-screen,
+  .hero .phone-img {
+    opacity: 1 !important;
+  }
+</style>
+<!-- ===== /MOODAD HERO SOLID APPEAR PATCH ===== -->
+
+
+
+<!-- ===== MOODAD PHONE BUTTON ONLY FIX: PC contain 해제 + 버튼 강제 표시 ===== -->
+<style id="moodad-phone-button-only-fix-20260504">
+@media (min-width: 821px) {
+  .hero .phone.front,
+  .hero .phone.back {
+    contain: none !important;
+    overflow: visible !important;
+  }
+
+  .hero .phone.front > .phone-screen,
+  .hero .phone.back > .phone-screen {
+    overflow: hidden !important;
+  }
+
+  .hero .phone.front > span.phone-btn,
+  .hero .phone.back > span.phone-btn {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 4 !important;
+    pointer-events: none !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PHONE BUTTON ONLY FIX ===== -->
+
+
+<!-- ===== MOODAD PC ONLY: 후기 버튼 아래 파란선과 비용 섹션 사이 여백만 확장 ===== -->
+<style id="moodad-pc-review-price-gap-only-20260504">
+@media (min-width: 821px) {
+  #reviews .reviews-price-hand-block {
+    margin-top: 330px !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PC ONLY: 후기 버튼 아래 파란선과 비용 섹션 사이 여백만 확장 ===== -->
+
+
+
+<!-- ===== MOODAD PC ONLY: 진심/본질/희소성 섹션과 선택된 소수 문구 사이 여백만 확장 ===== -->
+<style id="moodad-pc-problem-between-gap-only-20260504">
+  @media (min-width: 821px){
+    .between-message-section{
+      padding-top: 280px !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD PC ONLY: 진심/본질/희소성 섹션과 선택된 소수 문구 사이 여백만 확장 ===== -->
+</body>
+</html>
