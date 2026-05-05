@@ -1673,7 +1673,7 @@
 
           if (response.ok) {
             form.reset();
-            status.textContent = '문의가 정상 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
+            status.innerHTML = '<p>빠르게 확인 후 연락드리겠습니다.</p>';
           } else {
             status.textContent = '문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
           }
@@ -1903,37 +1903,6 @@
       track("문의클릭", "문의 폼 제출", e.target, true);
     }, true);
 
-    function trackPageLeave() {
-      if (moodadLeaveSent) return;
-      moodadLeaveSent = true;
-
-      var staySeconds = Math.round((Date.now() - moodadVisitStartedAt) / 1000);
-      var payload = {
-        event_category: "무드애드_이탈",
-        event_label: moodadLastAction,
-        page_path: location.pathname,
-        page_title: document.title,
-        engagement_seconds: staySeconds,
-        last_action: moodadLastAction,
-        transport_type: "beacon"
-      };
-
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "페이지이탈", payload);
-      }
-
-      if (typeof window.clarity === "function") {
-        try { window.clarity("event", "페이지이탈"); } catch (e) {}
-      }
-
-      sendKarrotEvent("페이지이탈");
-    }
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden") trackPageLeave();
-    });
-
-    window.addEventListener("pagehide", trackPageLeave);
   })();
 </script>
 <!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 6개만 ===== -->
