@@ -1727,169 +1727,169 @@
   </script>
 
 
-<!-- ===== MOODAD 클릭/문의/카톡/전화/폼 전환 자동 추적 START ===== -->
-<script id="moodad-click-conversion-tracking-20260504">
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 카톡/전화/문의/혜택/사례/메인 ===== -->
+<script id="moodad-key-click-tracking-20260505">
   (function () {
     "use strict";
-
-    var STORAGE_KEY = "moodad_first_visit_source";
 
     function cleanText(value) {
       return String(value || "")
         .replace(/\s+/g, " ")
         .trim()
-        .slice(0, 120) || "unknown";
+        .slice(0, 160) || "unknown";
     }
-
-    function getVisitSource() {
-      var params = new URLSearchParams(window.location.search);
-      var source = {
-        landing: location.href,
-        path: location.pathname,
-        referrer: document.referrer || "direct",
-        utm_source: params.get("utm_source") || "",
-        utm_medium: params.get("utm_medium") || "",
-        utm_campaign: params.get("utm_campaign") || "",
-        utm_content: params.get("utm_content") || "",
-        utm_term: params.get("utm_term") || "",
-        first_seen_at: new Date().toISOString()
-      };
-      return source;
-    }
-
-    try {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(getVisitSource()));
-      }
-    } catch (e) {}
 
     function getFirstVisitSource() {
       try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        var saved = sessionStorage.getItem("moodad_first_visit_source");
+        if (saved) return JSON.parse(saved);
+
+        var params = new URLSearchParams(location.search);
+        var data = {
+          referrer: document.referrer || "direct",
+          utm_source: params.get("utm_source") || "",
+          utm_medium: params.get("utm_medium") || "",
+          utm_campaign: params.get("utm_campaign") || "",
+          utm_content: params.get("utm_content") || "",
+          utm_term: params.get("utm_term") || ""
+        };
+        sessionStorage.setItem("moodad_first_visit_source", JSON.stringify(data));
+        return data;
       } catch (e) {
-        return {};
+        return { referrer: document.referrer || "direct" };
       }
     }
 
-    function getTargetInfo(target) {
-      var href = target.getAttribute("href") || "";
-      var text = cleanText(
-        target.getAttribute("aria-label") ||
-        target.getAttribute("title") ||
+    function makePayload(type, label, target, isConversion) {
+      var first = getFirstVisitSource();
+      var href = target && target.getAttribute ? (target.getAttribute("href") || "none") : "none";
+      var targetText = target ? cleanText(
+        target.getAttribute && (
+          target.getAttribute("aria-label") ||
+          target.getAttribute("title")
+        ) ||
         target.innerText ||
         target.textContent ||
-        target.id ||
-        target.className ||
-        href ||
-        "unknown"
-      );
-
-      var id = target.id || "";
-      var className = typeof target.className === "string" ? target.className : "";
-      var combined = (text + " " + href + " " + id + " " + className).toLowerCase();
-
-      var type = "general_click";
-      var isConversion = false;
-
-      if (href.indexOf("tel:") === 0 || /전화|통화|연락/.test(combined)) {
-        type = "phone_click";
-        isConversion = true;
-      } else if (href.indexOf("sms:") === 0) {
-        type = "sms_click";
-        isConversion = true;
-      } else if (/open\.kakao|pf\.kakao|kakao|카톡|카카오/.test(combined)) {
-        type = "kakao_click";
-        isConversion = true;
-      } else if (/문의|상담|신청|견적|혜택|예약|contact|consult|submit/.test(combined)) {
-        type = "lead_click";
-        isConversion = true;
-      }
+        target.value ||
+        label
+      ) : label;
 
       return {
-        type: type,
-        isConversion: isConversion,
-        text: text,
-        href: href || "none",
-        id: id || "none",
-        class_name: cleanText(className || "none"),
+        event_category: "moodad_key_click",
+        event_label: label,
+        click_type: type,
+        click_text: targetText,
+        click_url: href,
+        click_id: target && target.id ? target.id : "none",
+        click_class: target && typeof target.className === "string" ? cleanText(target.className) : "none",
         page_path: location.pathname,
-        page_title: document.title
-      };
-    }
-
-    function sendGA(eventName, payload) {
-      if (typeof window.gtag !== "function") return;
-      window.gtag("event", eventName, payload);
-    }
-
-    function sendClarity(eventName) {
-      if (typeof window.clarity !== "function") return;
-      try { window.clarity("event", eventName); } catch (e) {}
-    }
-
-    function sendNaverLead(info) {
-      var cfg = window.MOODAD_TRACKING || {};
-      if (!cfg.naverAccountId || cfg.naverAccountId === "NAVER_ACCOUNT_ID") return;
-      if (!window.wcs || typeof window.wcs.trans !== "function") return;
-
-      try {
-        if (!window.wcs_add) window.wcs_add = {};
-        window.wcs_add["wa"] = cfg.naverAccountId;
-
-        var conv = {
-          type: "lead",
-          id: info.type + "_" + Date.now(),
-          value: "1"
-        };
-        window.wcs.trans(conv);
-      } catch (e) {}
-    }
-
-    function trackAction(info) {
-      var first = getFirstVisitSource();
-      var payload = Object.assign({}, info, {
+        page_title: document.title,
+        is_conversion: isConversion ? "yes" : "no",
         first_referrer: first.referrer || "direct",
         first_utm_source: first.utm_source || "",
         first_utm_medium: first.utm_medium || "",
         first_utm_campaign: first.utm_campaign || "",
         first_utm_content: first.utm_content || "",
         first_utm_term: first.utm_term || ""
-      });
+      };
+    }
 
-      sendGA("moodad_" + info.type, payload);
-      sendGA("moodad_all_click", payload);
-      sendClarity("moodad_" + info.type);
+    function sendNaverLead(type) {
+      var cfg = window.MOODAD_TRACKING || {};
+      if (!cfg.naverAccountId || cfg.naverAccountId === "NAVER_ACCOUNT_ID") return;
+      if (!window.wcs || typeof window.wcs.trans !== "function") return;
 
-      if (info.isConversion) {
-        sendGA("moodad_lead_conversion", payload);
-        sendClarity("moodad_lead_conversion");
-        sendNaverLead(info);
+      try {
+        window.wcs_add = window.wcs_add || {};
+        window.wcs_add["wa"] = cfg.naverAccountId;
+        window.wcs.trans({
+          type: "lead",
+          id: type + "_" + Date.now(),
+          value: "1"
+        });
+      } catch (e) {}
+    }
+
+    function track(type, label, target, isConversion) {
+      var eventName = "moodad_" + type;
+      var payload = makePayload(type, label, target, isConversion);
+
+      if (typeof window.gtag === "function") {
+        window.gtag("event", eventName, payload);
+        window.gtag("event", "moodad_all_key_click", payload);
+
+        if (isConversion) {
+          window.gtag("event", "moodad_lead_conversion", payload);
+        }
       }
+
+      if (typeof window.clarity === "function") {
+        try {
+          window.clarity("event", eventName);
+          if (isConversion) window.clarity("event", "moodad_lead_conversion");
+        } catch (e) {}
+      }
+
+      if (isConversion) sendNaverLead(type);
+    }
+
+    function classifyTarget(target) {
+      var href = target.getAttribute("href") || "";
+      var text = cleanText(
+        target.getAttribute("aria-label") ||
+        target.getAttribute("title") ||
+        target.innerText ||
+        target.textContent ||
+        target.value ||
+        ""
+      );
+      var id = target.id || "";
+      var className = typeof target.className === "string" ? target.className : "";
+      var combined = (text + " " + href + " " + id + " " + className).toLowerCase();
+
+      if (/open\.kakao|pf\.kakao|kakao|카톡|카카오/.test(combined)) {
+        return { type: "kakao_click", label: "카톡 클릭", isConversion: true };
+      }
+
+      if (href.indexOf("tel:") === 0 || /전화|통화|연락/.test(combined)) {
+        return { type: "phone_click", label: "전화 클릭", isConversion: true };
+      }
+
+      if (/혜택\s*받기|혜택|신규\s*광고주\s*혜택|benefit|contact-benefits|offer/.test(combined)) {
+        return { type: "benefit_click", label: "혜택받기 클릭", isConversion: true };
+      }
+
+      if (/매출\s*상승\s*사례|매출상승사례|성공\s*사례|리뷰\s*사례|실제\s*리뷰\s*사례|success[-_\s]*case|case[-_\s]*study|service-only\.html/.test(combined)) {
+        return { type: "success_case_click", label: "매출 상승사례 클릭", isConversion: false };
+      }
+
+      if (/메인으로|홈으로|메인\s*페이지|main|home|index\.html|moodad\.kr\/$/.test(combined)) {
+        return { type: "main_click", label: "메인으로 클릭", isConversion: false };
+      }
+
+      if (/문의|상담|신청|견적|빠른\s*문의|무료\s*진단|contact|consult|submit|form/.test(combined)) {
+        return { type: "contact_click", label: "문의 클릭", isConversion: true };
+      }
+
+      return null;
     }
 
     document.addEventListener("click", function (e) {
       var target = e.target.closest("a, button, [role='button'], input[type='button'], input[type='submit']");
       if (!target) return;
-      trackAction(getTargetInfo(target));
+
+      var result = classifyTarget(target);
+      if (!result) return;
+
+      track(result.type, result.label, target, result.isConversion);
     }, true);
 
     document.addEventListener("submit", function (e) {
-      var form = e.target;
-      var info = {
-        type: "form_submit",
-        isConversion: true,
-        text: cleanText(form.getAttribute("name") || form.id || form.className || "form_submit"),
-        href: "none",
-        id: form.id || "none",
-        class_name: cleanText(form.className || "none"),
-        page_path: location.pathname,
-        page_title: document.title
-      };
-      trackAction(info);
+      track("contact_click", "문의 폼 제출", e.target, true);
     }, true);
   })();
 </script>
-<!-- ===== MOODAD 클릭/문의/카톡/전화/폼 전환 자동 추적 END ===== -->
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 카톡/전화/문의/혜택/사례/메인 ===== -->
 
 </body>
 </html>
