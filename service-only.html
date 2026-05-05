@@ -1645,47 +1645,7 @@
     })();
   </script>
 
-  <script>
-    (function () {
-      const form = document.getElementById('floatingConsultForm');
-      const status = document.getElementById('floatingConsultStatus');
-
-      if (!form || !status) return;
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('.floating-consult-btn');
-        const originalText = submitBtn.textContent;
-
-        submitBtn.disabled = true;
-        submitBtn.textContent = '전송중...';
-        status.textContent = '문의 내용을 전송하고 있습니다.';
-
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: {
-              Accept: 'application/json'
-            }
-          });
-
-          if (response.ok) {
-            form.reset();
-            status.textContent = '문의가 정상 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
-          } else {
-            status.textContent = '문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
-          }
-        } catch (error) {
-          status.textContent = '네트워크 문제로 전송되지 않았습니다. 잠시 후 다시 시도해주세요.';
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalText;
-        }
-      });
-    })();
-  </script>
+  <!-- MOODAD: 기존 하단 폼 상태문구 스크립트 비활성화 - 중앙 토스트 처리로 대체 -->
 
   <script id="moodad-main-phone-benefit-exact-link-all-devices">
     (function () {
@@ -1739,40 +1699,158 @@
 
 
 
-<!-- ===== MOODAD Formspree 내부 완료 처리 START: 외부 Formspree 이동 차단 ===== -->
+<!-- ===== MOODAD Formspree 내부 완료 처리 START: 외부 Formspree 이동 차단 + 중앙 토스트 표시 ===== -->
+<style id="moodad-form-toast-style-20260505">
+  .moodad-form-toast-wrap{
+    position:fixed;
+    left:50%;
+    top:50%;
+    z-index:99999;
+    transform:translate(-50%, -50%) scale(.96);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .24s ease, transform .24s ease;
+  }
+  .moodad-form-toast-wrap.is-show{
+    opacity:1;
+    transform:translate(-50%, -50%) scale(1);
+  }
+  .moodad-form-toast{
+    position:relative;
+    min-width:min(420px, calc(100vw - 42px));
+    max-width:min(520px, calc(100vw - 42px));
+    padding:28px 32px 30px;
+    border-radius:28px;
+    background:rgba(255,255,255,.96);
+    border:1px solid rgba(214,228,245,.96);
+    box-shadow:0 26px 70px rgba(16,35,60,.22), 0 0 0 1px rgba(255,255,255,.68) inset;
+    text-align:center;
+    word-break:keep-all;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+  .moodad-form-toast::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-12px;
+    width:24px;
+    height:24px;
+    transform:translateX(-50%) rotate(45deg);
+    background:rgba(255,255,255,.96);
+    border-right:1px solid rgba(214,228,245,.96);
+    border-bottom:1px solid rgba(214,228,245,.96);
+    box-shadow:12px 12px 24px rgba(16,35,60,.06);
+  }
+  .moodad-form-toast__icon{
+    width:48px;
+    height:48px;
+    margin:0 auto 14px;
+    border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:26px;
+    font-weight:900;
+    background:linear-gradient(135deg,#7db7b5 0%,#82accf 50%,#8d9fd9 100%);
+    box-shadow:0 12px 28px rgba(108,149,180,.28);
+  }
+  .moodad-form-toast__title{
+    margin:0;
+    color:#183143;
+    font-size:24px;
+    line-height:1.28;
+    letter-spacing:-.055em;
+    font-weight:900;
+  }
+  .moodad-form-toast__desc{
+    margin:10px 0 0;
+    color:#405766;
+    font-size:17px;
+    line-height:1.55;
+    letter-spacing:-.035em;
+    font-weight:800;
+  }
+  .moodad-form-toast__dim{
+    position:fixed;
+    inset:0;
+    z-index:99998;
+    background:rgba(9,15,24,.12);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .24s ease;
+  }
+  .moodad-form-toast__dim.is-show{
+    opacity:1;
+  }
+  @media (max-width:520px){
+    .moodad-form-toast{
+      padding:24px 22px 26px;
+      border-radius:24px;
+    }
+    .moodad-form-toast__title{
+      font-size:21px;
+    }
+    .moodad-form-toast__desc{
+      font-size:16px;
+    }
+  }
+</style>
 <script id="moodad-formspree-inline-success-20260505">
   (function () {
     "use strict";
 
-    var SUCCESS_HTML = '<strong>문의가 정상 접수되었습니다.</strong><br><p>빠르게 확인 후 연락드리겠습니다.</p>';
+    var hideTimer = null;
 
-    function ensureStatusBox(form) {
-      var status = null;
+    function ensureToast() {
+      var dim = document.getElementById("moodadFormToastDim");
+      var wrap = document.getElementById("moodadFormToastWrap");
 
-      if (form.id === "floatingConsultForm") {
-        status = document.getElementById("floatingConsultStatus");
+      if (!dim) {
+        dim = document.createElement("div");
+        dim.id = "moodadFormToastDim";
+        dim.className = "moodad-form-toast__dim";
+        document.body.appendChild(dim);
       }
 
-      if (!status) {
-        status = form.querySelector("[data-moodad-form-status]");
+      if (!wrap) {
+        wrap = document.createElement("div");
+        wrap.id = "moodadFormToastWrap";
+        wrap.className = "moodad-form-toast-wrap";
+        wrap.setAttribute("role", "status");
+        wrap.setAttribute("aria-live", "polite");
+        wrap.innerHTML =
+          '<div class="moodad-form-toast">' +
+            '<div class="moodad-form-toast__icon">✓</div>' +
+            '<p class="moodad-form-toast__title" id="moodadFormToastTitle"></p>' +
+            '<p class="moodad-form-toast__desc" id="moodadFormToastDesc"></p>' +
+          '</div>';
+        document.body.appendChild(wrap);
       }
 
-      if (!status) {
-        status = document.createElement("div");
-        status.setAttribute("data-moodad-form-status", "true");
-        form.insertAdjacentElement("afterend", status);
-      }
+      return { dim: dim, wrap: wrap };
+    }
 
-      status.style.display = "block";
-      status.style.marginTop = "14px";
-      status.style.fontSize = "15px";
-      status.style.fontWeight = "800";
-      status.style.lineHeight = "1.6";
-      status.style.letterSpacing = "-0.03em";
-      status.style.color = form.id === "floatingConsultForm" ? "#ffffff" : "#183143";
-      status.style.wordBreak = "keep-all";
+    function showToast(title, desc, icon, autoHide) {
+      var parts = ensureToast();
+      var titleEl = document.getElementById("moodadFormToastTitle");
+      var descEl = document.getElementById("moodadFormToastDesc");
+      var iconEl = parts.wrap.querySelector(".moodad-form-toast__icon");
 
-      return status;
+      if (hideTimer) window.clearTimeout(hideTimer);
+
+      if (titleEl) titleEl.textContent = title || "";
+      if (descEl) descEl.textContent = desc || "";
+      if (iconEl) iconEl.textContent = icon || "✓";
+
+      parts.dim.classList.add("is-show");
+      parts.wrap.classList.add("is-show");
+
+      hideTimer = window.setTimeout(function () {
+        parts.wrap.classList.remove("is-show");
+        parts.dim.classList.remove("is-show");
+      }, typeof autoHide === "number" ? autoHide : 2600);
     }
 
     function trackSubmit(form) {
@@ -1810,7 +1888,6 @@
       e.preventDefault();
       e.stopImmediatePropagation();
 
-      var status = ensureStatusBox(form);
       var submitBtn = form.querySelector("button[type='submit'], input[type='submit']");
       var originalText = submitBtn ? (submitBtn.tagName === "INPUT" ? submitBtn.value : submitBtn.textContent) : "";
 
@@ -1820,7 +1897,7 @@
         else submitBtn.textContent = "전송중...";
       }
 
-      status.textContent = "문의 내용을 전송하고 있습니다.";
+      showToast("문의 내용을 전송하고 있습니다.", "잠시만 기다려주세요.", "…", 1200);
 
       try {
         var response = await fetch(action, {
@@ -1831,13 +1908,13 @@
 
         if (response.ok) {
           form.reset();
-          status.innerHTML = SUCCESS_HTML;
+          showToast("문의가 정상 접수되었습니다.", "빠르게 확인 후 연락드리겠습니다.", "✓", 2600);
           trackSubmit(form);
         } else {
-          status.textContent = "문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.";
+          showToast("문의 접수 중 문제가 발생했습니다.", "잠시 후 다시 시도해주세요.", "!", 3000);
         }
       } catch (error) {
-        status.textContent = "네트워크 문제로 전송되지 않았습니다. 잠시 후 다시 시도해주세요.";
+        showToast("네트워크 문제로 전송되지 않았습니다.", "잠시 후 다시 시도해주세요.", "!", 3000);
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
@@ -1848,7 +1925,7 @@
     }, true);
   })();
 </script>
-<!-- ===== MOODAD Formspree 내부 완료 처리 END: 외부 Formspree 이동 차단 ===== -->
+<!-- ===== MOODAD Formspree 내부 완료 처리 END: 외부 Formspree 이동 차단 + 중앙 토스트 표시 ===== -->
 
 <!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 유지 ===== -->
 <script id="moodad-key-click-tracking-kr-20260505">
