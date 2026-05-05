@@ -1673,7 +1673,7 @@
 
           if (response.ok) {
             form.reset();
-            status.innerHTML = '<p>빠르게 확인 후 연락드리겠습니다.</p>';
+            status.textContent = '문의가 정상 접수되었습니다. 확인 후 빠르게 연락드리겠습니다.';
           } else {
             status.textContent = '문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
           }
@@ -1737,14 +1737,124 @@
   </script>
 
 
-<!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 6개만 ===== -->
-<script id="moodad-key-click-tracking-kr-20260505">
+
+
+<!-- ===== MOODAD Formspree 내부 완료 처리 START: 외부 Formspree 이동 차단 ===== -->
+<script id="moodad-formspree-inline-success-20260505">
   (function () {
     "use strict";
 
-    var moodadVisitStartedAt = Date.now();
+    var SUCCESS_HTML = '<strong>문의가 정상 접수되었습니다.</strong><br><p>빠르게 확인 후 연락드리겠습니다.</p>';
+
+    function ensureStatusBox(form) {
+      var status = null;
+
+      if (form.id === "floatingConsultForm") {
+        status = document.getElementById("floatingConsultStatus");
+      }
+
+      if (!status) {
+        status = form.querySelector("[data-moodad-form-status]");
+      }
+
+      if (!status) {
+        status = document.createElement("div");
+        status.setAttribute("data-moodad-form-status", "true");
+        form.insertAdjacentElement("afterend", status);
+      }
+
+      status.style.display = "block";
+      status.style.marginTop = "14px";
+      status.style.fontSize = "15px";
+      status.style.fontWeight = "800";
+      status.style.lineHeight = "1.6";
+      status.style.letterSpacing = "-0.03em";
+      status.style.color = form.id === "floatingConsultForm" ? "#ffffff" : "#183143";
+      status.style.wordBreak = "keep-all";
+
+      return status;
+    }
+
+    function trackSubmit(form) {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "문의클릭", {
+          event_category: "무드애드_핵심클릭",
+          event_label: "문의 폼 제출",
+          click_type: "문의클릭",
+          click_text: "신청하기",
+          click_url: form.getAttribute("action") || "formspree",
+          click_id: form.id || "none",
+          click_class: typeof form.className === "string" ? form.className : "none",
+          page_path: location.pathname,
+          page_title: document.title,
+          is_conversion: "yes"
+        });
+      }
+
+      if (window.karrotPixel && typeof window.karrotPixel.track === "function") {
+        try { window.karrotPixel.track("문의클릭"); } catch (e) {}
+      }
+
+      if (typeof window.clarity === "function") {
+        try { window.clarity("event", "문의클릭"); } catch (e) {}
+      }
+    }
+
+    document.addEventListener("submit", async function (e) {
+      var form = e.target;
+      if (!form || form.tagName !== "FORM") return;
+
+      var action = form.getAttribute("action") || "";
+      if (action.indexOf("formspree.io") === -1) return;
+
+      e.preventDefault();
+      e.stopImmediatePropagation();
+
+      var status = ensureStatusBox(form);
+      var submitBtn = form.querySelector("button[type='submit'], input[type='submit']");
+      var originalText = submitBtn ? (submitBtn.tagName === "INPUT" ? submitBtn.value : submitBtn.textContent) : "";
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        if (submitBtn.tagName === "INPUT") submitBtn.value = "전송중...";
+        else submitBtn.textContent = "전송중...";
+      }
+
+      status.textContent = "문의 내용을 전송하고 있습니다.";
+
+      try {
+        var response = await fetch(action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { "Accept": "application/json" }
+        });
+
+        if (response.ok) {
+          form.reset();
+          status.innerHTML = SUCCESS_HTML;
+          trackSubmit(form);
+        } else {
+          status.textContent = "문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.";
+        }
+      } catch (error) {
+        status.textContent = "네트워크 문제로 전송되지 않았습니다. 잠시 후 다시 시도해주세요.";
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          if (submitBtn.tagName === "INPUT") submitBtn.value = originalText;
+          else submitBtn.textContent = originalText;
+        }
+      }
+    }, true);
+  })();
+</script>
+<!-- ===== MOODAD Formspree 내부 완료 처리 END: 외부 Formspree 이동 차단 ===== -->
+
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 유지 ===== -->
+<script id="moodad-key-click-tracking-kr-20260505">
+  (function () {
+    "use strict";
     var moodadLastAction = "없음";
-    var moodadLeaveSent = false;
 
     function cleanText(value) {
       return String(value || "")
@@ -1902,10 +2012,9 @@
     document.addEventListener("submit", function (e) {
       track("문의클릭", "문의 폼 제출", e.target, true);
     }, true);
-
   })();
 </script>
-<!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 6개만 ===== -->
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 유지 ===== -->
 
 </body>
 </html>
