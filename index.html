@@ -6548,6 +6548,17 @@
     .contact-form input{ height:58px !important; }
     .contact-form textarea{ min-height:205px !important; padding-top:16px !important; padding-bottom:16px !important; resize:vertical !important; }
     .contact-form input::placeholder,.contact-form textarea::placeholder{ color: rgba(60,60,60,.32) !important; }
+    .contact-form-status{
+      margin:18px 0 0;
+      text-align:center;
+      color:#183143;
+      font-size:18px;
+      font-weight:900;
+      line-height:1.7;
+      word-break:keep-all;
+    }
+    .contact-form-status:empty{display:none;}
+    .contact-form-status p{margin:0;}
 
     .contact-check{ display:flex !important; align-items:center !important; gap:12px !important; margin-top: 4px !important; color: rgba(20,20,20,.82) !important; font-size:13px !important; line-height:1.5 !important; }
     .contact-check input{ width:18px !important; height:18px !important; margin:0 !important; border-radius:0 !important; box-shadow:none !important; accent-color:#69a6e6 !important; flex:0 0 auto !important; }
@@ -10319,7 +10330,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 <button type="button" class="moodad-pc-benefit-open" aria-controls="moodad-contact-inquiry" aria-expanded="false">혜택 받기</button>
 <div class="contact-inquiry" id="moodad-contact-inquiry">
-<form class="contact-form" action="https://formspree.io/f/xkopovya" method="POST">
+<form id="moodadMainContactForm" class="contact-form" action="https://formspree.io/f/xkopovya" method="POST">
 <input type="hidden" name="_subject" value="무드애드 홈페이지 문의"/>
 <div class="contact-form-row">
 <input placeholder="성함" type="text" name="name" required/>
@@ -10333,6 +10344,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </label>
 <button class="contact-submit" type="submit">신청 하기</button>
 </form>
+<p id="moodadMainContactStatus" class="contact-form-status" aria-live="polite"></p>
 </div>
 </div>
 </div>
@@ -20084,6 +20096,54 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- ===== /MOODAD PC ONLY: 진심/본질/희소성 섹션과 선택된 소수 문구 사이 여백만 확장 ===== -->
 
 
+
+<script>
+  (function () {
+    var form = document.getElementById('moodadMainContactForm');
+    var status = document.getElementById('moodadMainContactStatus');
+
+    if (!form || !status) return;
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      var submitBtn = form.querySelector('.contact-submit');
+      var originalText = submitBtn ? submitBtn.textContent : '';
+
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '전송중...';
+      }
+
+      status.textContent = '문의 내용을 전송하고 있습니다.';
+
+      try {
+        var response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.reset();
+          status.innerHTML = '<p>빠르게 확인 후 연락드리겠습니다.</p>';
+        } else {
+          status.textContent = '문의 접수 중 문제가 발생했습니다. 잠시 후 다시 시도해주세요.';
+        }
+      } catch (error) {
+        status.textContent = '네트워크 문제로 전송되지 않았습니다. 잠시 후 다시 시도해주세요.';
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
+  })();
+</script>
+
 <!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 8개만 ===== -->
 <script id="moodad-key-click-tracking-kr-20260505">
   (function () {
@@ -20266,37 +20326,6 @@ document.addEventListener("DOMContentLoaded", function () {
       track("문의클릭", "문의 폼 제출", e.target, true);
     }, true);
 
-    function trackPageLeave() {
-      if (moodadLeaveSent) return;
-      moodadLeaveSent = true;
-
-      var staySeconds = Math.round((Date.now() - moodadVisitStartedAt) / 1000);
-      var payload = {
-        event_category: "무드애드_이탈",
-        event_label: moodadLastAction,
-        page_path: location.pathname,
-        page_title: document.title,
-        engagement_seconds: staySeconds,
-        last_action: moodadLastAction,
-        transport_type: "beacon"
-      };
-
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "페이지이탈", payload);
-      }
-
-      if (typeof window.clarity === "function") {
-        try { window.clarity("event", "페이지이탈"); } catch (e) {}
-      }
-
-      sendKarrotEvent("페이지이탈");
-    }
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.visibilityState === "hidden") trackPageLeave();
-    });
-
-    window.addEventListener("pagehide", trackPageLeave);
   })();
 </script>
 <!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 8개만 ===== -->
