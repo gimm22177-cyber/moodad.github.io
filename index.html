@@ -20074,7 +20074,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <!-- ===== /MOODAD PC ONLY: 진심/본질/희소성 섹션과 선택된 소수 문구 사이 여백만 확장 ===== -->
 
 
-<!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 6개만 ===== -->
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 START: 한글 이벤트명 8개만 ===== -->
 <script id="moodad-key-click-tracking-kr-20260505">
   (function () {
     "use strict";
@@ -20185,26 +20185,42 @@ document.addEventListener("DOMContentLoaded", function () {
       var className = typeof target.className === "string" ? target.className : "";
       var combined = (text + " " + href + " " + id + " " + className).toLowerCase();
 
+      /* 카카오톡 문의 */
       if (/open\.kakao|pf\.kakao|kakao|카톡|카카오/.test(combined)) {
         return { eventName: "카톡클릭", label: "카톡 클릭", isConversion: true };
       }
 
+      /* 전화 문의 */
       if (href.indexOf("tel:") === 0 || /전화|통화|연락/.test(combined)) {
         return { eventName: "전화클릭", label: "전화 클릭", isConversion: true };
       }
 
+      /* 혜택받기 */
       if (/혜택\s*받기|혜택|신규\s*광고주\s*혜택|benefit|contact-benefits|offer/.test(combined)) {
         return { eventName: "혜택받기클릭", label: "혜택받기 클릭", isConversion: true };
       }
 
+      /* 더욱 자세한 전략 보러가기 */
+      if (/더욱\s*자세한\s*전략\s*보러가기|자세한\s*전략|전략\s*보러가기|전략\s*보기|strategy/.test(combined)) {
+        return { eventName: "전략보러가기클릭", label: "더욱 자세한 전략 보러가기 클릭", isConversion: false };
+      }
+
+      /* 더욱 자세한 사례 보러가기 */
+      if (/더욱\s*자세한\s*사례\s*보러가기|자세한\s*사례|사례\s*보러가기|사례\s*보기|case[-_\s]*detail/.test(combined)) {
+        return { eventName: "사례보러가기클릭", label: "더욱 자세한 사례 보러가기 클릭", isConversion: false };
+      }
+
+      /* 매출 상승사례 */
       if (/매출\s*상승\s*사례|매출상승사례|성공\s*사례|리뷰\s*사례|실제\s*리뷰\s*사례|success[-_\s]*case|case[-_\s]*study|service-only\.html/.test(combined)) {
         return { eventName: "매출상승사례클릭", label: "매출 상승사례 클릭", isConversion: false };
       }
 
+      /* 메인으로 */
       if (/메인으로|홈으로|메인\s*페이지|main|home|index\.html|moodad\.kr\/$/.test(combined)) {
         return { eventName: "메인으로클릭", label: "메인으로 클릭", isConversion: false };
       }
 
+      /* 일반 문의 */
       if (/문의|상담|신청|견적|빠른\s*문의|무료\s*진단|contact|consult|submit|form/.test(combined)) {
         return { eventName: "문의클릭", label: "문의 클릭", isConversion: true };
       }
@@ -20227,7 +20243,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, true);
   })();
 </script>
-<!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 6개만 ===== -->
+<!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 8개만 ===== -->
 
 </body>
 </html>
