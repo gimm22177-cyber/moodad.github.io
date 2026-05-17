@@ -69,6 +69,12 @@
       background:var(--paper);
       transition:background .18s linear;
     }
+
+    /* ===== 상단 애니메이션 영역 숨김 처리 ===== */
+    #heroShell{
+      display:none !important;
+    }
+    /* ===== /상단 애니메이션 영역 숨김 처리 ===== */
     .hero-shell.bg-paper{background:var(--paper)}
     .hero-shell.bg-black{background:var(--ink)}
     .hero-shell.bg-mood{background:var(--mood)}
@@ -10358,6 +10364,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 
 const shell = document.getElementById('heroShell');
     const stage = document.getElementById('stage');
+    const moodadHeroMotionHidden = true;
 
     const sequence = [
       { type:'plain', bg:'black', text:'광고', size:'xxl', color:'white', motion:'motion-soft-pop', duration:950 },
@@ -10782,7 +10789,7 @@ const shell = document.getElementById('heroShell');
       return plainScene(item);
     }
 
-    let heroLoopEnabled = true;
+    let heroLoopEnabled = !moodadHeroMotionHidden;
 
     function play(index){
       if(!heroLoopEnabled) return;
@@ -10817,6 +10824,7 @@ const shell = document.getElementById('heroShell');
     }
 
     function startHeroLoop(){
+      if(moodadHeroMotionHidden) return;
       if(heroLoopEnabled) return;
       heroLoopEnabled = true;
       play(idx);
@@ -10848,7 +10856,7 @@ const shell = document.getElementById('heroShell');
       }
     });
 
-    play(0);
+    if(!moodadHeroMotionHidden) play(0);
   
 </script>
 <script>
