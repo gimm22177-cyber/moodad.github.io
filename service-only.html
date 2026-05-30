@@ -2049,6 +2049,10 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
         try { window.clarity("event", eventName); } catch (e) {}
       }
 
+      if (isConversion && typeof window.fbq === "function") {
+        window.fbq('track', 'Contact');
+      }
+
       sendKarrotEvent(eventName);
       if (isConversion) sendNaverLead(eventName);
     }
