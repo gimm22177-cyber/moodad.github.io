@@ -20444,6 +20444,10 @@ document.addEventListener("DOMContentLoaded", function () {
         try { window.clarity("event", eventName); } catch (e) {}
       }
 
+      if (isConversion && typeof window.fbq === "function") {
+        window.fbq('track', 'Contact');
+      }
+
       sendKarrotEvent(eventName);
       if (isConversion) sendNaverLead(eventName);
     }
