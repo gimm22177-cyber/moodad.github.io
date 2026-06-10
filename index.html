@@ -6570,7 +6570,7 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
       font-family:inherit !important; font-size:13px !important; box-shadow: 0 8px 22px rgba(96, 134, 178, .08) !important;
     }
     .contact-form input{ height:58px !important; }
-    .contact-form textarea{ min-height:205px !important; padding-top:16px !important; padding-bottom:16px !important; resize:vertical !important; }
+    .contact-form textarea{ min-height:120px !important; padding-top:16px !important; padding-bottom:16px !important; resize:vertical !important; }
     .contact-form input::placeholder,.contact-form textarea::placeholder{ color: rgba(60,60,60,.32) !important; }
 
     .contact-check{ display:flex !important; align-items:center !important; gap:12px !important; margin-top: 4px !important; color: rgba(20,20,20,.82) !important; font-size:13px !important; line-height:1.5 !important; }
@@ -10350,7 +10350,12 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <input placeholder="전화번호" type="tel" name="phone" required/>
 </div>
 <input placeholder="이메일" type="email" name="email" required/>
-<textarea name="message" placeholder="문의하실 사항 편하게 남겨주세요😊 ex. 상호명/업종/월예산/문의사항/연락 가능 시간 등" required></textarea>
+<div class="contact-form-row">
+<input placeholder="상호명" type="text" name="company" required/>
+<input placeholder="월 가용 예산" type="text" name="marketing_service" required/>
+</div>
+
+<textarea name="message" placeholder="문의하실 내용을 남겨주세요 ex) 문의사항 / 원하시는 마케팅 / 연락 가능 시간 등" required></textarea>
 <label class="contact-check">
 <input type="checkbox" name="privacy_agree" value="동의" required/>
 <span>개인정보 수집 및 이용에 동의합니다.</span>
