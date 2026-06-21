@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="ko">
 <head>
   <!-- Google tag (gtag.js) -->
@@ -34,14 +34,20 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
   <meta name="naver-site-verification" content="a0847b3dc8c4ae99f0e8529853313a0388411f0e" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>대구 광고대행사 무드애드 | 온라인마케팅 | 업종별 맞춤 마케팅</title>
-<meta name="description" content="대구 광고대행사 무드애드는 업종별 맞춤 온라인마케팅으로 검색부터 문의와 방문까지 이어지는 마케팅 전략을 설계하고 관리하는 광고대행사입니다." />
+<meta name="description" content="대구 광고대행사 무드애드는 플레이스 마케팅, 브랜드 블로그, 바이럴 마케팅, SNS 마케팅, 당근 마케팅, 검색광고, 체험단·기자단을 업종별 맞춤으로 설계하고 관리합니다." />
 <meta name="robots" content="index, follow" />
 <meta property="og:type" content="website" />
 <meta property="og:title" content="대구 광고대행사 무드애드 | 온라인마케팅 | 업종별 맞춤 마케팅" />
-<meta property="og:description" content="대구 광고대행사 무드애드는 업종별 맞춤 온라인마케팅으로 검색부터 문의와 방문까지 이어지는 마케팅 전략을 설계하고 관리하는 광고대행사입니다." />
+<meta property="og:description" content="대구 광고대행사 무드애드는 플레이스 마케팅, 브랜드 블로그, 바이럴 마케팅, SNS 마케팅, 당근 마케팅, 검색광고, 체험단·기자단을 업종별 맞춤으로 설계하고 관리합니다." />
 <meta property="og:url" content="https://moodad.kr/" />
 <meta property="og:site_name" content="무드애드" />
 <meta property="og:image" content="https://moodad.kr/moodad-blog.png" />
+<meta property="og:image:alt" content="대구 광고대행사 무드애드 브랜드 이미지" />
+<meta property="og:locale" content="ko_KR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="대구 광고대행사 무드애드 | 온라인마케팅 | 업종별 맞춤 마케팅" />
+<meta name="twitter:description" content="플레이스, 브랜드 블로그, 바이럴, SNS, 당근, 검색광고, 체험단·기자단까지 업종별 맞춤으로 관리합니다." />
+<meta name="twitter:image" content="https://moodad.kr/moodad-blog.png" />
 <link rel="canonical" href="https://moodad.kr/" />
 <link rel="shortcut icon" href="https://moodad.kr/favicon-v2.png" type="image/png" />
 <link rel="icon" href="https://moodad.kr/favicon-v2.png" type="image/png" />
@@ -92,6 +98,46 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
       display:none !important;
     }
     /* ===== /상단 애니메이션 영역 숨김 처리 ===== */
+
+    /* ===== 첫 번째 휴대폰 안 상단 애니메이션 적용 ===== */
+    .phone-hero-mount{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      overflow:hidden;
+      background:var(--paper);
+    }
+
+    .phone-hero-mount #heroShell{
+      display:block !important;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      min-width:0;
+      min-height:0;
+      overflow:hidden;
+      border-radius:0;
+    }
+
+    .phone-hero-mount #heroShell .stage{
+      position:absolute;
+      left:0;
+      top:0;
+      width:416.6667%;
+      height:416.6667%;
+      padding:4vw;
+      transform:scale(.24);
+      transform-origin:top left;
+    }
+
+    .phone-hero-mount #heroShell .moodad-hero-scroll-guide,
+    .phone-hero-mount #heroShell .nav-mini,
+    .phone-hero-mount #heroShell .badge{
+      display:none !important;
+    }
+    /* ===== /첫 번째 휴대폰 안 상단 애니메이션 적용 ===== */
+
     .hero-shell.bg-paper{background:var(--paper)}
     .hero-shell.bg-black{background:var(--ink)}
     .hero-shell.bg-mood{background:var(--mood)}
@@ -1546,8 +1592,8 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
     .phone {
       position: absolute;
       width: 286px;
-      background: #000000;
-      border: 3px solid #050505;
+      background: #d9dde3;
+      border: 3px solid #eef1f4;
       border-radius: 40px;
       padding: 10px;
       box-shadow: 0 26px 56px rgba(0, 0, 0, 0.32);
@@ -2423,7 +2469,9 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
     #service-3 .service-copy h3,
     #service-4 .service-copy h3,
     #service-5 .service-copy h3,
-    #service-6 .service-copy h3 {
+    #service-6 .service-copy h3,
+    #service-7 .service-copy h3,
+    #service-8 .service-copy h3 {
       color: #ffffff;
     }
 
@@ -5687,8 +5735,11 @@ src="https://www.facebook.com/tr?id=1245553687454022&ev=PageView&noscript=1"
   .phone-btn {
     position: absolute;
     display: block !important;
-    background: linear-gradient(180deg, #1d1f24 0%, #07080a 100%);
-    box-shadow: inset 1px 0 0 rgba(255,255,255,.10), inset -1px 0 0 rgba(0,0,0,.35);
+    background: linear-gradient(180deg, #f2f4f7 0%, #c7ccd3 48%, #aeb4bc 100%);
+    box-shadow:
+      inset 1px 0 0 rgba(255,255,255,.72),
+      inset -1px 0 0 rgba(71,78,88,.24),
+      0 1px 2px rgba(0,0,0,.16);
     z-index: 0;
     pointer-events: none;
   }
@@ -6986,7 +7037,9 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     #service-3 .service-copy h3,
     #service-4 .service-copy h3,
     #service-5 .service-copy h3,
-    #service-6 .service-copy h3 {
+    #service-6 .service-copy h3,
+    #service-7 .service-copy h3,
+    #service-8 .service-copy h3 {
       color: #111111 !important;
     }
 
@@ -8450,7 +8503,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <!-- ===== 요청 수정: 감 의존 마케팅 섹션 배경 연결 ===== -->
 <style>
 .blind-marketing-section{background:#f4f1eb !important;position:relative !important;overflow:hidden !important;}
-.blind-marketing-section::after{content:"" !important;display:block !important;position:absolute !important;left:0 !important;right:0 !important;bottom:-1px !important;height:190px !important;pointer-events:none !important;background:linear-gradient(to bottom,rgba(244,241,235,0) 0%,rgba(244,241,235,.34) 36%,rgba(250,250,249,.72) 74%,#ffffff 100%) !important;z-index:0 !important;}
+.blind-marketing-section::after{content:"" !important;display:block !important;position:absolute !important;left:0 !important;right:0 !important;bottom:-1px !important;height:160px !important;pointer-events:none !important;background:linear-gradient(to bottom,rgba(244,241,235,0) 0%,rgba(244,241,235,.34) 36%,rgba(250,250,249,.72) 74%,#ffffff 100%) !important;z-index:0 !important;}
 .blind-marketing-inner{position:relative !important;z-index:2 !important;}
 .blind-marketing-section + main .hero{margin-top:-1px !important;}
 </style>
@@ -9093,29 +9146,33 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://gimm22177-cyber.github.io/moodad.github.io/#business",
+      "@id": "https://moodad.kr/#business",
       "name": "무드애드",
       "alternateName": "MOOD AD",
-      "url": "https://gimm22177-cyber.github.io/moodad.github.io/",
-      "logo": "https://gimm22177-cyber.github.io/moodad.github.io/moodad-blog.png",
-      "image": "https://gimm22177-cyber.github.io/moodad.github.io/moodad-blog.png",
-      "description": "대구 광고 대행사 무드애드는 네이버 플레이스 상위노출, 체험단, 검색광고, 리워드 트래픽, 블로그 마케팅, 바이럴 마케팅을 함께 관리하는 마케팅 대행사입니다.",
+      "url": "https://moodad.kr/",
+      "logo": "https://moodad.kr/moodad-blog.png",
+      "image": "https://moodad.kr/moodad-blog.png",
+      "description": "대구 광고대행사 무드애드는 플레이스 마케팅, 브랜드 블로그, 플레이스 순위상승, 바이럴 마케팅, SNS 마케팅, 당근 마케팅, 검색광고, 체험단·기자단을 업종별 맞춤으로 설계하고 관리합니다.",
       "areaServed": {
         "@type": "City",
-        "name": "대구"
+        "name": "대구광역시"
       },
       "knowsAbout": [
-        "대구 광고 대행사",
-        "대구 마케팅 대행사",
-        "네이버 플레이스 상위노출",
-        "플레이스 마케팅",
-        "체험단 마케팅",
-        "검색광고",
-        "블로그 마케팅",
+        "대구 광고대행사",
+        "온라인마케팅",
+        "네이버 플레이스 마케팅",
+        "플레이스 순위상승",
+        "브랜드 블로그",
         "바이럴 마케팅",
-        "카페 마케팅",
-        "커뮤니티 마케팅",
-        "리워드 트래픽"
+        "SNS 마케팅",
+        "인스타그램 마케팅",
+        "페이스북 마케팅",
+        "당근 마케팅",
+        "당근마켓 광고",
+        "지역 기반 마케팅",
+        "네이버 검색광고",
+        "체험단 마케팅",
+        "기자단 마케팅"
       ],
       "sameAs": [
         "https://open.kakao.com/me/mood_ad"
@@ -9123,11 +9180,11 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
     },
     {
       "@type": "WebSite",
-      "@id": "https://gimm22177-cyber.github.io/moodad.github.io/#website",
-      "url": "https://gimm22177-cyber.github.io/moodad.github.io/",
+      "@id": "https://moodad.kr/#website",
+      "url": "https://moodad.kr/",
       "name": "무드애드",
       "publisher": {
-        "@id": "https://gimm22177-cyber.github.io/moodad.github.io/#business"
+        "@id": "https://moodad.kr/#business"
       },
       "inLanguage": "ko-KR"
     }
@@ -9644,6 +9701,28 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
   window.karrotPixel.track('ViewPage');
 </script>
 <!-- End Danggeun Market Code -->
+
+<style>
+/* ===== 최종 휴대폰 실버 프레임 적용 ===== */
+@media (min-width: 821px) {
+  .phone {
+    background: linear-gradient(145deg, #f4f6f8 0%, #c7cdd4 34%, #eef1f4 64%, #aeb6bf 100%) !important;
+    border: 2px solid #e8ecf0 !important;
+    box-shadow:
+      0 30px 60px rgba(15,23,42,.16),
+      0 18px 30px rgba(0,0,0,.16),
+      inset 1px 1px 0 rgba(255,255,255,.92),
+      inset -1px -1px 0 rgba(90,101,113,.28) !important;
+  }
+
+  .phone::after {
+    box-shadow:
+      inset 2px 2px 4px rgba(255,255,255,.78),
+      inset -2px -2px 4px rgba(74,85,98,.24) !important;
+  }
+}
+/* ===== /최종 휴대폰 실버 프레임 적용 ===== */
+</style>
 </head>
 <body>
 
@@ -9741,7 +9820,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="phone front">
 <span class="phone-btn power"></span><span class="phone-btn volume volume-up"></span><span class="phone-btn volume volume-down"></span>
 <div class="phone-screen">
-<img alt="무드애드가 진행하는 블로그 마케팅과 콘텐츠 운영 화면을 보여주는 메인 이미지" class="phone-img" src="moodad-blog.png"/>
+<div class="phone-hero-mount" id="phoneHeroMount"></div>
 </div>
 </div>
 <div class="phone back">
@@ -9758,7 +9837,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <section class="services-section" id="services">
 <div class="container">
 <div class="section-head reveal panel-motion-copy">
-<h2 class="services-main-title"><span class="top-line" style="font-size:70%;">매출 폭주를 막을 수 없는</span><span class="bottom-line" style="margin-top:0.34em;">6가지 전략</span></h2><br/><br/>
+<h2 class="services-main-title"><span class="top-line" style="font-size:70%;">매출 폭주를 막을 수 없는</span><span class="bottom-line" style="margin-top:0.34em;">8가지 전략</span></h2><br/><br/>
 </div>
 <div class="service-board">
 <article class="service-wide reveal" id="service-1">
@@ -9773,7 +9852,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </p>
 <div class="mini"></div>
 </div>
-<div class="service-media blur-demo"><img alt="네이버 플레이스 세팅과 월관리로 매장 정보를 정리하는 무드애드 서비스 안내 이미지" src="images/service-01.jpg"/><div class="service-split"></div></div>
+<div class="service-media blur-demo"><img alt="네이버 플레이스 마케팅 운영으로 매장 정보와 검색 노출을 관리하는 서비스 이미지" src="images/service-01.jpg" loading="lazy" decoding="async"/><div class="service-split"></div></div>
 </article>
 <article class="service-wide reveal" id="service-2">
 <div class="service-copy">
@@ -9787,7 +9866,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </p>
 <div class="mini"></div>
 </div>
-<div class="service-media food-demo"><img alt="체험단과 기자단 리뷰 마케팅으로 매장 신뢰도를 만드는 운영 방식을 안내하는 이미지" src="images/service-02.jpg"/><div class="service-split"></div></div>
+<div class="service-media food-demo"><img alt="체험단과 기자단 리뷰 마케팅으로 브랜드 신뢰도를 높이는 서비스 이미지" src="images/service-02.jpg" loading="lazy" decoding="async"/><div class="service-split"></div></div>
 </article>
 <article class="service-wide reveal" id="service-3">
 <div class="service-copy">
@@ -9801,7 +9880,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </p>
 <div class="mini"></div>
 </div>
-<div class="service-media feed-demo"><img alt="네이버 플레이스 정보 관리와 매장 홍보 흐름을 설명하는 무드애드 서비스 이미지" src="images/service-03.jpg"/><div class="service-split"></div></div>
+<div class="service-media feed-demo"><img alt="네이버 플레이스 순위상승 작업으로 목표 키워드 노출을 강화하는 서비스 이미지" src="images/service-03.jpg" loading="lazy" decoding="async"/><div class="service-split"></div></div>
 </article>
 <article class="service-wide reveal" id="service-4">
 <div class="service-copy">
@@ -9815,7 +9894,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </p>
 <div class="mini"></div>
 </div>
-<div class="service-media receipt-demo"><img alt="네이버 검색광고 세팅과 키워드 광고 운영 관리 방식을 설명하는 서비스 이미지" src="images/service-04.jpg"/><div class="service-split"></div></div>
+<div class="service-media receipt-demo"><img alt="네이버 검색광고 세팅과 키워드 광고 운영으로 문의를 유도하는 서비스 이미지" src="images/service-04.jpg" loading="lazy" decoding="async"/><div class="service-split"></div></div>
 </article>
 <article class="service-wide reveal" id="service-5">
 <div class="service-copy">
@@ -9830,7 +9909,7 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="mini"></div>
 </div>
 <div class="service-media video-demo">
-<img alt="브랜드블로그와 블로그대행 콘텐츠 운영으로 업체 신뢰도를 만드는 서비스 이미지" src="images/service-05.jpg"/>
+<img alt="브랜드 블로그 콘텐츠 운영으로 업체의 전문성과 신뢰도를 높이는 서비스 이미지" src="images/service-05.jpg" loading="lazy" decoding="async"/>
 <div class="service-split"></div>
 </div>
 </article>
@@ -9847,7 +9926,41 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <div class="mini"></div>
 </div>
 <div class="service-media">
-<img alt="카페와 커뮤니티를 활용한 바이럴 마케팅으로 자연스러운 입소문과 고객 문의를 만드는 서비스 이미지" src="images/service-06.jpg"/>
+<img alt="카페와 커뮤니티 기반 바이럴 마케팅으로 입소문과 고객 문의를 만드는 서비스 이미지" src="images/service-06.jpg" loading="lazy" decoding="async"/>
+<div class="service-split"></div>
+</div>
+</article>
+<article class="service-wide reveal" id="service-7">
+<div class="service-copy">
+<div class="service-num-lg">07</div>
+<h3>SNS 마케팅</h3>
+<p>
+<span class="service-line">인스타그램·페이스북 등</span>
+<span class="service-line">채널 특성에 맞는 콘텐츠로</span>
+<span class="service-line service-bold">브랜드 인지도를 높이고</span>
+<span class="service-line service-bold">상담 문의를 만듭니다.</span>
+</p>
+<div class="mini"></div>
+</div>
+<div class="service-media">
+<img alt="인스타그램과 페이스북 중심의 SNS 마케팅으로 브랜드 인지도를 높이는 서비스 이미지" src="images/service-07.jpg" loading="lazy" decoding="async"/>
+<div class="service-split"></div>
+</div>
+</article>
+<article class="service-wide reveal" id="service-8">
+<div class="service-copy">
+<div class="service-num-lg">08</div>
+<h3>당근 마케팅</h3>
+<p>
+<span class="service-line">우리 동네 잠재고객에게</span>
+<span class="service-line">자연스럽게 도달할 수 있도록</span>
+<span class="service-line service-bold">지역 기반 노출을 만들고</span>
+<span class="service-line service-bold">실제 문의를 유도합니다.</span>
+</p>
+<div class="mini"></div>
+</div>
+<div class="service-media">
+<img alt="당근마켓 기반 지역 마케팅으로 우리 동네 잠재고객과 매장 문의를 연결하는 서비스 이미지" src="images/service-08.jpg" loading="lazy" decoding="async"/>
 <div class="service-split"></div>
 </div>
 </article>
@@ -10310,13 +10423,13 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 </div>
 <div class="contact-benefit-text moodad-first-benefit-text">
 <div class="contact-benefit-line moodad-first-benefit-line">
-<h3>플레이스 월 관리비 감면 </h3>
+<h3>플레이스 월 관리비 감면 혜택</h3>
 <div class="moodad-first-benefit-right-stack">
 <span class="moodad-benefit-extra-note moodad-first-benefit-note">30만원 상당 관리비 &gt; <strong class="moodad-free-white" > 무료지원</strong></span>
 <span class="contact-benefit-badge">월 3팀 한정</span>
 </div>
 </div>
-<p>SEO 키워드·정보·소식·이미지 등 핵심 요소를 관리합니다.</p>
+<p class="moodad-place-benefit-description"><span>SEO 키워드·정보·소식·이미지 등</span><span>핵심 요소를 관리합니다.</span></p>
 </div>
 </div>
 <div class="contact-benefit-item">
@@ -10410,7 +10523,13 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 
 const shell = document.getElementById('heroShell');
     const stage = document.getElementById('stage');
-    const moodadHeroMotionHidden = true;
+    const moodadHeroMotionHidden = false;
+
+    const phoneHeroMount = document.getElementById('phoneHeroMount');
+    if (phoneHeroMount && shell) {
+      phoneHeroMount.appendChild(shell);
+      shell.classList.add('phone-hero-motion');
+    }
 
     const sequence = [
       { type:'plain', bg:'black', text:'광고', size:'xxl', color:'white', motion:'motion-soft-pop', duration:950 },
@@ -12650,7 +12769,9 @@ document.addEventListener("DOMContentLoaded", function () {
   #service-3 .service-copy h3,
   #service-4 .service-copy h3,
   #service-5 .service-copy h3,
-  #service-6 .service-copy h3 {
+  #service-6 .service-copy h3,
+  #service-7 .service-copy h3,
+  #service-8 .service-copy h3 {
     color: #18A8F1 !important;
   }
 
@@ -12943,6 +13064,10 @@ document.addEventListener("DOMContentLoaded", function () {
   .services-section #service-4::after { content: "04" !important; }
   .services-section #service-5::after { content: "05" !important; }
   .services-section #service-6::after { content: "06" !important; }
+  .services-section #service-7::after { content: "07" !important; }
+  .services-section #service-8::after { content: "08" !important; }
+  .services-section #service-7::after { content: "07" !important; }
+  .services-section #service-8::after { content: "08" !important; }
 
   .services-section .service-copy {
     position: relative !important;
@@ -13339,6 +13464,8 @@ document.addEventListener("DOMContentLoaded", function () {
   .services-section #service-4 { --service-num-text: "04"; }
   .services-section #service-5 { --service-num-text: "05"; }
   .services-section #service-6 { --service-num-text: "06"; }
+  .services-section #service-7 { --service-num-text: "07"; }
+  .services-section #service-8 { --service-num-text: "08"; }
   .services-section #service-1::after { content: "01" !important; }
   .services-section #service-2::after { content: "02" !important; }
   .services-section #service-3::after { content: "03" !important; }
@@ -15993,6 +16120,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .services-section #service-4 { transition-delay: .30s !important; }
     .services-section #service-5 { transition-delay: .40s !important; }
     .services-section #service-6 { transition-delay: .50s !important; }
+    .services-section #service-7 { transition-delay: .60s !important; }
+    .services-section #service-8 { transition-delay: .70s !important; }
   }
 
   /* 모바일: 기존처럼 애니메이션이 보이도록 transform:none 덮어쓰기만 해제 */
@@ -20555,5 +20684,906 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <!-- ===== MOODAD 핵심 버튼 클릭 추적 END: 한글 이벤트명 유지 ===== -->
 
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 레퍼런스 디자인 / 모바일 원본 유지 ===== -->
+<style id="moodad-pc-eight-strategy-reference-final-20260621">
+@media (min-width: 821px){
+  #services.services-section{
+    padding: 72px 0 112px !important;
+    background:#fff !important;
+    overflow:visible !important;
+  }
+  #services .container{width:min(1420px,calc(100% - 80px)) !important;max-width:none !important;}
+  #services .section-head{margin:0 0 42px !important;text-align:center !important;}
+  #services .section-head::before{
+    content:"STRATEGY";display:block;color:#2368ff;font-size:17px;font-weight:800;
+    letter-spacing:.01em;line-height:1;margin-bottom:12px;
+  }
+  #services .section-head::after{
+    content:"";display:block;width:53px;height:3px;border-radius:10px;background:#2368ff;
+    margin:0 auto 31px;
+  }
+  #services .services-main-title{
+    margin:0 !important;font-size:0 !important;line-height:1 !important;color:#0b1736 !important;
+  }
+  #services .services-main-title::before{
+    content:"매출 폭주를 막을 수 없는";display:block;font-size:clamp(44px,4.15vw,69px);
+    line-height:1.08;font-weight:900;letter-spacing:-.06em;color:#0b1736;
+  }
+  #services .services-main-title::after{
+    content:"업종과 상황에 맞춰 필요한 마케팅만 조합해 성과로 연결합니다.";display:block;
+    margin-top:18px;font-size:clamp(18px,1.35vw,23px);line-height:1.5;font-weight:500;
+    letter-spacing:-.035em;color:#4f596f;
+  }
+  #services .section-head > br{display:none !important;}
+
+  #services .service-board{
+    display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+    gap:18px 20px !important;align-items:stretch !important;margin:0 !important;
+  }
+  #services .service-wide,
+  #services .service-wide.show,
+  #services .service-wide:hover{
+    position:relative !important;display:block !important;aspect-ratio:auto !important;
+    min-height:385px !important;height:385px !important;padding:0 !important;overflow:hidden !important;
+    border:1px solid #edf0f5 !important;border-radius:20px !important;background:#fff !important;
+    box-shadow:0 12px 32px rgba(26,42,76,.09) !important;transform:none !important;
+    opacity:1 !important;filter:none !important;contain:layout paint style !important;
+  }
+  #services .service-wide::before,#services .service-wide::after{display:none !important;content:none !important;}
+  #services .service-copy{
+    position:static !important;display:block !important;padding:31px 30px 0 !important;
+    min-height:0 !important;color:#0b1736 !important;transform:none !important;
+  }
+  #services .service-num-lg{
+    display:block !important;position:static !important;margin:0 0 16px !important;
+    color:#5d8eff !important;font-size:28px !important;line-height:1 !important;font-weight:400 !important;
+    letter-spacing:-.04em !important;
+  }
+  #services .service-copy h3{
+    position:static !important;width:auto !important;min-width:0 !important;margin:0 0 12px !important;
+    padding:0 !important;color:#07132f !important;font-size:23px !important;line-height:1.25 !important;
+    font-weight:900 !important;letter-spacing:-.055em !important;background:none !important;
+    border:0 !important;box-shadow:none !important;transform:none !important;
+  }
+  #services .service-copy p{
+    position:static !important;width:auto !important;margin:0 !important;padding:0 !important;
+    color:#4e586d !important;font-size:15.5px !important;line-height:1.65 !important;font-weight:500 !important;
+    letter-spacing:-.035em !important;transform:none !important;
+  }
+  #services .service-copy p .service-line{display:inline !important;color:inherit !important;font:inherit !important;}
+  #services .service-copy p .service-line::after{content:" " !important;}
+  #services .service-copy p .service-bold{font-weight:500 !important;color:inherit !important;}
+  #services .service-copy .mini{display:none !important;}
+  #services .service-media{display:none !important;}
+  #services .pc-strategy-visual{
+    position:absolute;left:20px;right:20px;bottom:9px;height:165px;display:flex;align-items:flex-end;
+    justify-content:center;pointer-events:none;z-index:2;
+  }
+  #services .pc-strategy-visual svg{display:block;width:100%;height:100%;overflow:visible;}
+  #services .pc-only-strategy-card{display:block !important;}
+}
+@media (max-width:820px){
+  #services .pc-only-strategy-card,#services .pc-strategy-visual{display:none !important;}
+}
+</style>
+<script id="moodad-pc-eight-strategy-reference-script-20260621">
+(function(){
+  function svgWrap(inner){return '<svg viewBox="0 0 300 170" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#79a8ff"/><stop offset="1" stop-color="#1e5df4"/></linearGradient><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#65d596"/><stop offset="1" stop-color="#1eb96a"/></linearGradient><filter id="s" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#6c7b9b" flood-opacity=".18"/></filter></defs>'+inner+'</svg>';}
+  var visuals={
+    1:svgWrap('<g filter="url(#s)"><rect x="18" y="38" width="130" height="108" rx="10" fill="#fff" stroke="#dfe5ef"/><rect x="18" y="38" width="130" height="18" rx="10" fill="#f3f6fa"/><rect x="30" y="66" width="54" height="60" rx="4" fill="#edf5ec"/><path d="M30 102l17-17 14 9 23-25" fill="none" stroke="#b9d9b5" stroke-width="3"/><rect x="94" y="71" width="43" height="5" rx="2.5" fill="#dfe5ee"/><rect x="94" y="83" width="33" height="5" rx="2.5" fill="#e6eaf1"/><rect x="94" y="95" width="39" height="5" rx="2.5" fill="#e6eaf1"/><rect x="108" y="97" width="90" height="60" rx="9" fill="#fff" stroke="#dfe5ef"/><rect x="119" y="108" width="68" height="30" rx="4" fill="#d7c4a8"/><path d="M119 128h68" stroke="#8b6e4c" stroke-width="4"/><path d="M119 117h68" stroke="#f5f0e8" stroke-width="7"/><text x="119" y="151" fill="#ffb31a" font-size="12">★★★★★</text><path d="M178 25c0-17 13-30 30-30s30 13 30 30c0 22-30 52-30 52s-30-30-30-52z" fill="url(#b)"/><circle cx="208" cy="25" r="11" fill="#fff"/></g>'),
+    2:svgWrap('<g filter="url(#s)"><path d="M122 32h75l26 26v88H122z" fill="#fff" stroke="#dfe5ef"/><path d="M197 32v27h26" fill="#eef2f7"/><rect x="139" y="71" width="52" height="6" rx="3" fill="#dfe5ee"/><rect x="139" y="85" width="66" height="6" rx="3" fill="#e7ebf2"/><rect x="139" y="99" width="45" height="6" rx="3" fill="#e7ebf2"/><path d="M192 123l28-42" stroke="#f7c256" stroke-width="8"/><path d="M219 82l7-11 4 13-9 4z" fill="#222b40"/><rect x="35" y="76" width="107" height="30" rx="9" fill="#fff" stroke="#dfe5ef"/><text x="44" y="96" font-size="15" fill="#ffb31a">♥ ★★★★★</text><path d="M55 111h93l-9 50H64z" fill="#2d5fb6"/><circle cx="103" cy="136" r="31" fill="#192a47"/><circle cx="103" cy="136" r="22" fill="#dae5f7"/><circle cx="103" cy="136" r="13" fill="#1c2f52"/><rect x="79" y="103" width="51" height="13" rx="5" fill="#f2f5f9"/></g>'),
+    3:svgWrap('<g filter="url(#s)"><rect x="24" y="30" width="236" height="122" rx="10" fill="#fff" stroke="#dfe5ef"/><circle cx="37" cy="42" r="4" fill="#cdd5e2"/><circle cx="49" cy="42" r="4" fill="#cdd5e2"/><circle cx="61" cy="42" r="4" fill="#cdd5e2"/><rect x="39" y="63" width="18" height="18" rx="3" fill="#24c875"/><text x="43" y="77" fill="#fff" font-size="13" font-weight="700">N</text><path d="M50 126l34-25 26 13 25-27 24 14 38-46" fill="none" stroke="#27c879" stroke-width="4"/><path d="M191 63l10-6-2 12" fill="#27c879"/><rect x="204" y="99" width="55" height="50" rx="10" fill="url(#b)"/><text x="213" y="131" fill="#fff" font-size="22" font-weight="800">1위</text></g>'),
+    4:svgWrap('<g filter="url(#s)"><rect x="18" y="38" width="210" height="112" rx="10" fill="#fff" stroke="#dfe5ef"/><circle cx="31" cy="50" r="4" fill="#cdd5e2"/><circle cx="43" cy="50" r="4" fill="#cdd5e2"/><circle cx="55" cy="50" r="4" fill="#cdd5e2"/><rect x="35" y="64" width="174" height="20" rx="10" fill="#f6f8fb" stroke="#dfe5ef"/><text x="46" y="78" fill="#24c875" font-size="13" font-weight="800">N</text><circle cx="196" cy="74" r="5" fill="none" stroke="#8a96ab"/><rect x="39" y="100" width="86" height="48" rx="8" fill="#fff" stroke="#dfe5ef"/><text x="49" y="125" fill="#3f72db" font-size="20" font-weight="700">AD</text><rect x="93" y="114" width="22" height="4" rx="2" fill="#77a1f9"/><rect x="138" y="127" width="14" height="15" fill="#bdd0f7"/><rect x="158" y="118" width="14" height="24" fill="#9cbafb"/><rect x="178" y="108" width="14" height="34" fill="#6e9bfb"/><circle cx="238" cy="116" r="38" fill="#edf3ff" stroke="#7aa3ff" stroke-width="7"/><circle cx="238" cy="116" r="25" fill="#fff" stroke="#2b66ee" stroke-width="7"/><circle cx="238" cy="116" r="11" fill="#2b66ee"/><path d="M238 116l39-39" stroke="#2b66ee" stroke-width="5"/><path d="M271 72l13-2-2 13-12 3z" fill="#2b66ee"/></g>'),
+    5:svgWrap('<g filter="url(#s)"><rect x="35" y="35" width="196" height="118" rx="10" fill="#fff" stroke="#dfe5ef"/><circle cx="48" cy="47" r="4" fill="#cdd5e2"/><circle cx="60" cy="47" r="4" fill="#cdd5e2"/><circle cx="72" cy="47" r="4" fill="#cdd5e2"/><rect x="50" y="65" width="67" height="55" rx="5" fill="url(#b)"/><path d="M55 113l17-19 12 10 16-18 12 27z" fill="#8cb5ff"/><rect x="130" y="69" width="72" height="6" rx="3" fill="#dfe5ee"/><rect x="130" y="84" width="58" height="6" rx="3" fill="#e7ebf2"/><rect x="130" y="99" width="65" height="6" rx="3" fill="#e7ebf2"/><rect x="130" y="114" width="44" height="6" rx="3" fill="#e7ebf2"/><path d="M213 137l25-47 10 5-25 47z" fill="#2d5fb6"/><path d="M238 90l7-10 4 13z" fill="#16233d"/></g>'),
+    6:svgWrap('<g filter="url(#s)"><rect x="27" y="45" width="112" height="67" rx="16" fill="#fff" stroke="#dfe5ef"/><path d="M57 112l-3 18 20-18" fill="#fff" stroke="#dfe5ef"/><path d="M62 79h15v18H62z" fill="#2d66ed"/><path d="M66 79l5-16 8 4-2 12" fill="#2d66ed"/><rect x="91" y="73" width="32" height="6" rx="3" fill="#dfe5ee"/><rect x="91" y="88" width="24" height="6" rx="3" fill="#e7ebf2"/><rect x="126" y="74" width="136" height="69" rx="16" fill="url(#b)"/><path d="M153 143l4 18 20-18" fill="#2d66ed"/><circle cx="171" cy="103" r="14" fill="#87aaff"/><path d="M151 129c4-18 36-18 40 0" fill="#87aaff"/><path d="M223 93c9-13 27-4 27 9 0 11-18 24-18 24s-18-13-18-24c0-7 4-11 9-9z" fill="#fff"/></g>'),
+    7:svgWrap('<g filter="url(#s)"><rect x="95" y="35" width="130" height="126" rx="20" fill="#fff" stroke="#dfe5ef"/><circle cx="112" cy="51" r="5" fill="#d4dbe7"/><circle cx="208" cy="51" r="3" fill="#8d98aa"/><rect x="106" y="65" width="108" height="74" rx="6" fill="#c9d5e5"/><path d="M106 127l25-25 20 13 27-33 36 45" fill="#839bbd"/><rect x="76" y="77" width="57" height="57" rx="14" fill="url(#b)"/><circle cx="104.5" cy="105.5" r="17" fill="none" stroke="#fff" stroke-width="5"/><circle cx="116" cy="94" r="3" fill="#fff"/><rect x="203" y="109" width="56" height="56" rx="12" fill="#2b65ee"/><text x="220" y="151" fill="#fff" font-size="42" font-weight="800">f</text><path d="M106 146h108" stroke="#dfe5ef"/><circle cx="119" cy="152" r="4" fill="#ff6577"/><path d="M132 152h16" stroke="#b4bdcb" stroke-width="3"/></g>'),
+    8:svgWrap('<g filter="url(#s)"><rect x="128" y="23" width="112" height="145" rx="20" fill="#fff" stroke="#dfe5ef"/><rect x="139" y="39" width="90" height="23" rx="8" fill="#f6f8fb"/><circle cx="151" cy="50" r="5" fill="#ff7c2c"/><rect x="161" y="47" width="49" height="5" rx="2.5" fill="#d9dfe9"/><rect x="139" y="72" width="90" height="75" rx="8" fill="#eef3f8"/><path d="M144 130l18-18 16 8 17-24 29 34" fill="none" stroke="#bdc9d8" stroke-width="3"/><path d="M189 98c0-7 6-13 13-13s13 6 13 13c0 10-13 23-13 23s-13-13-13-23z" fill="#ff7a22"/><circle cx="202" cy="98" r="5" fill="#fff"/><circle cx="89" cy="117" r="43" fill="#fff" stroke="#e5e9f0"/><path d="M69 111c0-12 9-21 20-21s20 9 20 21c0 15-20 35-20 35s-20-20-20-35z" fill="#ff7a22"/><circle cx="89" cy="111" r="8" fill="#fff"/><path d="M82 82c7-10 21-10 28 0-8 4-20 4-28 0z" fill="#19bd68"/></g>')
+  };
+  function addVisual(card,n){if(!card||card.querySelector('.pc-strategy-visual'))return;var d=document.createElement('div');d.className='pc-strategy-visual';d.innerHTML=visuals[n];card.appendChild(d);}
+  function makeCard(n,title,text){var a=document.createElement('article');a.className='service-wide pc-only-strategy-card';a.id='service-'+n;a.innerHTML='<div class="service-copy"><div class="service-num-lg">0'+n+'</div><h3>'+title+'</h3><p>'+text+'</p><div class="mini"></div></div><div class="service-media"></div>';return a;}
+  function init(){var board=document.querySelector('#services .service-board');if(!board)return;var cards=board.querySelectorAll('.service-wide');cards.forEach(function(c,i){addVisual(c,i+1);});if(!document.getElementById('service-7')){var c7=makeCard(7,'SNS 마케팅','인스타그램·페이스북 등 SNS 채널을 통해 브랜드 인지도를 높이고 고객과 소통합니다.');board.appendChild(c7);addVisual(c7,7);}if(!document.getElementById('service-8')){var c8=makeCard(8,'당근 마케팅','지역 기반의 당근마켓을 활용해 우리 동네 고객에게 효과적으로 노출합니다.');board.appendChild(c8);addVisual(c8,8);}}
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init,{once:true});}else{init();}
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 레퍼런스 디자인 ===== -->
+
+
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 패널 확대·중앙정렬·이미지 자리·hover 최종 수정 ===== -->
+<style id="moodad-pc-eight-strategy-layout-image-slot-final-20260621">
+@media screen and (min-width: 821px){
+  /* 섹션 전체 중앙 정렬 */
+  #services .container,
+  #services .services-inner,
+  #services .service-board-wrap{
+    width:100% !important;
+    max-width:none !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  #services .service-board{
+    width:min(1460px, calc(100% - 64px)) !important;
+    max-width:1460px !important;
+    margin:0 auto !important;
+    padding:0 !important;
+    display:grid !important;
+    grid-template-columns:repeat(4, minmax(0, 1fr)) !important;
+    gap:24px !important;
+    justify-content:center !important;
+    align-items:stretch !important;
+  }
+
+  /* 1~8 패널 확대 */
+  #services .service-wide,
+  #services .service-wide.show,
+  #services .service-wide.service-flip-ready,
+  #services .service-wide.service-flip-ready.show,
+  #services .service-wide.service-flip-ready.service-flip-in{
+    position:relative !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:480px !important;
+    min-height:480px !important;
+    aspect-ratio:auto !important;
+    margin:0 !important;
+    padding:0 !important;
+    overflow:hidden !important;
+    border:1px solid #edf0f5 !important;
+    border-radius:24px !important;
+    background:#ffffff !important;
+    box-shadow:0 10px 34px rgba(25,43,76,.08) !important;
+    transform:none !important;
+    transition:transform .28s cubic-bezier(.2,.8,.2,1), box-shadow .28s ease, border-color .28s ease !important;
+    will-change:transform !important;
+  }
+
+  #services .service-wide:hover,
+  #services .service-wide.show:hover,
+  #services .service-wide.service-flip-ready.service-flip-in:hover,
+  #services .service-wide:focus-within{
+    transform:translateY(-8px) scale(1.025) !important;
+    box-shadow:0 22px 52px rgba(35,68,128,.16) !important;
+    border-color:#dce6fb !important;
+    z-index:10 !important;
+  }
+
+  /* 기존 장식·이모티콘 완전 제거 */
+  #services .service-wide::before,
+  #services .service-wide::after,
+  #services .service-media,
+  #services .pc-strategy-visual{
+    display:none !important;
+    content:none !important;
+  }
+
+  /* 글 영역: 잘림 방지 */
+  #services .service-copy{
+    position:relative !important;
+    inset:auto !important;
+    width:100% !important;
+    height:100% !important;
+    min-width:0 !important;
+    padding:32px 30px 208px !important;
+    display:block !important;
+    overflow:visible !important;
+    transform:none !important;
+  }
+
+  #services .service-copy .service-num-lg{
+    position:static !important;
+    display:block !important;
+    width:auto !important;
+    height:auto !important;
+    margin:0 0 14px !important;
+    padding:0 !important;
+    color:#6e9cf7 !important;
+    font-size:30px !important;
+    line-height:1 !important;
+    font-weight:400 !important;
+    letter-spacing:-.03em !important;
+    transform:none !important;
+  }
+
+  #services .service-copy h3{
+    position:static !important;
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:0 0 13px !important;
+    padding:0 !important;
+    color:#111c3a !important;
+    background:none !important;
+    border:0 !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+    font-size:24px !important;
+    line-height:1.25 !important;
+    font-weight:900 !important;
+    letter-spacing:-.055em !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    transform:none !important;
+  }
+
+  #services .service-copy p{
+    position:static !important;
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    height:auto !important;
+    max-height:none !important;
+    margin:0 !important;
+    padding:0 !important;
+    color:#505a70 !important;
+    font-size:16px !important;
+    line-height:1.62 !important;
+    font-weight:500 !important;
+    letter-spacing:-.035em !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    -webkit-line-clamp:unset !important;
+    transform:none !important;
+  }
+
+  #services .service-copy p .service-line{
+    display:inline !important;
+    white-space:normal !important;
+    word-break:keep-all !important;
+    color:inherit !important;
+    font:inherit !important;
+  }
+  #services .service-copy p .service-line::after{content:" " !important;}
+  #services .service-copy p .service-bold{font-weight:500 !important;color:inherit !important;}
+  #services .service-copy .mini{display:none !important;}
+
+  /* 새 이미지를 넣을 수 있는 빈 자리 */
+  #services .pc-strategy-image-slot{
+    position:absolute !important;
+    left:28px !important;
+    right:28px !important;
+    bottom:24px !important;
+    height:190px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    overflow:hidden !important;
+    border:1.5px dashed #d8deea !important;
+    border-radius:18px !important;
+    background:#f8fafc !important;
+    color:#a0a9b9 !important;
+    font-size:14px !important;
+    font-weight:700 !important;
+    letter-spacing:-.025em !important;
+    text-align:center !important;
+  }
+  #services .pc-strategy-image-slot img{
+    width:100% !important;
+    height:100% !important;
+    display:block !important;
+    object-fit:cover !important;
+  }
+  #services .pc-strategy-image-slot.has-image{
+    border-style:solid !important;
+    background:#fff !important;
+  }
+  #services .pc-strategy-image-slot.has-image .pc-strategy-image-placeholder{
+    display:none !important;
+  }
+}
+</style>
+<script id="moodad-pc-eight-strategy-image-slot-final-script-20260621">
+(function(){
+  var desktopQuery=window.matchMedia('(min-width: 821px)');
+
+  function syncStrategyImageSlots(){
+    var cards=document.querySelectorAll('#services .service-board .service-wide');
+
+    if(!desktopQuery.matches){
+      cards.forEach(function(card){
+        var slot=card.querySelector('.pc-strategy-image-slot');
+        if(slot) slot.remove();
+      });
+      return;
+    }
+
+    cards.forEach(function(card,index){
+      var old=card.querySelector('.pc-strategy-visual');
+      if(old) old.remove();
+      if(card.querySelector('.pc-strategy-image-slot')) return;
+      var slot=document.createElement('div');
+      slot.className='pc-strategy-image-slot';
+      slot.setAttribute('data-strategy-image', String(index+1));
+      slot.innerHTML='<span class="pc-strategy-image-placeholder">이미지 삽입 영역</span>';
+      card.appendChild(slot);
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',syncStrategyImageSlots,{once:true});
+  }else{
+    syncStrategyImageSlots();
+  }
+
+  if(desktopQuery.addEventListener){
+    desktopQuery.addEventListener('change',syncStrategyImageSlots);
+  }else{
+    desktopQuery.addListener(syncStrategyImageSlots);
+  }
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 패널 확대·중앙정렬·이미지 자리·hover 최종 수정 ===== -->
+
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 한 화면 배치·텍스트 좌측 정렬 ===== -->
+<style id="moodad-pc-eight-strategy-one-screen-left-align-20260621">
+@media screen and (min-width: 821px){
+  #services .service-board{
+    gap:18px 24px !important;
+  }
+
+  #services .service-wide,
+  #services .service-wide.show,
+  #services .service-wide.service-flip-ready,
+  #services .service-wide.service-flip-ready.show,
+  #services .service-wide.service-flip-ready.service-flip-in{
+    height:360px !important;
+    min-height:360px !important;
+  }
+
+  #services .service-copy{
+    padding:24px 28px 148px !important;
+    text-align:left !important;
+  }
+
+  #services .service-copy .service-num-lg{
+    margin-bottom:10px !important;
+    font-size:27px !important;
+    text-align:left !important;
+  }
+
+  #services .service-copy h3{
+    margin-bottom:10px !important;
+    font-size:22px !important;
+    line-height:1.22 !important;
+    text-align:left !important;
+  }
+
+  #services .service-copy p{
+    font-size:15px !important;
+    line-height:1.52 !important;
+    text-align:left !important;
+  }
+
+  #services .pc-strategy-image-slot{
+    left:28px !important;
+    right:28px !important;
+    bottom:20px !important;
+    height:112px !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 한 화면 배치·텍스트 좌측 정렬 ===== -->
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 패널 가로폭 소폭 축소 ===== -->
+<style id="moodad-pc-eight-strategy-width-reduce-20260621">
+@media screen and (min-width: 821px){
+  #services .service-board{
+    width:min(1380px, calc(100% - 96px)) !important;
+    max-width:1380px !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 패널 가로폭 소폭 축소 ===== -->
+
+
+
+<!-- ===== MOODAD FINAL FIX: PC 8가지 전략 파일 순서·ALT 절대 고정 ===== -->
+<script id="moodad-pc-eight-strategy-order-alt-lock-final-20260621">
+(function(){
+  var desktopQuery = window.matchMedia('(min-width: 821px)');
+
+  var items = [
+    { id:'service-1', number:'01', image:'./images/8가지1.png', alt:'플레이스 마케팅 안내 이미지' },
+    { id:'service-5', number:'02', image:'./images/8가지2.png', alt:'브랜드 블로그 운영 안내 이미지' },
+    { id:'service-3', number:'03', image:'./images/8가지3.png', alt:'플레이스 순위상승 안내 이미지' },
+    { id:'service-6', number:'04', image:'./images/8가지4.png', alt:'바이럴 마케팅 안내 이미지' },
+    { id:'service-7', number:'05', image:'./images/8가지5.png', alt:'SNS 마케팅 안내 이미지' },
+    { id:'service-8', number:'06', image:'./images/8가지6.png', alt:'당근 마케팅 안내 이미지' },
+    { id:'service-4', number:'07', image:'./images/8가지7.png', alt:'검색광고 운영 안내 이미지' },
+    { id:'service-2', number:'08', image:'./images/8가지8.png', alt:'체험단과 기자단 운영 안내 이미지' }
+  ];
+
+  function applyFinalOrderAndImages(){
+    if(!desktopQuery.matches) return;
+
+    var board = document.querySelector('#services .service-board');
+    if(!board) return;
+
+    var ready = items.every(function(item){
+      return document.getElementById(item.id);
+    });
+
+    if(!ready){
+      window.requestAnimationFrame(applyFinalOrderAndImages);
+      return;
+    }
+
+    items.forEach(function(item, index){
+      var card = document.getElementById(item.id);
+      if(!card) return;
+
+      board.appendChild(card);
+
+      var number = card.querySelector('.service-num-lg');
+      if(number) number.textContent = item.number;
+
+      var slot = card.querySelector('.pc-strategy-image-slot');
+      if(!slot) return;
+
+      slot.classList.add('has-image');
+
+      var img = slot.querySelector('img');
+      if(!img){
+        slot.innerHTML = '';
+        img = document.createElement('img');
+        slot.appendChild(img);
+      }
+
+      img.src = item.image;
+      img.alt = item.alt;
+      img.loading = index < 4 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+    });
+  }
+
+  function runFinalFix(){
+    applyFinalOrderAndImages();
+    window.requestAnimationFrame(applyFinalOrderAndImages);
+    window.setTimeout(applyFinalOrderAndImages, 50);
+    window.setTimeout(applyFinalOrderAndImages, 250);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', runFinalFix, {once:true});
+  }else{
+    runFinalFix();
+  }
+
+  window.addEventListener('load', runFinalFix, {once:true});
+
+  if(desktopQuery.addEventListener){
+    desktopQuery.addEventListener('change', function(e){
+      if(e.matches) runFinalFix();
+    });
+  }else{
+    desktopQuery.addListener(function(e){
+      if(e.matches) runFinalFix();
+    });
+  }
+})();
+</script>
+<!-- ===== /MOODAD FINAL FIX: PC 8가지 전략 파일 순서·ALT 절대 고정 ===== -->
+
+
+<!-- ===== MOODAD MOBILE ONLY: 플레이스 관리비 설명문 정확히 2줄 정상 복구 ===== -->
+<style id="moodad-mobile-place-benefit-two-line-restore-final-20260621">
+  .moodad-mobile-benefit-break{
+    display:none;
+  }
+
+  @media (max-width:820px){
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-text{
+      min-width:0 !important;
+      width:100% !important;
+      overflow:hidden !important;
+    }
+
+    #contact .contact-benefit-item:nth-child(2) .contact-benefit-text p{
+      display:block !important;
+      width:100% !important;
+      max-width:100% !important;
+      margin-top:7px !important;
+      white-space:normal !important;
+      word-break:keep-all !important;
+      overflow:hidden !important;
+      overflow-wrap:normal !important;
+      font-size:13.5px !important;
+      line-height:1.42 !important;
+      letter-spacing:-0.055em !important;
+    }
+
+    #contact .moodad-mobile-benefit-break{
+      display:block !important;
+    }
+  }
+</style>
+<!-- ===== /MOODAD MOBILE ONLY: 플레이스 관리비 설명문 정확히 2줄 정상 복구 ===== -->
 </body>
 </html>
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 직접 이미지 업로드용 최종 설정 ===== -->
+<style id="moodad-pc-strategy-direct-image-final-20260621">
+@media screen and (min-width: 821px){
+  #services .pc-strategy-image-slot{
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    height:166px !important;
+    padding:0 !important;
+    margin:0 !important;
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    overflow:hidden !important;
+  }
+
+  #services .pc-strategy-image-slot img{
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    max-height:none !important;
+    display:block !important;
+    object-fit:cover !important;
+    object-position:center center !important;
+    margin:0 !important;
+    padding:0 !important;
+    border:0 !important;
+    outline:0 !important;
+    box-shadow:none !important;
+    border-radius:0 !important;
+    background:transparent !important;
+    transform:none !important;
+  }
+
+  #services .pc-strategy-image-placeholder{
+    display:none !important;
+  }
+}
+</style>
+
+<script id="moodad-pc-strategy-direct-image-script-20260621">
+(function(){
+  var desktopQuery = window.matchMedia('(min-width: 821px)');
+  var imageFiles = [
+    './images/8가지1.png',
+    './images/8가지2.png',
+    './images/8가지3.png',
+    './images/8가지4.png',
+    './images/8가지5.png',
+    './images/8가지6.png',
+    './images/8가지7.png',
+    './images/8가지8.png'
+  ];
+
+  var imageAlts = [
+    '플레이스 마케팅 안내 이미지',
+    '브랜드 블로그 운영 안내 이미지',
+    '플레이스 순위상승 안내 이미지',
+    '바이럴 마케팅 안내 이미지',
+    'SNS 마케팅 안내 이미지',
+    '당근 마케팅 안내 이미지',
+    '검색광고 운영 안내 이미지',
+    '체험단과 기자단 운영 안내 이미지'
+  ];
+
+  function applyDirectStrategyImages(){
+    var cards = document.querySelectorAll('#services .service-board .service-wide');
+
+    if(!desktopQuery.matches){
+      return;
+    }
+
+    if(cards.length < 8){
+      window.requestAnimationFrame(applyDirectStrategyImages);
+      return;
+    }
+
+    cards.forEach(function(card,index){
+      var slot = card.querySelector('.pc-strategy-image-slot');
+      if(!slot) return;
+
+      slot.classList.add('has-image');
+      slot.innerHTML = '';
+
+      var img = document.createElement('img');
+      img.src = imageFiles[index];
+      img.alt = imageAlts[index] || '';
+      img.loading = index < 4 ? 'eager' : 'lazy';
+      img.decoding = 'async';
+      slot.appendChild(img);
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', applyDirectStrategyImages, {once:true});
+  }else{
+    applyDirectStrategyImages();
+  }
+
+  if(desktopQuery.addEventListener){
+    desktopQuery.addEventListener('change', function(e){
+      if(e.matches) applyDirectStrategyImages();
+    });
+  }else{
+    desktopQuery.addListener(function(e){
+      if(e.matches) applyDirectStrategyImages();
+    });
+  }
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 직접 이미지 업로드용 최종 설정 ===== -->
+
+
+
+<!-- ===== MOODAD PC ONLY: 8가지 전략 순서 최종 변경 ===== -->
+<script id="moodad-pc-eight-strategy-order-final-20260621">
+(function(){
+  var desktopQuery = window.matchMedia('(min-width: 821px)');
+  var desiredOrder = [
+    '플레이스 마케팅',
+    '브랜드 블로그',
+    '플레이스 순위상승',
+    '바이럴 마케팅',
+    'SNS 마케팅',
+    '당근 마케팅',
+    '검색광고',
+    '체험단/기자단'
+  ];
+
+  var originalCards = [];
+  var originalNumbers = [];
+
+  function getTitle(card){
+    var heading = card.querySelector('.service-copy h3');
+    return heading ? heading.textContent.trim() : '';
+  }
+
+  function syncOrder(){
+    var board = document.querySelector('#services .service-board');
+    if(!board) return;
+
+    var cards = Array.prototype.slice.call(board.querySelectorAll('.service-wide'));
+    if(cards.length < 8){
+      window.requestAnimationFrame(syncOrder);
+      return;
+    }
+
+    if(!originalCards.length){
+      originalCards = cards.slice();
+      originalNumbers = originalCards.map(function(card){
+        var number = card.querySelector('.service-num-lg');
+        return number ? number.textContent : '';
+      });
+    }
+
+    if(!desktopQuery.matches){
+      originalCards.forEach(function(card, index){
+        board.appendChild(card);
+        var number = card.querySelector('.service-num-lg');
+        if(number) number.textContent = originalNumbers[index];
+      });
+      return;
+    }
+
+    var cardByTitle = {};
+    cards.forEach(function(card){
+      cardByTitle[getTitle(card)] = card;
+    });
+
+    desiredOrder.forEach(function(title, index){
+      var card = cardByTitle[title];
+      if(!card) return;
+
+      board.appendChild(card);
+
+      var number = card.querySelector('.service-num-lg');
+      if(number) number.textContent = String(index + 1).padStart(2, '0');
+
+      var slot = card.querySelector('.pc-strategy-image-slot');
+      var img = slot ? slot.querySelector('img') : null;
+      if(img){
+        img.src = './images/8가지' + (index + 1) + '.png';
+        img.alt = title + ' 이미지';
+        img.loading = index < 4 ? 'eager' : 'lazy';
+      }
+    });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', syncOrder, {once:true});
+  }else{
+    syncOrder();
+  }
+
+  if(desktopQuery.addEventListener){
+    desktopQuery.addEventListener('change', syncOrder);
+  }else{
+    desktopQuery.addListener(syncOrder);
+  }
+})();
+</script>
+<!-- ===== /MOODAD PC ONLY: 8가지 전략 순서 최종 변경 ===== -->
+
+
+<!-- ===== MOODAD MOBILE ONLY: 8가지 전략 순서·이미지·ALT 최종 매칭 ===== -->
+<script id="moodad-mobile-service-order-image-alt-final-20260621">
+(function(){
+  var mobileQuery = window.matchMedia('(max-width: 820px)');
+  var board = document.querySelector('#services .service-board');
+  if(!board) return;
+
+  var originalOrder = Array.prototype.slice.call(board.querySelectorAll('.service-wide'));
+  var originalData = new Map();
+
+  originalOrder.forEach(function(card){
+    var img = card.querySelector('.service-media img');
+    var num = card.querySelector('.service-num-lg');
+    originalData.set(card.id, {
+      parent: card.parentNode,
+      next: card.nextSibling,
+      imgSrc: img ? img.getAttribute('src') : '',
+      imgAlt: img ? img.getAttribute('alt') : '',
+      num: num ? num.textContent : ''
+    });
+  });
+
+  var mobileItems = [
+    {
+      id:'service-1',
+      number:'01',
+      image:'images/service-01.jpg',
+      alt:'네이버 플레이스 마케팅 운영으로 매장 노출과 방문 문의를 늘리는 서비스 이미지'
+    },
+    {
+      id:'service-5',
+      number:'02',
+      image:'images/service-02.jpg',
+      alt:'브랜드 블로그 운영으로 업체 신뢰도와 전문성을 높이는 서비스 이미지'
+    },
+    {
+      id:'service-3',
+      number:'03',
+      image:'images/service-03.jpg',
+      alt:'플레이스 순위상승 작업을 통해 원하는 키워드 노출을 강화하는 서비스 이미지'
+    },
+    {
+      id:'service-6',
+      number:'04',
+      image:'images/service-04.jpg',
+      alt:'카페와 커뮤니티 기반 바이럴 마케팅으로 자연스러운 입소문을 만드는 서비스 이미지'
+    },
+    {
+      id:'service-7',
+      number:'05',
+      image:'images/service-05.jpg',
+      alt:'인스타그램과 페이스북 중심의 SNS 마케팅으로 브랜드 인지도를 높이는 서비스 이미지'
+    },
+    {
+      id:'service-8',
+      number:'06',
+      image:'images/service-06.jpg',
+      alt:'당근마켓 기반 지역 마케팅으로 우리 동네 잠재고객에게 도달하는 서비스 이미지'
+    },
+    {
+      id:'service-4',
+      number:'07',
+      image:'images/service-07.jpg',
+      alt:'네이버 검색광고 운영과 키워드 광고 관리로 문의를 유도하는 서비스 이미지'
+    },
+    {
+      id:'service-2',
+      number:'08',
+      image:'images/service-08.jpg',
+      alt:'체험단과 기자단 리뷰 마케팅으로 브랜드 신뢰도를 높이는 서비스 이미지'
+    }
+  ];
+
+  function applyMobile(){
+    mobileItems.forEach(function(item){
+      var card = document.getElementById(item.id);
+      if(!card) return;
+
+      board.appendChild(card);
+
+      var num = card.querySelector('.service-num-lg');
+      if(num) num.textContent = item.number;
+
+      var img = card.querySelector('.service-media img');
+      if(img){
+        img.setAttribute('src', item.image);
+        img.setAttribute('alt', item.alt);
+        img.setAttribute('loading', 'lazy');
+        img.setAttribute('decoding', 'async');
+      }
+    });
+  }
+
+  function restoreDesktop(){
+    originalOrder.forEach(function(card){
+      board.appendChild(card);
+      var data = originalData.get(card.id);
+      if(!data) return;
+
+      var num = card.querySelector('.service-num-lg');
+      if(num) num.textContent = data.num;
+
+      var img = card.querySelector('.service-media img');
+      if(img){
+        img.setAttribute('src', data.imgSrc);
+        img.setAttribute('alt', data.imgAlt);
+      }
+    });
+  }
+
+  function sync(){
+    if(mobileQuery.matches){
+      applyMobile();
+    }else{
+      restoreDesktop();
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){
+      window.setTimeout(sync, 0);
+    }, {once:true});
+  }else{
+    window.setTimeout(sync, 0);
+  }
+
+  if(mobileQuery.addEventListener){
+    mobileQuery.addEventListener('change', sync);
+  }else{
+    mobileQuery.addListener(sync);
+  }
+})();
+</script>
+<!-- ===== /MOODAD MOBILE ONLY: 8가지 전략 순서·이미지·ALT 최종 매칭 ===== -->
+
+
+<!-- ===== MOODAD MOBILE ONLY: 플레이스 관리비 설명문 정확히 2줄 최종 고정 ===== -->
+<style id="moodad-mobile-place-benefit-description-exact-two-lines-final-20260621">
+@media (max-width:820px){
+  #contact .contact-benefit-item:nth-child(2) .contact-benefit-text{
+    min-width:0 !important;
+    width:100% !important;
+    max-width:none !important;
+    padding-right:0 !important;
+    overflow:visible !important;
+  }
+
+  #contact .contact-benefit-item:nth-child(2) .moodad-place-benefit-description{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:flex-start !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    margin-top:7px !important;
+    padding:0 !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    word-break:normal !important;
+    overflow-wrap:normal !important;
+  }
+
+  #contact .contact-benefit-item:nth-child(2) .moodad-place-benefit-description > span{
+    display:block !important;
+    width:max-content !important;
+    max-width:100% !important;
+    white-space:nowrap !important;
+    font:inherit !important;
+    line-height:inherit !important;
+    letter-spacing:inherit !important;
+  }
+}
+</style>
+<!-- ===== /MOODAD MOBILE ONLY: 플레이스 관리비 설명문 정확히 2줄 최종 고정 ===== -->
