@@ -21622,3 +21622,25 @@ document.addEventListener("DOMContentLoaded", function () {
 }
 </style>
 <!-- ===== /MOODAD PC ONLY: 서비스 글 뒤 흐림·장식 레이어 완전 제거 ===== -->
+<!-- ===== MOBILE ONLY: requested text clipping fix only ===== -->
+<style id="moodad-mobile-requested-text-clipping-fix-20260623">
+  @media (max-width: 820px) {
+    #reviews .reviews-real-note .moodad-case-button-above-line {
+      width: max-content !important;
+      max-width: calc(100vw - 32px) !important;
+      white-space: nowrap !important;
+    }
+
+    #reviews .reviews-real-note .moodad-case-button-above-line > span {
+      white-space: nowrap !important;
+    }
+
+    #problem .problem-panel.problem-03 .problem-brief .moodad-sun-oneline-mobile {
+      display: inline !important;
+      white-space: normal !important;
+      word-break: keep-all !important;
+      overflow-wrap: break-word !important;
+    }
+  }
+</style>
+<!-- ===== /MOBILE ONLY: requested text clipping fix only ===== -->
