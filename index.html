@@ -10505,6 +10505,15 @@ html, body { width: 100%; min-height: 100%; height: auto; overflow-x: hidden; ov
 <input type="checkbox" name="privacy_agree" value="동의" required/>
 <span>개인정보 수집 및 이용에 동의합니다.</span>
 </label>
+
+  <div style="margin: 16px 0;">
+  <div
+    class="g-recaptcha"
+    data-sitekey="6Lc1wgcuAAAAAPyKa_qeP1Z9X6QBdemPyKFDuk9-"
+    data-size="compact"
+  ></div>
+</div>
+  
 <button class="contact-submit" type="submit">신청 하기</button>
 </form>
 </div>
@@ -20476,7 +20485,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
       e.preventDefault();
       e.stopImmediatePropagation();
+if (
+  !window.grecaptcha ||
+  typeof window.grecaptcha.getResponse !== "function"
+) {
+  showToast(
+    "보안 인증을 불러오는 중입니다.",
+    "잠시 후 다시 시도해주세요.",
+    "!",
+    3000
+  );
+  return;
+}
 
+if (!window.grecaptcha.getResponse()) {
+  showToast(
+    "보안 인증을 완료해주세요.",
+    "‘로봇이 아닙니다’를 체크한 후 신청해주세요.",
+    "!",
+    3000
+  );
+  return;
+}
       var submitBtn = form.querySelector("button[type='submit'], input[type='submit']");
       var originalText = submitBtn ? (submitBtn.tagName === "INPUT" ? submitBtn.value : submitBtn.textContent) : "";
 
@@ -20505,6 +20535,12 @@ document.addEventListener("DOMContentLoaded", function () {
       } catch (error) {
         showToast("네트워크 문제로 전송되지 않았습니다.", "잠시 후 다시 시도해주세요.", "!", 3000);
       } finally {
+        if (
+  window.grecaptcha &&
+  typeof window.grecaptcha.reset === "function"
+) {
+  window.grecaptcha.reset();
+}
         if (submitBtn) {
           submitBtn.disabled = false;
           if (submitBtn.tagName === "INPUT") submitBtn.value = originalText;
